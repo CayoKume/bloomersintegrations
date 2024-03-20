@@ -1,0 +1,10 @@
+﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+
+namespace BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces
+{
+    public interface ILinxMovimentoPlanosService<T1> : IMicrovixSaidaCoreService<T1> where T1 : class, new()
+    {
+        public Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador, string identificador2);
+        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador, string identificador2);
+    }
+}

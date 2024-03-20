@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OAllzp5+j3mT3NSGHPQK1Ler10Fuf3/7RHE6mqyIgzkBNreefoQz4DRC4Yr6owTcJPfY+WzRG7jvJfCBX9tDnQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512"
+  ],
+  "logs": []
+}

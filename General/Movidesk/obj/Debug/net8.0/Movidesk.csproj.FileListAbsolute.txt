@@ -1,0 +1,12 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\bin\Debug\net8.0\Movidesk.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\bin\Debug\net8.0\Movidesk.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\bin\Debug\net8.0\Movidesk.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\refint\Movidesk.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\ref\Movidesk.dll

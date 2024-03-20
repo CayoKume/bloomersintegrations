@@ -1,0 +1,211 @@
+﻿using BloomersMicrovixIntegrations.Saida.Core.Biz;
+using BloomersMicrovixIntegrations.Saida.Microvix.Models;
+using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
+using BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces;
+using System.Globalization;
+
+namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+{
+    public class LinxLojasService<T1> : ILinxLojasService<T1> where T1 : LinxLojas, new()
+    {
+        private string PARAMETERS = string.Empty;
+        private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
+        private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
+        private readonly ILinxLojasRepository<LinxLojas> _linxLojasRepository;
+
+        public LinxLojasService(ILinxLojasRepository<LinxLojas> linxLojasRepository) =>
+            _linxLojasRepository = linxLojasRepository;
+
+        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        {
+            var list = new List<T1>();
+
+            for (int i = 0; i < registros.Count(); i++)
+            {
+                try
+                {
+                    list.Add(new T1
+                    {
+                        lastupdateon = DateTime.Now,
+                        portal = registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).First(),
+                        empresa = registros[i].Where(pair => pair.Key == "Empresa").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Empresa").Select(pair => pair.Value).First(),
+                        nome_emp = registros[i].Where(pair => pair.Key == "nome_emp").Select(pair => pair.Value).First(),
+                        razao_emp = registros[i].Where(pair => pair.Key == "razao_emp").Select(pair => pair.Value).First(),
+                        cnpj_emp = registros[i].Where(pair => pair.Key == "cnpj_emp").Select(pair => pair.Value).First(),
+                        inscricao_emp = registros[i].Where(pair => pair.Key == "inscricao_emp").Select(pair => pair.Value).First(),
+                        endereco_emp = registros[i].Where(pair => pair.Key == "endereco_emp").Select(pair => pair.Value).First(),
+                        num_emp = registros[i].Where(pair => pair.Key == "num_emp").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "num_emp").Select(pair => pair.Value).First(),
+                        complement_emp = registros[i].Where(pair => pair.Key == "complement_emp").Select(pair => pair.Value).First(),
+                        bairro_emp = registros[i].Where(pair => pair.Key == "bairro_emp").Select(pair => pair.Value).First(),
+                        cep_emp = registros[i].Where(pair => pair.Key == "cep_emp").Select(pair => pair.Value).First(),
+                        cidade_emp = registros[i].Where(pair => pair.Key == "cidade_emp").Select(pair => pair.Value).First(),
+                        estado_emp = registros[i].Where(pair => pair.Key == "estado_emp").Select(pair => pair.Value).First(),
+                        fone_emp = registros[i].Where(pair => pair.Key == "fone_emp").Select(pair => pair.Value).First(),
+                        email_emp = registros[i].Where(pair => pair.Key == "email_emp").Select(pair => pair.Value).First(),
+                        cod_ibge_municipio = registros[i].Where(pair => pair.Key == "cod_ibge_municipio").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "cod_ibge_municipio").Select(pair => pair.Value).First(),
+                        data_criacao_emp = registros[i].Where(pair => pair.Key == "data_criacao_emp").Select(pair => pair.Value).First() == String.Empty ? new DateTime(1990, 01, 01, 00, 00, 00, new CultureInfo("en-US").Calendar).ToString("yyyy-MM-dd HH:mm:ss") : registros[i].Where(pair => pair.Key == "data_criacao_emp").Select(pair => pair.Value).First(),
+                        data_criacao_portal = registros[i].Where(pair => pair.Key == "data_criacao_portal").Select(pair => pair.Value).First() == String.Empty ? new DateTime(1990, 01, 01, 00, 00, 00, new CultureInfo("en-US").Calendar).ToString("yyyy-MM-dd HH:mm:ss") : registros[i].Where(pair => pair.Key == "data_criacao_portal").Select(pair => pair.Value).First(),
+                        sistema_tributacao = registros[i].Where(pair => pair.Key == "sistema_tributacao").Select(pair => pair.Value).First(),
+                        regime_tributario = registros[i].Where(pair => pair.Key == "regime_tributario").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "regime_tributario").Select(pair => pair.Value).First(),
+                        area_empresa = registros[i].Where(pair => pair.Key == "area_empresa").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "area_empresa").Select(pair => pair.Value).First(),
+                        timestamp = registros[i].Where(pair => pair.Key == "timestamp").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "timestamp").Select(pair => pair.Value).First(),
+                        sigla_empresa = registros[i].Where(pair => pair.Key == "sigla_empresa").Select(pair => pair.Value).First(),
+                        id_classe_fiscal = registros[i].Where(pair => pair.Key == "id_classe_fiscal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "id_classe_fiscal").Select(pair => pair.Value).First(),
+                        centro_distribuicao = registros[i].Where(pair => pair.Key == "centro_distribuicao").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "centro_distribuicao").Select(pair => pair.Value).First(),
+                        inscricao_municipal_emp = registros[i].Where(pair => pair.Key == "inscricao_municipal_emp").Select(pair => pair.Value).First(),
+                        cnae_emp = registros[i].Where(pair => pair.Key == "cnae_emp").Select(pair => pair.Value).First(),
+                        cod_cliente_linx = registros[i].Where(pair => pair.Key == "cod_cliente_linx").Select(pair => pair.Value).First(),
+                    });
+                }
+                catch (Exception ex)
+                {
+                    var registroComErro = registros[i].Where(pair => pair.Key == "nome_empresa").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "nome_empresa").Select(pair => pair.Value).First();
+                    throw new Exception($"LinxLojas - DeserializeResponse - Erro ao deserealizar registro: {registroComErro} - {ex.Message}");
+                }
+            }
+
+            return list;
+        }
+
+        public async Task IntegraRegistros(string tableName, string procName, string database)
+        {
+            try
+            {
+                var response = APICaller.CallLinxAPISimplificado(tableName, AUTENTIFICACAO, CHAVE);
+                var registros = APICaller.DeserializeXML(response);
+
+                if (registros.Count() > 0)
+                {
+                    var listResults = DeserializeResponse(registros);
+                    if (listResults.Count() > 0)
+                    {
+                        var list = listResults.ConvertAll(new Converter<T1, LinxLojas>(T1ToObject));
+                        _linxLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                        //await _linxLojasRepository.CallDbProcMerge(procName, tableName, database);
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador)
+        {
+            try
+            {
+                PARAMETERS = await _linxLojasRepository.GetParameters(tableName, "parameters_manual");
+
+                string response = APICaller.CallLinxAPI(String.Empty, tableName, AUTENTIFICACAO, CHAVE, identificador);
+                var registros = APICaller.DeserializeXML(response);
+                var registro = DeserializeResponse(registros);
+
+                if (registro.Count() > 0)
+                {
+                    await _linxLojasRepository.InsereRegistroIndividual(registro[0], tableName, database);
+                    //await _linxLojasRepository.CallDbProcMerge(procName, tableName, database);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador)
+        {
+            try
+            {
+                PARAMETERS = _linxLojasRepository.GetParametersSync(tableName, "parameters_manual");
+
+                string response = APICaller.CallLinxAPI(String.Empty, tableName, AUTENTIFICACAO, CHAVE, identificador);
+                var registros = APICaller.DeserializeXML(response);
+                var registro = DeserializeResponse(registros);
+
+                if (registro.Count() > 0)
+                {
+                    _linxLojasRepository.InsereRegistroIndividualSync(registro[0], tableName, database);
+                    //_linxLojasRepository.CallDbProcMergeSync(procName, tableName, database);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        {
+            try
+            {
+                var response = APICaller.CallLinxAPISimplificado(tableName, AUTENTIFICACAO, CHAVE);
+                var registros = APICaller.DeserializeXML(response);
+
+                if (registros.Count() > 0)
+                {
+                    var listResults = DeserializeResponse(registros);
+                    if (listResults.Count() > 0)
+                    {
+                        var list = listResults.ConvertAll(new Converter<T1, LinxLojas>(T1ToObject));
+                        _linxLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                        //_linxLojasRepository.CallDbProcMerge(procName, tableName, database);
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public T1? T1ToObject(T1 t1)
+        {
+            try
+            {
+                return new T1
+                {
+                    lastupdateon = t1.lastupdateon,
+                    portal = t1.portal,
+                    empresa = t1.empresa,
+                    nome_emp = t1.nome_emp,
+                    razao_emp = t1.razao_emp,
+                    cnpj_emp = t1.cnpj_emp,
+                    inscricao_emp = t1.inscricao_emp,
+                    endereco_emp = t1.endereco_emp,
+                    num_emp = t1.num_emp,
+                    complement_emp = t1.complement_emp,
+                    bairro_emp = t1.bairro_emp,
+                    cep_emp = t1.cep_emp,
+                    cidade_emp = t1.cidade_emp,
+                    estado_emp = t1.estado_emp,
+                    fone_emp = t1.fone_emp,
+                    email_emp = t1.email_emp,
+                    cod_ibge_municipio = t1.cod_ibge_municipio,
+                    data_criacao_emp = t1.data_criacao_emp,
+                    data_criacao_portal = t1.data_criacao_portal,
+                    sistema_tributacao = t1.sistema_tributacao,
+                    regime_tributario = t1.regime_tributario,
+                    area_empresa = t1.area_empresa,
+                    timestamp = t1.timestamp,
+                    sigla_empresa = t1.sigla_empresa,
+                    id_classe_fiscal = t1.id_classe_fiscal,
+                    centro_distribuicao = t1.centro_distribuicao,
+                    inscricao_municipal_emp = t1.inscricao_municipal_emp,
+                    cnae_emp = t1.cnae_emp,
+                    cod_cliente_linx = t1.cod_cliente_linx
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"LinxLojas - T1ToObject - Erro ao converter registro: {t1.nome_emp} para objeto - {ex.Message}");
+            }
+        }
+    }
+}
