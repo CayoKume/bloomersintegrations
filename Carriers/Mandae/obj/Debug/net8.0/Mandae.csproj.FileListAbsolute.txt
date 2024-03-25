@@ -1,0 +1,12 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\bin\Debug\net8.0\Mandae.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\bin\Debug\net8.0\Mandae.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\bin\Debug\net8.0\Mandae.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\refint\Mandae.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\Mandae.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Mandae\obj\Debug\net8.0\ref\Mandae.dll

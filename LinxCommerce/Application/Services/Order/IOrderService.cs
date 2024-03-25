@@ -1,6 +1,8 @@
-﻿namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
+﻿using BloomersCommerceIntegrations.LinxCommerce.Application.Base;
+
+namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 {
-    internal interface IOrderService
+    public interface IOrderService<TEntity> : ILinxCommerceServiceBase<TEntity> where TEntity : class, new()
     {
     }
 }

@@ -1,10 +1,14 @@
 ﻿using BloomersCarriersIntegrations.FlashCourier.Application.Services;
-using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis;
 using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys;
+using BloomersCommerceIntegrations.LinxCommerce.Application.Services;
+using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
+using BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys;
+using BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.Base;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using BloomersIntegrationsManager.Domain.Filters;
 using Hangfire;
 using Hangfire.SqlServer;
+using Microsoft.Extensions.Http;
 
 namespace BloomersIntegrationsManager.Domain.Extensions
 {
@@ -16,6 +20,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
             builder.Services.AddScopedSQLServerConnection();
             builder.Services.AddScopedCarriersServices();
+            builder.Services.AddScopedLinxCommerceServices();
             builder.Services.AddHangfireService(connectionString);
 
             return builder;
@@ -23,6 +28,17 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
         public static IServiceCollection AddScopedLinxCommerceServices(this IServiceCollection services)
         {
+            services.AddScoped<BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis.IAPICall, BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis.APICall>();
+            services.AddHttpClient("LinxCommerceAPI", client =>
+            {
+                client.BaseAddress = new Uri("https://misha.layer.core.dcg.com.br");
+                client.Timeout = new TimeSpan(0, 2, 0);
+            });
+
+            services.AddScoped(typeof(ILinxCommerceRepositoryBase<>), typeof(LinxCommerceRepositoryBase<>));
+            services.AddScoped<IOrderService<SearchOrderResponse.Root>, OrderService<SearchOrderResponse.Root>>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
             return services;
         }
 
@@ -43,10 +59,19 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
         public static IServiceCollection AddScopedCarriersServices(this IServiceCollection services)
         {
-            services.AddScoped<IAPICall, APICall>();
+            services.AddScoped<BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis.IAPICall, BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis.APICall>();
+            services.AddHttpClient("FlashCourierAPI", client =>
+            {
+                //HOMOLOG
+                //https://homolog.flashpegasus.com.br/FlashPegasus/rest
+
+                client.BaseAddress = new Uri("https://webservice.flashpegasus.com.br/FlashPegasus/rest");
+                client.Timeout = new TimeSpan(0, 2, 0);
+            });
+
             services.AddScoped<IFlashCourierService, FlashCourierService>();
             services.AddScoped<IFlashCourierRepository, FlashCourierRepository>();
-            
+
             return services;
         }
 

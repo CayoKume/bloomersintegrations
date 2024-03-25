@@ -1,6 +1,6 @@
 ﻿namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 {
-    internal class SKURepository
+    public class SKURepository : ISKURepository
     {
     }
 }

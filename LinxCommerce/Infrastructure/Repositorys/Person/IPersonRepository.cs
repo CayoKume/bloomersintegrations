@@ -1,6 +1,6 @@
 ﻿namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 {
-    internal interface IPersonRepository
+    public interface IPersonRepository
     {
     }
 }

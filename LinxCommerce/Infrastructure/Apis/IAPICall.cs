@@ -1,6 +1,7 @@
 ﻿namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis
 {
-    internal interface IAPICall
+    public interface IAPICall
     {
+        public Task<string> PostRequest(object objRequest, string? endpoint, string authentication, string chave);
     }
 }

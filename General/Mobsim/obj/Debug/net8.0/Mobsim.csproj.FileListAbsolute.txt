@@ -1,0 +1,12 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\bin\Debug\net8.0\Mobsim.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\bin\Debug\net8.0\Mobsim.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\bin\Debug\net8.0\Mobsim.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\refint\Mobsim.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\ref\Mobsim.dll

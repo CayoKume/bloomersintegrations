@@ -1,0 +1,12 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\bin\Debug\net8.0\AfterSale.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\bin\Debug\net8.0\AfterSale.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\bin\Debug\net8.0\AfterSale.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\refint\AfterSale.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\ref\AfterSale.dll

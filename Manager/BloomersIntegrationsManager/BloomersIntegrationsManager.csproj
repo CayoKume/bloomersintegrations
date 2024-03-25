@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Carriers\FlashCourier\FlashCourier.csproj" />
+    <ProjectReference Include="..\..\LinxCommerce\LinxCommerce.csproj" />
   </ItemGroup>
 
 </Project>

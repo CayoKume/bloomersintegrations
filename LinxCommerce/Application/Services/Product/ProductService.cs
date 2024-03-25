@@ -1,6 +1,6 @@
 ﻿namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 {
-    internal class ProductService
+    public class ProductService
     {
     }
 }

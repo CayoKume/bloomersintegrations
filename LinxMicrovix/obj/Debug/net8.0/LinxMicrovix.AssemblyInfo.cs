@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinxMicrovix")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12e6981488d409151bc681450fa015b1b8ed84ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3dbf3c8d3d34375734b4e78b75d52976effeba82")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinxMicrovix")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinxMicrovix")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

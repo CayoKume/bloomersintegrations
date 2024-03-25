@@ -1,0 +1,5 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Dootax\obj\Debug\net8.0\Dootax.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Dootax\obj\Debug\net8.0\Dootax.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Dootax\obj\Debug\net8.0\Dootax.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Dootax\obj\Debug\net8.0\Dootax.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Dootax\obj\Debug\net8.0\Dootax.sourcelink.json

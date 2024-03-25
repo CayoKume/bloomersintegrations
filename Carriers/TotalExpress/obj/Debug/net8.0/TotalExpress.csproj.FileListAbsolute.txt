@@ -1,0 +1,12 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\TotalExpress.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\TotalExpress.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\TotalExpress.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\refint\TotalExpress.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\ref\TotalExpress.dll

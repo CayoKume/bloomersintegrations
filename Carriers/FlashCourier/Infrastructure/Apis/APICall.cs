@@ -1,19 +1,20 @@
 ﻿using BloomersCarriersIntegrations.FlashCourier.Domain.Entities;
 using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys;
 using Newtonsoft.Json.Linq;
-using RestSharp;
-using RestSharp.Authenticators;
 using System.Net;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 
 namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
 {
     public class APICall : IAPICall
     {
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly IFlashCourierRepository _flashCourierRepository;
 
-        public APICall(IFlashCourierRepository flashCourierRepository) =>
-            (_flashCourierRepository) = (flashCourierRepository);
+        public APICall(IFlashCourierRepository flashCourierRepository, IHttpClientFactory httpClientFactory) =>
+            (_flashCourierRepository, _httpClientFactory) = (flashCourierRepository, httpClientFactory);
 
         public async Task<HAWBResponse?> GetHAWB(string[] numEncCli, string doc_company)
         {
@@ -30,18 +31,17 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                     { "numEncCli", new JArray { numEncCli } }
                 };
 
-                var request = CreateRequest(
-                    "/padrao/v2/consulta",
-                    Method.Post,
-                    authResponse.access_token,
-                    jObject.ToString()
+                var client = CreateCliente(
+                    authResponse.access_token
                 );
 
-                var client = new RestClient();
-                var response = client.Execute(request);
+                var response = await client.PostAsync("/padrao/v2/consulta", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
 
-                if (response.IsSuccessful && response.StatusCode == HttpStatusCode.OK)
-                    return JsonSerializer.Deserialize<HAWBResponse>(response?.Content);
+                if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<HAWBResponse>(result);
+                }
                 else
                     throw new Exception($"{response.StatusCode}");
             }
@@ -59,7 +59,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
 
                 var jObject = new JArray(
                             new JObject {
-                                { "dn_hawb", 7 },
+                                { "dna_hawb", 7 },
                                 { "ccusto_id", 32277 },
                                 { "tipo_enc_id", 18582 },
                                 { "prod_flash_id", 152 },
@@ -106,81 +106,15 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                             }
                         );
 
-                var list = new List<InsertHAWBRequest.Root> 
+                var client = CreateCliente(userName: authentication.login, password: authentication.senha);
+
+                var response = await client.PostAsync(client.BaseAddress + "/padrao/importacao", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
+
+                if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {
-                    new InsertHAWBRequest.Root {
-                        //OPEN ERA
-                        dna_hawb = 7,
-                        ccusto_id = 32277,
-                        tipo_enc_id = 18582,
-                        prod_flash_id = 152,
-                        frq_rec_id = "DSP",
-                        id_local_rem = 39512,
-                        cliente_id = 6801,
-                        ctt_id = 8912,
-
-                        //registro no banco
-                        num_enc_cli = model.number, //codigo de rastreio alfanumerico com ate 30 digitos, pode ser um sequencial nosso
-                        num_cliente = model.invoice.number_nf,
-                        nome_rem = "OPEN ERA",
-                        endHawbs = new InsertHAWBRequest.EndHawbs()
-                        {
-                            nome_des = model.client.reason_client,
-                            logr_dest = model.client.address_client,
-                            bairro_des = model.client.neighborhood_client,
-                            num_des = model.client.street_number_client,
-                            fone1_des = model.client.fone_client,
-                            cid_dest = model.client.city_client,
-                            uf_dest = model.client.uf_client,
-                            cep_dest = Convert.ToInt32(model.client.zip_code_client.Replace("-", "")),
-                            compl_end_dest = model.client.complement_address_client
-                        },
-                        cod_lote = "1234567", //caso nos tenhamos o codigo do lote, caso não tenha pode enviar a data do despacho do pedido
-                        peso_declarado = model.weight,
-                        qtde_itens = model.quantity,
-                        valor = Convert.ToDouble(model.invoice.amount_nf),
-                        cpf_des = model.client.doc_client,
-                        email_des = model.client.email_client,
-                        chave_nf = model.invoice.key_nfe_nf,
-
-                        endHawbs2 = new InsertHAWBRequest.EndHawbs2
-                        {
-                            bairro_des = "",
-                            cid_dest = "",
-                            compl_end_dest = "",
-                            fone1_des = "",
-                            fone2_des = "",
-                            fone3_des = "",
-                            logr_dest = "",
-                            nome_des = "",
-                            num_des = "",
-                            uf_dest = "",
-                        },
-                    }
-                };
-
-                var teste = JsonSerializer.Serialize(list);
-                var _teste = JsonSerializer.Serialize(jObject.ToString());
-
-                var request = CreateRequest(
-                    "/padrao/importacao",
-                    Method.Post,
-                    "",
-                    _teste
-                );
-
-                request.AddHeader("Cookie", "ROUTEID=.1");
-
-                var options = new RestClientOptions("http://example.com")
-                {
-                    Authenticator = new HttpBasicAuthenticator(authentication.login, authentication.senha)
-                };
-
-                var client = new RestClient(options);
-                var response = await client.ExecuteAsync(request);
-
-                if (response.IsSuccessful && response.StatusCode == HttpStatusCode.OK)
-                    return JsonSerializer.Deserialize<List<InsertHAWBSuccessResponse>>(response?.Content);
+                    var result = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<List<InsertHAWBSuccessResponse>>(result);
+                }
                 else
                     throw new Exception($"{response.StatusCode}");
             }
@@ -201,19 +135,16 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                 };
 
                 var token = "8f1ef4f5cd3989238192cf1e3306d06d88398b8521a7f4ec8c6a9d55c1429f0b"; //HERE
-                
-                var request = CreateRequest(
-                    "/api/v1/token", 
-                    Method.Post, 
-                    token,
-                    jObject.ToString()
-                );
 
-                var client = new RestClient();
-                var response = await client.ExecuteAsync(request);
+                var client = CreateCliente(token);
 
-                if (response.IsSuccessful && response.StatusCode == HttpStatusCode.OK)
-                    return JsonSerializer.Deserialize<AuthResponse>(response?.Content);
+                var response = await client.PostAsync(client.BaseAddress + "/api/v1/token", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
+
+                if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<AuthResponse>(result);
+                }
                 else
                     throw new Exception($"{response.StatusCode}");
             }
@@ -223,16 +154,25 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
             }
         }
 
-        private RestRequest CreateRequest(string route, Method method, string token, string jObject)
+        private HttpClient CreateCliente(string token)
         {
-            //HOMOLOG
-            //https://homolog.flashpegasus.com.br/FlashPegasus/rest
+            var client = _httpClientFactory.CreateClient("FlashCourierAPI");
+            client.DefaultRequestHeaders.Add("Authorization", token);
+            return client;
+        }
 
-            var baseUrl = $"https://webservice.flashpegasus.com.br/FlashPegasus/rest";
-            var request = new RestRequest(baseUrl + route, method);
-            request.AddHeader("Authorization", token);
-            request.AddJsonBody(jObject);
-            return request;
+        private HttpClient CreateCliente(string userName, string password)
+        {
+            HttpClientHandler handler = new HttpClientHandler
+            {
+                Credentials = new NetworkCredential(userName, password)
+            };
+
+            var client = _httpClientFactory.CreateClient("FlashCourierAPI");
+            client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes($"{userName}:{password}")));
+            client.DefaultRequestHeaders.Add("Cookie", "ROUTEID=.1");
+
+            return client;
         }
     }
 }

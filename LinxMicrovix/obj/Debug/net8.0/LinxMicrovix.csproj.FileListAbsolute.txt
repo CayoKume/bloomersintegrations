@@ -1,0 +1,5 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.sourcelink.json

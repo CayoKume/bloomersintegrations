@@ -1,6 +1,6 @@
 ﻿namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 {
-    internal class ProductRepository
+    public class ProductRepository : IProductRepository
     {
     }
 }
