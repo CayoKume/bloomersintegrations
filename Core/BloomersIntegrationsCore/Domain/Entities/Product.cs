@@ -11,7 +11,7 @@ public class Product
     public string? amount_product { get; set; }
     public string? shipping_value_product { get; set; }
 
-    public int CompareTo(ProdutoBase other)
+    public int CompareTo(Product other)
     {
         if (cod_product > other.cod_product)
             return 1;

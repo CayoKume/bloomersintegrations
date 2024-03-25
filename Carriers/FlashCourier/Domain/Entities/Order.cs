@@ -1,6 +1,8 @@
 ﻿namespace BloomersCarriersIntegrations.FlashCourier.Domain.Entities
 {
-    internal class Order
+    public class Order : BloomersIntegrationsCore.Domain.Entities.Order
     {
+        public float weight { get; set; }
+        public string quantity { get; set; }
     }
 }

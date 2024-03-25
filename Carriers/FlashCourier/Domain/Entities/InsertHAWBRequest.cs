@@ -2,10 +2,6 @@
 {
     public class InsertHAWBRequest
     {
-        public InsertHAWBRequest()
-        {
-
-        }
         public class EndHawbs
         {
             public string nome_des { get; set; }

@@ -1,0 +1,16 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\bin\Debug\net8.0\FlashCourier.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\bin\Debug\net8.0\FlashCourier.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\bin\Debug\net8.0\FlashCourier.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\bin\Debug\net8.0\BloomersIntegrationsCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\bin\Debug\net8.0\BloomersIntegrationsCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCou.6F107055.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\refint\FlashCourier.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\FlashCourier.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\FlashCourier\obj\Debug\net8.0\ref\FlashCourier.dll

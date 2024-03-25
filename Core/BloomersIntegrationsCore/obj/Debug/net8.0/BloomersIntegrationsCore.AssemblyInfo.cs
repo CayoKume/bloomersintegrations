@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BloomersIntegrationsCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2863110fdad6aeb3b7d249e862e33ea14968782e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12e6981488d409151bc681450fa015b1b8ed84ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("BloomersIntegrationsCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BloomersIntegrationsCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

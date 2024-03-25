@@ -1,46 +1,51 @@
-﻿namespace BloomersCarriersIntegrations.FlashCourier.Application.Services
+﻿using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis;
+using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys;
+using System.Text.Json;
+
+namespace BloomersCarriersIntegrations.FlashCourier.Application.Services
 {
     public class FlashCourierService : IFlashCourierService
     {
+        private readonly IAPICall _apiCall;
         private readonly IFlashCourierRepository _flashCourierRepository;
 
-        public FlashCourierService(IFlashCourierRepository flashCourierRepository) =>
-            _flashCourierRepository = flashCourierRepository;
+        public FlashCourierService(IAPICall apiCall, IFlashCourierRepository flashCourierRepository) =>
+            (_apiCall, _flashCourierRepository) = (apiCall, flashCourierRepository);
 
         public async Task AtualizaLogPedidoEnviado()
         {
             try
             {
-                var logs = await _flashCourierRepository.GetPedidosEnviados();
+                var logs = await _flashCourierRepository.GetShippedOrders();
 
-                string[] numEncCli = logs.Select(a => a.Pedido).ToArray();
-                var result = APICall.GetHAWB(numEncCli);
-
+                string[] numEncCli = logs.Select(a => a.orderNumber).ToArray();
+                var result = await _apiCall.GetHAWB(numEncCli, logs.Select(a => a.doc_company).First());
+                
                 if (result.statusRetorno == "00")
                 {
                     foreach (var hawb in result.hawbs)
                     {
                         var currentStatusHawb = hawb.historico.Last().evento;
                         var currentHistoricoHawb = hawb.historico.LastOrDefault();
-                        var currentColetaHawb = hawb.historico.Where(a => a.evento == "Postado - logistica iniciada").FirstOrDefault();
-                        var currentOrder = logs.FirstOrDefault(a => a.Pedido == hawb.codigoCartao);
+                        var currentColetaHawb = hawb.historico.Where(a => a.evento.ToUpper() == "POSTADO - LOGISTICA INICIADA").FirstOrDefault();
+                        var currentOrder = logs.FirstOrDefault(a => a.orderNumber == hawb.codigoCartao);
 
                         if (!String.IsNullOrEmpty(hawb.dtSla))
-                            await _flashCourierRepository.Update_NB_PREVISAO_REAL_ENTREGA(hawb.dtSla, hawb.codigoCartao);
+                            await _flashCourierRepository.UpdateRealDeliveryForecastDate(hawb.dtSla, hawb.codigoCartao);
 
                         if (currentStatusHawb.ToUpper().Contains("ENTREGUE") || currentStatusHawb.ToUpper() == "COMPROVANTE REGISTRADO")
-                            await _flashCourierRepository.Update_NB_DATA_ENTREGA_REALIZADA(currentHistoricoHawb.ocorrencia, hawb.codigoCartao);
+                            await _flashCourierRepository.UpdateDeliveryMadeDate(currentHistoricoHawb.ocorrencia, hawb.codigoCartao);
 
-                        if (currentColetaHawb is not null && currentColetaHawb.evento == "Postado - logistica iniciada")
-                            await _flashCourierRepository.Update_NB_DATA_COLETA(currentColetaHawb.ocorrencia, hawb.codigoCartao);
+                        if (currentColetaHawb is not null && currentColetaHawb.evento.ToUpper() == "POSTADO - LOGISTICA INICIADA")
+                            await _flashCourierRepository.UpdateCollectionDate(currentColetaHawb.ocorrencia, hawb.codigoCartao);
 
                         if (!String.IsNullOrEmpty(currentHistoricoHawb.evento))
-                            await _flashCourierRepository.Update_NB_DATA_ULTIMO_STATUS(currentHistoricoHawb.ocorrencia, currentHistoricoHawb.eventoId, currentHistoricoHawb.evento, hawb.codigoCartao);
+                            await _flashCourierRepository.UpdateLastStatusDate(currentHistoricoHawb.ocorrencia, currentHistoricoHawb.eventoId, currentHistoricoHawb.evento, hawb.codigoCartao);
 
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -48,58 +53,65 @@
 
         public async Task<bool> EnviaPedidoFlash(string order_number)
         {
-            var pedido = _flashCourierRepository.GetPedidoFaturado(order_number);
-
-            if (pedido is not null)
+            try
             {
-                Thread.Sleep(1000);
-                var postHAWB = APICall.PostHAWB(pedido).FirstOrDefault();
-                if (postHAWB.type.ToUpper() == "SUCESS")
+                var order = await _flashCourierRepository.GetInvoicedOrder(order_number);
+
+                if (order is not null)
                 {
-                    var retorno = JsonSerializer.Serialize(postHAWB);
-                    await _flashCourierRepository.GeraLogSucesso(pedido: pedido.nr_pedido, remetenteID: pedido.empresa.doc_empresa, retorno, statusFlash: "Enviado", chaveNFe: pedido.notaFiscal.chave_nfe_nf);
+                    Thread.Sleep(1000);
+                    var postHAWB = await _apiCall.PostHAWB(order);
+                    if (postHAWB.First().type.ToUpper() == "SUCESS")
+                    {
+                        var retorno = JsonSerializer.Serialize(postHAWB);
+                        await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Enviado", keyNFe: order.invoice.key_nfe_nf);
+                    }
+                    else
+                    {
+                        var retorno = JsonSerializer.Serialize(postHAWB);
+                        await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Erro_Flash", keyNFe: order.invoice.key_nfe_nf);
+                    }
+
+                    return true;
                 }
                 else
-                {
-                    var retorno = JsonSerializer.Serialize(postHAWB);
-                    await _flashCourierRepository.GeraLogSucesso(pedido: pedido.nr_pedido, remetenteID: pedido.empresa.doc_empresa, retorno, statusFlash: "Erro_Flash", chaveNFe: pedido.notaFiscal.chave_nfe_nf);
-                }
-                
-                return true;
+                    return false;
             }
-            else
-                return false;
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<bool> EnviaPedidosFlash()
         {
             try
             {
-                var pedidos = await _flashCourierRepository.GetPedidosFaturados();
+                var orders = await _flashCourierRepository.GetInvoicedOrders();
 
-                if (pedidos.Count() > 0)
+                if (orders.Count() > 0)
                 {
-                    foreach (var pedido in pedidos)
+                    foreach (var order in orders)
                     {
                         Thread.Sleep(1000);
-                        var postHAWB = APICall.PostHAWB(pedido).FirstOrDefault();
-                        if (postHAWB.type.ToUpper() == "SUCESS")
-                        {
-                            var retorno = JsonSerializer.Serialize(postHAWB);
-                            await _flashCourierRepository.GeraLogSucesso(pedido: pedido.nr_pedido, remetenteID: pedido.empresa.doc_empresa, retorno, statusFlash: "Enviado", chaveNFe: pedido.notaFiscal.chave_nfe_nf);
-                        }
-                        else
-                        {
-                            var retorno = JsonSerializer.Serialize(postHAWB);
-                            await _flashCourierRepository.GeraLogSucesso(pedido: pedido.nr_pedido, remetenteID: pedido.empresa.doc_empresa, retorno, statusFlash: "Erro_Flash", chaveNFe: pedido.notaFiscal.chave_nfe_nf);
-                        }
+                        //var postHAWB = APICall.PostHAWB(order).FirstOrDefault();
+                        //if (postHAWB.type.ToUpper() == "SUCESS")
+                        //{
+                        //    var retorno = JsonSerializer.Serialize(postHAWB);
+                        //    await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Enviado", keyNFe: order.invoice.key_nfe_nf);
+                        //}
+                        //else
+                        //{
+                        //    var retorno = JsonSerializer.Serialize(postHAWB);
+                        //    await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Erro_Flash", keyNFe: order.invoice.key_nfe_nf);
+                        //}
                     }
                     return true;
                 }
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

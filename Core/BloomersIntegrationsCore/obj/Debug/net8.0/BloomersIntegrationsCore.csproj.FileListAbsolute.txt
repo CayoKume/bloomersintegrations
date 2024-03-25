@@ -1,0 +1,13 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\bin\Debug\net8.0\BloomersIntegrationsCore.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\bin\Debug\net8.0\BloomersIntegrationsCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\bin\Debug\net8.0\BloomersIntegrationsCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\refint\BloomersIntegrationsCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\BloomersIntegrationsCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersIntegrationsCore\obj\Debug\net8.0\ref\BloomersIntegrationsCore.dll
