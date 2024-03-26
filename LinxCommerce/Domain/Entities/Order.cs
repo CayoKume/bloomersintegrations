@@ -61,14 +61,15 @@
         public string CancelledDate { get; set; }
         public Wishlist Wishlist { get; set; } = new Wishlist();
         public string WebSiteName { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-        public string CustomerGender { get; set; }
-        public string CustomerBirthDate { get; set; }
-        public string CustomerPhone { get; set; }
-        public string CustomerCPF { get; set; }
+        //public string CustomerName { get; set; }
+        //public string CustomerEmail { get; set; }
+        //public string CustomerGender { get; set; }
+        //public string CustomerBirthDate { get; set; }
+        //public string CustomerPhone { get; set; }
+        //public string CustomerCPF { get; set; }
         public string CustomerCNPJ { get; set; }
         public string CustomerTradingName { get; set; }
         public string CustomerSiteTaxPayer { get; set; }
+        public GetPersonResponse.Root Customer { get; set; }
     }
 }

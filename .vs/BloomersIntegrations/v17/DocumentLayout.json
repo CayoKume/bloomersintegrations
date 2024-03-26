@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4477C5E-9AEA-4454-8655-97446B867FF2}|LinxCommerce\\LinxCommerce.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxcommerce\\application\\services\\order\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4477C5E-9AEA-4454-8655-97446B867FF2}|LinxCommerce\\LinxCommerce.csproj|solutionrelative:linxcommerce\\application\\services\\order\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4477C5E-9AEA-4454-8655-97446B867FF2}|LinxCommerce\\LinxCommerce.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxcommerce\\infrastructure\\repositorys\\order\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4477C5E-9AEA-4454-8655-97446B867FF2}|LinxCommerce\\LinxCommerce.csproj|solutionrelative:linxcommerce\\infrastructure\\repositorys\\order\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Infrastructure\\Repositorys\\Order\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "LinxCommerce\\Infrastructure\\Repositorys\\Order\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Infrastructure\\Repositorys\\Order\\OrderRepository.cs",
+              "RelativeToolTip": "LinxCommerce\\Infrastructure\\Repositorys\\Order\\OrderRepository.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAAAEwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T10:36:44.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
+              "RelativeDocumentMoniker": "LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
+              "RelativeToolTip": "LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAmwJoAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T09:37:38.054Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -32,133 +32,131 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                     OrderBy = "",
                 };
 
-                var response = await _apiCall.PostRequest(objectRequest, "/v1/Sales/API.svc/web/SearchOrders", AUTENTIFICACAO, CHAVE);
-                var registros = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchOrderResponse.Root>(response);
-                var registrosInSql = await _orderRepository.GetRegistersExists(registros.Result.Select(r => r.OrderID), tableName, database);
+                var searchOrdersResponse = await _apiCall.PostRequest(objectRequest, "/v1/Sales/API.svc/web/SearchOrders", AUTENTIFICACAO, CHAVE);
+                var searchOrders = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchOrderResponse.Root>(searchOrdersResponse);
+                var ordersInSql = await _orderRepository.GetRegistersExists(searchOrders.Result.Select(r => r.OrderID).ToList(), tableName, database);
 
-                for (int i = 0; i < registrosInSql.Count(); i++)
+                for (int i = 0; i < ordersInSql.Count(); i++)
                 {
-                    var registro = registros.Result.Where(r => r.OrderID == registrosInSql[i].OrderID).First();
-                    if (registro.CustomerID == registrosInSql[i].CustomerID && registro.GlobalStatus == registrosInSql[i].GlobalStatus &&
-                        registro.OrderStatusID == registrosInSql[i].OrderStatusID && registro.PaymentStatus == registrosInSql[i].PaymentStatus &&
-                        registro.ShipmentStatus == registrosInSql[i].ShipmentStatus)
+                    var order = searchOrders.Result.Where(r => r.OrderID == ordersInSql[i].OrderID).First();
+                    if (order.CustomerID == ordersInSql[i].CustomerID && order.GlobalStatus == ordersInSql[i].GlobalStatus &&
+                        order.OrderStatusID == ordersInSql[i].OrderStatusID && order.PaymentStatus == ordersInSql[i].PaymentStatus &&
+                        order.ShipmentStatus == ordersInSql[i].ShipmentStatus)
                     {
-                        registros.Result.Remove(registros.Result.Where(r => r.OrderID == registrosInSql[i].OrderID).First());
+                        searchOrders.Result.Remove(searchOrders.Result.Where(r => r.OrderID == ordersInSql[i].OrderID).First());
                     }
                     else
                         continue;
                 }
 
-                if (registros.Result.Count() > 0)
+                if (searchOrders.Result.Count() > 0)
                 {
-                    var register = new SearchOrderResponse.Root { Result = new List<SearchOrderResponse.Result>() };
+                    var ordersListToAdd = new List<Order>();
 
-                    foreach (var registro in registros.Result)
+                    foreach (var registro in searchOrders.Result)
                     {
-                        var _response = await _apiCall.PostRequest(registro.OrderID, "/v1/LinxIO/API.svc/web/GetOrder", AUTENTIFICACAO, CHAVE);
-                        var __response = await _apiCall.PostRequest(registro.OrderID, "/v1/Sales/API.svc/web/GetOrderPayments", AUTENTIFICACAO, CHAVE);
+                        var orderResponse = await _apiCall.PostRequest(registro.OrderID, "/v1/LinxIO/API.svc/web/GetOrder", AUTENTIFICACAO, CHAVE);
+                        var orderPaymentResponse = await _apiCall.PostRequest(registro.OrderID, "/v1/Sales/API.svc/web/GetOrderPayments", AUTENTIFICACAO, CHAVE);
+                        var orderCustomerResponse = await _apiCall.PostRequest(registro.CustomerID, "/v1/Profile/API.svc/web/GetPerson", AUTENTIFICACAO, CHAVE);
 
-                        var _registro = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderResponse.Root>(_response);
-                        var __registro = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderPaymentsResponse.Root>(__response);
+                        var order = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderResponse.Root>(orderResponse);
+                        var orderPayment = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderPaymentsResponse.Root>(orderPaymentResponse);
+                        var orderClient = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPersonResponse.Root>(orderCustomerResponse);
 
-                        for (int i = 0; i < _registro.PaymentMethods.Count(); i++)
+                        for (int i = 0; i < order.PaymentMethods.Count(); i++)
                         {
-                            for (int j = 0; j < __registro.Result.Count(); j++)
+                            for (int j = 0; j < orderPayment.Result.Count(); j++)
                             {
-                                _registro.PaymentMethods[i].PaymentInfo.Alias = __registro.Result[j].Alias;
-                                _registro.PaymentMethods[i].PaymentInfo.Description = __registro.Result[j].Description;
-                                _registro.PaymentMethods[i].PaymentInfo.ImagePath = __registro.Result[j].ImagePath;
-                                _registro.PaymentMethods[i].PaymentInfo.OrderID = __registro.Result[j].OrderID;
-                                _registro.PaymentMethods[i].PaymentInfo.OrderPaymentMethodID = __registro.Result[j].OrderPaymentMethodID;
-                                _registro.PaymentMethods[i].PaymentInfo.PaymentMethodID = __registro.Result[j].PaymentMethodID;
-                                _registro.PaymentMethods[i].PaymentInfo.PaymentType = __registro.Result[j].PaymentType;
-                                _registro.PaymentMethods[i].PaymentInfo.ProviderDocumentNumber = __registro.Result[j].ProviderDocumentNumbe;
-                                _registro.PaymentMethods[i].PaymentInfo.Status = __registro.Result[j].Status;
-                                _registro.PaymentMethods[i].PaymentInfo.Title = __registro.Result[j].Title;
-                                _registro.PaymentMethods[i].PaymentInfo.TransactionID = __registro.Result[j].TransactionID;
+                                order.PaymentMethods[i].PaymentInfo.Alias = orderPayment.Result[j].Alias;
+                                order.PaymentMethods[i].PaymentInfo.Description = orderPayment.Result[j].Description;
+                                order.PaymentMethods[i].PaymentInfo.ImagePath = orderPayment.Result[j].ImagePath;
+                                order.PaymentMethods[i].PaymentInfo.OrderID = orderPayment.Result[j].OrderID;
+                                order.PaymentMethods[i].PaymentInfo.OrderPaymentMethodID = orderPayment.Result[j].OrderPaymentMethodID;
+                                order.PaymentMethods[i].PaymentInfo.PaymentMethodID = orderPayment.Result[j].PaymentMethodID;
+                                order.PaymentMethods[i].PaymentInfo.PaymentType = orderPayment.Result[j].PaymentType;
+                                order.PaymentMethods[i].PaymentInfo.ProviderDocumentNumber = orderPayment.Result[j].ProviderDocumentNumbe;
+                                order.PaymentMethods[i].PaymentInfo.Status = orderPayment.Result[j].Status;
+                                order.PaymentMethods[i].PaymentInfo.Title = orderPayment.Result[j].Title;
+                                order.PaymentMethods[i].PaymentInfo.TransactionID = orderPayment.Result[j].TransactionID;
                             }
                         }
 
-                        for (int i = 0; i < _registro.Shipments.Count(); i++)
+                        for (int i = 0; i < order.Shipments.Count(); i++)
                         {
-                            if (registros.Result.Where(r => r.OrderID == registro.OrderID).First()
+                            if (searchOrders.Result.Where(r => r.OrderID == registro.OrderID).First()
                                 .Fulfillments.Where(f => f.OrderID == registro.OrderID).Count() > 0)
                             {
-                                _registro.Shipments[i].Packages =
-                                registros.Result.Where(r => r.OrderID == registro.OrderID).First()
+                                order.Shipments[i].Packages =
+                                searchOrders.Result.Where(r => r.OrderID == registro.OrderID).First()
                                 .Fulfillments.Where(f => f.OrderID == registro.OrderID).First().Shipment.Packages;
                             }
                             else
-                                _registro.Shipments[i].Packages = new List<Package>();
+                                order.Shipments[i].Packages = new List<Package>();
                         }
 
-                        register.Result.Add(new SearchOrderResponse.Result
+                        ordersListToAdd.Add(new Order
                         {
-                            AcquiredDate = registros.Result.Where(r => r.OrderID == _registro.OrderID).First().AcquiredDate,
-                            CancelledDate = _registro.CancelledDate,
-                            CommissionAmount = _registro.CommissionAmount,
-                            CreatedBy = _registro.CreatedBy,
-                            CreatedChannel = _registro.CreatedChannel,
-                            CreatedDate = _registro.CreatedDate,
-                            CustomerBirthDate = _registro.CustomerBirthDate,
-                            CustomerCNPJ = _registro.CustomerCNPJ,
-                            CustomerCPF = _registro.CustomerCPF,
-                            CustomerEmail = _registro.CustomerEmail,
-                            CustomerGender = _registro.CustomerGender,
-                            CustomerID = _registro.CustomerID,
-                            CustomerName = _registro.CustomerName,
-                            CustomerPhone = _registro.CustomerPhone,
-                            CustomerType = _registro.CustomerType,
-                            DeliveryAmount = _registro.DeliveryAmount,
-                            DeliveryPostalCode = _registro.DeliveryPostalCode,
-                            DiscountAmount = _registro.DiscountAmount,
-                            GlobalStatus = _registro.GlobalStatus,
-                            HasConflicts = _registro.HasConflicts,
-                            ItemsCount = _registro.ItemsCount,
-                            ItemsQty = _registro.ItemsQty,
-                            MarketPlaceBrand = _registro.MarketPlaceBrand,
-                            ModifiedBy = _registro.ModifiedBy,
-                            ModifiedDate = _registro.ModifiedDate,
-                            OrderGroupID = _registro.OrderGroupID,
-                            OrderGroupNumber = _registro.OrderGroupNumber,
-                            OrderID = _registro.OrderID,
-                            OrderNumber = _registro.OrderNumber,
-                            OrderStatusID = _registro.OrderStatusID,
-                            OriginalOrderID = _registro.OriginalOrderID,
-                            PaymentDate = _registro.PaymentDate,
-                            PaymentStatus = _registro.PaymentStatus,
-                            PaymentTaxAmount = _registro.PaymentTaxAmount,
-                            Remarks = _registro.Remarks,
-                            SellerCommissionAmount = _registro.SellerCommissionAmount,
-                            ShipmentDate = _registro.ShipmentDate,
-                            ShipmentStatus = _registro.ShipmentStatus,
-                            ShopperTicketID = _registro.ShopperTicketID,
-                            SubTotal = _registro.SubTotal,
-                            TaxAmount = _registro.TaxAmount,
-                            Total = _registro.Total,
-                            TotalDue = _registro.TotalDue,
-                            TotalPaid = _registro.TotalPaid,
-                            TotalRefunded = _registro.TotalRefunded,
-                            TrafficSourceID = _registro.TrafficSourceID,
-                            WebSiteID = _registro.WebSiteID,
-                            WebSiteIntegrationID = _registro.WebSiteIntegrationID,
-                            WebSiteName = _registro.WebSiteName,
+                            AcquiredDate = searchOrders.Result.Where(r => r.OrderID == order.OrderID).First().AcquiredDate,
+                            CancelledDate = order.CancelledDate,
+                            CommissionAmount = order.CommissionAmount,
+                            CreatedBy = order.CreatedBy,
+                            CreatedChannel = order.CreatedChannel,
+                            CreatedDate = order.CreatedDate,
+                            CustomerCNPJ = order.CustomerCNPJ,
+                            CustomerID = order.CustomerID,
+                            CustomerType = order.CustomerType,
+                            DeliveryAmount = order.DeliveryAmount,
+                            DeliveryPostalCode = order.DeliveryPostalCode,
+                            DiscountAmount = order.DiscountAmount,
+                            GlobalStatus = order.GlobalStatus,
+                            HasConflicts = order.HasConflicts,
+                            ItemsCount = order.ItemsCount,
+                            ItemsQty = order.ItemsQty,
+                            MarketPlaceBrand = order.MarketPlaceBrand,
+                            ModifiedBy = order.ModifiedBy,
+                            ModifiedDate = order.ModifiedDate,
+                            OrderGroupID = order.OrderGroupID,
+                            OrderGroupNumber = order.OrderGroupNumber,
+                            OrderID = order.OrderID,
+                            OrderNumber = order.OrderNumber,
+                            OrderStatusID = order.OrderStatusID,
+                            OriginalOrderID = order.OriginalOrderID,
+                            PaymentDate = order.PaymentDate,
+                            PaymentStatus = order.PaymentStatus,
+                            PaymentTaxAmount = order.PaymentTaxAmount,
+                            Remarks = order.Remarks,
+                            SellerCommissionAmount = order.SellerCommissionAmount,
+                            ShipmentDate = order.ShipmentDate,
+                            ShipmentStatus = order.ShipmentStatus,
+                            ShopperTicketID = order.ShopperTicketID,
+                            SubTotal = order.SubTotal,
+                            TaxAmount = order.TaxAmount,
+                            Total = order.Total,
+                            TotalDue = order.TotalDue,
+                            TotalPaid = order.TotalPaid,
+                            TotalRefunded = order.TotalRefunded,
+                            TrafficSourceID = order.TrafficSourceID,
+                            WebSiteID = order.WebSiteID,
+                            WebSiteIntegrationID = order.WebSiteIntegrationID,
+                            WebSiteName = order.WebSiteName,
 
-                            DeliveryMethods = _registro.DeliveryMethods,
-                            Addresses = _registro.Addresses,
-                            Items = _registro.Items,
-                            Discounts = _registro.Discounts,
-                            ExternalInfo = _registro.ExternalInfo,
-                            OrderInvoice = _registro.OrderInvoice,
-                            SalesRepresentative = _registro.SalesRepresentative,
-                            Seller = _registro.Seller,
-                            Shipments = _registro.Shipments,
-                            Tags = _registro.Tags,
-                            Wishlist = _registro.Wishlist,
-                            PaymentMethods = _registro.PaymentMethods,
+                            DeliveryMethods = order.DeliveryMethods,
+                            Addresses = order.Addresses,
+                            Items = order.Items,
+                            Discounts = order.Discounts,
+                            ExternalInfo = order.ExternalInfo,
+                            OrderInvoice = order.OrderInvoice,
+                            SalesRepresentative = order.SalesRepresentative,
+                            Seller = order.Seller,
+                            Shipments = order.Shipments,
+                            Tags = order.Tags,
+                            Wishlist = order.Wishlist,
+                            PaymentMethods = order.PaymentMethods,
+                            Customer = orderClient
                         });
                     }
-                    //_orderRepository.BulkInsertIntoTableRaw(register, tableName, database);
+
+                    _orderRepository.BulkInsertIntoTableRaw(ordersListToAdd, database, tableName);
                 }
             }
             catch (Exception ex)

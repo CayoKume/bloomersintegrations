@@ -19,7 +19,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
                 using (var conn = _conn.GetIDbConnection())
                 {
                     using var bulkCopy = new SqlBulkCopy((SqlConnection)conn);
-                    bulkCopy.DestinationTableName = $"{database}.[dbo].{tableName}_raw";
+                    bulkCopy.DestinationTableName = $"[{database}].[dbo].[{tableName}_raw]";
                     bulkCopy.BatchSize = dataTableRowsNumber;
                     bulkCopy.BulkCopyTimeout = 360;
                     bulkCopy.WriteToServer(dataTable);
