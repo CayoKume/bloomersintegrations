@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dootax")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3dbf3c8d3d34375734b4e78b75d52976effeba82")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9078638dbd54b29527dd6720dfd49681b97c8827")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dootax")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dootax")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

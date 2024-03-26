@@ -27,7 +27,7 @@ namespace BloomersIntegrationsManager.Controllers
         {
             try
             {
-                await _linxOrderService.IntegraRegistros("Order", "p_Order_trusted", "LINX_COMMERCE");
+                await _linxOrderService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
 
                 //if (result != true)
                 //    return BadRequest($"A API Pedidos não encontrou o pedido: .");

@@ -16,7 +16,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
         public OrderService(IOrderRepository orderRepository, IAPICall apiCall) =>
             (_orderRepository, _apiCall) = (orderRepository, apiCall);
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistros(string database)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 
                 var searchOrdersResponse = await _apiCall.PostRequest(objectRequest, "/v1/Sales/API.svc/web/SearchOrders", AUTENTIFICACAO, CHAVE);
                 var searchOrders = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchOrderResponse.Root>(searchOrdersResponse);
-                var ordersInSql = await _orderRepository.GetRegistersExists(searchOrders.Result.Select(r => r.OrderID).ToList(), tableName, database);
+                var ordersInSql = await _orderRepository.GetRegistersExists(searchOrders.Result.Select(r => r.OrderID).ToList(), database);
 
                 for (int i = 0; i < ordersInSql.Count(); i++)
                 {
@@ -156,7 +156,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                         });
                     }
 
-                    _orderRepository.BulkInsertIntoTableRaw(ordersListToAdd, database, tableName);
+                    _orderRepository.BulkInsertIntoTableRaw(ordersListToAdd, database);
                 }
             }
             catch (Exception ex)
@@ -165,102 +165,19 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosSync(string database)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador)
+        public Task<bool> IntegraRegistrosIndividual(string database, string identificador)
         {
             throw new NotImplementedException();
         }
 
-        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador)
+        public bool IntegraRegistrosIndividualSync(string database, string identificador)
         {
             throw new NotImplementedException();
-        }
-
-        public List<Order>? T1ToObject(TEntity entity)
-        {
-            var list = new List<Order>();
-            for (int i = 0; i < entity.Result.Count(); i++)
-            {
-                list.Add(new Order
-                {
-                    //OrderID = entity.Result[i].OrderID,
-                    //OrderNumber = entity.Result[i].OrderNumber,
-                    //MarketPlaceBrand = entity.Result[i].MarketPlaceBrand,
-                    //OriginalOrderID = entity.Result[i].OriginalOrderID,
-                    //WebSiteID = entity.Result[i].WebSiteID,
-                    //WebSiteIntegrationID = entity.Result[i].WebSiteIntegrationID,
-                    //CustomerID = entity.Result[i].CustomerID,
-                    //ShopperTicketID = entity.Result[i].ShopperTicketID,
-                    //ItemsQty = entity.Result[i].ItemsQty,
-                    //ItemsCount = entity.Result[i].ItemsCount,
-                    //TaxAmount = entity.Result[i].TaxAmount,
-                    //DeliveryAmount = entity.Result[i].DeliveryAmount,
-                    //DiscountAmount = entity.Result[i].DiscountAmount,
-                    //PaymentTaxAmount = entity.Result[i].PaymentTaxAmount,
-                    //SubTotal = entity.Result[i].SubTotal,
-                    //Total = entity.Result[i].Total,
-                    //TotalDue = entity.Result[i].TotalDue,
-                    //TotalPaid = entity.Result[i].TotalPaid,
-                    //TotalRefunded = entity.Result[i].TotalRefunded,
-                    //PaymentDate = entity.Result[i].PaymentDate,
-                    //PaymentStatus = entity.Result[i].PaymentStatus,
-                    //ShipmentDate = entity.Result[i].ShipmentDate,
-                    //ShipmentStatus = entity.Result[i].ShipmentStatus,
-                    //GlobalStatus = entity.Result[i].GlobalStatus,
-                    //DeliveryPostalCode = entity.Result[i].DeliveryPostalCode,
-                    //CreatedChannel = entity.Result[i].CreatedChannel,
-                    //TrafficSourceID = entity.Result[i].TrafficSourceID,
-                    //OrderStatusID = entity.Result[i].OrderStatusID,
-                    //Items = new Item
-                    //{
-
-                    //}
-                    //Tags = entity.Result[i].
-                    //Properties = entity.Result[i].
-                    //Addresses = entity.Result[i].
-                    //PaymentMethods = entity.Result[i].
-                    //DeliveryMethods = entity.Result[i].
-                    //Discounts = entity.Result[i].
-                    //Shipments = entity.Result[i].
-                    //Fulfillments = entity.Result[i].
-                    //CreatedDate = entity.Result[i].
-                    //CreatedBy = entity.Result[i].
-                    //ModifiedDate = entity.Result[i].
-                    //ModifiedBy = entity.Result[i].
-                    //Remarks = entity.Result[i].
-                    //Seller = entity.Result[i].
-                    //SellerCommissionAmount = entity.Result[i].
-                    //SalesRepresentative = entity.Result[i].
-                    //CommissionAmount = entity.Result[i].
-                    //OrderType = entity.Result[i].
-                    //OrderInvoice = entity.Result[i].
-                    //OrderGroupID = entity.Result[i].
-                    //OrderGroupNumber = entity.Result[i].
-                    //HasConflicts = entity.Result[i].
-                    //AcquiredDate = entity.Result[i].
-                    //ExternalInfo = entity.Result[i].
-                    //HasHubOrderWithoutShipmentConflict = entity.Result[i].
-                    //CustomerType = entity.Result[i].
-                    //MultiSiteTenant = entity.Result[i].
-                    //CancelledDate = entity.Result[i].
-                    //Wishlist = entity.Result[i].
-                    //WebSiteName = entity.Result[i].
-                    //CustomerName = entity.Result[i].
-                    //CustomerEmail = entity.Result[i].
-                    //CustomerGender = entity.Result[i].
-                    //CustomerBirthDate = entity.Result[i].
-                    //CustomerPhone = entity.Result[i].
-                    //CustomerCPF = entity.Result[i].
-                    //CustomerCNPJ = entity.Result[i].
-                    //CustomerTradingName = entity.Result[i].
-                    //CustomerSiteTaxPayer = entity.Result[i].
-                });
-            }
-            return list;
         }
     }
 }
