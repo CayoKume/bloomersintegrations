@@ -9,18 +9,16 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
     public class LinxCommerceController : Controller
     {
         private readonly IOrderService<SearchOrderResponse.Root> _linxOrderService;
-        //private readonly IPersonService<GetPersonResponse.Root> _linxPersonService;
-        //private readonly ISKUService<SKU> _linxSKUService;
+        private readonly ISKUService<SearchSKUResponse.Root> _linxSKUService;
         private readonly IProductService<SearchProductResponse.Root> _linxProductService;
 
         public LinxCommerceController(
             IOrderService<SearchOrderResponse.Root> linxOrderService,
-            //ILinxPersonService<GetPersonResponse.Root> linxPersonService,
-            //ILinxSKUService<SKU> linxSKUService,
+            ISKUService<SearchSKUResponse.Root> linxSKUService,
             IProductService<SearchProductResponse.Root> linxProductService
         ) =>
-            (_linxOrderService, /*_linxPersonService, _linxSKUService,*/ _linxProductService) =
-            (linxOrderService, /*linxPersonService, linxSKUService,*/ linxProductService);
+            (_linxOrderService, _linxSKUService, _linxProductService) =
+            (linxOrderService, linxSKUService, linxProductService);
 
         [HttpPost("Pedidos")]
         public async Task<ActionResult> IntegraPedidos()
@@ -47,6 +45,25 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
             try
             {
                 await _linxProductService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
+
+                //if (result != true)
+                //    return BadRequest($"A API Pedidos não encontrou o pedido: .");
+                //else
+                return Ok($"Cliente:  integrado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel integrar o cliente: . Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("SKUs")]
+        public async Task<ActionResult> IntegraSKUsBase()
+        {
+            try
+            {
+                await _linxSKUService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
 
                 //if (result != true)
                 //    return BadRequest($"A API Pedidos não encontrou o pedido: .");
