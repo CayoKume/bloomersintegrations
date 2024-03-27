@@ -21,9 +21,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
         {
             try
             {
-                //var days = Convert.ToInt32(await _linxOrderRepository.GetParameters("LinxEcomOrder", "numberofdays"));
-                var days = 2;
-
+                var days = await _productRepository.GetParameters("LinxEcomProduct");
                 var objectRequest = new
                 {
                     Page = new { PageIndex = 0, PageSize = 0 },
@@ -68,21 +66,6 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
             {
                 throw;
             }
-        }
-
-        public void IntegraRegistrosSync(string database)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> IntegraRegistrosIndividual(string database, string identificador)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IntegraRegistrosIndividualSync(string database, string identificador)
-        {
-            throw new NotImplementedException();
         }
     }
 }

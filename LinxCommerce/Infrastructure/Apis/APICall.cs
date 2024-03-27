@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Text;
 
 namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis
@@ -21,7 +19,6 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis
                     chave
                 );
 
-                //var response = await client.PostAsync(client.BaseAddress + "/v1/Sales/API.svc/web/SearchOrders", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
                 var response = await client.PostAsync(client.BaseAddress + route, new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)

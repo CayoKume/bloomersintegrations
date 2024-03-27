@@ -1,4 +1,5 @@
-﻿using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
+﻿using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
+using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,14 +17,13 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
         {
             try
             {
-                using (var conn = _conn.GetIDbConnection())
+                using (var conn = _conn.GetDbConnection())
                 {
-                    using var bulkCopy = new SqlBulkCopy((SqlConnection)conn);
+                    using var bulkCopy = new SqlBulkCopy(conn);
                     bulkCopy.DestinationTableName = $"[{database}].[dbo].[{tableName}_raw]";
                     bulkCopy.BatchSize = dataTableRowsNumber;
                     bulkCopy.BulkCopyTimeout = 360;
                     bulkCopy.WriteToServer(dataTable);
-                    conn.Close();
                 }
             }
             catch (Exception ex)
@@ -32,63 +32,18 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
             }
         }
 
-        public async Task CallDbProcMerge(string? procName, string? tableName, string? database)
+        public async Task<int> GetParameters(string tableName, string sql)
         {
             try
             {
                 using (var conn = _conn.GetIDbConnection())
                 {
-                    await conn.ExecuteAsync($"{database}.[dbo].{procName}", commandTimeout: 360, commandType: CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"{tableName} - CallDbProcMerge - Erro ao realizar merge na tabela {tableName}, através da proc : {procName} - {ex.Message}");
-            }
-        }
-
-        public void CallDbProcMergeSync(string? procName, string? tableName, string? database)
-        {
-            try
-            {
-                using (var conn = _conn.GetIDbConnection())
-                {
-                    conn.Execute($"{database}.[dbo].{procName}", commandTimeout: 360, commandType: CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"{tableName} - CallDbProcMergeSync - Erro ao realizar merge na tabela {tableName}, através da proc : {procName} - {ex.Message}");
-            }
-        }
-
-        public async Task<string> GetParameters(string tableName, string sql)
-        {
-            try
-            {
-                using (var conn = _conn.GetIDbConnection())
-                {
-                    return await conn.QueryFirstAsync<string>(sql: sql, commandTimeout: 360);
+                    return await conn.QueryFirstAsync<int>(sql: sql, commandTimeout: 360);
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception($"{tableName} - GetParameters - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql: {sql} - {ex.Message}");
-            }
-        }
-
-        public string GetParametersSync(string tableName, string sql)
-        {
-            try
-            {
-                using (var conn = _conn.GetIDbConnection())
-                {
-                    return conn.QueryFirst<string>(sql: sql, commandTimeout: 360);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"{tableName} - GetParametersSync - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql: {sql} - {ex.Message}");
             }
         }
 
@@ -139,19 +94,14 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string sql)
+        public DataTable CreateDataTable(string tableName, List<string> properties)
         {
-            try
+            var dataTable = new DataTable(tableName);
+            for (int i = 0; i < properties.Count(); i++)
             {
-                using (var conn = _conn.GetIDbConnection())
-                {
-                    conn.Execute(sql: sql, commandTimeout: 360);
-                }
+                dataTable.Columns.Add(properties[i]);
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"{tableName} - InsereRegistroIndividualSync - Erro ao inserir registro na tabela {tableName}, atraves do sql: {sql} - {ex.Message}");
-            }
+            return dataTable;
         }
     }
 }

@@ -18,43 +18,43 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
         {
             try
             {
-                var orders = CreateDataTable("Orders", new List<string> { "AcquiredDate","CancelledDate","CommissionAmount","CreatedBy","CreatedChannel","CreatedDate","CustomerBirthDate","CustomerCNPJ","CustomerCPF","CustomerEmail","CustomerGender","CustomerID","CustomerName","CustomerPhone","CustomerType","DeliveryAmount","DeliveryPostalCode","DiscountAmount","Discounts","ExternalInfo","GlobalStatus","HasConflicts","ItemsCount","ItemsQty","MarketPlaceBrand","ModifiedBy","ModifiedDate","MultiSiteTenant","OrderGroupID","OrderGroupNumber","OrderID","OrderInvoice","OrderNumber","OrderStatusID","OrderType","OriginalOrderID","PaymentDate","PaymentStatus","PaymentTaxAmount","Properties","Remarks","SalesRepresentative","Seller","SellerCommissionAmount","ShipmentDate","ShipmentStatus","Shipments","ShopperTicketID","SubTotal","Tags","TaxAmount","Total","TotalDue","TotalPaid","TotalRefunded","TrafficSourceID","WebSiteID","WebSiteIntegrationID","WebSiteName","Wishlist","lastupdateon" });
+                var orders = _linxCommerceRepositoryBase.CreateDataTable("Orders", new List<string> { "AcquiredDate","CancelledDate","CommissionAmount","CreatedBy","CreatedChannel","CreatedDate","CustomerBirthDate","CustomerCNPJ","CustomerCPF","CustomerEmail","CustomerGender","CustomerID","CustomerName","CustomerPhone","CustomerType","DeliveryAmount","DeliveryPostalCode","DiscountAmount","Discounts","ExternalInfo","GlobalStatus","HasConflicts","ItemsCount","ItemsQty","MarketPlaceBrand","ModifiedBy","ModifiedDate","MultiSiteTenant","OrderGroupID","OrderGroupNumber","OrderID","OrderInvoice","OrderNumber","OrderStatusID","OrderType","OriginalOrderID","PaymentDate","PaymentStatus","PaymentTaxAmount","Properties","Remarks","SalesRepresentative","Seller","SellerCommissionAmount","ShipmentDate","ShipmentStatus","Shipments","ShopperTicketID","SubTotal","Tags","TaxAmount","Total","TotalDue","TotalPaid","TotalRefunded","TrafficSourceID","WebSiteID","WebSiteIntegrationID","WebSiteName","Wishlist","lastupdateon" });
                 FillDataTable(orders, registros, new List<string> { "AcquiredDate", "CancelledDate", "CommissionAmount", "CreatedBy", "CreatedChannel", "CreatedDate", "CustomerBirthDate", "CustomerCNPJ", "CustomerCPF", "CustomerEmail", "CustomerGender", "CustomerID", "CustomerName", "CustomerPhone", "CustomerType", "DeliveryAmount", "DeliveryPostalCode", "DiscountAmount", "Discounts", "ExternalInfo", "GlobalStatus", "HasConflicts", "ItemsCount", "ItemsQty", "MarketPlaceBrand", "ModifiedBy", "ModifiedDate", "MultiSiteTenant", "OrderGroupID", "OrderGroupNumber", "OrderID", "OrderInvoice", "OrderNumber", "OrderStatusID", "OrderType", "OriginalOrderID", "PaymentDate", "PaymentStatus", "PaymentTaxAmount", "Properties", "Remarks", "SalesRepresentative", "Seller", "SellerCommissionAmount", "ShipmentDate", "ShipmentStatus", "Shipments", "ShopperTicketID", "SubTotal", "Tags", "TaxAmount", "Total", "TotalDue", "TotalPaid", "TotalRefunded", "TrafficSourceID", "WebSiteID", "WebSiteIntegrationID", "WebSiteName", "Wishlist", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orders, database, "Order", orders.Rows.Count);
 
-                var orderItems = CreateDataTable("OrderItems", new List<string> { "BundleKitDiscount","BundleKitDiscountValue","BundlePriceType","CatalogID","CatalogItemType","Depth","DiscountAmount","ExternalInfo","FormData","Height","InStockHandlingDays","IsDeleted","IsDeliverable","IsFreeOffer","IsFreeShipping","IsGiftWrapping","IsService","OrderID","OrderItemID","OutStockHandlingDays","ParentItemID","Price","PriceListID","ProductID","ProductIntegrationID","ProductName","Properties","Qty","SKU","SKUIntegrationID","SellerSKU","SkuID","SkuName","SpecialType","Status","Subtotal","TaxationAmount","Total","WareHouseID","WarehouseIntegrationID","WebSiteID","Weight","Width","lastupdateon" });
+                var orderItems = _linxCommerceRepositoryBase.CreateDataTable("OrderItems", new List<string> { "BundleKitDiscount","BundleKitDiscountValue","BundlePriceType","CatalogID","CatalogItemType","Depth","DiscountAmount","ExternalInfo","FormData","Height","InStockHandlingDays","IsDeleted","IsDeliverable","IsFreeOffer","IsFreeShipping","IsGiftWrapping","IsService","OrderID","OrderItemID","OutStockHandlingDays","ParentItemID","Price","PriceListID","ProductID","ProductIntegrationID","ProductName","Properties","Qty","SKU","SKUIntegrationID","SellerSKU","SkuID","SkuName","SpecialType","Status","Subtotal","TaxationAmount","Total","WareHouseID","WarehouseIntegrationID","WebSiteID","Weight","Width","lastupdateon" });
                 FillDataTable(orderItems, registros, new List<string> { "BundleKitDiscount", "BundleKitDiscountValue", "BundlePriceType", "CatalogID", "CatalogItemType", "Depth", "DiscountAmount", "ExternalInfo", "FormData", "Height", "InStockHandlingDays", "IsDeleted", "IsDeliverable", "IsFreeOffer", "IsFreeShipping", "IsGiftWrapping", "IsService", "OrderID", "OrderItemID", "OutStockHandlingDays", "ParentItemID", "Price", "PriceListID", "ProductID", "ProductIntegrationID", "ProductName", "Properties", "Qty", "SKU", "SKUIntegrationID", "SellerSKU", "SkuID", "SkuName", "SpecialType", "Status", "Subtotal", "TaxationAmount", "Total", "WareHouseID", "WarehouseIntegrationID", "WebSiteID", "Weight", "Width", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderItems, database, "OrderItem", orderItems.Rows.Count);
 
-                var orderAddress = CreateDataTable("OrderAddress", new List<string> { "AddressLine","AddressNotes","AddressType","City","ContactDocumentNumber","ContactName","ContactPhone","Landmark","Name","Neighbourhood","Number","OrderAddressID","OrderID","PointOfSaleID","PostalCode","State","lastupdateon" });
+                var orderAddress = _linxCommerceRepositoryBase.CreateDataTable("OrderAddress", new List<string> { "AddressLine","AddressNotes","AddressType","City","ContactDocumentNumber","ContactName","ContactPhone","Landmark","Name","Neighbourhood","Number","OrderAddressID","OrderID","PointOfSaleID","PostalCode","State","lastupdateon" });
                 FillDataTable(orderAddress, registros, new List<string> { "AddressLine", "AddressNotes", "AddressType", "City", "ContactDocumentNumber", "ContactName", "ContactPhone", "Landmark", "Name", "Neighbourhood", "Number", "OrderAddressID", "OrderID", "PointOfSaleID", "PostalCode", "State", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderAddress, database, "OrderAddress", orderAddress.Rows.Count);
 
-                var orderPaymentMethods = CreateDataTable("OrderPaymentMethods", new List<string> { "AcquiredDate","Amount","CaptureDate","InstallmentAmount","Installments","IntegrationID","OrderID","OrderPaymentMethodID","PaidAmount","PaymentCancelledDate","PaymentDate","PaymentMethodID","PaymentNumber","Properties","ReconciliationNumber","RefundAmount","Status","TaxAmount","TransactionID","lastupdateon" });
+                var orderPaymentMethods = _linxCommerceRepositoryBase.CreateDataTable("OrderPaymentMethods", new List<string> { "AcquiredDate","Amount","CaptureDate","InstallmentAmount","Installments","IntegrationID","OrderID","OrderPaymentMethodID","PaidAmount","PaymentCancelledDate","PaymentDate","PaymentMethodID","PaymentNumber","Properties","ReconciliationNumber","RefundAmount","Status","TaxAmount","TransactionID","lastupdateon" });
                 FillDataTable(orderPaymentMethods, registros, new List<string> { "AcquiredDate", "Amount", "CaptureDate", "InstallmentAmount", "Installments", "IntegrationID", "OrderID", "OrderPaymentMethodID", "PaidAmount", "PaymentCancelledDate", "PaymentDate", "PaymentMethodID", "PaymentNumber", "Properties", "ReconciliationNumber", "RefundAmount", "Status", "TaxAmount", "TransactionID", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderPaymentMethods, database, "OrderPaymentMethod", orderPaymentMethods.Rows.Count);
 
-                var orderPaymentInfos = CreateDataTable("OrderPaymentInfos", new List<string> { "OrderID","OrderPaymentMethodID","PaymentMethodID","TransactionID","Status","PaymentType","Alias","Title","Description","ImagePath","ProviderDocumentNumber","lastupdateon" });
+                var orderPaymentInfos = _linxCommerceRepositoryBase.CreateDataTable("OrderPaymentInfos", new List<string> { "OrderID","OrderPaymentMethodID","PaymentMethodID","TransactionID","Status","PaymentType","Alias","Title","Description","ImagePath","ProviderDocumentNumber","lastupdateon" });
                 FillDataTable(orderPaymentInfos, registros, new List<string> { "OrderID", "OrderPaymentMethodID", "PaymentMethodID", "TransactionID", "Status", "PaymentType", "Alias", "Title", "Description", "ImagePath", "ProviderDocumentNumber", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderPaymentInfos, database, "OrderPayment", orderPaymentInfos.Rows.Count);
 
-                var orderDeliveryMethods = CreateDataTable("OrderDeliveryMethods", new List<string> { "Amount","CarrierName","DeliveryGroupID","DeliveryMethodAlias","DeliveryMethodID","DeliveryMethodType","DockID","ETA","ETADays","ExternalID","IntegrationID","LogisticContractId","LogisticContractName","LogisticOptionId","LogisticOptionName","OrderDeliveryMethodID","OrderID","PointOfSaleID","PointOfSaleIntegrationID","PointOfSaleName","ScheduleDate","ScheduleDisplayName","ScheduleEndTime","ScheduleShiftID","ScheduleStartTime","ScheduleTax","WarehouseID","WarehouseIntegrationID","lastupdateon" });
+                var orderDeliveryMethods = _linxCommerceRepositoryBase.CreateDataTable("OrderDeliveryMethods", new List<string> { "Amount","CarrierName","DeliveryGroupID","DeliveryMethodAlias","DeliveryMethodID","DeliveryMethodType","DockID","ETA","ETADays","ExternalID","IntegrationID","LogisticContractId","LogisticContractName","LogisticOptionId","LogisticOptionName","OrderDeliveryMethodID","OrderID","PointOfSaleID","PointOfSaleIntegrationID","PointOfSaleName","ScheduleDate","ScheduleDisplayName","ScheduleEndTime","ScheduleShiftID","ScheduleStartTime","ScheduleTax","WarehouseID","WarehouseIntegrationID","lastupdateon" });
                 FillDataTable(orderDeliveryMethods, registros, new List<string> { "Amount", "CarrierName", "DeliveryGroupID", "DeliveryMethodAlias", "DeliveryMethodID", "DeliveryMethodType", "DockID", "ETA", "ETADays", "ExternalID", "IntegrationID", "LogisticContractId", "LogisticContractName", "LogisticOptionId", "LogisticOptionName", "OrderDeliveryMethodID", "OrderID", "PointOfSaleID", "PointOfSaleIntegrationID", "PointOfSaleName", "ScheduleDate", "ScheduleDisplayName", "ScheduleEndTime", "ScheduleShiftID", "ScheduleStartTime", "ScheduleTax", "WarehouseID", "WarehouseIntegrationID", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderDeliveryMethods, database, "OrderDeliveryMethods", orderDeliveryMethods.Rows.Count);
 
-                var orderShipments = CreateDataTable("OrderShipments", new List<string> { "AssignUserId","AssignUserName","DeliveryMethodID","DockID","OrderID","OrderShipmentID","Packages","ShipmentNumber","ShipmentStatus","lastupdateon" });
+                var orderShipments = _linxCommerceRepositoryBase.CreateDataTable("OrderShipments", new List<string> { "AssignUserId","AssignUserName","DeliveryMethodID","DockID","OrderID","OrderShipmentID","Packages","ShipmentNumber","ShipmentStatus","lastupdateon" });
                 FillDataTable(orderShipments, registros, new List<string> { "AssignUserId", "AssignUserName", "DeliveryMethodID", "DockID", "OrderID", "OrderShipmentID", "Packages", "ShipmentNumber", "ShipmentStatus", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderShipments, database, "OrderShipments", orderShipments.Rows.Count);
 
-                var orderPackages = CreateDataTable("OrderPackages", new List<string> { "DeliveryMethodID","IsDeleted","Items","OrderPackageID","OrderShipmentID","PackageNumber","ShippedBy","ShippedDate","TrackingNumber","lastupdateon" });
+                var orderPackages = _linxCommerceRepositoryBase.CreateDataTable("OrderPackages", new List<string> { "DeliveryMethodID","IsDeleted","Items","OrderPackageID","OrderShipmentID","PackageNumber","ShippedBy","ShippedDate","TrackingNumber","lastupdateon" });
                 FillDataTable(orderPackages, registros, new List<string> { "DeliveryMethodID", "IsDeleted", "Items", "OrderPackageID", "OrderShipmentID", "PackageNumber", "ShippedBy", "ShippedDate", "TrackingNumber", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderPackages, database, "OrderPackages", orderPackages.Rows.Count);
 
-                var orderSalesRepresentative = CreateDataTable("OrderSalesRepresentative", new List<string> { "SalesRepresentativeID","Name","Email","ImageTimestamp","MaxDiscountAmount","CellPhone","DeliveryCommission","OrderCommission","FromPortfolio","Phone","IntegrationID","FriendlyCode","OrderID","OrderNumber","lastupdateon" });
+                var orderSalesRepresentative = _linxCommerceRepositoryBase.CreateDataTable("OrderSalesRepresentative", new List<string> { "SalesRepresentativeID","Name","Email","ImageTimestamp","MaxDiscountAmount","CellPhone","DeliveryCommission","OrderCommission","FromPortfolio","Phone","IntegrationID","FriendlyCode","OrderID","OrderNumber","lastupdateon" });
                 FillDataTable(orderSalesRepresentative, registros, new List<string> { "SalesRepresentativeID", "Name", "Email", "ImageTimestamp", "MaxDiscountAmount", "CellPhone", "DeliveryCommission", "OrderCommission", "FromPortfolio", "Phone", "IntegrationID", "FriendlyCode", "OrderID", "OrderNumber", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderSalesRepresentative, database, "SalesRepresentative", orderSalesRepresentative.Rows.Count);
 
-                var orderCustomer = CreateDataTable("OrderCustomer", new List<string> { "lastupdateon","CreatedDate","CustomerHash","CustomerID","CustomerStatusID","CustomerType","Email","Name","WebSiteID","BirthDate","Cpf","Gender","RG","Surname" });
+                var orderCustomer = _linxCommerceRepositoryBase.CreateDataTable("OrderCustomer", new List<string> { "lastupdateon","CreatedDate","CustomerHash","CustomerID","CustomerStatusID","CustomerType","Email","Name","WebSiteID","BirthDate","Cpf","Gender","RG","Surname" });
                 FillDataTable(orderCustomer, registros, new List<string> { "lastupdateon", "CreatedDate", "CustomerHash", "CustomerID", "CustomerStatusID", "CustomerType", "Email", "Name", "WebSiteID", "BirthDate", "Cpf", "Gender", "RG", "Surname" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderCustomer, database, "Person", orderCustomer.Rows.Count);
             }
@@ -64,9 +64,18 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
             }
         }
 
-        public Task<string> GetParameters(string tableName, string sql)
+        public async Task<int> GetParameters(string tableName)
         {
-            throw new NotImplementedException();
+            string query = $@"SELECT NUMBEROFDAYS FROM [BLOOMERS_LINX].[dbo].[LINXAPIPARAM] WHERE METHOD = '{tableName}'";
+
+            try
+            {
+                return await _linxCommerceRepositoryBase.GetParameters(tableName, query);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<List<Order>> GetRegistersExists(List<string> ordersIds, string? database)
@@ -80,7 +89,8 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                     orderIDs += $"'{ordersIds[i]}', ";
             }
 
-            string query = $"SELECT ORDERID, CUSTOMERID, GLOBALSTATUS, ORDERSTATUSID, PAYMENTSTATUS, SHIPMENTSTATUS FROM [{database}].[dbo].[ORDER_TRUSTED] A (NOLOCK) WHERE ORDERID IN ({orderIDs})";
+            string query = @$"SELECT ORDERID, CUSTOMERID, GLOBALSTATUS, ORDERSTATUSID, PAYMENTSTATUS, SHIPMENTSTATUS 
+                              FROM [{database}].[dbo].[ORDER_TRUSTED] (NOLOCK) WHERE ORDERID IN ({orderIDs})";
 
             try
             {
@@ -91,16 +101,6 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
             {
                 throw;
             }
-        }
-
-        private DataTable CreateDataTable(string tableName, List<string> properties)
-        {
-            var dataTable = new DataTable(tableName);
-            for (int i = 0; i < properties.Count(); i++) 
-            {
-                dataTable.Columns.Add(properties[i]);
-            }
-            return dataTable;
         }
 
         private static void FillDataTable(DataTable dataTable, List<Order> registros, List<string> properties)
@@ -141,28 +141,28 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 
                             else if (properties[j] == "Discounts")
                                 row[properties[j]] = registros[i].Discounts.Count() > 0 ? registros[i].Discounts.First().DiscountID : null;
-                            
+
                             else if (properties[j] == "OrderInvoice")
                                 row[properties[j]] = registros[i].OrderInvoice is not null ? registros[i].OrderInvoice.OrderInvoiceID : null;
-                            
+
                             else if (properties[j] == "OrderType")
                                 row[properties[j]] = registros[i].OrderType is not null ? registros[i].OrderType.OrderTypeID : null;
-                            
+
                             else if (properties[j] == "SalesRepresentative")
                                 row[properties[j]] = registros[i].SalesRepresentative is not null ? registros[i].SalesRepresentative.SalesRepresentativeID : null;
-                            
+
                             else if (properties[j] == "Seller")
                                 row[properties[j]] = registros[i].Seller is not null ? registros[i].Seller.SellerID : null;
-                            
+
                             else if (properties[j] == "Shipments")
                                 row[properties[j]] = registros[i].Shipments.Count() > 0 ? registros[i].Shipments.First().OrderShipmentID : null;
-                            
+
                             else if (properties[j] == "Tags")
                                 row[properties[j]] = registros[i].Tags.Count() > 0 ? registros[i].Tags.First().TagID : null;
-                            
+
                             else if (properties[j] == "MultiSiteTenant" || properties[j] == "Properties")
                                 row[properties[j]] = null;
-                            
+
                             else
                                 row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                 registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
@@ -269,7 +269,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                                 else if (properties[j] == "OrderID")
                                     row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                     registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
-                                
+
                                 else
                                     row[properties[j]] = registros[i].DeliveryMethods[k].GetType().GetProperty(properties[j]).GetValue(registros[i].DeliveryMethods[k]) is not null ?
                                     registros[i].DeliveryMethods[k].GetType().GetProperty(properties[j]).GetValue(registros[i].DeliveryMethods[k]) : null;
@@ -337,20 +337,20 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             else if (properties[j] == "OrderNumber")
                                 row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                 registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
-                            
+
                             else if (properties[j] == "OrderID")
                                 row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                 registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
-                            
+
                             else if (properties[j] == "DeliveryCommission" || properties[j] == "OrderCommission" || properties[j] == "FromPortfolio")
                             {
                                 if (registros[i].SalesRepresentative.Commission is not null)
                                     row[properties[j]] = registros[i].SalesRepresentative.Commission.GetType().GetProperty(properties[j]).GetValue(registros[i].SalesRepresentative.Commission) is not null ?
                                     registros[i].SalesRepresentative.Commission.GetType().GetProperty(properties[j]).GetValue(registros[i].SalesRepresentative.Commission) : null;
                                 else
-                                    row[properties[j]] =  null;
+                                    row[properties[j]] = null;
                             }
-                            
+
                             else
                                 row[properties[j]] = registros[i].SalesRepresentative.GetType().GetProperty(properties[j]).GetValue(registros[i].SalesRepresentative) is not null ?
                                 registros[i].SalesRepresentative.GetType().GetProperty(properties[j]).GetValue(registros[i].SalesRepresentative) : null;

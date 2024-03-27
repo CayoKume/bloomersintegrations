@@ -16,15 +16,15 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
         {
             try
             {
-                var product = CreateDataTable("Product", new List<string> { "CreatedBy","CreatedDate","IntegrationID","DisplayName","ModifiedBy","ModifiedDate","Name","ProductID","SKU","AcceptanceTermID","BrandID","CatalogItemType","DefinitionID","DisplayAvailability","DisplayPrice","DisplayStockQty","FlagsID","IsDeleted","IsFreeShipping","IsNew","IsSearchable","IsUponRequest","IsVisible","LongDescription","MetaDescription","MetaKeywords","NewFrom","NewTo","PageTitle","PurchasingPolicyID","RatingSetID","SearchKeywords","SendToMarketplace","ShippingRegionsID","ShortDescription","UrlFriendly","UseAcceptanceTerm","VisibleFrom","VisibleTo","WarrantyDescription","lastupdateon" });
+                var product = _linxCommerceRepositoryBase.CreateDataTable("Product", new List<string> { "CreatedBy","CreatedDate","IntegrationID","DisplayName","ModifiedBy","ModifiedDate","Name","ProductID","SKU","AcceptanceTermID","BrandID","CatalogItemType","DefinitionID","DisplayAvailability","DisplayPrice","DisplayStockQty","FlagsID","IsDeleted","IsFreeShipping","IsNew","IsSearchable","IsUponRequest","IsVisible","LongDescription","MetaDescription","MetaKeywords","NewFrom","NewTo","PageTitle","PurchasingPolicyID","RatingSetID","SearchKeywords","SendToMarketplace","ShippingRegionsID","ShortDescription","UrlFriendly","UseAcceptanceTerm","VisibleFrom","VisibleTo","WarrantyDescription","lastupdateon" });
                 FillDataTable(product, registros, new List<string> { "CreatedBy", "CreatedDate", "IntegrationID", "DisplayName", "ModifiedBy", "ModifiedDate", "Name", "ProductID", "SKU", "AcceptanceTermID", "BrandID", "CatalogItemType", "DefinitionID", "DisplayAvailability", "DisplayPrice", "DisplayStockQty", "FlagsID", "IsDeleted", "IsFreeShipping", "IsNew", "IsSearchable", "IsUponRequest", "IsVisible", "LongDescription", "MetaDescription", "MetaKeywords", "NewFrom", "NewTo", "PageTitle", "PurchasingPolicyID", "RatingSetID", "SearchKeywords", "SendToMarketplace", "ShippingRegionsID", "ShortDescription", "UrlFriendly", "UseAcceptanceTerm", "VisibleFrom", "VisibleTo", "WarrantyDescription", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(product, database, "Product", product.Rows.Count);
 
-                var productMedia = CreateDataTable("ProductMedia", new List<string> { "CreatedDate","AbsolutePath","Extension","Height","MaxHeight","MaxWidth","MediaSizeType","RelativePath","Width","Index","IsDeleted","ProductID","Order","ParentMediaID","Type","VideoTitle","VideoUrl","AssociationPath","lastupdateon" });
+                var productMedia = _linxCommerceRepositoryBase.CreateDataTable("ProductMedia", new List<string> { "CreatedDate","AbsolutePath","Extension","Height","MaxHeight","MaxWidth","MediaSizeType","RelativePath","Width","Index","IsDeleted","ProductID","Order","ParentMediaID","Type","VideoTitle","VideoUrl","AssociationPath","lastupdateon" });
                 FillDataTable(productMedia, registros, new List<string> { "CreatedDate", "AbsolutePath", "Extension", "Height", "MaxHeight", "MaxWidth", "MediaSizeType", "RelativePath", "Width", "Index", "IsDeleted", "ProductID", "Order", "ParentMediaID", "Type", "VideoTitle", "VideoUrl", "AssociationPath", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(productMedia, database, "ProductMedia", productMedia.Rows.Count);
 
-                var productMetaDataValues = CreateDataTable("ProductMetaDataValues", new List<string> { "DisplayName","FormattedValue","InputType","IntegrationID","PropertyGroup","PropertyMetadataID","PropertyName","SerializedBlobValue","SerializedValue","Value","ProductID","lastupdateon" });
+                var productMetaDataValues = _linxCommerceRepositoryBase.CreateDataTable("ProductMetaDataValues", new List<string> { "DisplayName","FormattedValue","InputType","IntegrationID","PropertyGroup","PropertyMetadataID","PropertyName","SerializedBlobValue","SerializedValue","Value","ProductID","lastupdateon" });
                 FillDataTable(productMetaDataValues, registros, new List<string> { "DisplayName", "FormattedValue", "InputType", "IntegrationID", "PropertyGroup", "PropertyMetadataID", "PropertyName", "SerializedBlobValue", "SerializedValue", "Value", "ProductID", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(productMetaDataValues, database, "ProductMetaDataValue", productMetaDataValues.Rows.Count);
             }
@@ -34,9 +34,18 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
             }
         }
 
-        public Task<string> GetParameters(string tableName, string sql)
+        public async Task<int> GetParameters(string tableName)
         {
-            throw new NotImplementedException();
+            string query = $@"SELECT NUMBEROFDAYS FROM [BLOOMERS_LINX].[dbo].[LINXAPIPARAM] WHERE METHOD = '{tableName}'";
+
+            try
+            {
+                return await _linxCommerceRepositoryBase.GetParameters(tableName, query);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<List<Product>> GetRegistersExists(List<string> productsIds, string? database)
@@ -51,7 +60,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
             }
 
             string query = @$"SELECT NAME, PRODUCTID, LONGDESCRIPTION, METADESCRIPTION, METAKEYWORDS, PAGETITLE, SEARCHKEYWORDS, SHORTDESCRIPTION 
-                              FROM LINX_COMMERCE..PRODUCT_TRUSTED (NOLOCK)
+                              FROM [{database}].[dbo].[PRODUCT_TRUSTED] (NOLOCK)
                               WHERE PRODUCTID IN ({productIds})";
 
             try
@@ -63,16 +72,6 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
             {
                 throw;
             }
-        }
-
-        private DataTable CreateDataTable(string tableName, List<string> properties)
-        {
-            var dataTable = new DataTable(tableName);
-            for (int i = 0; i < properties.Count(); i++)
-            {
-                dataTable.Columns.Add(properties[i]);
-            }
-            return dataTable;
         }
 
         private static void FillDataTable(DataTable dataTable, List<Product> registros, List<string> properties)

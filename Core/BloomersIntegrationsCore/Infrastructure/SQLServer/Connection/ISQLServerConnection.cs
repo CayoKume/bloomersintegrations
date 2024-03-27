@@ -6,4 +6,5 @@ namespace BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 public interface ISQLServerConnection : IDisposable
 {
     public IDbConnection GetIDbConnection();
+    public SqlConnection GetDbConnection();
 }

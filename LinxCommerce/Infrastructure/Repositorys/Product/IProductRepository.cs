@@ -5,7 +5,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
     public interface IProductRepository
     {
         public void BulkInsertIntoTableRaw(List<Product> registros, string? database);
-        public Task<string> GetParameters(string tableName, string sql);
+        public Task<int> GetParameters(string tableName);
         public Task<List<Product>> GetRegistersExists(List<string> ordersIds, string? database);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BloomersCommerceIntegrations.LinxCommerce.Application.Services;
 using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
+using BloomersIntegrationsManager.Domain.Entities.Request;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
@@ -20,22 +21,37 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
             (_linxOrderService, _linxSKUService, _linxProductService) =
             (linxOrderService, linxSKUService, linxProductService);
 
+        [HttpPost("Pedido")]
+        public async Task<ActionResult> IntegraPedido([FromBody] LinxCommerceOrderRequest request)
+        {
+            try
+            {
+                await _linxOrderService.IntegraRegistrosIndividual("HOMOLOG_LINX_COMMERCE", request.orderNumber);
+
+                //if (result != true)
+                //    return BadRequest($"A API Pedido não conseguiu integrar o pedido: {request.orderNumber}.");
+                //else
+                    return Ok($"Pedido: {request.orderNumber} integrado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel integrar o pedido: {request.orderNumber} . Erro: {ex.Message}");
+            }
+        }
+
         [HttpPost("Pedidos")]
         public async Task<ActionResult> IntegraPedidos()
         {
             try
             {
                 await _linxOrderService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
-
-                //if (result != true)
-                //    return BadRequest($"A API Pedidos não encontrou o pedido: .");
-                //else
-                return Ok($"Pedido:  integrado com sucesso.");
+                return Ok($"Pedidos integrados com sucesso.");
             }
             catch (Exception ex)
             {
                 Response.StatusCode = 400;
-                return Content($"Nao foi possivel integrar o pedido: . Erro: {ex.Message}");
+                return Content($"Nao foi possivel integrar os pedidos. Erro: {ex.Message}");
             }
         }
 
@@ -45,16 +61,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
             try
             {
                 await _linxProductService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
-
-                //if (result != true)
-                //    return BadRequest($"A API Pedidos não encontrou o pedido: .");
-                //else
-                return Ok($"Cliente:  integrado com sucesso.");
+                return Ok($"Produtos integrados com sucesso.");
             }
             catch (Exception ex)
             {
                 Response.StatusCode = 400;
-                return Content($"Nao foi possivel integrar o cliente: . Erro: {ex.Message}");
+                return Content($"Nao foi possivel integrar os produtos. Erro: {ex.Message}");
             }
         }
 
@@ -64,16 +76,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
             try
             {
                 await _linxSKUService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
-
-                //if (result != true)
-                //    return BadRequest($"A API Pedidos não encontrou o pedido: .");
-                //else
-                return Ok($"Cliente:  integrado com sucesso.");
+                return Ok($"SKUs integrados com sucesso.");
             }
             catch (Exception ex)
             {
                 Response.StatusCode = 400;
-                return Content($"Nao foi possivel integrar o cliente: . Erro: {ex.Message}");
+                return Content($"Nao foi possivel integrar os SKUs. Erro: {ex.Message}");
             }
         }
     }
