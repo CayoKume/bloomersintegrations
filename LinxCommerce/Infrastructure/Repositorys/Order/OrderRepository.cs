@@ -124,34 +124,45 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                                 row[properties[j]] = registros[i].Customer.GetType().GetProperty(propertie).GetValue(registros[i].Customer) is not null ?
                                 registros[i].Customer.GetType().GetProperty(propertie).GetValue(registros[i].Customer) : null;
                             }
+
                             else if (properties[j] == "CustomerPhone")
                             {
                                 var propertie = "Cell" + properties[j].Replace("Customer", "");
                                 row[properties[j]] = registros[i].Customer.Contact.GetType().GetProperty(propertie).GetValue(registros[i].Customer.Contact) is not null ?
                                 registros[i].Customer.Contact.GetType().GetProperty(propertie).GetValue(registros[i].Customer.Contact) : null;
                             }
+
                             else if (properties[j] == "CustomerName" || properties[j] == "CustomerEmail" || properties[j] == "CustomerGender" || properties[j] == "CustomerBirthDate")
                             {
                                 var propertie = properties[j].Replace("Customer", "");
                                 row[properties[j]] = registros[i].Customer.GetType().GetProperty(propertie).GetValue(registros[i].Customer) is not null ?
                                 registros[i].Customer.GetType().GetProperty(propertie).GetValue(registros[i].Customer) : null;
                             }
+
                             else if (properties[j] == "Discounts")
                                 row[properties[j]] = registros[i].Discounts.Count() > 0 ? registros[i].Discounts.First().DiscountID : null;
+                            
                             else if (properties[j] == "OrderInvoice")
                                 row[properties[j]] = registros[i].OrderInvoice is not null ? registros[i].OrderInvoice.OrderInvoiceID : null;
+                            
                             else if (properties[j] == "OrderType")
                                 row[properties[j]] = registros[i].OrderType is not null ? registros[i].OrderType.OrderTypeID : null;
+                            
                             else if (properties[j] == "SalesRepresentative")
                                 row[properties[j]] = registros[i].SalesRepresentative is not null ? registros[i].SalesRepresentative.SalesRepresentativeID : null;
+                            
                             else if (properties[j] == "Seller")
                                 row[properties[j]] = registros[i].Seller is not null ? registros[i].Seller.SellerID : null;
+                            
                             else if (properties[j] == "Shipments")
                                 row[properties[j]] = registros[i].Shipments.Count() > 0 ? registros[i].Shipments.First().OrderShipmentID : null;
+                            
                             else if (properties[j] == "Tags")
                                 row[properties[j]] = registros[i].Tags.Count() > 0 ? registros[i].Tags.First().TagID : null;
+                            
                             else if (properties[j] == "MultiSiteTenant" || properties[j] == "Properties")
                                 row[properties[j]] = null;
+                            
                             else
                                 row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                 registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
@@ -169,8 +180,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             {
                                 if (properties[j] == "lastupdateon")
                                     row[properties[j]] = DateTime.Now;
+
                                 else if (properties[j] == "FormData" || properties[j] == "Properties")
                                     row[properties[j]] = null;
+
                                 else
                                     row[properties[j]] = registros[i].Items[k].GetType().GetProperty(properties[j]).GetValue(registros[i].Items[k]) is not null ?
                                     registros[i].Items[k].GetType().GetProperty(properties[j]).GetValue(registros[i].Items[k]) : null;
@@ -189,6 +202,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             {
                                 if (properties[j] == "lastupdateon")
                                     row[properties[j]] = DateTime.Now;
+
                                 else
                                     row[properties[j]] = registros[i].Addresses[k].GetType().GetProperty(properties[j]).GetValue(registros[i].Addresses[k]) is not null ?
                                     registros[i].Addresses[k].GetType().GetProperty(properties[j]).GetValue(registros[i].Addresses[k]) : null;
@@ -207,8 +221,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             {
                                 if (properties[j] == "lastupdateon")
                                     row[properties[j]] = DateTime.Now;
+
                                 else if (properties[j] == "Properties")
                                     row[properties[j]] = null;
+
                                 else
                                     row[properties[j]] = registros[i].PaymentMethods[k].GetType().GetProperty(properties[j]).GetValue(registros[i].PaymentMethods[k]) is not null ?
                                     registros[i].PaymentMethods[k].GetType().GetProperty(properties[j]).GetValue(registros[i].PaymentMethods[k]) : null;
@@ -227,6 +243,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             {
                                 if (properties[j] == "lastupdateon")
                                     row[properties[j]] = DateTime.Now;
+
                                 else
                                     row[properties[j]] = registros[i].PaymentMethods[k].PaymentInfo.GetType().GetProperty(properties[j]).GetValue(registros[i].PaymentMethods[k].PaymentInfo) is not null ?
                                     registros[i].PaymentMethods[k].PaymentInfo.GetType().GetProperty(properties[j]).GetValue(registros[i].PaymentMethods[k].PaymentInfo) : null;
@@ -245,11 +262,14 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             {
                                 if (properties[j] == "ScheduleEndTime" || properties[j] == "ScheduleStartTime")
                                     continue;
+
                                 else if (properties[j] == "lastupdateon")
                                     row[properties[j]] = DateTime.Now;
+
                                 else if (properties[j] == "OrderID")
                                     row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                     registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
+                                
                                 else
                                     row[properties[j]] = registros[i].DeliveryMethods[k].GetType().GetProperty(properties[j]).GetValue(registros[i].DeliveryMethods[k]) is not null ?
                                     registros[i].DeliveryMethods[k].GetType().GetProperty(properties[j]).GetValue(registros[i].DeliveryMethods[k]) : null;
@@ -268,8 +288,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             {
                                 if (properties[j] == "lastupdateon")
                                     row[properties[j]] = DateTime.Now;
+
                                 else if (properties[j] == "Packages")
                                     row[properties[j]] = null;
+
                                 else
                                     row[properties[j]] = registros[i].Shipments[k].GetType().GetProperty(properties[j]).GetValue(registros[i].Shipments[k]) is not null ?
                                     registros[i].Shipments[k].GetType().GetProperty(properties[j]).GetValue(registros[i].Shipments[k]) : null;
@@ -290,8 +312,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                                 {
                                     if (properties[j] == "lastupdateon")
                                         row[properties[j]] = DateTime.Now;
+
                                     else if (properties[j] == "Items")
                                         row[properties[j]] = null;
+
                                     else
                                         row[properties[j]] = registros[i].Shipments[k].Packages[l].GetType().GetProperty(properties[j]).GetValue(registros[i].Shipments[k].Packages[l]) is not null ?
                                         registros[i].Shipments[k].Packages[l].GetType().GetProperty(properties[j]).GetValue(registros[i].Shipments[k].Packages[l]) : null;
@@ -313,9 +337,11 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                             else if (properties[j] == "OrderNumber")
                                 row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                 registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
+                            
                             else if (properties[j] == "OrderID")
                                 row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
                                 registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
+                            
                             else if (properties[j] == "DeliveryCommission" || properties[j] == "OrderCommission" || properties[j] == "FromPortfolio")
                             {
                                 if (registros[i].SalesRepresentative.Commission is not null)
@@ -324,6 +350,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                                 else
                                     row[properties[j]] =  null;
                             }
+                            
                             else
                                 row[properties[j]] = registros[i].SalesRepresentative.GetType().GetProperty(properties[j]).GetValue(registros[i].SalesRepresentative) is not null ?
                                 registros[i].SalesRepresentative.GetType().GetProperty(properties[j]).GetValue(registros[i].SalesRepresentative) : null;
@@ -339,6 +366,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                         {
                             if (properties[j] == "lastupdateon")
                                 row[properties[j]] = DateTime.Now;
+
                             else
                                 row[properties[j]] = registros[i].Customer.GetType().GetProperty(properties[j]).GetValue(registros[i].Customer) is not null ?
                                 registros[i].Customer.GetType().GetProperty(properties[j]).GetValue(registros[i].Customer) : null;

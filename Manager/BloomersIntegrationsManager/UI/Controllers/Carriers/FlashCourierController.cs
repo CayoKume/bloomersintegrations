@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace BloomersIntegrationsManager.UI.Controllers.BloomersCarriersJobs
 {
     [ApiController]
-    [Route("NewBloomers/BloomersInvoiceCarrierJobs/Flash")]
+    [Route("NewBloomers/BloomersCarriersJobs/FlashCourier")]
     public class FlashCourierController : Controller
     {
         private readonly IFlashCourierService _flashCourierService;
@@ -13,7 +13,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.BloomersCarriersJobs
         public FlashCourierController(IFlashCourierService flashCourierService) =>
             (_flashCourierService) = (flashCourierService);
 
-        [HttpPost("FlashCourierEnviaPedidos")]
+        [HttpPost("EnviaPedidos")]
         public async Task<ActionResult<string>> FlashCourierEnviaPedidos()
         {
             try
@@ -28,7 +28,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.BloomersCarriersJobs
             }
         }
 
-        [HttpPost("FlashCourierEnviaPedido")]
+        [HttpPost("EnviaPedido")]
         public async Task<ActionResult<string>> FlashCourierEnviaPedido([Required][FromQuery] string nr_pedido)
         {
             try
@@ -47,7 +47,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.BloomersCarriersJobs
             }
         }
 
-        [HttpPost("FlashCourierAtualizaLogPedidoEnviado")]
+        [HttpPost("AtualizaLogPedidoEnviado")]
         public async Task<ActionResult<string>> FlashCourierAtualizaLogPedidoEnviado()
         {
             try

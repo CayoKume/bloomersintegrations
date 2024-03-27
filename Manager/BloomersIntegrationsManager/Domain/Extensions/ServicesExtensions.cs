@@ -28,6 +28,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
         public static IServiceCollection AddScopedLinxCommerceServices(this IServiceCollection services)
         {
+            services.AddScoped(typeof(ILinxCommerceRepositoryBase<>), typeof(LinxCommerceRepositoryBase<>));
             services.AddScoped<BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis.IAPICall, BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis.APICall>();
             services.AddHttpClient("LinxCommerceAPI", client =>
             {
@@ -35,9 +36,11 @@ namespace BloomersIntegrationsManager.Domain.Extensions
                 client.Timeout = new TimeSpan(0, 2, 0);
             });
 
-            services.AddScoped(typeof(ILinxCommerceRepositoryBase<>), typeof(LinxCommerceRepositoryBase<>));
             services.AddScoped<IOrderService<SearchOrderResponse.Root>, OrderService<SearchOrderResponse.Root>>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+
+            services.AddScoped<IProductService<SearchProductResponse.Root>, ProductService<SearchProductResponse.Root>>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             return services;
         }

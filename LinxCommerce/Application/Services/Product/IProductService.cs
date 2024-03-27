@@ -1,6 +1,8 @@
-﻿namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
+﻿using BloomersCommerceIntegrations.LinxCommerce.Application.Base;
+
+namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 {
-    public interface IProductService
+    public interface IProductService<TEntity> : ILinxCommerceServiceBase<TEntity> where TEntity : class, new()
     {
     }
 }
