@@ -1,9 +1,6 @@
 ﻿using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
 using BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.Base;
-using Microsoft.Win32;
 using System.Data;
-using System.Reflection;
-using System.Xml.Linq;
 
 namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 {
@@ -58,7 +55,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 FillDataTable(orderCustomer, registros, new List<string> { "lastupdateon", "CreatedDate", "CustomerHash", "CustomerID", "CustomerStatusID", "CustomerType", "Email", "Name", "WebSiteID", "BirthDate", "Cpf", "Gender", "RG", "Surname" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(orderCustomer, database, "Person", orderCustomer.Rows.Count);
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -70,7 +67,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 
             try
             {
-                return await _linxCommerceRepositoryBase.GetParameters(tableName, query);
+                return await _linxCommerceRepositoryBase.GetParameters(query);
             }
             catch
             {
@@ -97,7 +94,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 var retorno = await _linxCommerceRepositoryBase.GetRegistersExists("ORDER_TRUSTED", query);
                 return retorno.ToList();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -376,9 +373,9 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception($"{dataTable.TableName} - FillDataTable - Erro ao preencher datatable {dataTable.TableName} - {ex.Message}");
             }
         }
     }

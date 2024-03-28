@@ -14,9 +14,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis
         {
             try
             {
-                var client = CreateCliente(
+                var client = CreateClient(
                     authentication,
-                    chave
+                    chave,
+                    route
                 );
 
                 var response = await client.PostAsync(client.BaseAddress + route, new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
@@ -26,20 +27,27 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis
                 else
                     throw new Exception($"{response.StatusCode}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception($"{route} - PostRequest - Erro ao consultar end-point {route} na microvix - {ex}");
             }
         }
 
-        private HttpClient CreateCliente(string authentication, string chave)
+        private HttpClient CreateClient(string authentication, string chave, string route)
         {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes($"{authentication}:{chave}");
-            var client = _httpClientFactory.CreateClient("LinxCommerceAPI");
-            client.DefaultRequestHeaders.Add("ContentType", "application/json");
-            client.DefaultRequestHeaders.Add("Authorization", "Basic " + System.Convert.ToBase64String(plainTextBytes));
+            try
+            {
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes($"{authentication}:{chave}");
+                var client = _httpClientFactory.CreateClient("LinxCommerceAPI");
+                client.DefaultRequestHeaders.Add("ContentType", "application/json");
+                client.DefaultRequestHeaders.Add("Authorization", "Basic " + System.Convert.ToBase64String(plainTextBytes));
 
-            return client;
+                return client;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{route} - CreateClient - Erro ao criar HttpClientRequest para o end-point {route} na microvix - {ex}");
+            }
         }
     }
 }

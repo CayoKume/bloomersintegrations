@@ -1,5 +1,4 @@
-﻿using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
-using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
+﻿using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,7 +31,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
             }
         }
 
-        public async Task<int> GetParameters(string tableName, string sql)
+        public async Task<int> GetParameters(string sql)
         {
             try
             {
@@ -43,7 +42,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
             }
             catch (Exception ex)
             {
-                throw new Exception($"{tableName} - GetParameters - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql: {sql} - {ex.Message}");
+                throw new Exception($"LinxAPIParam - GetParameters - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql: {sql} - {ex.Message}");
             }
         }
 
@@ -96,12 +95,19 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
 
         public DataTable CreateDataTable(string tableName, List<string> properties)
         {
-            var dataTable = new DataTable(tableName);
-            for (int i = 0; i < properties.Count(); i++)
+            try
             {
-                dataTable.Columns.Add(properties[i]);
+                var dataTable = new DataTable(tableName);
+                for (int i = 0; i < properties.Count(); i++)
+                {
+                    dataTable.Columns.Add(properties[i]);
+                }
+                return dataTable;
             }
-            return dataTable;
+            catch (Exception ex)
+            {
+                throw new Exception($"{tableName} - CreateDataTable - Erro ao criar a datatable {tableName} - {ex.Message}");
+            }
         }
     }
 }

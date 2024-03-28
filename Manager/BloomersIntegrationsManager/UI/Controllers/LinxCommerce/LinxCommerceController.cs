@@ -2,6 +2,7 @@
 using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
 using BloomersIntegrationsManager.Domain.Entities.Request;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
 {
@@ -22,21 +23,21 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
             (linxOrderService, linxSKUService, linxProductService);
 
         [HttpPost("Pedido")]
-        public async Task<ActionResult> IntegraPedido([FromBody] LinxCommerceOrderRequest request)
+        public async Task<ActionResult> IntegraPedido([Required][FromQuery] string nr_pedido)
         {
             try
             {
-                await _linxOrderService.IntegraRegistrosIndividual("HOMOLOG_LINX_COMMERCE", request.orderNumber);
+                var result await _linxOrderService.IntegraRegistrosIndividual("HOMOLOG_LINX_COMMERCE", nr_pedido);
 
-                //if (result != true)
-                //    return BadRequest($"A API Pedido não conseguiu integrar o pedido: {request.orderNumber}.");
-                //else
-                    return Ok($"Pedido: {request.orderNumber} integrado com sucesso.");
+                if (result != true)
+                    return BadRequest($"A API Pedido não conseguiu integrar o pedido: {nr_pedido}.");
+                else
+                    return Ok($"Pedido: {nr_pedido} integrado com sucesso.");
             }
             catch (Exception ex)
             {
                 Response.StatusCode = 400;
-                return Content($"Nao foi possivel integrar o pedido: {request.orderNumber} . Erro: {ex.Message}");
+                return Content($"Nao foi possivel integrar o pedido: {nr_pedido} . Erro: {ex.Message}");
             }
         }
 

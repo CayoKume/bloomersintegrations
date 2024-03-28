@@ -23,7 +23,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 FillDataTable(skuMetaDataValue, registros, new List<string> { "DisplayName", "FormattedValue", "InputType", "IntegrationID", "PropertyGroup", "PropertyMetadataID", "PropertyName", "SerializedBlobValue", "SerializedValue", "Value", "ProductID", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(skuMetaDataValue, database, "SkuMetaDataValue", skuMetaDataValue.Rows.Count);
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -37,7 +37,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 FillDataTable(skuBase, registros, new List<string> { "CreatedDate", "IntegrationID", "ModifiedDate", "Name", "ProductID", "SKU", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(skuBase, database, "SkuBase", skuBase.Rows.Count);
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -49,7 +49,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 
             try
             {
-                return await _linxCommerceRepositoryBase.GetParameters(tableName, query);
+                return await _linxCommerceRepositoryBase.GetParameters(query);
             }
             catch
             {
@@ -77,7 +77,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 var retorno = await _linxCommerceRepositoryBase.GetRegistersExists("SKUBASE_TRUSTED", query);
                 return retorno.ToList();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -85,72 +85,86 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
         
         private static void FillDataTable(DataTable dataTable, List<SKUs> registros, List<string> properties)
         {
-            for (int i = 0; i < registros.Count(); i++)
+            try
             {
-                if (dataTable.TableName == "Sku")
+                for (int i = 0; i < registros.Count(); i++)
                 {
-                    DataRow row = dataTable.NewRow();
-
-                    for (int j = 0; j < properties.Count(); j++)
+                    if (dataTable.TableName == "Sku")
                     {
-                        if (properties[j] == "lastupdateon")
-                            row[properties[j]] = DateTime.Now;
+                        DataRow row = dataTable.NewRow();
 
-                        else if (properties[j] == "ParentID")
-                            row[properties[j]] = registros[i].ParentsID.Count() > 0 ? registros[i].ParentsID.First() : null;
-
-                        else
-                            row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
-                            registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
-                    }
-
-                    dataTable.Rows.Add(row);
-                }
-                else if (dataTable.TableName == "SkuMetaDataValue")
-                {
-                    DataRow row = dataTable.NewRow();
-
-                    for (int k = 0; k < registros[i].MetadataValues.Count(); k++)
-                    {
                         for (int j = 0; j < properties.Count(); j++)
                         {
                             if (properties[j] == "lastupdateon")
                                 row[properties[j]] = DateTime.Now;
 
-                            else if (properties[j] == "ProductID")
-                                row[properties[j]] = registros[i].ProductID;
+                            else if (properties[j] == "ParentID")
+                                row[properties[j]] = registros[i].ParentsID.Count() > 0 ? registros[i].ParentsID.First() : null;
 
                             else
-                                row[properties[j]] = registros[i].MetadataValues[k].GetType().GetProperty(properties[j]).GetValue(registros[i].MetadataValues[k]) is not null ?
-                                registros[i].MetadataValues[k].GetType().GetProperty(properties[j]).GetValue(registros[i].MetadataValues[k]) : null;
+                                row[properties[j]] = registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) is not null ?
+                                registros[i].GetType().GetProperty(properties[j]).GetValue(registros[i]) : null;
                         }
-                    }
 
-                    dataTable.Rows.Add(row);
+                        dataTable.Rows.Add(row);
+                    }
+                    else if (dataTable.TableName == "SkuMetaDataValue")
+                    {
+                        DataRow row = dataTable.NewRow();
+
+                        for (int k = 0; k < registros[i].MetadataValues.Count(); k++)
+                        {
+                            for (int j = 0; j < properties.Count(); j++)
+                            {
+                                if (properties[j] == "lastupdateon")
+                                    row[properties[j]] = DateTime.Now;
+
+                                else if (properties[j] == "ProductID")
+                                    row[properties[j]] = registros[i].ProductID;
+
+                                else
+                                    row[properties[j]] = registros[i].MetadataValues[k].GetType().GetProperty(properties[j]).GetValue(registros[i].MetadataValues[k]) is not null ?
+                                    registros[i].MetadataValues[k].GetType().GetProperty(properties[j]).GetValue(registros[i].MetadataValues[k]) : null;
+                            }
+                        }
+
+                        dataTable.Rows.Add(row);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{dataTable.TableName} - FillDataTable - Erro ao preencher datatable {dataTable.TableName} - {ex.Message}");
             }
         }
 
         private static void FillDataTable(DataTable dataTable, SearchSKUResponse.Root registros, List<string> properties)
         {
-            for (int i = 0; i < registros.Result.Count(); i++)
+            try
             {
-                if (dataTable.TableName == "SkuBase")
+                for (int i = 0; i < registros.Result.Count(); i++)
                 {
-                    DataRow row = dataTable.NewRow();
-
-                    for (int j = 0; j < properties.Count(); j++)
+                    if (dataTable.TableName == "SkuBase")
                     {
-                        if (properties[j] == "lastupdateon")
-                            row[properties[j]] = DateTime.Now;
+                        DataRow row = dataTable.NewRow();
 
-                        else
-                            row[properties[j]] = registros.Result[i].GetType().GetProperty(properties[j]).GetValue(registros.Result[i]) is not null ?
-                            registros.Result[i].GetType().GetProperty(properties[j]).GetValue(registros.Result[i]) : null;
+                        for (int j = 0; j < properties.Count(); j++)
+                        {
+                            if (properties[j] == "lastupdateon")
+                                row[properties[j]] = DateTime.Now;
+
+                            else
+                                row[properties[j]] = registros.Result[i].GetType().GetProperty(properties[j]).GetValue(registros.Result[i]) is not null ?
+                                registros.Result[i].GetType().GetProperty(properties[j]).GetValue(registros.Result[i]) : null;
+                        }
+
+                        dataTable.Rows.Add(row);
                     }
-
-                    dataTable.Rows.Add(row);
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{dataTable.TableName} - FillDataTable - Erro ao preencher datatable {dataTable.TableName} - {ex.Message}");
             }
         }
     }

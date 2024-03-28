@@ -28,7 +28,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 FillDataTable(productMetaDataValues, registros, new List<string> { "DisplayName", "FormattedValue", "InputType", "IntegrationID", "PropertyGroup", "PropertyMetadataID", "PropertyName", "SerializedBlobValue", "SerializedValue", "Value", "ProductID", "lastupdateon" });
                 _linxCommerceRepositoryBase.BulkInsertIntoTableRaw(productMetaDataValues, database, "ProductMetaDataValue", productMetaDataValues.Rows.Count);
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -40,7 +40,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 
             try
             {
-                return await _linxCommerceRepositoryBase.GetParameters(tableName, query);
+                return await _linxCommerceRepositoryBase.GetParameters(query);
             }
             catch
             {
@@ -68,7 +68,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                 var retorno = await _linxCommerceRepositoryBase.GetRegistersExists("PRODUCT_TRUSTED", query);
                 return retorno.ToList();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -162,9 +162,9 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception($"{dataTable.TableName} - FillDataTable - Erro ao preencher datatable {dataTable.TableName} - {ex.Message}");
             }
         }
     }

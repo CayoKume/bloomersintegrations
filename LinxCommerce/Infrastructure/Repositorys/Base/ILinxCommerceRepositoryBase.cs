@@ -6,7 +6,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys.B
     public interface ILinxCommerceRepositoryBase<TEntity> where TEntity : class, new()
     {
         public void BulkInsertIntoTableRaw(DataTable dataTable, string? database, string? tableName, int dataTableRowsNumber);
-        public Task<int> GetParameters(string tableName, string sql);
+        public Task<int> GetParameters(string sql);
         public Task<TEntity?> GetRegisterExists(string tableName, string sql);
         public Task<List<TEntity>> GetRegistersExists(string? tableName, string? sql);
         public Task IntegraRegistros(string tableName, string sql);

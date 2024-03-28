@@ -44,9 +44,22 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                 _skuRepository.BulkInsertIntoTableRaw(listSku, database);
                 _skuRepository.BulkInsertIntoTableRaw(searchSKUs, database);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (
+                ex.Message.Contains("BulkInsertIntoTableRaw") ||
+                ex.Message.Contains("GetParameters") ||
+                ex.Message.Contains("GetRegisterExists") ||
+                ex.Message.Contains("GetRegistersExists") ||
+                ex.Message.Contains("InsereRegistroIndividual") ||
+                ex.Message.Contains("CreateDataTable") ||
+                ex.Message.Contains("PostRequest") ||
+                ex.Message.Contains("CreateClient") ||
+                ex.Message.Contains("FillDataTable"))
             {
                 throw;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($" LinxEcomProduct - IntegraRegistros - Erro ao integrar registros - {ex.Message}");
             }
         }
     }

@@ -156,13 +156,26 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                     _orderRepository.BulkInsertIntoTableRaw(ordersListToAdd, database);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) when (
+                ex.Message.Contains("BulkInsertIntoTableRaw") ||
+                ex.Message.Contains("GetParameters") ||
+                ex.Message.Contains("GetRegisterExists") ||
+                ex.Message.Contains("GetRegistersExists") ||
+                ex.Message.Contains("InsereRegistroIndividual") ||
+                ex.Message.Contains("CreateDataTable") ||
+                ex.Message.Contains("PostRequest") ||
+                ex.Message.Contains("CreateClient") ||
+                ex.Message.Contains("FillDataTable"))
             {
                 throw;
             }
+            catch (Exception ex)
+            {
+                throw new Exception($" LinxEcomOrder - IntegraRegistros - Erro ao integrar registros - {ex.Message}");
+            }
         }
 
-        public async Task IntegraRegistrosIndividual(string database, string identificador)
+        public async Task<bool> IntegraRegistrosIndividual(string database, string identificador)
         {
             try
             {
@@ -300,10 +313,25 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 
                     _orderRepository.BulkInsertIntoTableRaw(ordersListToAdd, database);
                 }
+
+                return await Task.FromResult(true);
+            }
+            catch (Exception ex) when (
+                ex.Message.Contains("BulkInsertIntoTableRaw") || 
+                ex.Message.Contains("GetParameters") || 
+                ex.Message.Contains("GetRegisterExists") || 
+                ex.Message.Contains("GetRegistersExists") || 
+                ex.Message.Contains("InsereRegistroIndividual") || 
+                ex.Message.Contains("CreateDataTable") || 
+                ex.Message.Contains("PostRequest") ||
+                ex.Message.Contains("CreateClient") ||
+                ex.Message.Contains("FillDataTable"))
+            {
+                throw;
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception($" LinxEcomOrder - IntegraRegistros - Erro ao integrar registros - {ex.Message}");
             }
         }
     }
