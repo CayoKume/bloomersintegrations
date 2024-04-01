@@ -1,0 +1,232 @@
+﻿using BloomersWorkersCore.Domain.CustomExceptions;
+using BloomersWorkersCore.Domain.Enums;
+using BloomersWorkersCore.Domain.Extensions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+
+namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
+{
+    public class VDPage : IVDPage
+    {
+        public void SelectOrder(string nr_pedido, IWebDriver _driver)
+        {
+            try
+            {
+                Thread.Sleep(5 * 1000);
+
+                PropertiesCollection._wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
+
+                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Enabled)
+                {
+                    var pedido = $"{nr_pedido.Replace("OA-VD", "").Replace("OA-LJ", "").Replace("MX-VD", "").Replace("MI-VD", "").Replace("MI-LJ", "")}";
+                    SelectElement comboboxOrder = new SelectElement(PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("documento"))));
+                    comboboxOrder.SelectByValue($"{pedido}");
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B2"))).Click();
+                }
+            }
+            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"VDPage (SelectOrder) - O bot nao foi capaz de encontrar o pedido nas opções de seleção", 
+                    ex.InnerException.Message,
+                    Page.TypeEnum.VD
+                );
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new Exception(@$"VDPage (SelectOrder) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"VDPage (SelectOrder) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+            }
+        }
+
+        public void SetOrderData(string cnpj, IWebDriver _driver)
+        {
+            try
+            {
+                var serie = string.Empty;
+                if (cnpj == "42538267000268")
+                    serie = "4 (Num.Autom.)";
+                else if (cnpj == "38367316000199")
+                    serie = "3 (Num.Autom.)";
+                else
+                    serie = "1 (Num.Autom.)";
+
+                SelectElement comboboxSerie = new SelectElement(PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("serie"))));
+                comboboxSerie.SelectByText(serie);
+
+                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_datasaida"))).SendKeys($"{DateTime.Today.ToString("dd/MM/yyyy")}");
+
+                if (DateTime.Now.Hour < 23)
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_horasaida"))).SendKeys($"{DateTime.Now.AddHours(1).ToString("HH:mm")}");
+                else
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_horasaida"))).SendKeys($"{DateTime.Now.ToString("HH:mm")}");
+
+                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
+            }
+            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"VDPage (SetOrderData) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
+                    ex.InnerException.Message,
+                    Page.TypeEnum.VD
+                );
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new Exception(@$"VDPage (SetOrderData) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"VDPage (SetOrderData) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+            }
+        }
+
+        public void SetShippimentData(string cnpj, string cod_transportadora, string volumes, IWebDriver _driver)
+        {
+            try
+            {
+                Thread.Sleep(5 * 1000);
+                IWebElement frete = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("frete")));
+                IWebElement tipoFrete = PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete")));
+                IWebElement tipoFreteRedespacho = PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho")));
+                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("quantidade"))).SendKeys(volumes);
+
+                if (cnpj == "42538267000268")
+                {
+                    ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFrete);
+                    ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
+                    ((IJavaScriptExecutor)_driver).ExecuteScript($"arguments[0].value='{cod_transportadora}'", ExtensionsMethods.GetElement(By.Id("transportador"), _driver));
+
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("CX");
+                }
+                else
+                {
+                    if (frete.GetAttribute("value") == "0,00")
+                    {
+                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFrete);
+                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
+                    }
+                    else
+                    {
+                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='2'", tipoFrete);
+                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='2'", tipoFreteRedespacho);
+                    }
+                    ((IJavaScriptExecutor)_driver).ExecuteScript($"arguments[0].value='{cod_transportadora}'", ExtensionsMethods.GetElement(By.Id("transportador"), _driver));
+
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("PACOTE");
+                }
+
+                Thread.Sleep(3 * 1000);
+                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("btConfirmOff"))).Click();
+                Thread.Sleep(3 * 1000);
+
+                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("dialogAlerta"))).Displayed)
+                {
+                    var message = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("mensagem"))).Text;
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("ui-button-text-only"))).Click();
+                    throw new Exception($@" - VDPage (SetShippimentData) - Erro ao selecionar dados da transportadora do pedido - {message}");
+                }
+
+                Thread.Sleep(4 * 1000);
+                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
+            }
+            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"VDPage (SetShippimentData) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
+                    ex.InnerException.Message,
+                    Page.TypeEnum.VD
+                );
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new Exception(@$"VDPage (SetShippimentData) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"VDPage (SetShippimentData) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+            }
+        }
+
+        public void SetCostCenter(string cnpj, IWebDriver _driver)
+        {
+            try
+            {
+                string locator = string.Empty;
+
+                if (ExtensionsMethods.ElementExist(By.Id("centro_custo0"), _driver))
+                {
+                    if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))).Enabled && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))).Displayed)
+                    {
+                        if (cnpj == "42538267000268")
+                            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='17'", PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))));
+                        locator = "confirmar";
+                    }
+                }
+
+                else if (ExtensionsMethods.ElementExist(By.Id("centro_custo"), _driver))
+                {
+                    if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))).Enabled)
+                    {
+                        if (cnpj == "42538267000268")
+                            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='17'", PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))));
+                        locator = "B1";
+                    }
+                }
+
+                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Enabled)
+                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Name($"{locator}"))).Click();
+            }
+            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"VDPage (SetCostCenter) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
+                    ex.InnerException.Message,
+                    Page.TypeEnum.VD
+                );
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new Exception(@$"VDPage (SetCostCenter) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"VDPage (SetCostCenter) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+            }
+        }
+
+        public bool WaitChaveNFe(IWebDriver _driver)
+        {
+            try
+            {
+                IWebElement frameObject = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("object-nfe")));
+                _driver.SwitchTo().Frame(frameObject);
+
+                if (ExtensionsMethods.ElementExist(By.Id("div-sucesso"), _driver))
+                    return true;
+                else
+                    return false;
+            }
+            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"VDPage (WaitChaveNFe) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
+                    ex.InnerException.Message,
+                    Page.TypeEnum.VD
+                );
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new Exception(@$"VDPage (WaitChaveNFe) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"VDPage (WaitChaveNFe) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+            }
+        }
+    }
+}

@@ -13,7 +13,8 @@
           "Hangfire": "1.8.11",
           "LinxCommerce": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.3",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "TotalExpress": "1.0.0"
         },
         "runtime": {
           "BloomersIntegrationsManager.dll": {}
@@ -405,6 +406,16 @@
         "runtime": {
           "LinxCommerce.dll": {}
         }
+      },
+      "TotalExpress/1.0.0": {
+        "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0",
+          "Microsoft.Extensions.Http": "8.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "TotalExpress.dll": {}
+        }
       }
     }
   },
@@ -712,6 +723,11 @@
       "sha512": ""
     },
     "LinxCommerce/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TotalExpress/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

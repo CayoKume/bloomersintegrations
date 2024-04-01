@@ -2,7 +2,6 @@
 using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys;
 using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -163,11 +162,6 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
 
         private HttpClient CreateCliente(string userName, string password)
         {
-            HttpClientHandler handler = new HttpClientHandler
-            {
-                Credentials = new NetworkCredential(userName, password)
-            };
-
             var client = _httpClientFactory.CreateClient("FlashCourierAPI");
             client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes($"{userName}:{password}")));
             client.DefaultRequestHeaders.Add("Cookie", "ROUTEID=.1");

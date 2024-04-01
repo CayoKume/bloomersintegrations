@@ -1,5 +1,7 @@
 ﻿using BloomersCarriersIntegrations.FlashCourier.Application.Services;
 using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys;
+using BloomersCarriersIntegrations.TotalExpress.Application.Services;
+using BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys;
 using BloomersCommerceIntegrations.LinxCommerce.Application.Services;
 using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
 using BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys;
@@ -77,6 +79,20 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
             services.AddScoped<IFlashCourierService, FlashCourierService>();
             services.AddScoped<IFlashCourierRepository, FlashCourierRepository>();
+
+            services.AddScoped<BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis.IAPICall, BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis.APICall>();
+            services.AddHttpClient("TotalExpressAPI", client =>
+            {
+                client.BaseAddress = new Uri("https://apis.totalexpress.com.br/");
+                client.Timeout = new TimeSpan(0, 2, 0);
+            });
+            services.AddHttpClient("TotalExpressEdiAPI", client =>
+            {
+                client.BaseAddress = new Uri("https://edi.totalexpress.com.br/");
+                client.Timeout = new TimeSpan(0, 2, 0);
+            });
+            services.AddScoped<ITotalExpressService, TotalExpressService>();
+            services.AddScoped<ITotalExpressRepository, TotalExpressRepository>();
 
             return services;
         }

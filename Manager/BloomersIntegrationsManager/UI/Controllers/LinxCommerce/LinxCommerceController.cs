@@ -1,6 +1,5 @@
 ﻿using BloomersCommerceIntegrations.LinxCommerce.Application.Services;
 using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
-using BloomersIntegrationsManager.Domain.Entities.Request;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -27,7 +26,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
         {
             try
             {
-                var result await _linxOrderService.IntegraRegistrosIndividual("HOMOLOG_LINX_COMMERCE", nr_pedido);
+                var result = await _linxOrderService.IntegraRegistrosIndividual("HOMOLOG_LINX_COMMERCE", nr_pedido);
 
                 if (result != true)
                     return BadRequest($"A API Pedido não conseguiu integrar o pedido: {nr_pedido}.");

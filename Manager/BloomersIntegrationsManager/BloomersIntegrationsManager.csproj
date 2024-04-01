@@ -14,12 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Carriers\FlashCourier\FlashCourier.csproj" />
+    <ProjectReference Include="..\..\Carriers\TotalExpress\TotalExpress.csproj" />
     <ProjectReference Include="..\..\LinxCommerce\LinxCommerce.csproj" />
   </ItemGroup>
 

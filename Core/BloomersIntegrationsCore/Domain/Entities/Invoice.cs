@@ -11,5 +11,5 @@ public class Invoice
     public decimal weight_nf { get; set; }
     public string? type_nf { get; } = "NF";
     public string? serie_nf { get; set; }
-    public DateTime data_emission_nf { get; set; }
+    public DateTime date_emission_nf { get; set; }
 }

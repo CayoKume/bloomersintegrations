@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlashCourier")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81cf445c196d59e4cefb8ce84e589856ec5e5ea3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b356103b2bcec750dff5af8146bb248615022cec")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlashCourier")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlashCourier")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
