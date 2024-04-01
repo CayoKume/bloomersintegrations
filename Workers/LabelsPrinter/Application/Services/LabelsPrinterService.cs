@@ -22,8 +22,8 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
         {
             try
             {
-                string? path = _configuration.GetSection("ConfigureService").GetSection("path").Value;
-                string? pathLabels = _configuration.GetSection("ConfigureService").GetSection("pathLabels").Value;
+                string? path = _configuration.GetSection("ConfigureService").GetSection("LabelsPrinter").GetSection("path").Value;
+                string? pathLabels = _configuration.GetSection("ConfigureService").GetSection("LabelsPrinter").GetSection("pathLabels").Value;
 
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);

@@ -1,7 +1,24 @@
-using BloomersWorkersManager;
+using BloomersWorkersManager.Domain.Extensions;
+using Serilog;
+using Serilog.Events;
+using System.Reflection;
 
-var builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddHostedService<Worker>();
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var builder = Host.CreateApplicationBuilder(args);
+        builder.AddServices();
 
-var host = builder.Build();
-host.Run();
+        Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Information()
+                    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+                    .WriteTo.Console()
+                    .WriteTo.File($@"{Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}/logs/InvoiceBot-.txt", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
+
+        var host = builder.Build();
+        host.Run();
+    }
+}

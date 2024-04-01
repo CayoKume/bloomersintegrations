@@ -1,0 +1,1 @@
+2024-04-01 15:05:40.450 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - BeginExecuteReader: CommandText property has not been initialized

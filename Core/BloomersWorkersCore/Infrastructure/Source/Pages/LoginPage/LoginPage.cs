@@ -20,7 +20,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
         {
             try
             {
-                var botName = $"{_configuration.GetSection("ConfigApi").GetSection("BotName").Value} {_configuration.GetSection("ConfigApi").GetSection("FinalIdControle").Value}";
+                var botName = $"{_configuration.GetSection("ConfigureService").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("FinalIdControle").Value}";
                 var comboBoxSelectByText = string.Empty;
                 var valueSelectByValue = string.Empty;
 
@@ -68,7 +68,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
         {
             try
             {
-                var botName = $"{_configuration.GetSection("ConfigApi").GetSection("BotName").Value} {_configuration.GetSection("ConfigApi").GetSection("FinalIdControle").Value}";
+                var botName = $"{_configuration.GetSection("ConfigureService").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("FinalIdControle").Value}";
                 var comboBoxSelectByText = string.Empty;
                 var valueSelectByValue = string.Empty;
 

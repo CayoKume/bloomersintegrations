@@ -28,7 +28,7 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
         {
             try
             {
-                var botName = $"{_configuration.GetSection("ConfigApi").GetSection("BotName").Value} {_configuration.GetSection("ConfigApi").GetSection("FinalIdControle").Value}";
+                var botName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
                 var orders = await _invoiceOrderRepository.GetOrdersFromIT4(botName);
 
                 if (orders.Count() > 0)
