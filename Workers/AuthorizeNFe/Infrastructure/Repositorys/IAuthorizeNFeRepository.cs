@@ -6,6 +6,7 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Repositorys
     public interface IAuthorizeNFeRepository
     {
         public Task<List<Order>> GetPendingNFesFromB2CConsultaNFe();
+        public Task<List<Order>> GetPendingNFesFromLinxXMLDocumentos();
         public Task<MicrovixUser> GetMicrovixUser(string gabot);
     }
 }

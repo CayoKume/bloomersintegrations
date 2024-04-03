@@ -46,7 +46,10 @@ namespace BloomersWorkers.ChangingOrder.Application.Services
                                 _loginPage.SelectCompany(order.company.doc_company, user, driver, wait);
 
                                 if (ChangingOrder(order, driver, wait))
+                                {
+                                    await _changingOrderRepository.UpdateReturnIT4ITEM(order.number, order.idControl);
                                     Log.Information($"Pedido: {order.number}, alterado com sucesso");
+                                }
                             }
                             catch (CustomNoSuchElementException ex)
                             {
@@ -81,6 +84,7 @@ namespace BloomersWorkers.ChangingOrder.Application.Services
                 _homePage.OpenSideMenu(driver, wait);
                 _homePage.NavigateToChangingOrdersScreen(driver, wait);
                 _changingOrderPage.SelectOrder(order.number, driver, wait);
+                _changingOrderPage.ConfirmOrder(driver, wait);
 
                 for (int i = 0; i < order.itens.Count(); i++)
                 {
@@ -89,6 +93,8 @@ namespace BloomersWorkers.ChangingOrder.Application.Services
                     else if (order.itens[i].qtde_volo != order.itens[i].qtde_microvix)
                         _changingOrderPage.ChangeQtdeItemFromList(order.itens[i].cod_product_volo, order.itens[i].qtde_volo, driver, wait);
                 }
+
+                _changingOrderPage.ProceedOrder(driver, wait);
                 return _changingOrderPage.AproveOrder(driver, wait);
             }
             catch (Exception ex)

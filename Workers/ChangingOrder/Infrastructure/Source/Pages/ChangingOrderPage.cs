@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using BloomersWorkersCore.Domain.Enums;
+using BloomersWorkersCore.Domain.Extensions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
@@ -10,29 +12,33 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
         {
             try
             {
-                ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", _driver.FindElement(By.Id("B1")));
+                var buttonOrderAproval = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/table[2]/tbody/tr[3]/td[2]/a", _wait, Page.TypeEnum.ChangingOrder, "AproveOrder");
+                ExtensionsMethods.ClickInElement(buttonOrderAproval);
 
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/table[2]/tbody/tr[3]/td[2]/a"))).Click();
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("b_at"))).Click();
+                var buttonFullAproval = ExtensionsMethods.GetElementToBeClickableById("b_at", _wait, Page.TypeEnum.ChangingOrder, "AproveOrder");
+                ExtensionsMethods.ClickInElement(buttonFullAproval);
 
                 return true;
             }
-            catch (ElementClickInterceptedException ex)
+            catch
             {
-                throw new Exception(@$" - ChangingOrdersPage (AproveOrder) - O bot nao foi capaz de clicar no botão, o botão pode estar: desabilitado, ainda não carregado, coberto com alguma modal, ou não localizado através das cordenadas - {ex.Message.Replace("\n", "")}");
+                throw;
             }
-            catch (ElementNotInteractableException ex)
+        }
+
+        public void ProceedOrder(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
             {
-                throw new Exception(@$" - ChangingOrdersPage (AproveOrder) - O bot nao foi capaz de interagir com elemento, o elemento pode estar: não visivel, não exibido, fora da tela, ou coberto com alguma modal - {ex.Message.Replace("\n", "")}");
+                var buttonAprove = ExtensionsMethods.GetElementToBeClickableById("B1", _wait, Page.TypeEnum.ChangingOrder, "AproveOrder");
+
+                ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", buttonAprove);
+
+                ExtensionsMethods.ClickInElement(buttonAprove);
             }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            catch
             {
-                throw new Exception(@$" - ChangingOrdersPage (AproveOrder) - O bot nao foi capaz de encontrar para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@" - ChangingOrdersPage (AproveOrder) - Erro ao tentar alterar quantidade produto da lista - {ex.Message}");
+                throw;
             }
         }
 
@@ -40,13 +46,17 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
         {
             try
             {
-                var rowsTabelaProdutos = _driver.FindElement(By.Id("tbl_itens")).FindElements(By.TagName("tr"));
-                for (int i = 1; i < rowsTabelaProdutos.Count(); i++) //ignora thead
+                var tableItens = ExtensionsMethods.GetElementExistsById("tbl_itens", _wait, Page.TypeEnum.ChangingOrder, "ChangeQtdeItemFromList");
+                var tableItensRows = ExtensionsMethods.GetElementsExistsByTagName("tr", Page.TypeEnum.ChangingOrder, "ChangeQtdeItemFromList", tableItens);
+
+                for (int i = 1; i < tableItensRows.Count(); i++) //ignora thead
                 {
-                    if (rowsTabelaProdutos[i].FindElements(By.TagName("td")).First().Text.Contains($"{cod_produto}"))
+                    var columnsRows = ExtensionsMethods.GetElementsExistsByTagName("td", Page.TypeEnum.ChangingOrder, "RemoveItemFromList", tableItensRows[i]);
+
+                    if (columnsRows.First().Text.Contains($"{cod_produto}"))
                     {
-                        IWebElement btnEditar = rowsTabelaProdutos[i].FindElements(By.ClassName("iconEdit")).First();
-                        btnEditar.Click();
+                        var buttonEdit = ExtensionsMethods.GetElementsExistsByClassName("iconEdit", _wait, Page.TypeEnum.ChangingOrder, "RemoveItemFromList", tableItensRows[i]);
+                        ExtensionsMethods.ClickInElement(buttonEdit.First());
 
                         var parentWindowHandle = _driver.CurrentWindowHandle;
                         var lstWindows = _driver.WindowHandles.ToList();
@@ -61,16 +71,17 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
                                 continue;
                         }
 
-                        IWebElement quantidade = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("quantidade")));
-                        quantidade.Clear();
-                        quantidade.SendKeys($"{qtde_produto}");
+                        var inputQuantity = ExtensionsMethods.GetElementToBeClickableById("quantidade", _wait, Page.TypeEnum.ChangingOrder, "RemoveItemFromList");
+                        var buttonAlter = ExtensionsMethods.GetElementToBeClickableByClassName("btn-submit", _wait, Page.TypeEnum.ChangingOrder, "RemoveItemFromList");
 
-                        _wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("btn-submit"))).Click();
+                        ExtensionsMethods.ClearInputElementValue(inputQuantity);
+                        ExtensionsMethods.SendKeysToElement(inputQuantity, $"{qtde_produto}");
+                        ExtensionsMethods.ClickInElement(buttonAlter);
 
                         _driver.SwitchTo().Window(parentWindowHandle);
                         _driver.Manage().Window.Maximize();
 
-                        _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
+                        ExtensionsMethods.ChangeToFrameWhenItsAvaiable("main", _wait, Page.TypeEnum.ChangingOrder, "ChangeQtdeItemFromList");
 
                         Thread.Sleep(2 * 1000);
                         break;
@@ -79,21 +90,9 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
                         continue;
                 }
             }
-            catch (ElementClickInterceptedException ex)
+            catch
             {
-                throw new Exception(@$" - ChangingOrdersPage (ChangeQtdeItemFromList) - O bot nao foi capaz de clicar no botão, o botão pode estar: desabilitado, ainda não carregado, coberto com alguma modal, ou não localizado através das cordenadas - {ex.Message.Replace("\n", "")}");
-            }
-            catch (ElementNotInteractableException ex)
-            {
-                throw new Exception(@$" - ChangingOrdersPage (ChangeQtdeItemFromList) - O bot nao foi capaz de interagir com elemento, o elemento pode estar: não visivel, não exibido, fora da tela, ou coberto com alguma modal - {ex.Message.Replace("\n", "")}");
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$" - ChangingOrdersPage (ChangeQtdeItemFromList) - O bot nao foi capaz de encontrar para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@" - ChangingOrdersPage (ChangeQtdeItemFromList) - Erro ao tentar alterar quantidade produto da lista - {ex.Message}");
+                throw;
             }
         }
 
@@ -101,13 +100,17 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
         {
             try
             {
-                var rowsTabelaProdutos = _driver.FindElement(By.Id("tbl_itens")).FindElements(By.TagName("tr"));
-                for (int i = 1; i < rowsTabelaProdutos.Count(); i++) //ignora thead
+                var tableItens = ExtensionsMethods.GetElementExistsById("tbl_itens", _wait, Page.TypeEnum.ChangingOrder, "RemoveItemFromList");
+                var tableItensRows = ExtensionsMethods.GetElementsExistsByTagName("tr", Page.TypeEnum.ChangingOrder, "RemoveItemFromList", tableItens);
+                
+                for (int i = 1; i < tableItensRows.Count(); i++) //ignora thead
                 {
-                    if (rowsTabelaProdutos[i].FindElements(By.TagName("td")).First().Text.Contains($"{cod_produto}"))
+                    var columnsRows = ExtensionsMethods.GetElementsExistsByTagName("td", Page.TypeEnum.ChangingOrder, "RemoveItemFromList", tableItensRows[i]);
+                    
+                    if (columnsRows.First().Text.Contains($"{cod_produto}"))
                     {
-                        IWebElement btnExcluir = rowsTabelaProdutos[i].FindElements(By.ClassName("lixeiraOn")).First();
-                        btnExcluir.Click();
+                        var buttonsDeleteItem = ExtensionsMethods.GetElementsExistsByClassName("lixeiraOn", _wait, Page.TypeEnum.ChangingOrder, "RemoveItemFromList", tableItensRows[i]);
+                        ExtensionsMethods.ClickInElement(buttonsDeleteItem.First());
                         Thread.Sleep(2 * 1000);
                         break;
                     }
@@ -115,25 +118,9 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
                         continue;
                 }
             }
-            catch (NoSuchElementException ex)
+            catch
             {
-                throw new Exception(@$" - ChangingOrdersPage (SelectOrder) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
-            }
-            catch (ElementClickInterceptedException ex)
-            {
-                throw new Exception(@$" - ChangingOrdersPage (RemoveItemFromList) - O bot nao foi capaz de clicar no botão, o botão pode estar: desabilitado, ainda não carregado, coberto com alguma modal, ou não localizado através das cordenadas - {ex.Message}");
-            }
-            catch (ElementNotInteractableException ex)
-            {
-                throw new Exception(@$" - ChangingOrdersPage (RemoveItemFromList) - O bot nao foi capaz de interagir com elemento, o elemento pode estar: não visivel, não exibido, fora da tela, ou coberto com alguma modal - {ex.Message}");
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$" - ChangingOrdersPage (RemoveItemFromList) - O bot nao foi capaz de encontrar para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@" - ChangingOrdersPage (RemoveItemFromList) - Erro ao tentar remover produto da lista - {ex.Message}");
+                throw;
             }
         }
 
@@ -143,33 +130,35 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages
             {
                 Thread.Sleep(2 * 1000);
 
-                _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("orcamento"))).SendKeys($"{nr_pedido.Replace("MI-", "").Replace("OA-", "").Replace("VD", "").Replace("LJ", "")}");
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("B1"))).Click();
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[4]/div[3]/div/button"))).Click();
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("B1"))).Click();
+                ExtensionsMethods.ChangeToFrameWhenItsAvaiable("main", _wait, Page.TypeEnum.ChangingOrder, "SelectOrder");
+
+                var inputBudget = ExtensionsMethods.GetElementToBeClickableById("orcamento", _wait, Page.TypeEnum.ChangingOrder, "SelectOrder");
+                var buttonProceedFromSelectOrder = ExtensionsMethods.GetElementToBeClickableByName("B1", _wait, Page.TypeEnum.ChangingOrder, "SelectOrder");
+
+                ExtensionsMethods.SendKeysToElement(inputBudget, $"{nr_pedido.Replace("MI-", "").Replace("OA-", "").Replace("VD", "").Replace("LJ", "")}");
+                ExtensionsMethods.ClickInElement(buttonProceedFromSelectOrder);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void ConfirmOrder(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
+            {
+                var buttonOkFromModal = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/div[4]/div[3]/div/button", _wait, Page.TypeEnum.ChangingOrder, "SelectOrder");
+                var buttonProceedFromConfirmOrder = ExtensionsMethods.GetElementToBeClickableByName("B1", _wait, Page.TypeEnum.ChangingOrder, "SelectOrder");
+
+                ExtensionsMethods.ClickInElement(buttonOkFromModal);
+                ExtensionsMethods.ClickInElement(buttonProceedFromConfirmOrder);
 
                 Thread.Sleep(2 * 1000);
             }
-            catch (NoSuchElementException ex)
+            catch
             {
-                throw new Exception(@$" - ChangingOrdersPage (SelectOrder) - O bot nao foi capaz de encontrar para interagir - {ex.Message}");
-            }
-            catch (ElementClickInterceptedException ex)
-            {
-                throw new Exception(@$" - ChangingOrdersPage (SelectOrder) - O bot nao foi capaz de clicar no botão, o botão pode estar: desabilitado, ainda não carregado, coberto com alguma modal, ou não localizado através das cordenadas - {ex.Message}");
-            }
-            catch (ElementNotInteractableException ex)
-            {
-                throw new Exception(@$" - ChangingOrdersPage (SelectOrder) - O bot nao foi capaz de interagir com elemento, o elemento pode estar: não visivel, não exibido, fora da tela, ou coberto com alguma modal - {ex.Message}");
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$" - ChangingOrdersPage (SelectOrder) - O bot nao foi capaz de encontrar para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@" - ChangingOrdersPage (SelectOrder) - Erro ao selecionar pedido para ser alterado - {ex.Message}");
+                throw;
             }
         }
     }

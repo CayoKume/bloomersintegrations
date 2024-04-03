@@ -10,6 +10,7 @@
             Home = 3,
             Login = 4,
             ChangingOrder = 5,
+            AuthorizeNFe = 6,
         }
     }
 }

@@ -20,18 +20,6 @@ namespace BloomersWorkersCore.Domain.Extensions
             }
         }
 
-        public static IEnumerable<IWebElement> GetElements(By locator, IWebDriver _driver)
-        {
-            try
-            {
-                return _driver.FindElements(locator);
-            }
-            catch (StaleElementReferenceException)
-            {
-                return null;
-            }
-        }
-
         public static bool ElementExist(By locator, IWebDriver _driver)
         {
             try
@@ -57,20 +45,6 @@ namespace BloomersWorkersCore.Domain.Extensions
             catch (StaleElementReferenceException)
             {
                 return null;
-            }
-        }
-
-        public static bool ElementExistInAnotherWindow(By locator, string windowHandle, IWebDriver _driver)
-        {
-            try
-            {
-                _driver.SwitchTo().Window(windowHandle);
-                _driver.FindElement(locator);
-                return true;
-            }
-            catch
-            {
-                return false;
             }
         }
 
@@ -129,6 +103,26 @@ namespace BloomersWorkersCore.Domain.Extensions
                 return element;
         }
         /********************************************************************************************************************************************************************/
+        public static void ChangeToFrameWhenItsAvaiable(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        {
+            try
+            {
+                _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
         public static void ClearInputElementValue(IWebElement element)
         {
             try
@@ -231,6 +225,29 @@ namespace BloomersWorkersCore.Domain.Extensions
             }
         }
 
+        public static bool ChecksIfElementExistInAnotherWindowById(string locator, WebDriverWait _wait, Page.TypeEnum page, string method, string windowHandle, IWebDriver _driver)
+        {
+            try
+            {
+                _driver.SwitchTo().Window(windowHandle);
+
+                var result = _wait.Until(ExpectedConditions.ElementExists(By.Id(locator)));
+
+                if (result is not null)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
         public static IWebElement GetElementToBeClickableById(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
         {
             try
@@ -291,7 +308,27 @@ namespace BloomersWorkersCore.Domain.Extensions
             }
         }
 
-        public static IWebElement GetElementExixtsByXpath(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        public static IWebElement GetElementToBeClickableByName(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementToBeClickable(By.Name(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static IWebElement GetElementExistsByXpath(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
         {
             try
             {
@@ -311,16 +348,123 @@ namespace BloomersWorkersCore.Domain.Extensions
             }
         }
 
-        public static IWebElement? GetElementExixtsById(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        public static IWebElement GetElementExistsById(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
         {
             try
             {
-                var result = _wait.Until(ExpectedConditions.ElementExists(By.Id(locator)));
+                return _wait.Until(ExpectedConditions.ElementExists(By.Id(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
 
-                if (result is not null)
-                    return result;
-                else
-                    return null;
+        public static IWebElement? GetElementIfExistsById(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementExists(By.Id(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static IWebElement? GetElementIfExistsByXpath(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementExists(By.XPath(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? GetElementsPresentsByXpath(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? GetElementsExistsByTagName(string locator, Page.TypeEnum page, string method, IWebElement element)
+        {
+            try
+            {
+                return element.FindElements(By.TagName(locator));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? GetElementsExistsByClassName(string locator, WebDriverWait _wait, Page.TypeEnum page, string method, IWebElement element)
+        {
+            try
+            {
+                return element.FindElements(By.ClassName(locator));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? GetElementsExistsByXpath(string locator, WebDriverWait _wait, Page.TypeEnum page, string method, IWebElement element)
+        {
+            try
+            {
+                return element.FindElements(By.XPath(locator));
             }
             catch (Exception ex) when (ex.Message.Contains("Timed out"))
             {

@@ -1,4 +1,5 @@
-﻿using BloomersWorkers.AuthorizeNFe.Infrastructure.Repositorys;
+﻿using BloomersWorkers.AuthorizeNFe.Domain.Entities;
+using BloomersWorkers.AuthorizeNFe.Infrastructure.Repositorys;
 using BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages;
 using BloomersWorkersCore.Infrastructure.Source.Drivers;
 using BloomersWorkersCore.Infrastructure.Source.Pages;
@@ -23,7 +24,11 @@ namespace BloomersWorkers.AuthorizeNFe.Application.Services
             try
             {
                 string? workerName = _configuration.GetSection("ConfigureService").GetSection("WorkerName").Value;
-                var orders = await _authorizeNFeRepository.GetPendingNFesFromB2CConsultaNFe();
+                var ordersB2C = await _authorizeNFeRepository.GetPendingNFesFromB2CConsultaNFe();
+                var ordersVD = await _authorizeNFeRepository.GetPendingNFesFromLinxXMLDocumentos();
+                var orders = new List<Order>();
+                orders.AddRange(ordersB2C);
+                orders.AddRange(ordersVD);
 
                 if (orders.Count() > 0)
                 {
@@ -39,7 +44,7 @@ namespace BloomersWorkers.AuthorizeNFe.Application.Services
                             _homePage.NavigateToNFeScreen(driver, wait);
                             var parentWindowHandle = _authorizeNFePage.NavigateToNFeTab(driver, wait);
                             _authorizeNFePage.SetFilters(order, driver, wait);
-                            _authorizeNFePage.GetResults(parentWindowHandle, driver);
+                            _authorizeNFePage.GetResults(parentWindowHandle, driver, wait);
                         }
                     }
                 }

@@ -42,15 +42,17 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Repositorys
                              FROM [GENERAL].[dbo].IT4_WMS_DOCUMENTO A (NOLOCK)
                              JOIN [GENERAL].[dbo].IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE 
                              WHERE
-                             --A.DOCUMENTO IN ('') AND
-                             (A.DOCUMENTO LIKE '%-VD%' OR A.DOCUMENTO LIKE '%-LJ%')
-                             AND B.QTDE != B.QTDERETORNO
-                             AND A.RETORNO IS NOT NULL
-                             AND A.CHAVE_NFE IS NULL
-                             AND A.XML_FATURAMENTO IS NULL
-                             AND A.NF_SAIDA IS NULL
-                             AND A.ORIGEM = 'P'
-                             AND A.SERIE != 'MX-'";
+                             A.DOCUMENTO IN ('MI-VD37693')
+                             --(A.DOCUMENTO LIKE '%-VD%' OR A.DOCUMENTO LIKE '%-LJ%')
+                             --AND B.QTDE != B.QTDERETORNO
+                             --AND A.RETORNO IS NOT NULL
+                             --AND A.CHAVE_NFE IS NULL
+                             --AND A.XML_FATURAMENTO IS NULL
+                             --AND A.NF_SAIDA IS NULL
+                             --AND A.ORIGEM = 'P'
+                             --AND A.SERIE != 'MX-'
+                             --AND A.CANCELADO IS NULL
+							 --AND A.CANCELAMENTO IS NULL";
 
             try
             {
@@ -77,9 +79,19 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Repositorys
             }
         }
 
-        public Task UpdateReturnIT4ITEM(string nr_pedido, string idControle)
+        public async Task UpdateReturnIT4ITEM(string nr_pedido, string idControle)
         {
-            throw new NotImplementedException();
+            var sql = $@"UPDATE GENERAL..IT4_WMS_DOCUMENTO_ITEM SET 
+	                        Qtde = QtdeRetorno
+                            WHERE idControle = '{idControle}'";
+            try
+            {
+                _conn.GetIDbConnection().ExecuteAsync(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{nr_pedido} - UpdateIT4_WMS_DOCUMENTO_ITEM - Erro ao atualizar status do registro na tabela UpdateIT4_WMS_DOCUMENTO_ITEM - {ex.Message}");
+            }
         }
     }
 }

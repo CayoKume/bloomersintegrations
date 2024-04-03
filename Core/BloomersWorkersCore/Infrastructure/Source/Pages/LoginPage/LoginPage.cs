@@ -53,7 +53,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
                     valueSelectByValue = "14";
                 }
 
-                var comboBoxSelectCompany = ExtensionsMethods.GetElementExixtsById("sel_empresa_portal_usuario", _wait, Page.TypeEnum.Login, "SelectCompany");
+                var comboBoxSelectCompany = ExtensionsMethods.GetElementExistsById("sel_empresa_portal_usuario", _wait, Page.TypeEnum.Login, "SelectCompany");
                 var flagChoseCompany = ExtensionsMethods.ChecksIfElementIsVisibleById("quantidade_empresa", _wait, Page.TypeEnum.Login, "SelectCompany");
                 var flagSelectTextIsPresent = ExtensionsMethods.ChecksIfTextIsPresentInComboBox(comboBoxSelectByText, _wait, Page.TypeEnum.Login, "SelectCompany", comboBoxSelectCompany);
                 var flagTopbarSelCompany = ExtensionsMethods.ChecksIfElementExixtsById("topbar_sel_empresa_portal_usuario", _wait, Page.TypeEnum.Login, "SelectCompany");
@@ -73,7 +73,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
 
                 if (flagTopbarSelCompany)
                 {
-                    var dropDownMenu = ExtensionsMethods.GetElementExixtsById("topbar_sel_empresa_portal_usuario", _wait, Page.TypeEnum.Login, "SelectCompany");
+                    var dropDownMenu = ExtensionsMethods.GetElementExistsById("topbar_sel_empresa_portal_usuario", _wait, Page.TypeEnum.Login, "SelectCompany");
                     var selectDropDownMenu = new SelectElement(dropDownMenu);
 
                     selectDropDownMenu.SelectByValue(valueSelectByValue);

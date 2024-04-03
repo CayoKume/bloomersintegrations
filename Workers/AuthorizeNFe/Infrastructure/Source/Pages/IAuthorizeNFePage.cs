@@ -8,6 +8,6 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages
     {
         public string NavigateToNFeTab(IWebDriver _driver, WebDriverWait _wait);
         public void SetFilters(Order order, IWebDriver _driver, WebDriverWait _wait);
-        public bool GetResults(string parentWindowHandle, IWebDriver _driver);
+        public bool GetResults(string parentWindowHandle, IWebDriver _driver, WebDriverWait _wait);
     }
 }
