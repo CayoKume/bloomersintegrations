@@ -202,6 +202,7 @@
       },
       "BloomersWorkersCore/1.0.0": {
         "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "Selenium.Support": "4.19.0",
           "Selenium.WebDriver": "4.19.0",

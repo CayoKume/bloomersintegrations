@@ -14,3 +14,6 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkers
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkersCore\obj\Debug\net8.0\refint\BloomersWorkersCore.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkersCore\obj\Debug\net8.0\BloomersWorkersCore.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkersCore\obj\Debug\net8.0\ref\BloomersWorkersCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkersCore\bin\Debug\net8.0\BloomersIntegrationsCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkersCore\bin\Debug\net8.0\BloomersIntegrationsCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Core\BloomersWorkersCore\obj\Debug\net8.0\Bloomers.960695F8.Up2Date

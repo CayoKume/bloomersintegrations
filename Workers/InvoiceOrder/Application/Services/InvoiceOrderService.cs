@@ -7,6 +7,7 @@ using BloomersWorkersCore.Infrastructure.Source.Drivers;
 using BloomersWorkersCore.Infrastructure.Source.Pages;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using Serilog;
 
 namespace BloomersWorkers.InvoiceOrder.Application.Services
@@ -28,21 +29,24 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
         {
             try
             {
-                var botName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
+                string? botName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
                 var orders = await _invoiceOrderRepository.GetOrdersFromIT4(botName);
 
                 if (orders.Count() > 0)
                 {
                     using (var driver = _chromeDriver.GetChromeDriverInstance())
                     {
+                        var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
+
                         foreach (var order in orders)
                         {
                             try
                             {
                                 var user = await _invoiceOrderRepository.GetMicrovixUser(botName);
-                                _loginPage.Login(order.company.doc_company, user, driver);
+                                _loginPage.InsertLoginAndPassword(user, wait);
+                                _loginPage.SelectCompany(order.company.doc_company, user, driver, wait);
 
-                                if (InvoiceOrder(order, driver))
+                                if (InvoiceOrder(order, driver, wait))
                                 {
                                     Log.Information($"Pedido: {order.number}, faturado com sucesso");
                                     await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(order.number, order.invoice_attempts + 1);
@@ -75,29 +79,29 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
             }
         }
 
-        private bool InvoiceOrder(Order order, IWebDriver driver)
+        private bool InvoiceOrder(Order order, IWebDriver driver, WebDriverWait wait)
         {
             try
             {
-                _homePage.NavigateToVDOrB2COrNFeOrChangingOrdersScreen(order.number, driver);
-
                 #region VENDA DIRETA
                 if (order.number.Contains("OA-VD") || order.number.Contains("OA-LJ") || order.number.Contains("MI-VD") || order.number.Contains("MI-LJ"))
                 {
-                    _vdPage.SelectOrder(order.number, driver);
-                    _vdPage.SetOrderData(order.company.doc_company, driver);
-                    _vdPage.SetShippimentData(order.company.doc_company, order.shippingCompany.cod_shippingCompany, order.volumes, driver);
-                    _vdPage.SetCostCenter(order.company.doc_company, driver);
+                    _homePage.NavigateToVDScreen(driver, wait);
+                    _vdPage.SelectOrder(order.number, driver, wait);
+                    _vdPage.SetOrderData(order.company.doc_company, driver, wait);
+                    _vdPage.SetShippimentData(order.company.doc_company, order.shippingCompany.cod_shippingCompany, order.volumes, driver, wait);
+                    _vdPage.SetCostCenter(order.company.doc_company, driver, wait);
 
-                    return _vdPage.WaitChaveNFe(driver);
+                    return _vdPage.WaitChaveNFe(driver, wait);
                 }
                 #endregion
 
                 #region B2C
                 else
                 {
-                    _b2cPage.SelectOrder(order.number, driver);
-                    return _b2cPage.SetOrderData(order.shippingCompany.cod_shippingCompany, order.company.doc_company, order.number, driver);
+                    _homePage.NavigateToB2CScreen(driver, wait);
+                    _b2cPage.SelectOrder(order.number, driver, wait);
+                    return _b2cPage.SetOrderData(order.shippingCompany.cod_shippingCompany, order.company.doc_company, order.number, driver, wait);
                 }
                 #endregion
             }

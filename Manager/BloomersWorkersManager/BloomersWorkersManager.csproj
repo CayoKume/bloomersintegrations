@@ -14,6 +14,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\BloomersIntegrationsCore\BloomersIntegrationsCore.csproj" />
+    <ProjectReference Include="..\..\Workers\AuthorizeNFe\AuthorizeNFe.csproj" />
+    <ProjectReference Include="..\..\Workers\ChangingOrder\ChangingOrder.csproj" />
+    <ProjectReference Include="..\..\Workers\ChangingPassword\ChangingPassword.csproj" />
+    <ProjectReference Include="..\..\Workers\InsertReverse\InsertReverse.csproj" />
     <ProjectReference Include="..\..\Workers\InvoiceOrder\InvoiceOrder.csproj" />
     <ProjectReference Include="..\..\Workers\LabelsPrinter\LabelsPrinter.csproj" />
   </ItemGroup>

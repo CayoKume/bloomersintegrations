@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\BloomersIntegrationsCore\BloomersIntegrationsCore.csproj" />
+    <ProjectReference Include="..\..\Core\BloomersWorkersCore\BloomersWorkersCore.csproj" />
+  </ItemGroup>
+
 </Project>

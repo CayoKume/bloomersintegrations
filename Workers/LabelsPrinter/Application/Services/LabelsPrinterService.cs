@@ -1,6 +1,5 @@
 ﻿using BloomersWorkers.LabelsPrinter.Domain.Entities;
 using BloomersWorkers.LabelsPrinter.Infrastructure.Apis;
-using BloomersWorkers.LabelsPrinter.Infrastructure.PrinterHelpers;
 using BloomersWorkers.LabelsPrinter.Infrastructure.Repositorys;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -57,11 +56,6 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                                 else if (order.shippingCompany.cod_shippingCompany == "7601" && order.shippingCompany.metodo_shippingCompany == "ETUR")
                                     order.shippingCompany.metodo_shippingCompany = "EXP";
 
-                                if (order.client.doc_client == "38367316000946" || order.client.doc_client == "38367316000270" || order.client.doc_client == "38367316000431" || order.client.doc_client == "38367316000512" || order.client.doc_client == "38367316000601" || order.client.doc_client == "38367316000350" || order.client.doc_client == "38367316000784")
-                                    order.complement_address_store = $"{order.client.complement_address_client}";
-                                else
-                                    order.complement_address_store = $"{order.client.reason_client} - {order.client.address_client}, {order.client.street_number_client}";
-
                                 if (order.client.doc_client.Length == 14)
                                     order.client.doc_client = Convert.ToInt64(order.client.doc_client).ToString(@"00\.000\.000\/0000\-00");
 
@@ -101,10 +95,10 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
 
                                 for (int i = 0; i < order.zpl.Count(); i++)
                                 {
-                                    RawPrinterHelper.SendStringToPrinter("EtiquetasMicrovix", order.zpl[i]);
+                                    //RawPrinterHelper.SendStringToPrinter("EtiquetasMicrovix", order.zpl[i]);
                                 }
 
-                                await _labelsPrinterRepository.UpdateStatus(order.number);
+                                //await _labelsPrinterRepository.UpdateStatus(order.number);
                             }
                         }
                         catch (Exception ex) when (ex.Message.Contains(" - "))
@@ -135,7 +129,7 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($@" - RemoveInvalidCharactersForZebra - Erro ao remover caracteres especiais do zpl - {ex.Message}");
+                throw new Exception($@"RemoveInvalidCharactersForZebra - Erro ao remover caracteres especiais do zpl - {ex.Message}");
             }
         }
     }

@@ -9,12 +9,12 @@ namespace BloomersWorkers.LabelsPrinter.Domain.Entities
         private List<string> _zpl = new List<string>();
         public string delivery_to { get; set; }
         public string complement_address_store { get; set; }
-        public string nProt_order { get; set; }
-        public string tpNF_order { get; set; }
+        public string nProt { get; set; }
+        public string tpNF { get; set; }
         public string _return { get; set; }
         public string rote { get; set; }
-        public int volumes { get; set; }
-        public DateTime dateProt_order { get; set; }
+        public string serie { get; set; }
+        public DateTime dateProt { get; set; }
 
         public Client client { get; set; }
         public Company company { get; set; }

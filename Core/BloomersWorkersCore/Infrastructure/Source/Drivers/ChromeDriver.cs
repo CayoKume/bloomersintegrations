@@ -24,9 +24,13 @@ namespace BloomersWorkersCore.Infrastructure.Source.Drivers
             chromeOptions.AddArgument("--user-agent=Chrome/80.0.3987.132");
             //chromeOptions.AddArgument("--headless");
             _driver = new OpenQA.Selenium.Chrome.ChromeDriver(driverService, chromeOptions);
-            PropertiesCollection._wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
             _driver.Url = $"https://erp.microvix.com.br/";
             return _driver;
+        }
+
+        public WebDriverWait GetWebDriverWaitInstance(IWebDriver _driver)
+        {
+            return new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuthorizeNFe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b356103b2bcec750dff5af8146bb248615022cec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0554a3f5afe1a64bed1858c174e18b89a404ee0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuthorizeNFe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuthorizeNFe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,14 +22,15 @@ namespace BloomersWorkers.LabelsPrinter.Infrastructure.Repositorys
                                      A.VOLUMES AS volumes,
                                      A.NB_CFOP_PEDIDO AS cfop,
                                      A.NB_ENTREGAR_PARA AS delivery_to,
+                                     A.SERIE AS serie,
 
-                                     (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) AS nProt_order,
-                                     (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhRecbto>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 10, 25)) AS dateProt_order,
+                                     (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) AS nProt,
+                                     (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhRecbto>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 10, 25)) AS dateProt,
                                      
                                      CASE
                                      WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '1' THEN '1-SAIDA'
                                      WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
-                                     END AS tpNF_order,
+                                     END AS tpNF,
 
                                      (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') AS _return,
 
@@ -89,14 +90,14 @@ namespace BloomersWorkers.LabelsPrinter.Infrastructure.Repositorys
                                      (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS data_emission_nf
                                      FROM GENERAL..IT4_WMS_DOCUMENTO A
                                      WHERE
-                                     A.DOCUMENTO IN ('MI-56786-01')
-                                     --A.NB_ETIQUETA_IMPRESSA = 'N' 
-                                     --AND A.SERIE = 'MI-' 
-                                     --AND A.CHAVE_NFE IS NOT NULL 
-                                     --AND A.XML_FATURAMENTO IS NOT NULL 
-                                     --AND A.NB_DOC_REMETENTE = '38367316000199'
-                                     --AND A.RETORNO > '2023-10-10'
-                                     --AND A.VOLUMES IS NOT NULL";
+                                     --A.DOCUMENTO IN ()
+                                     A.NB_ETIQUETA_IMPRESSA = 'N' 
+                                     AND A.SERIE = 'MI-' 
+                                     AND A.CHAVE_NFE IS NOT NULL 
+                                     AND A.XML_FATURAMENTO IS NOT NULL 
+                                     AND A.NB_DOC_REMETENTE = '38367316000199'
+                                     AND A.RETORNO > '2023-10-10'
+                                     AND A.VOLUMES IS NOT NULL";
 
                 return _conn.GetIDbConnection().QueryAsync<Order, Client, ShippingCompany, Company, Invoice, Order>(sql, (order, client, shippingCompany, company, invoice) =>
                 {

@@ -934,6 +934,20 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
+      "AuthorizeNFe/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0",
+          "BloomersWorkersCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AuthorizeNFe.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuthorizeNFe.dll": {}
+        }
+      },
       "BloomersIntegrationsCore/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -953,6 +967,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "Selenium.Support": "4.19.0",
           "Selenium.WebDriver": "4.19.0",
@@ -967,6 +982,44 @@
         },
         "runtime": {
           "bin/placeholder/BloomersWorkersCore.dll": {}
+        }
+      },
+      "ChangingOrder/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0",
+          "BloomersWorkersCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ChangingOrder.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ChangingOrder.dll": {}
+        }
+      },
+      "ChangingPassword/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0",
+          "BloomersWorkersCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ChangingPassword.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ChangingPassword.dll": {}
+        }
+      },
+      "InsertReverse/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/InsertReverse.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InsertReverse.dll": {}
         }
       },
       "InvoiceOrder/1.0.0": {
@@ -2580,6 +2633,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "AuthorizeNFe/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/AuthorizeNFe/AuthorizeNFe.csproj",
+      "msbuildProject": "../../Workers/AuthorizeNFe/AuthorizeNFe.csproj"
+    },
     "BloomersIntegrationsCore/1.0.0": {
       "type": "project",
       "path": "../../Core/BloomersIntegrationsCore/BloomersIntegrationsCore.csproj",
@@ -2589,6 +2647,21 @@
       "type": "project",
       "path": "../../Core/BloomersWorkersCore/BloomersWorkersCore.csproj",
       "msbuildProject": "../../Core/BloomersWorkersCore/BloomersWorkersCore.csproj"
+    },
+    "ChangingOrder/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/ChangingOrder/ChangingOrder.csproj",
+      "msbuildProject": "../../Workers/ChangingOrder/ChangingOrder.csproj"
+    },
+    "ChangingPassword/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/ChangingPassword/ChangingPassword.csproj",
+      "msbuildProject": "../../Workers/ChangingPassword/ChangingPassword.csproj"
+    },
+    "InsertReverse/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/InsertReverse/InsertReverse.csproj",
+      "msbuildProject": "../../Workers/InsertReverse/InsertReverse.csproj"
     },
     "InvoiceOrder/1.0.0": {
       "type": "project",
@@ -2603,7 +2676,11 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "AuthorizeNFe >= 1.0.0",
       "BloomersIntegrationsCore >= 1.0.0",
+      "ChangingOrder >= 1.0.0",
+      "ChangingPassword >= 1.0.0",
+      "InsertReverse >= 1.0.0",
       "InvoiceOrder >= 1.0.0",
       "LabelsPrinter >= 1.0.0",
       "Microsoft.Extensions.Hosting >= 8.0.0",
@@ -2645,6 +2722,18 @@
           "projectReferences": {
             "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj": {
               "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\AuthorizeNFe.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\AuthorizeNFe.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingOrder\\ChangingOrder.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingOrder\\ChangingOrder.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingPassword\\ChangingPassword.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingPassword\\ChangingPassword.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InsertReverse\\InsertReverse.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InsertReverse\\InsertReverse.csproj"
             },
             "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj": {
               "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj"

@@ -1,6 +1,7 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using BloomersWorkersCore.Domain.Entities;
+using BloomersWorkersCore.Infrastructure.Repositorys;
 using Dapper;
 using Order = BloomersWorkers.InvoiceOrder.Domain.Entities.Order;
 
@@ -8,10 +9,11 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
 {
     public class InvoiceOrderRepository : IInvoiceOrderRepository
     {
+        private readonly IBloomersWorkersCoreRepository _bloomersWorkersCoreRepository;
         private readonly ISQLServerConnection _conn;
 
-        public InvoiceOrderRepository(ISQLServerConnection conn) =>
-            (_conn) = (conn);
+        public InvoiceOrderRepository(ISQLServerConnection conn, IBloomersWorkersCoreRepository bloomersWorkersCoreRepository) =>
+            (_conn, _bloomersWorkersCoreRepository) = (conn, bloomersWorkersCoreRepository);
 
         public async Task<IEnumerable<Order>> GetOrdersFromIT4(string botName)
         {
@@ -106,19 +108,11 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
         {
             try
             {
-                var sql = $@"SELECT 
-                         usuario, senha FROM GENERAL..VoloInvoiceUsuariosMicrovix
-                         WHERE gabot = '{gabot}'";
-
-                using (var conn = _conn.GetIDbConnection())
-                {
-                    var result = await conn.QueryAsync<MicrovixUser>(sql);
-                    return result.First();
-                }
+                return await _bloomersWorkersCoreRepository.GetMicrovixUser(gabot);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"GetMicrovixUser - Erro ao obter usuario para o bot na tabela GENERAL..VoloInvoiceUsuariosMicrovix - {ex.Message}");
+                throw;
             }
         }
     }

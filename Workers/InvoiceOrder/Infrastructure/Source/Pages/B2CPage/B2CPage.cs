@@ -2,29 +2,30 @@
 using BloomersWorkersCore.Domain.Enums;
 using BloomersWorkersCore.Domain.Extensions;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
 {
     public class B2CPage : IB2CPage
     {
-        public void SelectOrder(string nr_pedido, IWebDriver _driver)
+        public void SelectOrder(string nr_pedido, IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
                 Thread.Sleep(4 * 1000);
 
-                PropertiesCollection._wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"div-main\"]/div[1]/div[1]/div[2]/div/input"))).SendKeys($"{nr_pedido}");
+                _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"div-main\"]/div[1]/div[1]/div[2]/div/input"))).SendKeys($"{nr_pedido}");
 
                 Thread.Sleep(2 * 1000);
 
                 if (!ExtensionsMethods.ElementIsVisible(By.ClassName("alert-info"), _driver))
-                    PropertiesCollection._wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@id=\"div-main\"]/div[1]/div[3]/div/div/div/div/div[1]/div[1]"))).FirstOrDefault().FindElement(By.XPath("//*[@id=\"div-main\"]/div[1]/div[3]/div/div/div/div/div[1]/div[1]/label")).Click();
+                    _wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@id=\"div-main\"]/div[1]/div[3]/div/div/div/div/div[1]/div[1]"))).FirstOrDefault().FindElement(By.XPath("//*[@id=\"div-main\"]/div[1]/div[3]/div/div/div/div/div[1]/div[1]/label")).Click();
                 else
                     throw new Exception(@$"pedido nao encontrado");
 
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("btnFaturarRodape"))).Click();
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("btnFaturarRodape"))).Click();
             }
             catch (Exception ex) when (ex.Message.Contains("pedido nao encontrado"))
             {
@@ -44,7 +45,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             }
         }
 
-        public bool SetOrderData(string cod_transportadora, string cnpj, string nr_pedido, IWebDriver _driver)
+        public bool SetOrderData(string cod_transportadora, string cnpj, string nr_pedido, IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
@@ -72,8 +73,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
 
                 Thread.Sleep(2 * 1000);
 
-                var modalFaturarVendas = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("modalFaturarVendas")));
-                var comboboxesFaturamento = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("modalFaturarVendas"))).FindElements(By.ClassName("col-sm-12"));
+                var modalFaturarVendas = _wait.Until(ExpectedConditions.ElementExists(By.Id("modalFaturarVendas")));
+                var comboboxesFaturamento = _wait.Until(ExpectedConditions.ElementExists(By.Id("modalFaturarVendas"))).FindElements(By.ClassName("col-sm-12"));
                 foreach (var comboboxFaturamento in comboboxesFaturamento)
                 {
                     if (comboboxFaturamento.FindElement(By.TagName("label")).Text == "Série")

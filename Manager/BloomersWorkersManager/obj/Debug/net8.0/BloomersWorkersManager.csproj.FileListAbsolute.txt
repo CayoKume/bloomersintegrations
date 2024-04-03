@@ -71,3 +71,11 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWork
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\obj\Debug\net8.0\BloomersWorkersManager.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\obj\Debug\net8.0\BloomersWorkersManager.genruntimeconfig.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\obj\Debug\net8.0\ref\BloomersWorkersManager.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\AuthorizeNFe.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\ChangingOrder.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\ChangingPassword.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\InsertReverse.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\AuthorizeNFe.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\ChangingOrder.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\ChangingPassword.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersWorkersManager\bin\Debug\net8.0\InsertReverse.pdb

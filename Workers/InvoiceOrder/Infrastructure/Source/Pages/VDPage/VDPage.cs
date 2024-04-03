@@ -9,20 +9,20 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
 {
     public class VDPage : IVDPage
     {
-        public void SelectOrder(string nr_pedido, IWebDriver _driver)
+        public void SelectOrder(string nr_pedido, IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
                 Thread.Sleep(5 * 1000);
 
-                PropertiesCollection._wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
+                _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
 
-                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Enabled)
+                if (_wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Displayed && _wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Enabled)
                 {
                     var pedido = $"{nr_pedido.Replace("OA-VD", "").Replace("OA-LJ", "").Replace("MX-VD", "").Replace("MI-VD", "").Replace("MI-LJ", "")}";
-                    SelectElement comboboxOrder = new SelectElement(PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("documento"))));
+                    SelectElement comboboxOrder = new SelectElement(_wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("documento"))));
                     comboboxOrder.SelectByValue($"{pedido}");
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B2"))).Click();
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B2"))).Click();
                 }
             }
             catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
@@ -43,7 +43,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             }
         }
 
-        public void SetOrderData(string cnpj, IWebDriver _driver)
+        public void SetOrderData(string cnpj, IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
@@ -55,17 +55,17 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                 else
                     serie = "1 (Num.Autom.)";
 
-                SelectElement comboboxSerie = new SelectElement(PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("serie"))));
+                SelectElement comboboxSerie = new SelectElement(_wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("serie"))));
                 comboboxSerie.SelectByText(serie);
 
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_datasaida"))).SendKeys($"{DateTime.Today.ToString("dd/MM/yyyy")}");
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_datasaida"))).SendKeys($"{DateTime.Today.ToString("dd/MM/yyyy")}");
 
                 if (DateTime.Now.Hour < 23)
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_horasaida"))).SendKeys($"{DateTime.Now.AddHours(1).ToString("HH:mm")}");
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_horasaida"))).SendKeys($"{DateTime.Now.AddHours(1).ToString("HH:mm")}");
                 else
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_horasaida"))).SendKeys($"{DateTime.Now.ToString("HH:mm")}");
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("f_horasaida"))).SendKeys($"{DateTime.Now.ToString("HH:mm")}");
 
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
             }
             catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
             {
@@ -85,15 +85,15 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             }
         }
 
-        public void SetShippimentData(string cnpj, string cod_transportadora, string volumes, IWebDriver _driver)
+        public void SetShippimentData(string cnpj, string cod_transportadora, string volumes, IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
                 Thread.Sleep(5 * 1000);
-                IWebElement frete = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("frete")));
-                IWebElement tipoFrete = PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete")));
-                IWebElement tipoFreteRedespacho = PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho")));
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("quantidade"))).SendKeys(volumes);
+                IWebElement frete = _wait.Until(ExpectedConditions.ElementExists(By.Id("frete")));
+                IWebElement tipoFrete = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete")));
+                IWebElement tipoFreteRedespacho = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho")));
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("quantidade"))).SendKeys(volumes);
 
                 if (cnpj == "42538267000268")
                 {
@@ -101,7 +101,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                     ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
                     ((IJavaScriptExecutor)_driver).ExecuteScript($"arguments[0].value='{cod_transportadora}'", ExtensionsMethods.GetElement(By.Id("transportador"), _driver));
 
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("CX");
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("CX");
                 }
                 else
                 {
@@ -117,22 +117,22 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                     }
                     ((IJavaScriptExecutor)_driver).ExecuteScript($"arguments[0].value='{cod_transportadora}'", ExtensionsMethods.GetElement(By.Id("transportador"), _driver));
 
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("PACOTE");
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("PACOTE");
                 }
 
                 Thread.Sleep(3 * 1000);
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("btConfirmOff"))).Click();
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("btConfirmOff"))).Click();
                 Thread.Sleep(3 * 1000);
 
-                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("dialogAlerta"))).Displayed)
+                if (_wait.Until(ExpectedConditions.ElementExists(By.Id("dialogAlerta"))).Displayed)
                 {
-                    var message = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("mensagem"))).Text;
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("ui-button-text-only"))).Click();
+                    var message = _wait.Until(ExpectedConditions.ElementExists(By.Id("mensagem"))).Text;
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("ui-button-text-only"))).Click();
                     throw new Exception($@" - VDPage (SetShippimentData) - Erro ao selecionar dados da transportadora do pedido - {message}");
                 }
 
                 Thread.Sleep(4 * 1000);
-                PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
             }
             catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
             {
@@ -152,7 +152,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             }
         }
 
-        public void SetCostCenter(string cnpj, IWebDriver _driver)
+        public void SetCostCenter(string cnpj, IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
@@ -160,26 +160,26 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
 
                 if (ExtensionsMethods.ElementExist(By.Id("centro_custo0"), _driver))
                 {
-                    if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))).Enabled && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))).Displayed)
+                    if (_wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))).Enabled && _wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))).Displayed)
                     {
                         if (cnpj == "42538267000268")
-                            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='17'", PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))));
+                            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='17'", _wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo0"))));
                         locator = "confirmar";
                     }
                 }
 
                 else if (ExtensionsMethods.ElementExist(By.Id("centro_custo"), _driver))
                 {
-                    if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))).Enabled)
+                    if (_wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))).Displayed && _wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))).Enabled)
                     {
                         if (cnpj == "42538267000268")
-                            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='17'", PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))));
+                            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='17'", _wait.Until(ExpectedConditions.ElementExists(By.Id("centro_custo"))));
                         locator = "B1";
                     }
                 }
 
-                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Enabled)
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Name($"{locator}"))).Click();
+                if (_wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Displayed && _wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Enabled)
+                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Name($"{locator}"))).Click();
             }
             catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
             {
@@ -199,11 +199,11 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             }
         }
 
-        public bool WaitChaveNFe(IWebDriver _driver)
+        public bool WaitChaveNFe(IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
-                IWebElement frameObject = PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("object-nfe")));
+                IWebElement frameObject = _wait.Until(ExpectedConditions.ElementExists(By.Id("object-nfe")));
                 _driver.SwitchTo().Frame(frameObject);
 
                 if (ExtensionsMethods.ElementExist(By.Id("div-sucesso"), _driver))

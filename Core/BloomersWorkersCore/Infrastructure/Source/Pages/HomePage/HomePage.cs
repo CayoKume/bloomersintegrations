@@ -2,75 +2,128 @@
 using BloomersWorkersCore.Domain.Enums;
 using BloomersWorkersCore.Domain.Extensions;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 namespace BloomersWorkersCore.Infrastructure.Source.Pages
 {
     public class HomePage : IHomePage
     {
-        public void NavigateToVDOrB2COrNFeOrChangingOrdersScreen(string nr_pedido, IWebDriver _driver)
+        public void ClosePendingInvoicesModal(IWebDriver _driver, WebDriverWait _wait)
         {
             try
             {
+                Thread.Sleep(2 * 1000);
+
                 _driver.SwitchTo().DefaultContent();
 
-                Thread.Sleep(2 * 1000);
-                
-                if (PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("modalNotasPendentes"))).Displayed && PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.Id("modalNotasPendentes"))).Enabled)
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"modalNotasPendentes\"]/div/div/div[3]/button"))).Click();
-
-                IWebElement menu = PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("iconMenu")));
-
-                if (menu.GetAttribute("title") == "Expandir menu")
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("frente-logo-hamburger"))).Click();
-
-                if (nr_pedido.Equals("NFe"))
+                var modal = ExtensionsMethods.GetElementExixtsById("modalNotasPendentes", _wait, Page.TypeEnum.Home, "ClosePendingInvoicesModal");
+                   
+                if (modal.Displayed && modal.Enabled)
                 {
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_12\"]/a"))).Click();
-                    ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", _driver.FindElement(By.XPath("//*[@id=\"liModulo_12\"]/ul/li/a")));
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_12\"]/ul/li/a"))).Click();
-                }
-
-                else if (nr_pedido.Equals("Orcamento/Pedido"))
-                {
-                    if (!PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"liModulo_10\"]/ul/li[2]/ul/li[2]/a"))).Displayed)
-                    {
-                        PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_10\"]"))).Click();
-                        PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_10\"]/ul/li[2]/a"))).Click();
-                    }
-
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_10\"]/ul/li[2]/ul/li[3]/a"))).Click();
-                }
-
-                else if (nr_pedido.Contains("-VD") || nr_pedido.Contains("-LJ"))
-                {
-                    if (!PropertiesCollection._wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"liModulo_10\"]/ul/li[5]/ul/li[2]/a"))).Displayed)
-                    {
-                        PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_10\"]"))).Click();
-                        PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@title='Nota Fiscal']"))).Click();
-                    }
-
-                    ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", _driver.FindElement(By.XPath("//*[@id=\"liModulo_8\"]/a")));
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_10\"]/ul/li[5]/ul/li[2]/a"))).Click();
-                }
-
-                else
-                {
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_3\"]"))).Click();
-                    PropertiesCollection._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"liModulo_3\"]/ul/li[2]"))).Click();
+                    var buttonCloseModal = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"modalNotasPendentes\"]/div/div/div[3]/button", _wait, Page.TypeEnum.Home, "ClosePendingInvoicesModal");
+                    ExtensionsMethods.ClickInElement(buttonCloseModal);
                 }
             }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            catch
             {
-                throw new CustomNoSuchElementException(
-                    @$"HomePage (NavigateToVDOrB2COrNFeOrChangingOrdersScreen) - O bot nao foi capaz de encontrar o elemento para interagir", 
-                    ex.InnerException.Message,
-                    Page.TypeEnum.Home  
-                );
+                throw;
             }
-            catch (Exception ex)
+        }
+
+        public void OpenSideMenu(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
             {
-                throw new Exception($@"HomePage (NavigateToVDOrB2COrNFeOrChangingOrdersScreen) - Erro ao navegar entre o menu da home page - {ex.InnerException.Message}");
+                var iconMenu = ExtensionsMethods.GetElementToBeClickableById("iconMenu", _wait, Page.TypeEnum.Home, "OpenSideMenu");
+                var buttonMenu = ExtensionsMethods.GetElementToBeClickableById("frente-logo-hamburger", _wait, Page.TypeEnum.Home, "OpenSideMenu");
+
+                if (iconMenu.GetAttribute("title") == "Expandir menu")
+                    ExtensionsMethods.ClickInElement(buttonMenu);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void NavigateToB2CScreen(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
+            {
+                var buttonB2C = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_3\"]", _wait, Page.TypeEnum.Home, "NavigateToB2CScreen");
+                var buttonSalesPanel = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_3\"]/ul/li[2]", _wait, Page.TypeEnum.Home, "NavigateToB2CScreen");
+
+                ExtensionsMethods.ClickInElement(buttonB2C);
+                ExtensionsMethods.ClickInElement(buttonSalesPanel);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void NavigateToChangingOrdersScreen(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
+            {
+                var buttonInvoicing = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_10\"]", _wait, Page.TypeEnum.Home, "NavigateToChangingOrdersScreen");
+                var buttonQuoteOrder = ExtensionsMethods.GetElementExixtsByXpath("//*[@id=\"liModulo_10\"]/ul/li[2]/a", _wait, Page.TypeEnum.Home, "NavigateToChangingOrdersScreen");
+                var buttonChangeQuoteOrder = ExtensionsMethods.GetElementExixtsByXpath("//*[@id=\"liModulo_10\"]/ul/li[2]/ul/li[3]/a", _wait, Page.TypeEnum.Home, "NavigateToChangingOrdersScreen");
+
+                if (!buttonQuoteOrder.Displayed)
+                {
+                    ExtensionsMethods.ClickInElement(buttonInvoicing);
+                    ExtensionsMethods.ClickInElement(buttonQuoteOrder);
+                }
+
+                ExtensionsMethods.ClickInElement(buttonChangeQuoteOrder);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void NavigateToNFeScreen(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
+            {
+                var buttonNFe = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_12\"]/a", _wait, Page.TypeEnum.Home, "NavigateToNFeScreen");
+                var buttonStartNFe = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_12\"]/ul/li/a", _wait, Page.TypeEnum.Home, "NavigateToNFeScreen");
+
+                ExtensionsMethods.ClickInElement(buttonNFe);
+                ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", buttonStartNFe);
+                ExtensionsMethods.ClickInElement(buttonStartNFe);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void NavigateToVDScreen(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
+            {
+                var buttonInvoicing = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_10\"]", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");
+                var buttonInvoiceOrder = ExtensionsMethods.GetElementExixtsByXpath("//*[@id=\"liModulo_10\"]/ul/li[5]/ul/li[2]/a", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");
+                var buttonInvoice = ExtensionsMethods.GetElementExixtsByXpath("//a[@title='Nota Fiscal']", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");
+                var buttonMySales = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_8\"]/a", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");
+
+                if (!buttonInvoiceOrder.Displayed)
+                {
+                    ExtensionsMethods.ClickInElement(buttonInvoicing);
+                    ExtensionsMethods.ClickInElement(buttonInvoice);
+                }
+
+                //scroll to my sales just for the buttonInvoiceOrder turn visible
+                ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", buttonMySales);
+                ExtensionsMethods.ClickInElement(buttonInvoiceOrder);
+            }
+            catch
+            {
+                throw;
             }
         }
     }
