@@ -38,103 +38,22 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages
                     {
                         var tds = ExtensionsMethods.GetElementsExistsByTagName("td", Page.TypeEnum.AuthorizeNFe, "GetResults", rows[row]);
 
-                        //if (tds[index_situacao].Text == "5 - Pendente de Autorização") //5 - Pendente de Autorização
-                        //{
-                        //    tds[index_opcoes].FindElement(By.Id($"flyout_{row}")).Click();
+                        if (PendingAuthorization(tds[index_opcoes], tds[index_situacao].Text, _wait, searchresponse.Text, _driver, row, parentWindowHandle))
+                            return true;
 
-                        //    IWebElement btnConsultarProcessamentoNFe = ExtensionsMethods.ElementToBeClickable(By.XPath("/html/body/div[4]/div/ul/li[5]/a"), _driver);
-                        //    btnConsultarProcessamentoNFe.Click();
-                        //    Thread.Sleep(30 * 1000);
+                        else if (PendingShipping(tds[index_opcoes], tds[index_situacao].Text, _wait, _driver, row, parentWindowHandle))
+                            return true;
 
-                        //    IWebElement mensagem = ExtensionsMethods.GetElement(By.Id("mensagem"), _driver);
-                        //    var paragrafos = mensagem.FindElements(By.TagName("p"));
+                        else if (GenerationPending(tds[index_opcoes], tds[index_situacao].Text, _wait, _driver, row, parentWindowHandle))
+                            return true;
 
-                        //    if (paragrafos[0].Text == "(100) Autorizado o uso da NF-e.")
-                        //    {
-                        //        IWebElement btnOk = ExtensionsMethods.GetElement(By.XPath("/html/body/div[6]/div[11]/div/button"), _driver);
-                        //        btnOk.Click();
-                        //    }
-
-                        //    if (searchresponse.Text == "Sua pesquisa não encontrou nenhum documento correspondente.")
-                        //    {
-                        //        _driver.Close();
-                        //        _driver.SwitchTo().Window(parentWindowHandle);
-                        //        return true;
-                        //    }
-                        //    else
-                        //        break;
-                        //}
-
-                        if (tds[index_situacao].Text == "6 - Pendente de Envio") //6 - Pendente de Envio
-                        {
-                            tds[index_opcoes].FindElement(By.Id($"flyout_{row}")).Click();
-                            IWebElement btnEnviarArquivoIndividual = ExtensionsMethods.ElementToBeClickable(By.XPath("/html/body/div[4]/div/ul/li[6]/a"), _driver);
-                            btnEnviarArquivoIndividual.Click();
-                            Thread.Sleep(30 * 1000);
-
-                            IWebElement mensagem = ExtensionsMethods.GetElement(By.Id("envioIndividual"), _driver);
-                            var paragrafos = mensagem.FindElements(By.TagName("p"));
-
-                            if (paragrafos[0].Text == "(103) Lote Recebido com sucesso.")
-                            {
-                                IWebElement btnOk = ExtensionsMethods.GetElement(By.XPath("/html/body/div[6]/div[11]/div/button"), _driver);
-                                btnOk.Click();
-
-                                _driver.Close();
-                                _driver.SwitchTo().Window(parentWindowHandle);
-                                return true;
-                            }
-                        }
-
-                        if (tds[index_situacao].Text == "7 - Pendente de Geração") //6 - Pendente de Geração
-                        {
-                            tds[index_opcoes].FindElement(By.Id($"flyout_{row}")).Click();
-                            IWebElement btnGerarArquivoNFe = ExtensionsMethods.ElementToBeClickable(By.XPath("/html/body/div[4]/div/ul/li[8]/a"), _driver);
-
-                            Actions action = new Actions(_driver);
-                            action.MoveToElement(btnGerarArquivoNFe).Perform();
-
-                            IWebElement btnNormal = ExtensionsMethods.ElementToBeClickable(By.XPath("/html/body/div[4]/div/ul/li[8]/ul/li[1]/a"), _driver);
-                            btnNormal.Click();
-                            Thread.Sleep(30 * 1000);
-
-                            IWebElement mensagem = ExtensionsMethods.GetElement(By.Id("mensagem"), _driver);
-                            var paragrafos = mensagem.FindElements(By.TagName("p"));
-
-                            if (paragrafos[0].Text == "(M95) Geração da NF-e realizada com sucesso.")
-                            {
-                                IWebElement btnOk = ExtensionsMethods.GetElement(By.XPath("/html/body/div[6]/div[11]/div/button"), _driver);
-                                btnOk.Click();
-
-                                _driver.Close();
-                                _driver.SwitchTo().Window(parentWindowHandle);
-                                return true;
-                            }
-                        }
-
-                        if (tds[index_situacao].Text == "9 - Rejeitada") //9 - Rejeitada
-                        {
-                            tds[index_opcoes].FindElement(By.Id($"flyout_{row}")).Click();
-                            IWebElement btnExcluirNFe = ExtensionsMethods.ElementToBeClickable(By.XPath("/html/body/div[4]/div/ul/li[9]/a"), _driver);
-                            btnExcluirNFe.Click();
-
-                            Thread.Sleep(30 * 1000);
-
-                            IWebElement mensagem = ExtensionsMethods.GetElement(By.Id("mensagem"), _driver);
-                            var paragrafos = mensagem.FindElements(By.TagName("p"));
-
-                            if (paragrafos[0].Text == "(M618) Sucesso ao excluir a NF-e .")
-                            {
-                                IWebElement btnOk = ExtensionsMethods.GetElement(By.XPath("/html/body/div[6]/div[11]/div/button"), _driver);
-                                btnOk.Click();
-
-                                _driver.Close();
-                                _driver.SwitchTo().Window(parentWindowHandle);
-                                return true;
-                            }
-                        }
+                        else if (Rejected(tds[index_opcoes], tds[index_situacao].Text, _wait, _driver, row, parentWindowHandle))
+                            return true;
+                        
+                        else
+                            break;
                     }
-                    Thread.Sleep(5 * 1000);
+                    Thread.Sleep(4 * 1000);
                     searchresponse = ExtensionsMethods.GetElement(By.XPath("//*[@id=\"FormPaginacao\"]/div[3]"), _driver);
                 }
                 _driver.Close();
@@ -225,33 +144,40 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages
             }
         }
 
-        private void PendingAuthorization(System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? tds, IWebElement searchresponse, IWebDriver _driver, int index_situacao, int index_opcoes, int row, string parentWindowHandle)
+        private bool PendingAuthorization(IWebElement tds, string tdsText, WebDriverWait _wait, string searchresponseText, IWebDriver _driver, int row, string parentWindowHandle)
         {
             try
             {
-                if (tds[index_situacao].Text == "5 - Pendente de Autorização") //5 - Pendente de Autorização
+                if (tdsText == "5 - Pendente de Autorização")
                 {
-                    tds[index_opcoes].FindElement(By.Id($"flyout_{row}")).Click();
+                    var buttonPendingAuthorization = ExtensionsMethods.GetElementInsideAnotherElementById($"flyout_{row}", Page.TypeEnum.AuthorizeNFe, "PendingAuthorization", tds);
+                    var buttonConsultProcessingNFe = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/div[4]/div/ul/li[5]/a", _wait, Page.TypeEnum.AuthorizeNFe, "PendingAuthorization");
 
-                    IWebElement btnConsultarProcessamentoNFe = ExtensionsMethods.ElementToBeClickable(By.XPath("/html/body/div[4]/div/ul/li[5]/a"), _driver);
-                    btnConsultarProcessamentoNFe.Click();
+                    ExtensionsMethods.ClickInElement(buttonPendingAuthorization);
+                    ExtensionsMethods.ClickInElement(buttonConsultProcessingNFe);
+                    
                     Thread.Sleep(30 * 1000);
 
-                    IWebElement mensagem = ExtensionsMethods.GetElement(By.Id("mensagem"), _driver);
-                    var paragrafos = mensagem.FindElements(By.TagName("p"));
+                    var labelMessage = ExtensionsMethods.GetElementExistsById("mensagem", _wait, Page.TypeEnum.AuthorizeNFe, "PendingAuthorization");
+                    var paragraphs = ExtensionsMethods.GetElementsExistsByTagName("p", Page.TypeEnum.AuthorizeNFe, "PendingAuthorization", labelMessage);
 
-                    if (paragrafos[0].Text == "(100) Autorizado o uso da NF-e.")
+                    if (paragraphs[0].Text == "(100) Autorizado o uso da NF-e.")
                     {
-                        IWebElement btnOk = ExtensionsMethods.GetElement(By.XPath("/html/body/div[6]/div[11]/div/button"), _driver);
-                        btnOk.Click();
+                        var buttonOk = ExtensionsMethods.GetElementExistsByXpath("/html/body/div[6]/div[11]/div/button", _wait, Page.TypeEnum.AuthorizeNFe, "PendingAuthorization");
+                        ExtensionsMethods.ClickInElement(buttonOk);
                     }
 
-                    if (searchresponse.Text == "Sua pesquisa não encontrou nenhum documento correspondente.")
+                    if (searchresponseText == "Sua pesquisa não encontrou nenhum documento correspondente.")
                     {
                         _driver.Close();
                         _driver.SwitchTo().Window(parentWindowHandle);
+                        return true;
                     }
+                    else
+                        return false;
                 }
+                else
+                    return false;
             }
             catch
             {
@@ -259,19 +185,101 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages
             }
         }
 
-        private void PendingShipping()
+        private bool PendingShipping(IWebElement tds, string tdsText, WebDriverWait _wait, IWebDriver _driver, int row, string parentWindowHandle)
         {
+            if (tdsText == "6 - Pendente de Envio")
+            {
+                var buttonPendingShipping = ExtensionsMethods.GetElementInsideAnotherElementById($"flyout_{row}", Page.TypeEnum.AuthorizeNFe, "PendingShipping", tds);
+                var sendIndividualFile = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/div[4]/div/ul/li[6]/a", _wait, Page.TypeEnum.AuthorizeNFe, "PendingShipping");
 
+                ExtensionsMethods.ClickInElement(buttonPendingShipping);
+                ExtensionsMethods.ClickInElement(sendIndividualFile);
+                
+                Thread.Sleep(30 * 1000);
+
+                var labelMessage = ExtensionsMethods.GetElementExistsById("envioIndividual", _wait, Page.TypeEnum.AuthorizeNFe, "PendingShipping");
+                var paragraphs = ExtensionsMethods.GetElementsExistsByTagName("p", Page.TypeEnum.AuthorizeNFe, "PendingShipping", labelMessage);
+
+                if (paragraphs[0].Text == "(103) Lote Recebido com sucesso.")
+                {
+                    var buttonOk = ExtensionsMethods.GetElementExistsByXpath("/html/body/div[6]/div[11]/div/button", _wait, Page.TypeEnum.AuthorizeNFe, "PendingShipping");
+                    ExtensionsMethods.ClickInElement(buttonOk);
+
+                    _driver.Close();
+                    _driver.SwitchTo().Window(parentWindowHandle);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
         }
 
-        private void GenerationPending()
+        private bool GenerationPending(IWebElement tds, string tdsText, WebDriverWait _wait, IWebDriver _driver, int row, string parentWindowHandle)
         {
+            if (tdsText == "7 - Pendente de Geração")
+            {
+                var buttonGenerationPending = ExtensionsMethods.GetElementInsideAnotherElementById($"flyout_{row}", Page.TypeEnum.AuthorizeNFe, "GenerationPending", tds);
+                ExtensionsMethods.ClickInElement(buttonGenerationPending);
 
+                var buttonGenerateFileNFe = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/div[4]/div/ul/li[8]/a", _wait, Page.TypeEnum.AuthorizeNFe, "GenerationPending");
+                Actions action = new Actions(_driver);
+                action.MoveToElement(buttonGenerateFileNFe).Perform();
+
+                var buttonNormal = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/div[4]/div/ul/li[8]/ul/li[1]/a", _wait, Page.TypeEnum.AuthorizeNFe, "GenerationPending");
+                ExtensionsMethods.ClickInElement(buttonNormal);
+
+                Thread.Sleep(30 * 1000);
+
+                var labelMessage = ExtensionsMethods.GetElementExistsById("mensagem", _wait, Page.TypeEnum.AuthorizeNFe, "GenerationPending");
+                var paragraphs = ExtensionsMethods.GetElementsExistsByTagName("p", Page.TypeEnum.AuthorizeNFe, "GenerationPending", labelMessage);
+
+                if (paragraphs[0].Text == "(M95) Geração da NF-e realizada com sucesso.")
+                {
+                    var buttonOk = ExtensionsMethods.GetElementExistsByXpath("/html/body/div[6]/div[11]/div/button", _wait, Page.TypeEnum.AuthorizeNFe, "PendingShipping");
+                    ExtensionsMethods.ClickInElement(buttonOk);
+
+                    _driver.Close();
+                    _driver.SwitchTo().Window(parentWindowHandle);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
         }
 
-        private void Rejected()
+        private bool Rejected(IWebElement tds, string tdsText, WebDriverWait _wait, IWebDriver _driver, int row, string parentWindowHandle)
         {
+            if (tdsText == "9 - Rejeitada")
+            {
+                var buttonRejected = ExtensionsMethods.GetElementInsideAnotherElementById($"flyout_{row}", Page.TypeEnum.AuthorizeNFe, "Rejected", tds);
+                ExtensionsMethods.ClickInElement(buttonRejected);
 
+                var buttonDeleteNFe = ExtensionsMethods.GetElementToBeClickableByXpath("/html/body/div[4]/div/ul/li[9]/a", _wait, Page.TypeEnum.AuthorizeNFe, "Rejected");
+                ExtensionsMethods.ClickInElement(buttonDeleteNFe);
+
+                Thread.Sleep(30 * 1000);
+
+                var labelMessage = ExtensionsMethods.GetElementExistsById("mensagem", _wait, Page.TypeEnum.AuthorizeNFe, "Rejected");
+                var paragraphs = ExtensionsMethods.GetElementsExistsByTagName("p", Page.TypeEnum.AuthorizeNFe, "Rejected", labelMessage);
+
+                if (paragraphs[0].Text == "(M618) Sucesso ao excluir a NF-e .")
+                {
+                    var buttonOk = ExtensionsMethods.GetElementExistsByXpath("/html/body/div[6]/div[11]/div/button", _wait, Page.TypeEnum.AuthorizeNFe, "PendingShipping");
+                    ExtensionsMethods.ClickInElement(buttonOk);
+
+                    _driver.Close();
+                    _driver.SwitchTo().Window(parentWindowHandle);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
         }
     }
 }

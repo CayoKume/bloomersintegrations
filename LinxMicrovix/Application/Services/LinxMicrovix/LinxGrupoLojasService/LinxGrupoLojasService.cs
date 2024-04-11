@@ -1,29 +1,31 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Microvix.Models;
-using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public class LinxGrupoLojasService<T1> : ILinxGrupoLojasService<T1> where T1 : LinxGrupoLojas, new()
+    public class LinxGrupoLojasService<TEntity> : ILinxGrupoLojasService<TEntity> where TEntity : LinxGrupoLojas, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
-        private readonly ILinxGrupoLojasRepository<LinxGrupoLojas> _linxGrupoLojasRepository;
+        private readonly IAPICall _apiCall;
+        private readonly ILinxGrupoLojasRepository _linxGrupoLojasRepository;
 
-        public LinxGrupoLojasService(ILinxGrupoLojasRepository<LinxGrupoLojas> linxGrupoLojasRepository) =>
-            _linxGrupoLojasRepository = linxGrupoLojasRepository;
+        public LinxGrupoLojasService(ILinxGrupoLojasRepository linxGrupoLojasRepository, IAPICall apiCall) =>
+            (_linxGrupoLojasRepository, _apiCall) = (linxGrupoLojasRepository, apiCall);
 
-        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity?> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
-            var list = new List<T1>();
+            var list = new List<TEntity>();
 
             for (int i = 0; i < registros.Count(); i++)
             {
                 try
                 {
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         cnpj = registros[i].Where(pair => pair.Key == "CNPJ").Select(pair => pair.Value).First(),
@@ -47,21 +49,21 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                var response = APICaller.CallLinxAPISimplificado(tableName, AUTENTIFICACAO, CHAVE);
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(tableName, AUTENTIFICACAO, CHAVE);
+                var response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
                     var listResults = DeserializeResponse(registros);
                     if (listResults.Count() > 0)
                     {
-                        var list = listResults.ConvertAll(new Converter<T1, LinxGrupoLojas>(T1ToObject));
+                        var list = listResults.ConvertAll(new Converter<TEntity, LinxGrupoLojas>(TEntityToObject));
                         _linxGrupoLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                        //await _linxGrupoLojasRepository.CallDbProcMerge(procName, tableName, database);
                     }
                 }
             }
@@ -71,21 +73,21 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                var response = APICaller.CallLinxAPISimplificado(tableName, AUTENTIFICACAO, CHAVE);
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(tableName, AUTENTIFICACAO, CHAVE);
+                var response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
                     var listResults = DeserializeResponse(registros);
                     if (listResults.Count() > 0)
                     {
-                        var list = listResults.ConvertAll(new Converter<T1, LinxGrupoLojas>(T1ToObject));
+                        var list = listResults.ConvertAll(new Converter<TEntity, LinxGrupoLojas>(TEntityToObject));
                         _linxGrupoLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                        //_linxGrupoLojasRepository.CallDbProcMergeSync(procName, tableName, database);
                     }
                 }
             }
@@ -95,11 +97,11 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public T1? T1ToObject(T1 t1)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     cnpj = t1.cnpj,
@@ -114,7 +116,7 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"LinxGrupoLojas - T1ToObject - Erro ao converter registro: {t1.nome_empresa} para objeto - {ex.Message}");
+                throw new Exception($"LinxGrupoLojas - TEntityToObject - Erro ao converter registro: {t1.nome_empresa} para objeto - {ex.Message}");
             }
         }
     }

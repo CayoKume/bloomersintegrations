@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Entities\LinxCommerce\" />
-    <Folder Include="Domain\Entities\LinxMicrovix\" />
-    <Folder Include="Infrastructure\Apis\" />
+    <ProjectReference Include="..\Core\BloomersIntegrationsCore\BloomersIntegrationsCore.csproj" />
   </ItemGroup>
 
 </Project>

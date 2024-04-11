@@ -1,10 +1,15 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix
 {
-    public interface ILinxLojasRepository<T1> : IMicrovixSaidaCoreRepository<T1> where T1 : class, new()
+    public interface ILinxLojasRepository
     {
-        public Task InsereRegistroIndividual(T1 registro, string? tableName, string? db);
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db);
+        public void BulkInsertIntoTableRaw(List<LinxLojas> registros, string tableName, string database);
+        public Task<List<LinxLojas>> GetRegistersExistsAsync(List<LinxLojas> registros, string tableName, string database);
+        public List<LinxLojas> GetRegistersExistsNotAsync(List<LinxLojas> registros, string tableName, string database);
+        public Task<string> GetParametersAsync(string tableName, string database, string parameterCol);
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol);
+        public Task InsereRegistroIndividualAsync(LinxLojas registro, string tableName, string database);
+        public void InsereRegistroIndividualNotAsync(LinxLojas registro, string tableName, string database);
     }
 }

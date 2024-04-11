@@ -1,30 +1,32 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Microvix.Models;
-using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 using System.Globalization;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public class LinxMovimentoCartoesService<T1> : ILinxMovimentoCartoesService<T1> where T1 : LinxMovimentoCartoes, new()
+    public class LinxMovimentoCartoesService<TEntity> : ILinxMovimentoCartoesService<TEntity> where TEntity : LinxMovimentoCartoes, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
-        private readonly ILinxMovimentoCartoesRepository<LinxMovimentoCartoes> _linxMovimentoCartoesRepository;
+        private readonly IAPICall _apiCall;
+        private readonly ILinxMovimentoCartoesRepository _linxMovimentoCartoesRepository;
 
-        public LinxMovimentoCartoesService(ILinxMovimentoCartoesRepository<LinxMovimentoCartoes> linxMovimentoCartoesRepository)
-            => (_linxMovimentoCartoesRepository) = (linxMovimentoCartoesRepository);
+        public LinxMovimentoCartoesService(ILinxMovimentoCartoesRepository linxMovimentoCartoesRepository, IAPICall apiCall)
+            => (_linxMovimentoCartoesRepository, _apiCall) = (linxMovimentoCartoesRepository, apiCall);
 
-        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity?> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
-            var list = new List<T1>();
+            var list = new List<TEntity>();
 
             for (int i = 0; i < registros.Count(); i++)
             {
                 try
                 {
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         portal = registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).First(),
@@ -59,27 +61,27 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                var cnpjs = await _linxMovimentoCartoesRepository.GetEmpresas();
+                var cnpjs = await _linxMovimentoCartoesRepository.GetCompanysAsync(tableName, database);
 
                 foreach(var cnpj in cnpjs)
                 {
-                    PARAMETERS = await _linxMovimentoCartoesRepository.GetParameters(tableName, "parameters_lastday");
+                    PARAMETERS = await _linxMovimentoCartoesRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
-                    var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-2).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_empresa);
-                    var registros = APICaller.DeserializeXML(response);
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-2).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
+                    var response = await _apiCall.CallAPIAsync(tableName, body);
+                    var registros = _apiCall.DeserializeXML(response);
 
                     if (registros.Count() > 0)
                     {
                         var listResults = DeserializeResponse(registros);
                         if (listResults.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<T1, LinxMovimentoCartoes>(T1ToObject));
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxMovimentoCartoes>(TEntityToObject));
                             _linxMovimentoCartoesRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                            //await _linxMovimentoCartoesRepository.CallDbProcMerge(procName, tableName, database);
                         }
                     }
                 };
@@ -90,27 +92,27 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                var cnpjs = _linxMovimentoCartoesRepository.GetEmpresasSync();
+                var cnpjs = _linxMovimentoCartoesRepository.GetCompanysNotAsync(tableName, database);
 
                 foreach (var cnpj in cnpjs)
                 {
-                    PARAMETERS = _linxMovimentoCartoesRepository.GetParametersSync(tableName, "parameters_lastday");
+                    PARAMETERS = _linxMovimentoCartoesRepository.GetParametersNotAsync(tableName, database, "parameters_lastday");
 
-                    var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-2).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_empresa);
-                    var registros = APICaller.DeserializeXML(response);
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-2).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
+                    var response = _apiCall.CallAPINotAsync(tableName, body);
+                    var registros = _apiCall.DeserializeXML(response);
 
                     if (registros.Count() > 0)
                     {
                         var listResults = DeserializeResponse(registros);
                         if (listResults.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<T1, LinxMovimentoCartoes>(T1ToObject));
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxMovimentoCartoes>(TEntityToObject));
                             _linxMovimentoCartoesRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                            //_linxMovimentoCartoesRepository.CallDbProcMergeSync(procName, tableName, database);
                         }
                     }
                 };
@@ -121,11 +123,11 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public T1? T1ToObject(T1 t1)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     portal = t1.portal,
@@ -153,7 +155,7 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"LinxMovimentoCartoes - T1ToObject - Erro ao converter registro: {t1.codlojasitef} para objeto - {ex.Message}");
+                throw new Exception($"LinxMovimentoCartoes - TEntityToObject - Erro ao converter registro: {t1.codlojasitef} para objeto - {ex.Message}");
             }
         }
     }

@@ -1,23 +1,24 @@
-﻿using BloomersMicrovixIntegrations.Repositorys.Ecommerce;
-using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Models.Ecommerce;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxCommerce;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 using System.Globalization;
 
-namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxCommerce
 {
-    public class B2CConsultaPedidosService<T1> : IB2CConsultaPedidosService<T1> where T1 : B2CConsultaPedidos, new()
+    public class B2CConsultaPedidosService<TEntity> : IB2CConsultaPedidosService<TEntity> where TEntity : B2CConsultaPedidos, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveB2C.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationB2C.ToName();
-        private readonly IB2CConsultaPedidosRepository<B2CConsultaPedidos> _b2CConsultaPedidosRepository;
+        private readonly IAPICall _apiCall;
+        private readonly IB2CConsultaPedidosRepository _b2CConsultaPedidosRepository;
 
-        public B2CConsultaPedidosService(IB2CConsultaPedidosRepository<B2CConsultaPedidos> b2CConsultaPedidosRepository) =>
-            _b2CConsultaPedidosRepository = b2CConsultaPedidosRepository;
+        public B2CConsultaPedidosService(IB2CConsultaPedidosRepository b2CConsultaPedidosRepository, IAPICall apiCall) =>
+            (_b2CConsultaPedidosRepository, _apiCall) = (b2CConsultaPedidosRepository, apiCall);
 
-        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity?> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
             long timestamp;
             int id_pedido, cod_cliente_erp, cod_cliente_b2c, forma_pgto, plano_pagamento, tipo_frete, id_status, cod_transportador, tipo_cobranca_frete, empresa, id_tabela_preco, cod_vendedor, portal, id_tipo_b2c;
@@ -25,7 +26,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             bool finalizado, ativo;
             decimal vl_frete, taxa_impressao, valor_frete_gratis, valor_credito;
 
-            var list = new List<T1>();
+            var list = new List<TEntity>();
 
             for (int i = 0; i < registros.Count(); i++)
             {
@@ -151,7 +152,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
                     else
                         valor_credito = 0;
 
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         id_pedido = id_pedido,
@@ -195,20 +196,21 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = await _b2CConsultaPedidosRepository.GetParameters(tableName, "parameters_lastday");
+                PARAMETERS = await _b2CConsultaPedidosRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
-                var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                var response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
                     var listResults = DeserializeResponse(registros);
-                    var _listResults = listResults.ConvertAll(new Converter<T1, B2CConsultaPedidos>(T1ToObject));
-                    var __listResults = await _b2CConsultaPedidosRepository.GetRegistersExists(_listResults, tableName, database);
+                    var _listResults = listResults.ConvertAll(new Converter<TEntity, B2CConsultaPedidos>(TEntityToObject));
+                    var __listResults = await _b2CConsultaPedidosRepository.GetRegistersExistsAsync(_listResults, tableName, database);
 
                     for (int i = 0; i < __listResults.Count; i++)
                     {
@@ -216,10 +218,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
                     }
 
                     if (_listResults.Count() > 0)
-                    {
                         _b2CConsultaPedidosRepository.BulkInsertIntoTableRaw(_listResults, tableName, database);
-                        //await _b2CConsultaPedidosRepository.CallDbProcMerge(procName, tableName, database);
-                    }
                 }
             }
             catch
@@ -228,14 +227,15 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = _b2CConsultaPedidosRepository.GetParametersSync(tableName, "parameters_lastday");
+                PARAMETERS = _b2CConsultaPedidosRepository.GetParametersNotAsync(tableName, database, "parameters_lastday");
 
-                var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                var response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
@@ -243,9 +243,8 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
 
                     if (listResults.Count() > 0)
                     {
-                        var listPedidos = listResults.ConvertAll(new Converter<T1, B2CConsultaPedidos>(T1ToObject));
+                        var listPedidos = listResults.ConvertAll(new Converter<TEntity, B2CConsultaPedidos>(TEntityToObject));
                         _b2CConsultaPedidosRepository.BulkInsertIntoTableRaw(listPedidos, tableName, database);
-                        //_b2CConsultaPedidosRepository.CallDbProcMergeSync(procName, tableName, database);
                     }
                 }
             }
@@ -255,20 +254,20 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
         }
 
-        public async Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador)
+        public async Task<bool> IntegraRegistrosIndividualAsync(string tableName, string procName, string database, string identificador)
         {
             try
             {
-                PARAMETERS = await _b2CConsultaPedidosRepository.GetParameters(tableName, "parameters_manual");
+                PARAMETERS = await _b2CConsultaPedidosRepository.GetParametersAsync(tableName, database, "parameters_manual");
 
-                string response = APICaller.CallLinxAPI(PARAMETERS.Replace("[id_pedido]", $"{identificador}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[id_pedido]", $"{identificador}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                var response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
                 var registro = DeserializeResponse(registros);
 
                 if (registro.Count() > 0)
                 {
-                    await _b2CConsultaPedidosRepository.InsereRegistroIndividual(registro[0], tableName, database);
-                    //await _b2CConsultaPedidosRepository.CallDbProcMerge(procName, tableName, database);
+                    await _b2CConsultaPedidosRepository.InsereRegistroIndividualAsync(registro[0], tableName, database);
                     return true;
                 }
                 else
@@ -280,20 +279,20 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
         }
 
-        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador)
+        public bool IntegraRegistrosIndividualNotAsync(string tableName, string procName, string database, string identificador)
         {
             try
             {
-                PARAMETERS = _b2CConsultaPedidosRepository.GetParametersSync(tableName, "parameters_manual");
+                PARAMETERS = _b2CConsultaPedidosRepository.GetParametersNotAsync(tableName, database, "parameters_manual");
 
-                string response = APICaller.CallLinxAPI(PARAMETERS.Replace("[id_pedido]", $"{identificador}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[id_pedido]", $"{identificador}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                var response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
                 var registro = DeserializeResponse(registros);
 
                 if (registro.Count() > 0)
                 {
-                    _b2CConsultaPedidosRepository.InsereRegistroIndividualSync(registro[0], tableName, database);
-                    //_b2CConsultaPedidosRepository.CallDbProcMergeSync(procName, tableName, database);
+                    _b2CConsultaPedidosRepository.InsereRegistroIndividualNotAsync(registro[0], tableName, database);
                     return true;
                 }
                 else
@@ -305,11 +304,11 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
         }
 
-        public T1? T1ToObject(T1 t1)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     id_pedido = t1.id_pedido,
@@ -345,7 +344,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"B2CConsultaPedidos - T1ToObject - Erro ao converter registro: {t1.id_pedido} para objeto - {ex.Message}");
+                throw new Exception($"B2CConsultaPedidos - TEntityToObject - Erro ao converter registro: {t1.id_pedido} para objeto - {ex.Message}");
             }
         }
     }

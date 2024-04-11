@@ -3,3 +3,14 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Deb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.AssemblyInfo.cs
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.csproj.CoreCompileInputs.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\bin\Debug\net8.0\LinxMicrovix.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\bin\Debug\net8.0\LinxMicrovix.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\bin\Debug\net8.0\LinxMicrovix.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\bin\Debug\net8.0\BloomersIntegrationsCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\bin\Debug\net8.0\BloomersIntegrationsCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicr.244DCF13.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\refint\LinxMicrovix.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\LinxMicrovix.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\obj\Debug\net8.0\ref\LinxMicrovix.dll

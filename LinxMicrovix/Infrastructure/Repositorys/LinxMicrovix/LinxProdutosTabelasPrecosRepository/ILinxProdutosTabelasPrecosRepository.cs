@@ -1,15 +1,22 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
-using Microvix.Models;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix
 {
-    public interface ILinxProdutosTabelasPrecosRepository<T1> : IMicrovixSaidaCoreRepository<T1> where T1 : class, new()
+    public interface ILinxProdutosTabelasPrecosRepository
     {
-        public Task InsereRegistroIndividual(T1 registro, string? tableName, string? db);
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db);
-        public Task<IEnumerable<Empresa>> GetEmpresas();
-        public IEnumerable<Empresa> GetEmpresasSync();
-        public Task<IEnumerable<String>> GetIdTabelaPreco(string cnpj);
-        public IEnumerable<String> GetIdTabelaPrecoSync(string cnpj);
+        public void BulkInsertIntoTableRaw(List<LinxProdutosTabelasPrecos> registros, string tableName, string database);
+        public Task<List<LinxProdutosTabelasPrecos>> GetRegistersExistsAsync(List<LinxProdutosTabelasPrecos> registros, string tableName, string database);
+        public List<LinxProdutosTabelasPrecos> GetRegistersExistsNotAsync(List<LinxProdutosTabelasPrecos> registros, string tableName, string database);
+        public Task<string> GetParametersAsync(string tableName, string database, string parameterCol);
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol);
+        public Task InsereRegistroIndividualAsync(LinxProdutosTabelasPrecos registro, string tableName, string database);
+        public void InsereRegistroIndividualNotAsync(LinxProdutosTabelasPrecos registro, string tableName, string database);
+        public Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database);
+        public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database);
+        public Task<IEnumerable<String>> GetIdTabelaPrecoAsync(string cnpj, string tableName, string database);
+        public IEnumerable<String> GetIdTabelaPrecoNotAsync(string cnpj, string tableName, string database);
+        public Task CallDbProcMergeAsync(string procName, string tableName, string database);
+        public void CallDbProcMergeNotAsync(string procName, string tableName, string database);
     }
 }

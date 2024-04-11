@@ -779,6 +779,19 @@
           "bin/placeholder/LinxCommerce.dll": {}
         }
       },
+      "LinxMicrovix/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BloomersIntegrationsCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LinxMicrovix.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LinxMicrovix.dll": {}
+        }
+      },
       "TotalExpress/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2251,6 +2264,11 @@
       "path": "../../LinxCommerce/LinxCommerce.csproj",
       "msbuildProject": "../../LinxCommerce/LinxCommerce.csproj"
     },
+    "LinxMicrovix/1.0.0": {
+      "type": "project",
+      "path": "../../LinxMicrovix/LinxMicrovix.csproj",
+      "msbuildProject": "../../LinxMicrovix/LinxMicrovix.csproj"
+    },
     "TotalExpress/1.0.0": {
       "type": "project",
       "path": "../../Carriers/TotalExpress/TotalExpress.csproj",
@@ -2263,6 +2281,7 @@
       "FluentEmail.Smtp >= 3.0.2",
       "Hangfire >= 1.8.11",
       "LinxCommerce >= 1.0.0",
+      "LinxMicrovix >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.3",
       "Swashbuckle.AspNetCore >= 6.4.0",
       "TotalExpress >= 1.0.0"
@@ -2309,6 +2328,9 @@
             },
             "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\LinxCommerce.csproj": {
               "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\LinxCommerce.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovix.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovix.csproj"
             }
           }
         }

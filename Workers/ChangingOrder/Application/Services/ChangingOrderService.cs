@@ -36,35 +36,40 @@ namespace BloomersWorkers.ChangingOrder.Application.Services
                     using (var driver = _chromeDriver.GetChromeDriverInstance())
                     {
                         var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
+                        var user = await _changingOrderRepository.GetMicrovixUser(workerName);
 
-                        foreach (var order in orders)
+                        for (int i = 0; i < orders.Count(); i++)
                         {
                             try
                             {
-                                var user = await _changingOrderRepository.GetMicrovixUser(workerName);
-                                _loginPage.InsertLoginAndPassword(user, wait);
-                                _loginPage.SelectCompany(order.company.doc_company, user, driver, wait);
-
-                                if (ChangingOrder(order, driver, wait))
+                                if (i == 0)
                                 {
-                                    await _changingOrderRepository.UpdateReturnIT4ITEM(order.number, order.idControl);
-                                    Log.Information($"Pedido: {order.number}, alterado com sucesso");
+                                    _loginPage.InsertLoginAndPassword(user, wait);
+                                    _loginPage.SelectCompany(orders[i].company.doc_company, driver, wait);
+                                }
+                                else
+                                    _loginPage.SelectCompanyFromTopBar(orders[i].company.doc_company, wait);
+
+                                if (ChangingOrder(orders[i], driver, wait))
+                                {
+                                    await _changingOrderRepository.UpdateReturnIT4ITEM(orders[i].number, orders[i].idControl);
+                                    Log.Information($"Pedido: {orders[i].number}, alterado com sucesso");
                                 }
                             }
                             catch (CustomNoSuchElementException ex)
                             {
                                 if (ex.pages == Page.TypeEnum.Login)
-                                    Log.Warning("Errors => {@order} - {@ex}", order.number, ex.Message);
+                                    Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
                                 else if (ex.pages == Page.TypeEnum.Home)
-                                    Log.Warning("Errors => {@order} - {@ex}", order.number, ex.Message);
+                                    Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
                                 else
-                                    Log.Warning("Warnings => {@order} - {@ex}", order.number, ex.Message);
+                                    Log.Warning("Warnings => {@order} - {@ex}", orders[i].number, ex.Message);
 
                                 continue;
                             }
                             catch (Exception ex)
                             {
-                                throw new Exception($"{order.number} - {ex.Message}");
+                                throw new Exception($"{orders[i].number} - {ex.Message}");
                             }
                         }
                     }

@@ -29,8 +29,9 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
         {
             try
             {
-                string? botName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
-                var orders = await _invoiceOrderRepository.GetOrdersFromIT4(botName);
+                string? workerName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
+                var orders = await _invoiceOrderRepository.GetOrdersFromIT4(workerName);
+                var user = await _invoiceOrderRepository.GetMicrovixUser(workerName);
 
                 if (orders.Count() > 0)
                 {
@@ -38,36 +39,40 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                     {
                         var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
 
-                        foreach (var order in orders)
+                        for (int i = 0; i < orders.Count(); i++)
                         {
                             try
                             {
-                                var user = await _invoiceOrderRepository.GetMicrovixUser(botName);
-                                _loginPage.InsertLoginAndPassword(user, wait);
-                                _loginPage.SelectCompany(order.company.doc_company, user, driver, wait);
-
-                                if (InvoiceOrder(order, driver, wait))
+                                if (i == 0)
                                 {
-                                    Log.Information($"Pedido: {order.number}, faturado com sucesso");
-                                    await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(order.number, order.invoice_attempts + 1);
+                                    _loginPage.InsertLoginAndPassword(user, wait);
+                                    _loginPage.SelectCompany(orders[i].company.doc_company, driver, wait);
+                                }
+                                else
+                                    _loginPage.SelectCompanyFromTopBar(orders[i].company.doc_company, wait);
+
+                                if (InvoiceOrder(orders[i], driver, wait))
+                                {
+                                    Log.Information($"Pedido: {orders[i].number}, faturado com sucesso");
+                                    await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
                                 }
                             }
                             catch (CustomNoSuchElementException ex)
                             {
                                 if (ex.pages == Page.TypeEnum.Login)
-                                    Log.Warning("Errors => {@order} - {@ex}", order.number, ex.Message);
+                                    Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
                                 else if (ex.pages == Page.TypeEnum.Home)
-                                    Log.Warning("Errors => {@order} - {@ex}", order.number, ex.Message);
+                                    Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
                                 else
-                                    Log.Warning("Warnings => {@order} - {@ex}", order.number, ex.Message);
+                                    Log.Warning("Warnings => {@order} - {@ex}", orders[i].number, ex.Message);
                                 
-                                await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(order.number, order.invoice_attempts + 1);
+                                await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
 
                                 continue;
                             }
                             catch (Exception ex)
                             {
-                                throw new Exception($"{order.number} - {ex.Message}");
+                                throw new Exception($"{orders[i].number} - {ex.Message}");
                             }
                         }
                     }
@@ -83,6 +88,9 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
         {
             try
             {
+                _homePage.ClosePendingInvoicesModal(driver, wait);
+                _homePage.OpenSideMenu(driver, wait);
+
                 #region VENDA DIRETA
                 if (order.number.Contains("OA-VD") || order.number.Contains("OA-LJ") || order.number.Contains("MI-VD") || order.number.Contains("MI-LJ"))
                 {

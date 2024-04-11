@@ -1,8 +1,8 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.LinxMicrovix.Application.Services.Base;
 
-namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services.Interfaces
+namespace BloomersMicrovixIntegrations.Application.Services.LinxCommerce
 {
-    public interface IB2CConsultaStatusService<T1> : IMicrovixSaidaCoreService<T1> where T1 : class, new()
+    public interface IB2CConsultaStatusService<TEntity> : ILinxMicrovixServiceBase<TEntity> where TEntity : class, new()
     {
     }
 }

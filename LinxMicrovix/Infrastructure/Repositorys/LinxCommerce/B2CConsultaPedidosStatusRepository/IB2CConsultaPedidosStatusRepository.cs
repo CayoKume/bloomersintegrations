@@ -1,10 +1,15 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
 
-namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Repositorys.Interfaces
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxCommerce
 {
-    public interface IB2CConsultaPedidosStatusRepository<T1> : IMicrovixSaidaCoreRepository<T1> where T1 : class
+    public interface IB2CConsultaPedidosStatusRepository
     {
-        public Task InsereRegistroIndividual(T1 registro, string? tableName, string? db);
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db);
+        public void BulkInsertIntoTableRaw(List<B2CConsultaPedidosStatus> registros, string tableName, string database);
+        public Task<string> GetParametersAsync(string tableName, string database, string parameterCol);
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol);
+        public Task<List<B2CConsultaPedidosStatus>> GetRegistersExistsAsync(List<B2CConsultaPedidosStatus> registros, string tableName, string database);
+        public List<B2CConsultaPedidosStatus> GetRegistersExistsNotAsync(List<B2CConsultaPedidosStatus> registros, string tableName, string database);
+        public Task InsereRegistroIndividualAsync(B2CConsultaPedidosStatus registro, string tableName, string database);
+        public void InsereRegistroIndividualNotAsync(B2CConsultaPedidosStatus registro, string tableName, string database);
     }
 }

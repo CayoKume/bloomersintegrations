@@ -1,8 +1,8 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.LinxMicrovix.Application.Services.Base;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public interface ILinxMovimentoCartoesService<T1> : IMicrovixSaidaCoreService<T1> where T1 : class, new()
+    public interface ILinxMovimentoCartoesService<TEntity> : ILinxMicrovixServiceBase<TEntity> where TEntity : class, new()
     {
     }
 }

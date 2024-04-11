@@ -1,4 +1,6 @@
 ﻿using BloomersWorkersCore.Domain.Entities;
+using BloomersWorkersCore.Domain.Enums;
+using BloomersWorkersCore.Domain.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -11,40 +13,35 @@ namespace BloomersWorkers.ChangingPassword.Infrastructure.Source.Pages
         {
             try
             {
-                if (_wait.Until(ExpectedConditions.ElementExists(By.Id("modalNotasPendentes"))).Displayed && _wait.Until(ExpectedConditions.ElementExists(By.Id("modalNotasPendentes"))).Enabled)
-                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"modalNotasPendentes\"]/div/div/div[3]/button"))).Click();
+                var buttonTopBarMenu = ExtensionsMethods.GetElementToBeClickableById("topbar_menu_usuario_navbar_titulo", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
+                var buttonChangePassword = ExtensionsMethods.GetElementExistsByClassName("topbar-menu-usuario-link-alterar-senha", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
 
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("topbar_menu_usuario_navbar_titulo"))).Click();
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("topbar-menu-usuario-link-alterar-senha"))).Click();
+                ExtensionsMethods.ClickInElement(buttonTopBarMenu);
+                ExtensionsMethods.ClickInElement(buttonChangePassword);
 
                 Thread.Sleep(2 * 1000);
 
-                _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
-                _wait.Until(ExpectedConditions.ElementExists(By.Id("senha_antiga"))).SendKeys(usuario.senha);
-                _wait.Until(ExpectedConditions.ElementExists(By.Id("senha_nova"))).SendKeys(senhaNova);
-                _wait.Until(ExpectedConditions.ElementExists(By.Id("senha_nova2"))).SendKeys(senhaNova);
-                _wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("btn-secondary"))).Click();
+                ExtensionsMethods.ChangeToFrameWhenItsAvaiable("main", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
+
+                var inputOldPassword = ExtensionsMethods.GetElementExistsById("senha_antiga", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
+                var inputNewPassword = ExtensionsMethods.GetElementExistsById("senha_nova", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
+                var inputNewPassword_2 = ExtensionsMethods.GetElementExistsById("senha_nova2", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
+                var buttonAlter = ExtensionsMethods.GetElementToBeClickableByClassName("btn-secondary", _wait, Page.TypeEnum.ChangingPassword, "ChangePassword");
+
+                ExtensionsMethods.SendKeysToElement(inputOldPassword, usuario.senha);
+                ExtensionsMethods.SendKeysToElement(inputNewPassword, senhaNova);
+                ExtensionsMethods.SendKeysToElement(inputNewPassword_2, senhaNova);
+                ExtensionsMethods.ClickInElement(buttonAlter);
 
                 usuario.senha = senhaNova;
+
+                Thread.Sleep(1 * 1000);
+
                 return true;
             }
-            catch (NoSuchElementException ex)
+            catch
             {
-                if (ex.Message.Contains("no such element: Unable to locate element: "))
-                    throw new Exception(@$" - HomePage (TrocaSenha) - O bot nao foi capaz de encontrar o elemento ({ex.Message.Substring(ex.Message.IndexOf("\"selector\":"), ex.Message.Length - ex.Message.IndexOf("\"selector\":")).Replace("\"selector\":", "").Replace("}", "").Replace("\n  (Session info: chrome=114.0.5735.134)", "")}) para interagir - {ex.Message.Replace("\n", "")}");
-                throw new Exception($@" - HomePage (TrocaSenha) - Erro ao trocar senha no menu da home page - {ex.Message.Replace("\n", "")}");
-            }
-            catch (ElementClickInterceptedException ex)
-            {
-                throw new Exception(@$" - HomePage (TrocaSenha) - O bot nao foi capaz de clicar no botão, o botão pode estar: desabilitado, ainda não carregado, coberto com alguma modal, ou não localizado através das cordenadas - {ex.Message.Replace("\n", "")}");
-            }
-            catch (ElementNotInteractableException ex)
-            {
-                throw new Exception(@$" - HomePage (TrocaSenha) - O bot nao foi capaz de interagir com elemento, o elemento pode estar: não visivel, não exibido, fora da tela, ou coberto com alguma modal - {ex.Message.Replace("\n", "")}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@" - HomePage (TrocaSenha) - Erro ao trocar senha no menu da home page - {ex.Message.Replace("\n", "")}");
+                throw;
             }
         }
     }

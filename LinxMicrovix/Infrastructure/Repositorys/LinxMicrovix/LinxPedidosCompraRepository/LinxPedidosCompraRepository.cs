@@ -1,31 +1,21 @@
-﻿using Dapper;
-using System.Data;
-using System.Data.SqlClient;
-using BloomersGeneralConnection.interfaces;
-using BloomersMicrovixIntegrations.Saida.Microvix.Models;
-using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
-using Microvix.Models;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Repositorys.Base;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix
 {
-    public class LinxPedidosCompraRepository<T1> : ILinxPedidosCompraRepository<T1> where T1 : LinxPedidosCompra, new()
+    public class LinxPedidosCompraRepository : ILinxPedidosCompraRepository
     {
-        private readonly ISQLServerConnection _conn;
+        private readonly ILinxMicrovixRepositoryBase<LinxPedidosCompra> _linxMicrovixRepositoryBase;
 
-        public LinxPedidosCompraRepository(ISQLServerConnection conn) =>
-            _conn = conn;
+        public LinxPedidosCompraRepository(ILinxMicrovixRepositoryBase<LinxPedidosCompra> linxMicrovixRepositoryBase) =>
+            _linxMicrovixRepositoryBase = linxMicrovixRepositoryBase;
 
-        public void BulkInsertIntoTableRaw(List<T1> registros, string? tableName, string? db)
+        public void BulkInsertIntoTableRaw(List<LinxPedidosCompra> registros, string tableName, string database)
         {
             try
             {
-                var table = new DataTable();
-                var properties = registros[0].GetType().GetProperties();
-
-                for (int i = 0; i < properties.Count(); i++)
-                {
-                    table.Columns.Add($"{properties[i].Name}");
-                }
+                var table = _linxMicrovixRepositoryBase.CreateDataTable(tableName, new LinxPedidosCompra().GetType().GetProperties());
 
                 for (int i = 0; i < registros.Count(); i++)
                 {
@@ -38,125 +28,71 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys
                                    registros[i].empresa);
                 }
 
-                using (var conn = _conn.GetDbConnection())
-                {
-                    using var bulkCopy = new SqlBulkCopy((SqlConnection)conn);
-                    bulkCopy.DestinationTableName = $"{db}.[dbo].{tableName}_raw";
-                    bulkCopy.BatchSize = table.Rows.Count;
-                    bulkCopy.BulkCopyTimeout = 5 * 60;
-                    bulkCopy.WriteToServer(table);
-                    conn.Close();
-                }
+                _linxMicrovixRepositoryBase.BulkInsertIntoTableRaw(table, database, tableName, table.Rows.Count);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"LinxPedidosCompra - BulkInsertIntoTableRaw - Erro ao realizar BULK INSERT na tabela {tableName} - {ex.Message}");
+                throw;
             }
         }
 
-        public async Task CallDbProcMerge(string? procName, string? tableName, string? db)
-        {
-            try
-            {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    await conn.ExecuteAsync($"{db}..{procName}", commandTimeout: 180, commandType: CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"LinxPedidosCompra - CallDbProcMerge - Erro ao realizar merge na tabela {tableName}, através da proc : {procName} - {ex.Message}");
-            }
-        }
-
-        public void CallDbProcMergeSync(string? procName, string? tableName, string? db)
-        {
-            try
-            {
-                using (var conn = _conn.GetSqlDbConnection())
-                {
-                    using (var command = new SqlCommand($"{db}..{procName}", conn) { CommandType = CommandType.StoredProcedure })
-                    {
-                        command.CommandTimeout = 120;
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"LinxPedidosCompra - CallDbProcMergeSync - Erro ao realizar merge na tabela {tableName}, através da proc : {procName} - {ex.Message}");
-            }
-        }
-
-        public async Task<string> GetParameters(string tableName, string parameterCol)
+        public async Task<string> GetParametersAsync(string tableName, string database, string parameterCol)
         {
             string sql = $@"SELECT {parameterCol} FROM [BLOOMERS_LINX].[dbo].[LinxAPIParam] (nolock) where method = '{tableName}'";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    return await conn.QueryFirstAsync<string>(sql: sql);
-                }
+                return await _linxMicrovixRepositoryBase.GetParametersAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"LinxPedidosCompra - GetParameters - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public string GetParametersSync(string tableName, string parameterCol)
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol)
         {
             string sql = $@"SELECT {parameterCol} FROM [BLOOMERS_LINX].[dbo].[LinxAPIParam] (nolock) where method = '{tableName}'";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    return conn.QueryFirst<string>(sql: sql);
-                }
+                return _linxMicrovixRepositoryBase.GetParametersNotAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"LinxPedidosCompra - GetParametersSync - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public async Task<IEnumerable<Empresa>> GetEmpresas()
+        public async Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database)
         {
             string sql = $@"SELECT empresa as numero_erp_empresa, nome_emp as nome_empresa, cnpj_emp as doc_empresa FROM BLOOMERS_LINX..LinxLojas_trusted WHERE nome_emp LIKE '%MISHA%' or nome_emp LIKE '%OPEN%'";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    return await conn.QueryAsync<Empresa>(sql: sql);
-                }
+                return await _linxMicrovixRepositoryBase.GetCompanysAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"LinxPedidosCompra - GetEmpresas - Erro ao obter as empresas da tabela LinxLojas_trusted, atraves do sql {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public IEnumerable<Empresa> GetEmpresasSync()
+        public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database)
         {
             string sql = $@"SELECT empresa as numero_erp_empresa, nome_emp as nome_empresa, cnpj_emp as doc_empresa FROM BLOOMERS_LINX..LinxLojas_trusted WHERE nome_emp LIKE '%MISHA%' or nome_emp LIKE '%OPEN%'";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    return conn.Query<Empresa>(sql: sql);
-                }
+                return _linxMicrovixRepositoryBase.GetCompanysNotAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"LinxPedidosCompra - GetEmpresasSync - Erro ao obter as empresas da tabela LinxLojas_trusted, atraves do sql {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public async Task<List<T1>> GetRegistersExists(List<T1> registros, string? tableName, string? db)
+        public async Task<List<LinxPedidosCompra>> GetRegistersExistsAsync(List<LinxPedidosCompra> registros, string tableName, string database)
         {
             var identificadores = String.Empty;
             for (int i = 0; i < registros.Count(); i++)
@@ -166,15 +102,33 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys
                 else
                     identificadores += $"'{registros[i].cnpj_emp}', ";
             }
-            string query = $"SELECT cnpj_emp, cod_produto, cod_pedido, TIMESTAMP FROM {db}.[dbo].{tableName} WHERE cod_pedido IN ({identificadores})";
+            string query = $"SELECT cnpj_emp, cod_produto, cod_pedido, TIMESTAMP FROM {database}.[dbo].{tableName} WHERE cod_pedido IN ({identificadores})";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    var result = await conn.QueryAsync<T1>(query, commandTimeout: 120);
-                    return result.ToList();
-                }
+                return await _linxMicrovixRepositoryBase.GetRegistersExistsAsync(tableName, query);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public List<LinxPedidosCompra> GetRegistersExistsNotAsync(List<LinxPedidosCompra> registros, string tableName, string database)
+        {
+            var identificadores = String.Empty;
+            for (int i = 0; i < registros.Count(); i++)
+            {
+                if (i == registros.Count() - 1)
+                    identificadores += $"'{registros[i].cnpj_emp}'";
+                else
+                    identificadores += $"'{registros[i].cnpj_emp}', ";
+            }
+            string query = $"SELECT cnpj_emp, cod_produto, cod_pedido, TIMESTAMP FROM {database}.[dbo].{tableName} WHERE cod_pedido IN ({identificadores})";
+
+            try
+            {
+                return _linxMicrovixRepositoryBase.GetRegistersExistsNotAsync(tableName, query);
             }
             catch
             {

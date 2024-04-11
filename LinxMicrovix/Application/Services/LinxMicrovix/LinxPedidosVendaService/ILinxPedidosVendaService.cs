@@ -1,10 +1,10 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.LinxMicrovix.Application.Services.Base;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public interface ILinxPedidosVendaService<T1> : IMicrovixSaidaCoreService<T1> where T1 : class, new()
+    public interface ILinxPedidosVendaService<TEntity> : ILinxMicrovixServiceBase<TEntity> where TEntity : class, new()
     {
-        public Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador, string cnpj_emp);
-        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador, string cnpj_emp);
+        public Task<bool> IntegraRegistrosIndividualAsync(string tableName, string procName, string database, string identificador, string cnpj_emp);
+        public bool IntegraRegistrosIndividualNotAsync(string tableName, string procName, string database, string identificador, string cnpj_emp);
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+﻿namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    internal class LinxNaturezaOperacaoService
+    public class LinxNaturezaOperacaoService
     {
     }
 }

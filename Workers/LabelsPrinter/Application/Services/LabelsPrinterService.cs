@@ -98,7 +98,7 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                                     //RawPrinterHelper.SendStringToPrinter("EtiquetasMicrovix", order.zpl[i]);
                                 }
 
-                                //await _labelsPrinterRepository.UpdateStatus(order.number);
+                                await _labelsPrinterRepository.UpdateStatus(order.number);
                             }
                         }
                         catch (Exception ex) when (ex.Message.Contains(" - "))

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace BloomersIntegrationsManager.UI.Controllers.BloomersCarriersJobs
+namespace BloomersIntegrationsManager.UI.Controllers.Carriers
 {
     [ApiController]
     [Route("NewBloomers/BloomersCarriersJobs/TotalExpress")]

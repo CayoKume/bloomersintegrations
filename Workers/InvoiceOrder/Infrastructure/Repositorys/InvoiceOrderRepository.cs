@@ -15,7 +15,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
         public InvoiceOrderRepository(ISQLServerConnection conn, IBloomersWorkersCoreRepository bloomersWorkersCoreRepository) =>
             (_conn, _bloomersWorkersCoreRepository) = (conn, bloomersWorkersCoreRepository);
 
-        public async Task<IEnumerable<Order>> GetOrdersFromIT4(string botName)
+        public async Task<List<Order>> GetOrdersFromIT4(string botName)
         {
             try
             {
@@ -71,12 +71,14 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
 
                 using (var conn = _conn.GetIDbConnection())
                 {
-                    return await conn.QueryAsync<Order, Company, ShippingCompany, Order>(sql, (order, company, shippingCompany) =>
+                    var result = await conn.QueryAsync<Order, Company, ShippingCompany, Order>(sql, (order, company, shippingCompany) =>
                     {
                         order.company = company;
                         order.shippingCompany = shippingCompany;
                         return order;
                     }, splitOn: "doc_company, cod_shippingcompany");
+
+                    return result.ToList();
                 }
             }
             catch (Exception ex)

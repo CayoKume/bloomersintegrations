@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces
+﻿namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix
 {
-    internal interface ILinxProdutosCodBarRepository
+    public interface ILinxProdutosCodBarRepository
     {
     }
 }

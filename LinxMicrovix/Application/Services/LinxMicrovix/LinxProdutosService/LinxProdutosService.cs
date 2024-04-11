@@ -1,30 +1,32 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Microvix.Models;
-using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 using System.Globalization;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public class LinxProdutosService<T1> : ILinxProdutosService<T1> where T1 : LinxProdutos, new()
+    public class LinxProdutosService<TEntity> : ILinxProdutosService<TEntity> where TEntity : LinxProdutos, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
-        private readonly ILinxProdutosRepository<LinxProdutos> _linxProdutosRepository;
+        private readonly IAPICall _apiCall;
+        private readonly ILinxProdutosRepository _linxProdutosRepository;
 
-        public LinxProdutosService(ILinxProdutosRepository<LinxProdutos> linxProdutosRepository)
-            => (_linxProdutosRepository) = (linxProdutosRepository);
+        public LinxProdutosService(ILinxProdutosRepository linxProdutosRepository, IAPICall apiCall)
+            => (_linxProdutosRepository, _apiCall) = (linxProdutosRepository, apiCall);
 
-        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity?> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
-            var list = new List<T1?>();
+            var list = new List<TEntity?>();
 
             for (var i = 0;  i < registros.Count; i++)
             {
                 try
                 {
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         portal = registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).First(),
@@ -88,27 +90,28 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = await _linxProdutosRepository.GetParameters(tableName, "parameters_lastday");
+                PARAMETERS = await _linxProdutosRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
                 string[] idsSetores = { "2", "4" };
 
                 foreach (var idSetor in idsSetores)
                 {
-                    var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[id_setor]", idSetor).Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                    var registros = APICaller.DeserializeXML(response);
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[id_setor]", idSetor).Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                    var response = await _apiCall.CallAPIAsync(tableName, body);
+                    var registros = _apiCall.DeserializeXML(response);
 
                     if (registros.Count() > 0)
                     {
                         var listResults = DeserializeResponse(registros);
                         if (listResults.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<T1, LinxProdutos>(T1ToObject));
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutos>(TEntityToObject));
                             _linxProdutosRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                            await _linxProdutosRepository.CallDbProcMerge(procName, tableName, database);
+                            await _linxProdutosRepository.CallDbProcMergeAsync(procName, tableName, database);
                         }
                     }
                 }
@@ -119,27 +122,28 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = _linxProdutosRepository.GetParametersSync(tableName, "parameters_lastday");
+                PARAMETERS = _linxProdutosRepository.GetParametersNotAsync(tableName, database, "parameters_lastday");
 
                 string[] idsSetores = { "2", "4" };
 
                 foreach (var idSetor in idsSetores)
                 {
-                    var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[id_setor]", idSetor).Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                    var registros = APICaller.DeserializeXML(response);
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[id_setor]", idSetor).Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                    var response = _apiCall.CallAPINotAsync(tableName, body);
+                    var registros = _apiCall.DeserializeXML(response);
 
                     if (registros.Count() > 0)
                     {
                         var listResults = DeserializeResponse(registros);
                         if (listResults.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<T1, LinxProdutos>(T1ToObject));
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutos>(TEntityToObject));
                             _linxProdutosRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                            _linxProdutosRepository.CallDbProcMergeSync(procName, tableName, database);
+                            _linxProdutosRepository.CallDbProcMergeNotAsync(procName, tableName, database);
                         }
                     }
                 }
@@ -150,20 +154,21 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public async Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador, string cnpj_emp)
+        public async Task<bool> IntegraRegistrosIndividualAsync(string tableName, string procName, string database, string identificador, string cnpj_emp)
         {
             try
             {
-                PARAMETERS = await _linxProdutosRepository.GetParameters(tableName, "parameters_manual");
+                PARAMETERS = await _linxProdutosRepository.GetParametersAsync(tableName, database, "parameters_manual");
 
-                string response = APICaller.CallLinxAPI(PARAMETERS.Replace("[cod_produto]", $"{identificador}").Replace("[dt_update_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, cnpj_emp);
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[cod_produto]", $"{identificador}").Replace("[dt_update_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, cnpj_emp);
+                var response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
                 var registro = DeserializeResponse(registros);
 
                 if (registro.Count() > 0)
                 {
-                    await _linxProdutosRepository.InsereRegistroIndividual(registro[0], tableName, database);
-                    await _linxProdutosRepository.CallDbProcMerge(procName, tableName, database);
+                    await _linxProdutosRepository.InsereRegistroIndividualAsync(registro[0], tableName, database);
+                    await _linxProdutosRepository.CallDbProcMergeAsync(procName, tableName, database);
                     return true;
                 }
                 else
@@ -175,20 +180,21 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador, string cnpj_emp)
+        public bool IntegraRegistrosIndividualNotAsync(string tableName, string procName, string database, string identificador, string cnpj_emp)
         {
             try
             {
-                PARAMETERS = _linxProdutosRepository.GetParametersSync(tableName, "parameters_manual");
+                PARAMETERS = _linxProdutosRepository.GetParametersNotAsync(tableName, database, "parameters_manual");
 
-                string response = APICaller.CallLinxAPI(PARAMETERS.Replace("[cod_produto]", $"{identificador}").Replace("[dt_update_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, cnpj_emp);
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[cod_produto]", $"{identificador}").Replace("[dt_update_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}").Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, cnpj_emp);
+                var response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
                 var registro = DeserializeResponse(registros);
 
                 if (registro.Count() > 0)
                 {
-                    _linxProdutosRepository.InsereRegistroIndividualSync(registro[0], tableName, database);
-                    _linxProdutosRepository.CallDbProcMergeSync(procName, tableName, database);
+                    _linxProdutosRepository.InsereRegistroIndividualNotAsync(registro[0], tableName, database);
+                    _linxProdutosRepository.CallDbProcMergeNotAsync(procName, tableName, database);
                     return true;
                 }
                 else
@@ -200,11 +206,11 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public T1? T1ToObject(T1 t1)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     portal = t1.portal,
@@ -260,7 +266,7 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"LinxProdutos - T1ToObject - Erro ao converter registro: {t1.cod_produto} para objeto - {ex.Message}");
+                throw new Exception($"LinxProdutos - TEntityToObject - Erro ao converter registro: {t1.cod_produto} para objeto - {ex.Message}");
             }
         }
     }

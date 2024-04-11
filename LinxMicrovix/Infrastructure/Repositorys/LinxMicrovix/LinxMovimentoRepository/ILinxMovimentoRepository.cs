@@ -1,13 +1,18 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
-using Microvix.Models;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix
 {
-    public interface ILinxMovimentoRepository<T1> : IMicrovixSaidaCoreRepository<T1> where T1 : class, new()
+    public interface ILinxMovimentoRepository
     {
-        public Task InsereRegistroIndividual(T1 registro, string? tableName, string? db);
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db);
-        public IEnumerable<Empresa> GetEmpresasSync();
-        public Task<IEnumerable<Empresa>> GetEmpresas();
+        public void BulkInsertIntoTableRaw(List<LinxMovimento> registros, string tableName, string database);
+        public Task<List<LinxMovimento>> GetRegistersExistsAsync(List<LinxMovimento> registros, string tableName, string database);
+        public List<LinxMovimento> GetRegistersExistsNotAsync(List<LinxMovimento> registros, string tableName, string database);
+        public Task<string> GetParametersAsync(string tableName, string database, string parameterCol);
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol);
+        public Task InsereRegistroIndividualAsync(LinxMovimento registro, string tableName, string database);
+        public void InsereRegistroIndividualNotAsync(LinxMovimento registro, string tableName, string database);
+        public Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database);
+        public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database);
     }
 }

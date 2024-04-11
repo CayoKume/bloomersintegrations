@@ -36,14 +36,23 @@ namespace BloomersWorkers.AuthorizeNFe.Application.Services
                     {
                         var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
 
-                        foreach (var order in orders)
+                        for (int i = 0; i < orders.Count(); i++)
                         {
                             var user = await _authorizeNFeRepository.GetMicrovixUser(workerName);
-                            _loginPage.InsertLoginAndPassword(user, wait);
-                            _loginPage.SelectCompany(order.company.doc_company, user, driver, wait);
+
+                            if (i == 0)
+                            {
+                                _loginPage.InsertLoginAndPassword(user, wait);
+                                _loginPage.SelectCompany(orders[i].company.doc_company, driver, wait);
+                            }
+                            else
+                                _loginPage.SelectCompanyFromTopBar(orders[i].company.doc_company, wait);
+
+                            _homePage.ClosePendingInvoicesModal(driver, wait);
+                            _homePage.OpenSideMenu(driver, wait);
                             _homePage.NavigateToNFeScreen(driver, wait);
                             var parentWindowHandle = _authorizeNFePage.NavigateToNFeTab(driver, wait);
-                            _authorizeNFePage.SetFilters(order, driver, wait);
+                            _authorizeNFePage.SetFilters(orders[i], driver, wait);
                             _authorizeNFePage.GetResults(parentWindowHandle, driver, wait);
                         }
                     }

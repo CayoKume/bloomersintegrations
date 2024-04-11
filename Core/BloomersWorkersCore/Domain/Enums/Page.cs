@@ -11,6 +11,8 @@
             Login = 4,
             ChangingOrder = 5,
             AuthorizeNFe = 6,
+            ChangingPassword = 7,
+            InvoiceOrder = 8,
         }
     }
 }

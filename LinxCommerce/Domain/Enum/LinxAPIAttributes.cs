@@ -6,13 +6,11 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Domain.Enums
     {
         public enum TypeEnum
         {
-            #region Database
             [Description("BLOOMERS_LINX")]
             Producao,
 
             [Description("HOMOLOG_BLOOMERS_LINX")]
             Homologacao,
-            #endregion
 
             [Description(@"layer.misha")]
             authentication,

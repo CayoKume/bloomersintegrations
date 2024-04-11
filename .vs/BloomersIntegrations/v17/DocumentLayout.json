@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{0C689D34-FD86-4EE9-91CC-D7C7E70B38FC}|Workers\\AuthorizeNFe\\AuthorizeNFe.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\workers\\authorizenfe\\infrastructure\\source\\pages\\authorizenfepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C689D34-FD86-4EE9-91CC-D7C7E70B38FC}|Workers\\AuthorizeNFe\\AuthorizeNFe.csproj|solutionrelative:workers\\authorizenfe\\infrastructure\\source\\pages\\authorizenfepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9448298-5F5B-4556-BF1D-C9E336955312}|Core\\BloomersWorkersCore\\BloomersWorkersCore.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\core\\bloomersworkerscore\\domain\\extensions\\extensionsmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9448298-5F5B-4556-BF1D-C9E336955312}|Core\\BloomersWorkersCore\\BloomersWorkersCore.csproj|solutionrelative:core\\bloomersworkerscore\\domain\\extensions\\extensionsmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9448298-5F5B-4556-BF1D-C9E336955312}|Core\\BloomersWorkersCore\\BloomersWorkersCore.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\core\\bloomersworkerscore\\infrastructure\\source\\pages\\homepage\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9448298-5F5B-4556-BF1D-C9E336955312}|Core\\BloomersWorkersCore\\BloomersWorkersCore.csproj|solutionrelative:core\\bloomersworkerscore\\infrastructure\\source\\pages\\homepage\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C689D34-FD86-4EE9-91CC-D7C7E70B38FC}|Workers\\AuthorizeNFe\\AuthorizeNFe.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\workers\\authorizenfe\\application\\services\\authorizenfeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C689D34-FD86-4EE9-91CC-D7C7E70B38FC}|Workers\\AuthorizeNFe\\AuthorizeNFe.csproj|solutionrelative:workers\\authorizenfe\\application\\services\\authorizenfeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C689D34-FD86-4EE9-91CC-D7C7E70B38FC}|Workers\\AuthorizeNFe\\AuthorizeNFe.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\workers\\authorizenfe\\infrastructure\\repositorys\\authorizenferepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C689D34-FD86-4EE9-91CC-D7C7E70B38FC}|Workers\\AuthorizeNFe\\AuthorizeNFe.csproj|solutionrelative:workers\\authorizenfe\\infrastructure\\repositorys\\authorizenferepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,72 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthorizeNFeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\Infrastructure\\Repositorys\\AuthorizeNFeRepository.cs",
-              "RelativeDocumentMoniker": "Workers\\AuthorizeNFe\\Infrastructure\\Repositorys\\AuthorizeNFeRepository.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\Infrastructure\\Repositorys\\AuthorizeNFeRepository.cs",
-              "RelativeToolTip": "Workers\\AuthorizeNFe\\Infrastructure\\Repositorys\\AuthorizeNFeRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T21:50:30.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExtensionsMethods.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\Domain\\Extensions\\ExtensionsMethods.cs",
-              "RelativeDocumentMoniker": "Core\\BloomersWorkersCore\\Domain\\Extensions\\ExtensionsMethods.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\Domain\\Extensions\\ExtensionsMethods.cs",
-              "RelativeToolTip": "Core\\BloomersWorkersCore\\Domain\\Extensions\\ExtensionsMethods.cs",
-              "ViewState": "AQIAAA0BAAAAAAAAAAAhwJIBAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T19:54:02.278Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthorizeNFePage.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\Infrastructure\\Source\\Pages\\AuthorizeNFePage.cs",
-              "RelativeDocumentMoniker": "Workers\\AuthorizeNFe\\Infrastructure\\Source\\Pages\\AuthorizeNFePage.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\Infrastructure\\Source\\Pages\\AuthorizeNFePage.cs",
-              "RelativeToolTip": "Workers\\AuthorizeNFe\\Infrastructure\\Source\\Pages\\AuthorizeNFePage.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAAAEEAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T19:52:27.048Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomePage.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\HomePage\\HomePage.cs",
-              "RelativeDocumentMoniker": "Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\HomePage\\HomePage.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\HomePage\\HomePage.cs",
-              "RelativeToolTip": "Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\HomePage\\HomePage.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAADgv1EAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T19:50:24.469Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthorizeNFeService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\Application\\Services\\AuthorizeNFeService.cs",
-              "RelativeDocumentMoniker": "Workers\\AuthorizeNFe\\Application\\Services\\AuthorizeNFeService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\Application\\Services\\AuthorizeNFeService.cs",
-              "RelativeToolTip": "Workers\\AuthorizeNFe\\Application\\Services\\AuthorizeNFeService.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAhwBsAAABjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T19:02:06.01Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }

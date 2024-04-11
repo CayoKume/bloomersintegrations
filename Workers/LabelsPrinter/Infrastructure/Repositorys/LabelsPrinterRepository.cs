@@ -88,9 +88,9 @@ namespace BloomersWorkers.LabelsPrinter.Infrastructure.Repositorys
                                      'NF' AS type_nf,
                                      (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', A.[XML_FATURAMENTO]) + 7, 1)) AS serie_nf,
                                      (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS data_emission_nf
-                                     FROM GENERAL..IT4_WMS_DOCUMENTO A
+                                     FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                                      WHERE
-                                     --A.DOCUMENTO IN ()
+                                     --A.DOCUMENTO IN ('')
                                      A.NB_ETIQUETA_IMPRESSA = 'N' 
                                      AND A.SERIE = 'MI-' 
                                      AND A.CHAVE_NFE IS NOT NULL 

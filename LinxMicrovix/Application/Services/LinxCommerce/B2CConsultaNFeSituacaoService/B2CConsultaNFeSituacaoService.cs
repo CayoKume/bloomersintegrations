@@ -1,27 +1,28 @@
-﻿using BloomersMicrovixIntegrations.Repositorys.Ecommerce;
-using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Models.Ecommerce;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxCommerce;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 
-namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxCommerce
 {
-    public class B2CConsultaNFeSituacaoService<T1> : IB2CConsultaNFeSituacaoService<T1> where T1 : B2CConsultaNFeSituacao, new()
+    public class B2CConsultaNFeSituacaoService<TEntity> : IB2CConsultaNFeSituacaoService<TEntity> where TEntity : B2CConsultaNFeSituacao, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveB2C.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationB2C.ToName();
-        private readonly IB2CConsultaNFeSituacaoRepository<B2CConsultaNFeSituacao> _b2CConsultaNFeSituacaoRepository;
+        private readonly IAPICall _apiCall;
+        private readonly IB2CConsultaNFeSituacaoRepository _b2CConsultaNFeSituacaoRepository;
 
-        public B2CConsultaNFeSituacaoService(IB2CConsultaNFeSituacaoRepository<B2CConsultaNFeSituacao> b2CConsultaNFeSituacaoRepository) =>
-            _b2CConsultaNFeSituacaoRepository = b2CConsultaNFeSituacaoRepository;
+        public B2CConsultaNFeSituacaoService(IB2CConsultaNFeSituacaoRepository b2CConsultaNFeSituacaoRepository, IAPICall apiCall) =>
+            (_b2CConsultaNFeSituacaoRepository, _apiCall) = (b2CConsultaNFeSituacaoRepository, apiCall);
 
-        public List<T1> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
             long timestamp;
             int id_nfe_situacao, portal;
 
-            var list = new List<T1>();
+            var list = new List<TEntity>();
 
             for (int i = 0; i < registros.Count(); i++)
             {
@@ -42,7 +43,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
                     else
                         portal = 0;
 
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         id_nfe_situacao = id_nfe_situacao,
@@ -61,20 +62,21 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = await _b2CConsultaNFeSituacaoRepository.GetParameters(tableName, "parameters_lastday");
+                PARAMETERS = await _b2CConsultaNFeSituacaoRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
-                var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                var response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
                     var listResults = DeserializeResponse(registros);
-                    var _listResults = listResults.ConvertAll(new Converter<T1, B2CConsultaNFeSituacao>(T1ToObject));
-                    var __listResults = await _b2CConsultaNFeSituacaoRepository.GetRegistersExists(_listResults, tableName, database);
+                    var _listResults = listResults.ConvertAll(new Converter<TEntity, B2CConsultaNFeSituacao>(TEntityToObject));
+                    var __listResults = await _b2CConsultaNFeSituacaoRepository.GetRegistersExistsAsync(_listResults, tableName, database);
 
                     for (int i = 0; i < __listResults.Count; i++)
                     {
@@ -82,10 +84,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
                     }
 
                     if (_listResults.Count() > 0)
-                    {
                         _b2CConsultaNFeSituacaoRepository.BulkInsertIntoTableRaw(_listResults, tableName, database);
-                        //await _b2CConsultaNFeSituacaoRepository.CallDbProcMerge(procName, tableName, database);
-                    }
                 }
             }
             catch
@@ -94,14 +93,15 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = _b2CConsultaNFeSituacaoRepository.GetParametersSync(tableName, "parameters_lastday");
+                PARAMETERS = _b2CConsultaNFeSituacaoRepository.GetParametersNotAsync(tableName, database, "parameters_lastday");
 
-                var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
+                var response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
@@ -109,9 +109,8 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
 
                     if (listResults.Count() > 0)
                     {
-                        var list = listResults.ConvertAll(new Converter<T1, B2CConsultaNFeSituacao>(T1ToObject));
+                        var list = listResults.ConvertAll(new Converter<TEntity, B2CConsultaNFeSituacao>(TEntityToObject));
                         _b2CConsultaNFeSituacaoRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                        //_b2CConsultaNFeSituacaoRepository.CallDbProcMergeSync(procName, tableName, database);
                     }
                 }
             }
@@ -121,11 +120,11 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
         }
 
-        public T1? T1ToObject(T1 t1)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     id_nfe_situacao = t1.id_nfe_situacao,
@@ -136,7 +135,7 @@ namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"B2CConsultaNFeSituacao - T1ToObject - Erro ao converter registro: {t1.id_nfe_situacao} para objeto - {ex.Message}");
+                throw new Exception($"B2CConsultaNFeSituacao - TEntityToObject - Erro ao converter registro: {t1.id_nfe_situacao} para objeto - {ex.Message}");
             }
         }
     }

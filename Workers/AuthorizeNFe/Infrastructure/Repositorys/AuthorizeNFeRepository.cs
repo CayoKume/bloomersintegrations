@@ -43,14 +43,14 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Repositorys
 	                            JOIN BLOOMERS_LINX..LINXLOJAS_TRUSTED D (NOLOCK) ON B.EMPRESA = D.EMPRESA
 	                            JOIN GENERAL..IT4_WMS_DOCUMENTO E (NOLOCK) ON REPLACE(B.ORDER_ID, '-CANCELLED', '') = TRIM(E.DOCUMENTO)
                             WHERE
-                                A.CHAVE_NFE IN ('35240438367316000199550030000498121053544703')
-	                            --A.SITUACAO NOT IN (1,2,3,4,8,10,11,12,13,14,15,16) AND 
-	                            --A.SITUACAO IN (5,6,7,9) AND 
-	                            --B.ORDER_ID NOT LIKE ('%-CANCELLED%') AND 
-	                            --A.DATA_EMISSAO > '2023-10-01' AND
-	                            --E.CHAVE_NFE IS NULL AND
-	                            --E.XML_FATURAMENTO IS NULL AND
-	                            --E.NF_SAIDA IS NULL";
+                                --A.CHAVE_NFE IN ('')
+	                            A.SITUACAO NOT IN (1,2,3,4,8,10,11,12,13,14,15,16) AND 
+	                            A.SITUACAO IN (5,6,7,9) AND 
+	                            B.ORDER_ID NOT LIKE ('%-CANCELLED%') AND 
+	                            A.DATA_EMISSAO > '2023-10-01' AND
+	                            E.CHAVE_NFE IS NULL AND
+	                            E.XML_FATURAMENTO IS NULL AND
+	                            E.NF_SAIDA IS NULL";
 
             try
             {
@@ -85,13 +85,13 @@ namespace BloomersWorkers.AuthorizeNFe.Infrastructure.Repositorys
 	                            JOIN BLOOMERS_LINX..B2CCONSULTANFESITUACAO_TRUSTED C (NOLOCK) ON B.SITUACAO = C.ID_NFE_SITUACAO
 	                            JOIN GENERAL..IT4_WMS_DOCUMENTO E (NOLOCK) ON A.COD_PEDIDO = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(TRIM(E.DOCUMENTO), 'MI-VF', ''), 'MI-LJ', ''), 'MI-VD', ''), 'OA-VF', ''), 'OA-LJ', ''), 'OA-VD', '')
                             WHERE
-                                B.CHAVE_NFE IN ('35240438367316000199550030000498061010874712') AND
-	                            --B.SITUACAO NOT IN (1,2,3,4,8,10,11,12,13,14,15,16) AND 
-	                            --B.SITUACAO IN (5,6,7,9) AND 
-	                            --B.DATA_EMISSAO > '2023-10-01' AND
-	                            --E.CHAVE_NFE IS NULL AND
-	                            --E.XML_FATURAMENTO IS NULL AND
-	                            --E.NF_SAIDA IS NULL AND
+                                --B.CHAVE_NFE IN ('') AND
+	                            B.SITUACAO NOT IN (1,2,3,4,8,10,11,12,13,14,15,16) AND 
+	                            B.SITUACAO IN (5,6,7,9) AND 
+	                            B.DATA_EMISSAO > '2023-10-01' AND
+	                            E.CHAVE_NFE IS NULL AND
+	                            E.XML_FATURAMENTO IS NULL AND
+	                            E.NF_SAIDA IS NULL AND
 								(E.DOCUMENTO LIKE '%-VD%' OR E.DOCUMENTO LIKE '%-LJ%') AND
 								E.SERIE NOT LIKE 'MX-' AND
                                 B.DOCUMENTO != 0";

@@ -42,17 +42,17 @@ namespace BloomersWorkers.ChangingOrder.Infrastructure.Repositorys
                              FROM [GENERAL].[dbo].IT4_WMS_DOCUMENTO A (NOLOCK)
                              JOIN [GENERAL].[dbo].IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE 
                              WHERE
-                             A.DOCUMENTO IN ('MI-VD37693')
-                             --(A.DOCUMENTO LIKE '%-VD%' OR A.DOCUMENTO LIKE '%-LJ%')
-                             --AND B.QTDE != B.QTDERETORNO
-                             --AND A.RETORNO IS NOT NULL
-                             --AND A.CHAVE_NFE IS NULL
-                             --AND A.XML_FATURAMENTO IS NULL
-                             --AND A.NF_SAIDA IS NULL
-                             --AND A.ORIGEM = 'P'
-                             --AND A.SERIE != 'MX-'
-                             --AND A.CANCELADO IS NULL
-							 --AND A.CANCELAMENTO IS NULL";
+                             --A.DOCUMENTO IN ('')
+                             (A.DOCUMENTO LIKE '%-VD%' OR A.DOCUMENTO LIKE '%-LJ%')
+                             AND B.QTDE != B.QTDERETORNO
+                             AND A.RETORNO IS NOT NULL
+                             AND A.CHAVE_NFE IS NULL
+                             AND A.XML_FATURAMENTO IS NULL
+                             AND A.NF_SAIDA IS NULL
+                             AND A.ORIGEM = 'P'
+                             AND A.SERIE != 'MX-'
+                             AND A.CANCELADO IS NULL
+							 AND A.CANCELAMENTO IS NULL";
 
             try
             {

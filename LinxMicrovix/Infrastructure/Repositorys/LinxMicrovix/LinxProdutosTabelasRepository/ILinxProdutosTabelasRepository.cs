@@ -1,13 +1,20 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
-using Microvix.Models;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix
 {
-    public interface ILinxProdutosTabelasRepository<T1> : IMicrovixSaidaCoreRepository<T1> where T1 : class, new()
+    public interface ILinxProdutosTabelasRepository
     {
-        public Task InsereRegistroIndividual(T1 registro, string? tableName, string? db);
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db);
-        public Task<IEnumerable<Empresa>> GetEmpresas();
-        public IEnumerable<Empresa> GetEmpresasSync();
+        public void BulkInsertIntoTableRaw(List<LinxProdutosTabelas> registros, string tableName, string database);
+        public Task<List<LinxProdutosTabelas>> GetRegistersExistsAsync(List<LinxProdutosTabelas> registros, string tableName, string database);
+        public List<LinxProdutosTabelas> GetRegistersExistsNotAsync(List<LinxProdutosTabelas> registros, string tableName, string database);
+        public Task<string> GetParametersAsync(string tableName, string database, string parameterCol);
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol);
+        public Task InsereRegistroIndividualAsync(LinxProdutosTabelas registro, string tableName, string database);
+        public void InsereRegistroIndividualNotAsync(LinxProdutosTabelas registro, string tableName, string database);
+        public Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database);
+        public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database);
+        public Task CallDbProcMergeAsync(string procName, string tableName, string database);
+        public void CallDbProcMergeNotAsync(string procName, string tableName, string database);
     }
 }

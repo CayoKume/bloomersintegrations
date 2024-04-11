@@ -33,7 +33,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis
             }
         }
 
-        private HttpClient CreateClient(string authentication, string chave, string route)
+        public HttpClient CreateClient(string authentication, string chave, string route)
         {
             try
             {

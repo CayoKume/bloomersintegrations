@@ -17,6 +17,7 @@
     <ProjectReference Include="..\..\Carriers\FlashCourier\FlashCourier.csproj" />
     <ProjectReference Include="..\..\Carriers\TotalExpress\TotalExpress.csproj" />
     <ProjectReference Include="..\..\LinxCommerce\LinxCommerce.csproj" />
+    <ProjectReference Include="..\..\LinxMicrovix\LinxMicrovix.csproj" />
   </ItemGroup>
 
 </Project>

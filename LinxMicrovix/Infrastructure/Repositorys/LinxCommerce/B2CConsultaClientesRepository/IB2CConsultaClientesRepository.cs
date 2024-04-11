@@ -1,12 +1,17 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
 
-namespace BloomersMicrovixIntegrations.Saida.Ecommerce.Repositorys.Interfaces
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxCommerce
 {
-    public interface IB2CConsultaClientesRepository<T1> : IMicrovixSaidaCoreRepository<T1> where T1 : class
+    public interface IB2CConsultaClientesRepository
     {
-        public Task<string> GetLastTimestampClientesERP();
-        public string GetLastTimestampClientesERPSync();
-        public Task InsereRegistroIndividual(T1 registro, string? tableName, string? db);
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db);
+        public void BulkInsertIntoTableRaw(List<B2CConsultaClientes> registros, string tableName, string database);
+        public Task<string> GetTableLastTimestampAsync(string database, string tableName);
+        public string GetTableLastTimestampNotAsync(string database, string tableName);
+        public Task<List<B2CConsultaClientes>> GetRegistersExistsAsync(List<B2CConsultaClientes> registros, string tableName, string database);
+        public List<B2CConsultaClientes> GetRegistersExistsNotAsync(List<B2CConsultaClientes> registros, string tableName, string database);
+        public Task<string> GetParametersAsync(string tableName, string database, string parameterCol);
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol);
+        public Task InsereRegistroIndividualAsync(B2CConsultaClientes registro, string tableName, string database);
+        public void InsereRegistroIndividualNotAsync(B2CConsultaClientes registro, string tableName, string database);
     }
 }

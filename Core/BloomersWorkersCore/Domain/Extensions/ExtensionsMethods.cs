@@ -368,6 +368,46 @@ namespace BloomersWorkersCore.Domain.Extensions
             }
         }
 
+        public static IWebElement GetElementExistsByClassName(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementExists(By.ClassName(locator)));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
+        public static IWebElement GetElementInsideAnotherElementById(string locator, Page.TypeEnum page, string method, IWebElement element)
+        {
+            try
+            {
+                return element.FindElement(By.Id(locator));
+            }
+            catch (Exception ex) when (ex.Message.Contains("Timed out"))
+            {
+                throw new CustomNoSuchElementException(
+                    @$"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator}",
+                    locator,
+                    Page.TypeEnum.Home
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($@"{Enum.GetName(typeof(Page.TypeEnum), page)} ({method}) - O bot nao foi capaz de encontrar o elemento: {locator} - {ex.InnerException.Message}");
+            }
+        }
+
         public static IWebElement? GetElementIfExistsById(string locator, WebDriverWait _wait, Page.TypeEnum page, string method)
         {
             try

@@ -1,5 +1,4 @@
-﻿using BloomersWorkersCore.Domain.CustomExceptions;
-using BloomersWorkersCore.Domain.Enums;
+﻿using BloomersWorkersCore.Domain.Enums;
 using BloomersWorkersCore.Domain.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -15,31 +14,22 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             {
                 Thread.Sleep(5 * 1000);
 
-                _wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("main")));
+                ExtensionsMethods.ChangeToFrameWhenItsAvaiable("main", _wait, Page.TypeEnum.InvoiceOrder, "SelectOrder");
 
-                if (_wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Displayed && _wait.Until(ExpectedConditions.ElementExists(By.Id("documento"))).Enabled)
+                var order = $"{nr_pedido.Replace("OA-VD", "").Replace("OA-LJ", "").Replace("MX-VD", "").Replace("MI-VD", "").Replace("MI-LJ", "")}";
+                var buttonProceed = ExtensionsMethods.GetElementToBeClickableById("B2", _wait, Page.TypeEnum.InvoiceOrder, "SelectOrder");
+                var inputDocument = ExtensionsMethods.GetElementToBeClickableById("documento", _wait, Page.TypeEnum.InvoiceOrder, "SelectOrder");
+
+                if (inputDocument.Displayed && inputDocument.Enabled)
                 {
-                    var pedido = $"{nr_pedido.Replace("OA-VD", "").Replace("OA-LJ", "").Replace("MX-VD", "").Replace("MI-VD", "").Replace("MI-LJ", "")}";
-                    SelectElement comboboxOrder = new SelectElement(_wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("documento"))));
-                    comboboxOrder.SelectByValue($"{pedido}");
-                    _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B2"))).Click();
+                    var comboboxOrder = new SelectElement(inputDocument);
+                    comboboxOrder.SelectByValue($"{order}");
+                    ExtensionsMethods.ClickInElement(buttonProceed);
                 }
             }
-            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            catch
             {
-                throw new CustomNoSuchElementException(
-                    @$"VDPage (SelectOrder) - O bot nao foi capaz de encontrar o pedido nas opções de seleção", 
-                    ex.InnerException.Message,
-                    Page.TypeEnum.VD
-                );
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$"VDPage (SelectOrder) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@"VDPage (SelectOrder) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+                throw;
             }
         }
 
@@ -67,21 +57,9 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
 
                 _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
             }
-            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            catch
             {
-                throw new CustomNoSuchElementException(
-                    @$"VDPage (SetOrderData) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
-                    ex.InnerException.Message,
-                    Page.TypeEnum.VD
-                );
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$"VDPage (SetOrderData) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@"VDPage (SetOrderData) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+                throw;
             }
         }
 
@@ -134,21 +112,9 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                 Thread.Sleep(4 * 1000);
                 _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("B1"))).Click();
             }
-            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            catch
             {
-                throw new CustomNoSuchElementException(
-                    @$"VDPage (SetShippimentData) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
-                    ex.InnerException.Message,
-                    Page.TypeEnum.VD
-                );
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$"VDPage (SetShippimentData) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@"VDPage (SetShippimentData) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+                throw;
             }
         }
 
@@ -181,21 +147,9 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                 if (_wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Displayed && _wait.Until(ExpectedConditions.ElementExists(By.Name($"{locator}"))).Enabled)
                     _wait.Until(ExpectedConditions.ElementToBeClickable(By.Name($"{locator}"))).Click();
             }
-            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            catch
             {
-                throw new CustomNoSuchElementException(
-                    @$"VDPage (SetCostCenter) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
-                    ex.InnerException.Message,
-                    Page.TypeEnum.VD
-                );
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$"VDPage (SetCostCenter) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@"VDPage (SetCostCenter) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+                throw;
             }
         }
 
@@ -211,21 +165,9 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                 else
                     return false;
             }
-            catch (NoSuchElementException ex) when (ex.Message.Contains("Cannot locate option with value: "))
+            catch
             {
-                throw new CustomNoSuchElementException(
-                    @$"VDPage (WaitChaveNFe) - O bot nao foi capaz de encontrar o pedido nas opções de seleção",
-                    ex.InnerException.Message,
-                    Page.TypeEnum.VD
-                );
-            }
-            catch (Exception ex) when (ex.Message.Contains("Timed out"))
-            {
-                throw new Exception(@$"VDPage (WaitChaveNFe) - O bot nao foi capaz de encontrar o elemento para interagir - {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($@"VDPage (WaitChaveNFe) - Erro ao selecionar pedido para ser faturado - {ex.Message}");
+                throw;
             }
         }
     }

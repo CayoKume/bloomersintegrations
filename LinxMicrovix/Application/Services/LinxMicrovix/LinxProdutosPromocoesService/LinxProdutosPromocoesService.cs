@@ -1,30 +1,32 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Microvix.Models;
-using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 using System.Globalization;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public class LinxProdutosPromocoesService<T1> : ILinxProdutosPromocoesService<T1> where T1 : LinxProdutosPromocoes, new()
+    public class LinxProdutosPromocoesService<TEntity> : ILinxProdutosPromocoesService<TEntity> where TEntity : LinxProdutosPromocoes, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
-        private readonly ILinxProdutosPromocoesRepository<LinxProdutosPromocoes> _linxProdutosPromocoesRepository;
+        private readonly IAPICall _apiCall;
+        private readonly ILinxProdutosPromocoesRepository _linxProdutosPromocoesRepository;
 
-        public LinxProdutosPromocoesService(ILinxProdutosPromocoesRepository<LinxProdutosPromocoes> linxProdutosPromocoesRepository)
-            => (_linxProdutosPromocoesRepository) = (linxProdutosPromocoesRepository);
+        public LinxProdutosPromocoesService(ILinxProdutosPromocoesRepository linxProdutosPromocoesRepository, IAPICall apiCall)
+            => (_linxProdutosPromocoesRepository, _apiCall) = (linxProdutosPromocoesRepository, apiCall);
 
-        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity?> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
-            var list = new List<T1?>();
+            var list = new List<TEntity?>();
 
             for (var i = 0; i < registros.Count; i++) 
             {
                 try
                 {
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         portal = registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).First(),
@@ -51,30 +53,31 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = await _linxProdutosPromocoesRepository.GetParameters(tableName, "parameters_lastday");
+                PARAMETERS = await _linxProdutosPromocoesRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
-                var cnpjs = await _linxProdutosPromocoesRepository.GetEmpresas();
+                var cnpjs = await _linxProdutosPromocoesRepository.GetCompanysAsync(tableName, database);
 
                 foreach (var cnpj in cnpjs)
                 {
-                    var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_empresa);
-                    var registros = APICaller.DeserializeXML(response);
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
+                    var response = await _apiCall.CallAPIAsync(tableName, body);
+                    var registros = _apiCall.DeserializeXML(response);
 
                     if (registros.Count() > 0)
                     {
                         var listResults = DeserializeResponse(registros);
                         if (listResults.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<T1, LinxProdutosPromocoes>(T1ToObject));
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutosPromocoes>(TEntityToObject));
                             _linxProdutosPromocoesRepository.BulkInsertIntoTableRaw(list, tableName, database);
                         }
                     }
                 }
-                await _linxProdutosPromocoesRepository.CallDbProcMerge(procName, tableName, database);
+                await _linxProdutosPromocoesRepository.CallDbProcMergeAsync(procName, tableName, database);
             }
             catch
             {
@@ -82,30 +85,31 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = _linxProdutosPromocoesRepository.GetParametersSync(tableName, "parameters_lastday");
+                PARAMETERS = _linxProdutosPromocoesRepository.GetParametersNotAsync(tableName, database, "parameters_lastday");
 
-                var cnpjs = _linxProdutosPromocoesRepository.GetEmpresasSync();
+                var cnpjs = _linxProdutosPromocoesRepository.GetCompanysNotAsync(tableName, database);
 
                 foreach (var cnpj in cnpjs)
                 {
-                    var response = APICaller.CallLinxAPI(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_empresa);
-                    var registros = APICaller.DeserializeXML(response);
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
+                    var response = _apiCall.CallAPINotAsync(tableName, body);
+                    var registros =  _apiCall.DeserializeXML(response);
 
                     if (registros.Count() > 0)
                     {
                         var listResults = DeserializeResponse(registros);
                         if (listResults.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<T1, LinxProdutosPromocoes>(T1ToObject));
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutosPromocoes>(TEntityToObject));
                             _linxProdutosPromocoesRepository.BulkInsertIntoTableRaw(list, tableName, database);
                         }
                     }
                 }
-                _linxProdutosPromocoesRepository.CallDbProcMergeSync(procName, tableName, database);
+                _linxProdutosPromocoesRepository.CallDbProcMergeNotAsync(procName, tableName, database);
             }
             catch
             {
@@ -113,11 +117,11 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public T1? T1ToObject(T1 t1)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     portal = t1.portal,
@@ -136,7 +140,7 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"LinxProdutosPromocoes - T1ToObject - Erro ao converter registro: {t1.cod_produto} para objeto - {ex.Message}");
+                throw new Exception($"LinxProdutosPromocoes - TEntityToObject - Erro ao converter registro: {t1.cod_produto} para objeto - {ex.Message}");
             }
         }
     }

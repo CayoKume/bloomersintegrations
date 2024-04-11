@@ -1,19 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
-namespace BloomersIntegrationsManager.Controllers
+namespace BloomersIntegrationsManager.UI.Controllers.Carriers
 {
-    [ApiController]
-    [Route("NewBloomers/BloomersInvoiceIntegrations/Transportadoras")]
-    public class BloomersInvoiceTransportadorasJobsManagerController : Controller
+    //[ApiController]
+    //[Route("NewBloomers/BloomersCarriersJobs/Mandae")]
+    public class MandaeController : Controller
     {
-        //private readonly ITotalExpressService _totalExpressService;
         //private readonly IMandaeService _mandaeService;
 
-        //public BloomersInvoiceTransportadorasJobsManagerController(ITotalExpressService totalExpressService, IMandaeService mandaeService) =>
-            //(_totalExpressService, _mandaeService) = (totalExpressService, mandaeService);
+        //public MandaeController(IMandaeService mandaeService) =>
+        //    (_mandaeService) = (mandaeService);
 
-        #region Mandae
         //[HttpPost("MandaeEnviaPedido")] //Descontinuado
         //public async Task<ActionResult<string>> MandaeEnviaPedido([Required][FromQuery] string nr_pedido)
         //{
@@ -48,6 +45,6 @@ namespace BloomersIntegrationsManager.Controllers
         //        throw;
         //    }
         //} 
-        #endregion
+
     }
 }

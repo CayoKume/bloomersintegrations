@@ -68,3 +68,5 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersInte
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersIntegrationsManager\obj\Debug\net8.0\ref\BloomersIntegrationsManager.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersIntegrationsManager\bin\Debug\net8.0\TotalExpress.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersIntegrationsManager\bin\Debug\net8.0\TotalExpress.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersIntegrationsManager\bin\Debug\net8.0\LinxMicrovix.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\BloomersIntegrationsManager\bin\Debug\net8.0\LinxMicrovix.pdb

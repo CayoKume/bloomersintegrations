@@ -1,31 +1,20 @@
-﻿using Dapper;
-using System.Data;
-using System.Data.SqlClient;
-using BloomersGeneralConnection.interfaces;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Models.Ecommerce;
-using BloomersMicrovixIntegrations.Saida.Ecommerce.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Core.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Repositorys.Base;
 
-namespace BloomersMicrovixIntegrations.Repositorys.Ecommerce
+namespace BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxCommerce
 {
-    public class B2CConsultaPedidosRepository<T1> : IB2CConsultaPedidosRepository<T1> where T1 : B2CConsultaPedidos, new()
+    public class B2CConsultaPedidosRepository : IB2CConsultaPedidosRepository
     {
-        private readonly ISQLServerConnection _conn;
+        private readonly ILinxMicrovixRepositoryBase<B2CConsultaPedidos> _linxMicrovixRepositoryBase;
 
-        public B2CConsultaPedidosRepository(ISQLServerConnection conn) =>
-            _conn = conn;
+        public B2CConsultaPedidosRepository(ILinxMicrovixRepositoryBase<B2CConsultaPedidos> linxMicrovixRepositoryBase) =>
+            _linxMicrovixRepositoryBase = linxMicrovixRepositoryBase;
 
-        public void BulkInsertIntoTableRaw(List<T1> registros, string? tableName, string? db)
+        public void BulkInsertIntoTableRaw(List<B2CConsultaPedidos> registros, string tableName, string database)
         {
             try
             {
-                var table = new DataTable();
-                var properties = registros[0].GetType().GetProperties();
-
-                for (int i = 0; i < properties.Count(); i++)
-                {
-                    table.Columns.Add($"{properties[i].Name}");
-                }
+                var table = _linxMicrovixRepositoryBase.CreateDataTable(tableName, new B2CConsultaPedidos().GetType().GetProperties());
 
                 for (int i = 0; i < registros.Count(); i++)
                 {
@@ -35,91 +24,43 @@ namespace BloomersMicrovixIntegrations.Repositorys.Ecommerce
                         registros[i].dt_disponivel_faturamento.ToString("yyyy-MM-dd HH:mm:ss"), registros[i].portal, registros[i].mensagem_falha_faturamento, registros[i].id_tipo_b2c, registros[i].ecommerce_origem, registros[i].order_id, registros[i].fulfillment_id);
                 }
 
-                using (var conn = _conn.GetDbConnection())
-                {
-                    using var bulkCopy = new SqlBulkCopy((SqlConnection)conn);
-                    bulkCopy.DestinationTableName = $"{db}.[dbo].{tableName}_raw";
-                    bulkCopy.BatchSize = table.Rows.Count;
-                    bulkCopy.BulkCopyTimeout = 5 * 60;
-                    bulkCopy.WriteToServer(table);
-                    conn.Close();
-                }
+                _linxMicrovixRepositoryBase.BulkInsertIntoTableRaw(table, database, tableName, table.Rows.Count);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"B2CConsultaPedidos - BulkInsertIntoTableRaw - Erro ao realizar BULK INSERT na tabela {tableName} - {ex.Message}");
+                throw;
             }
         }
 
-        public async Task CallDbProcMerge(string? procName, string? tableName, string? database)
+        public async Task<string> GetParametersAsync(string tableName, string database, string parameterCol)
         {
-            try
-            {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    await conn.ExecuteAsync($"{database}..{procName}", commandType: CommandType.StoredProcedure);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"B2CConsultaPedidos - CallDbProcMerge - Erro ao realizar merge na tabela {tableName}, através da proc : {procName} - {ex.Message}");
-            }
-        }
-
-        public void CallDbProcMergeSync(string? procName, string? tableName, string? db)
-        {
-            try
-            {
-                using (var conn = _conn.GetSqlDbConnection())
-                {
-                    using (var command = new SqlCommand($"{db}..{procName}", conn) { CommandType = CommandType.StoredProcedure })
-                    {
-                        command.CommandTimeout = 120;
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"B2CConsultaPedidos - CallDbProcMergeSync - Erro ao realizar merge na tabela {tableName}, através da proc : {procName} - {ex.Message}");
-            }
-        }
-
-        public async Task<string> GetParameters(string tableName, string parameterCol)
-        {
-            string sql = $@"SELECT {parameterCol} FROM [BLOOMERS_LINX].[dbo].[LinxAPIParam] (nolock) where method = '{tableName}'";
+            string sql = $@"SELECT {parameterCol} FROM [{database}].[dbo].[LinxAPIParam] (nolock) where method = '{tableName}'";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    return await conn.QueryFirstAsync<string>(sql: sql);
-                }
+                return await _linxMicrovixRepositoryBase.GetParametersAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"B2CConsultaPedidos - GetParameters - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql: {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public string GetParametersSync(string tableName, string parameterCol)
+        public string GetParametersNotAsync(string tableName, string database, string parameterCol)
         {
-            string sql = $@"SELECT {parameterCol} FROM [BLOOMERS_LINX].[dbo].[LinxAPIParam] (nolock) where method = '{tableName}'";
+            string sql = $@"SELECT {parameterCol} FROM [{database}].[dbo].[LinxAPIParam] (nolock) where method = '{tableName}'";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    return conn.QueryFirst<string>(sql: sql);
-                }
+                return _linxMicrovixRepositoryBase.GetParametersNotAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"B2CConsultaPedidos - GetParametersSync - Erro ao obter parametros dos filtros da tabela LinxAPIParam, atraves do sql: {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public async Task<List<T1>> GetRegistersExists(List<T1> registros, string? tableName, string? db)
+        public async Task<List<B2CConsultaPedidos>> GetRegistersExistsAsync(List<B2CConsultaPedidos> registros, string tableName, string database)
         {
             var identificadores = String.Empty;
             for (int i = 0; i < registros.Count(); i++)
@@ -129,15 +70,11 @@ namespace BloomersMicrovixIntegrations.Repositorys.Ecommerce
                 else
                     identificadores += $"'{registros[i].order_id}', ";
             }
-            string query = $"SELECT order_id, timestamp FROM [{db}].[dbo].[{tableName}_TRUSTED] WHERE order_id IN ({identificadores})";
+            string sql = $"SELECT order_id, timestamp FROM [{database}].[dbo].[{tableName}_TRUSTED] WHERE order_id IN ({identificadores})";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    var result = await conn.QueryAsync<T1>(query, commandTimeout: 120);
-                    return result.ToList();
-                }
+                return await _linxMicrovixRepositoryBase.GetRegistersExistsAsync(tableName, sql);
             }
             catch
             {
@@ -145,33 +82,31 @@ namespace BloomersMicrovixIntegrations.Repositorys.Ecommerce
             }
         }
 
-        public async Task InsereRegistroIndividual(T1 registro, string? tableName, string? db)
+        public List<B2CConsultaPedidos> GetRegistersExistsNotAsync(List<B2CConsultaPedidos> registros, string tableName, string database)
         {
-            string sql = @$"INSERT INTO {db}..{tableName}_raw 
-                            ([lastupdateon], [id_pedido], [dt_pedido], [cod_cliente_erp], [cod_cliente_b2c], [vl_frete], [forma_pgto], [plano_pagamento], [anotacao], [taxa_impressao], [finalizado], [valor_frete_gratis], 
-                             [tipo_frete], [id_status], [cod_transportador], [tipo_cobranca_frete], [ativo], [empresa], [id_tabela_preco], [valor_credito], [cod_vendedor], [timestamp], [dt_insert], [dt_disponivel_faturamento], 
-                             [portal], [mensagem_falha_faturamento], [id_tipo_b2c], [ecommerce_origem], [order_id], [fulfillment_id]) 
-                            Values 
-                            (@lastupdateon, @id_pedido, @dt_pedido, @cod_cliente_erp, @cod_cliente_b2c, @vl_frete, @forma_pgto, @plano_pagamento, @anotacao, @taxa_impressao, @finalizado, @valor_frete_gratis, 
-                             @tipo_frete, @id_status, @cod_transportador, @tipo_cobranca_frete, @ativo, @empresa, @id_tabela_preco, @valor_credito, @cod_vendedor, @timestamp, @dt_insert, @dt_disponivel_faturamento, 
-                             @portal, @mensagem_falha_faturamento, @id_tipo_b2c, @ecommerce_origem, @order_id, @fulfillment_id)";
+            var identificadores = String.Empty;
+            for (int i = 0; i < registros.Count(); i++)
+            {
+                if (i == registros.Count() - 1)
+                    identificadores += $"'{registros[i].order_id}'";
+                else
+                    identificadores += $"'{registros[i].order_id}', ";
+            }
+            string sql = $"SELECT order_id, timestamp FROM [{database}].[dbo].[{tableName}_TRUSTED] WHERE order_id IN ({identificadores})";
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    await conn.ExecuteAsync(sql, registro);
-                }
+                return _linxMicrovixRepositoryBase.GetRegistersExistsNotAsync(tableName, sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"B2CConsultaPedidos - InsereRegistroIndividual - Erro ao inserir registro na tabela {tableName}, atraves do sql: {sql} - {ex.Message}");
+                throw;
             }
         }
 
-        public void InsereRegistroIndividualSync(T1 registro, string? tableName, string? db)
+        public async Task InsereRegistroIndividualAsync(B2CConsultaPedidos registro, string tableName, string database)
         {
-            string sql = @$"INSERT INTO {db}..{tableName}_raw 
+            string sql = @$"INSERT INTO {database}..{tableName}_raw 
                             ([lastupdateon], [id_pedido], [dt_pedido], [cod_cliente_erp], [cod_cliente_b2c], [vl_frete], [forma_pgto], [plano_pagamento], [anotacao], [taxa_impressao], [finalizado], [valor_frete_gratis], 
                              [tipo_frete], [id_status], [cod_transportador], [tipo_cobranca_frete], [ativo], [empresa], [id_tabela_preco], [valor_credito], [cod_vendedor], [timestamp], [dt_insert], [dt_disponivel_faturamento], 
                              [portal], [mensagem_falha_faturamento], [id_tipo_b2c], [ecommerce_origem], [order_id], [fulfillment_id]) 
@@ -182,14 +117,32 @@ namespace BloomersMicrovixIntegrations.Repositorys.Ecommerce
 
             try
             {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    conn.Execute(sql, registro);
-                }
+                await _linxMicrovixRepositoryBase.InsereRegistroIndividualAsync(tableName, sql, registro);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"B2CConsultaPedidos - InsereRegistroIndividualSync - Erro ao inserir registro na tabela {tableName}, atraves do sql: {sql} - {ex.Message}");
+                throw;
+            }
+        }
+
+        public void InsereRegistroIndividualNotAsync(B2CConsultaPedidos registro, string tableName, string database)
+        {
+            string sql = @$"INSERT INTO {database}..{tableName}_raw 
+                            ([lastupdateon], [id_pedido], [dt_pedido], [cod_cliente_erp], [cod_cliente_b2c], [vl_frete], [forma_pgto], [plano_pagamento], [anotacao], [taxa_impressao], [finalizado], [valor_frete_gratis], 
+                             [tipo_frete], [id_status], [cod_transportador], [tipo_cobranca_frete], [ativo], [empresa], [id_tabela_preco], [valor_credito], [cod_vendedor], [timestamp], [dt_insert], [dt_disponivel_faturamento], 
+                             [portal], [mensagem_falha_faturamento], [id_tipo_b2c], [ecommerce_origem], [order_id], [fulfillment_id]) 
+                            Values 
+                            (@lastupdateon, @id_pedido, @dt_pedido, @cod_cliente_erp, @cod_cliente_b2c, @vl_frete, @forma_pgto, @plano_pagamento, @anotacao, @taxa_impressao, @finalizado, @valor_frete_gratis, 
+                             @tipo_frete, @id_status, @cod_transportador, @tipo_cobranca_frete, @ativo, @empresa, @id_tabela_preco, @valor_credito, @cod_vendedor, @timestamp, @dt_insert, @dt_disponivel_faturamento, 
+                             @portal, @mensagem_falha_faturamento, @id_tipo_b2c, @ecommerce_origem, @order_id, @fulfillment_id)";
+
+            try
+            {
+                _linxMicrovixRepositoryBase.InsereRegistroIndividualNotAsync(tableName, sql, registro);
+            }
+            catch
+            {
+                throw;
             }
         }
     }

@@ -1,30 +1,32 @@
-﻿using BloomersMicrovixIntegrations.Saida.Core.Biz;
-using BloomersMicrovixIntegrations.Saida.Microvix.Models;
-using BloomersMicrovixIntegrations.Saida.Microvix.Repositorys.Interfaces;
-using BloomersMicrovixIntegrations.Saida.Microvix.Services.Interfaces;
+﻿using BloomersMicrovixIntegrations.Domain.Entities.Ecommerce;
+using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Enums;
+using BloomersMicrovixIntegrations.LinxMicrovix.Domain.Extensions;
+using BloomersMicrovixIntegrations.LinxMicrovix.Infrastructure.Apis;
 using System.Globalization;
 
-namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
+namespace BloomersMicrovixIntegrations.Application.Services.LinxMicrovix
 {
-    public class LinxLojasService<T1> : ILinxLojasService<T1> where T1 : LinxLojas, new()
+    public class LinxLojasService<TEntity> : ILinxLojasService<TEntity> where TEntity : LinxLojas, new()
     {
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
-        private readonly ILinxLojasRepository<LinxLojas> _linxLojasRepository;
+        private readonly IAPICall _apiCall;
+        private readonly ILinxLojasRepository _linxLojasRepository;
 
-        public LinxLojasService(ILinxLojasRepository<LinxLojas> linxLojasRepository) =>
-            _linxLojasRepository = linxLojasRepository;
+        public LinxLojasService(ILinxLojasRepository linxLojasRepository, IAPICall apiCall) =>
+            (_linxLojasRepository, _apiCall) = (linxLojasRepository, apiCall);
 
-        public List<T1?> DeserializeResponse(List<Dictionary<string, string>> registros)
+        public List<TEntity?> DeserializeResponse(List<Dictionary<string, string>> registros)
         {
-            var list = new List<T1>();
+            var list = new List<TEntity>();
 
             for (int i = 0; i < registros.Count(); i++)
             {
                 try
                 {
-                    list.Add(new T1
+                    list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
                         portal = registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).First(),
@@ -67,21 +69,21 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             return list;
         }
 
-        public async Task IntegraRegistros(string tableName, string procName, string database)
+        public async Task IntegraRegistrosAsync(string tableName, string procName, string database)
         {
             try
             {
-                var response = APICaller.CallLinxAPISimplificado(tableName, AUTENTIFICACAO, CHAVE);
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(tableName, AUTENTIFICACAO, CHAVE);
+                var response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
                 if (registros.Count() > 0)
                 {
                     var listResults = DeserializeResponse(registros);
                     if (listResults.Count() > 0)
                     {
-                        var list = listResults.ConvertAll(new Converter<T1, LinxLojas>(T1ToObject));
+                        var list = listResults.ConvertAll(new Converter<TEntity, LinxLojas>(TEntityToObject));
                         _linxLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                        //await _linxLojasRepository.CallDbProcMerge(procName, tableName, database);
                     }
                 }
             }
@@ -91,20 +93,44 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public async Task<bool> IntegraRegistrosIndividual(string tableName, string procName, string database, string identificador)
+        public void IntegraRegistrosNotAsync(string tableName, string procName, string database)
         {
             try
             {
-                PARAMETERS = await _linxLojasRepository.GetParameters(tableName, "parameters_manual");
+                var body = _apiCall.BuildBodyRequest(tableName, AUTENTIFICACAO, CHAVE);
+                var response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
 
-                string response = APICaller.CallLinxAPI(String.Empty, tableName, AUTENTIFICACAO, CHAVE, identificador);
-                var registros = APICaller.DeserializeXML(response);
+                if (registros.Count() > 0)
+                {
+                    var listResults = DeserializeResponse(registros);
+                    if (listResults.Count() > 0)
+                    {
+                        var list = listResults.ConvertAll(new Converter<TEntity, LinxLojas>(TEntityToObject));
+                        _linxLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> IntegraRegistrosIndividualAsync(string tableName, string procName, string database, string identificador)
+        {
+            try
+            {
+                PARAMETERS = await _linxLojasRepository.GetParametersAsync(tableName, database, "parameters_manual");
+
+                var body = _apiCall.BuildBodyRequest(String.Empty, tableName, AUTENTIFICACAO, CHAVE, identificador);
+                string response = await _apiCall.CallAPIAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
                 var registro = DeserializeResponse(registros);
 
                 if (registro.Count() > 0)
                 {
-                    await _linxLojasRepository.InsereRegistroIndividual(registro[0], tableName, database);
-                    //await _linxLojasRepository.CallDbProcMerge(procName, tableName, database);
+                    await _linxLojasRepository.InsereRegistroIndividualAsync(registro[0], tableName, database);
                     return true;
                 }
                 else
@@ -116,20 +142,20 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public bool IntegraRegistrosIndividualSync(string tableName, string procName, string database, string identificador)
+        public bool IntegraRegistrosIndividualNotAsync(string tableName, string procName, string database, string identificador)
         {
             try
             {
-                PARAMETERS = _linxLojasRepository.GetParametersSync(tableName, "parameters_manual");
+                PARAMETERS = _linxLojasRepository.GetParametersNotAsync(tableName, database, "parameters_manual");
 
-                string response = APICaller.CallLinxAPI(String.Empty, tableName, AUTENTIFICACAO, CHAVE, identificador);
-                var registros = APICaller.DeserializeXML(response);
+                var body = _apiCall.BuildBodyRequest(String.Empty, tableName, AUTENTIFICACAO, CHAVE, identificador);
+                string response = _apiCall.CallAPINotAsync(tableName, body);
+                var registros = _apiCall.DeserializeXML(response);
                 var registro = DeserializeResponse(registros);
 
                 if (registro.Count() > 0)
                 {
-                    _linxLojasRepository.InsereRegistroIndividualSync(registro[0], tableName, database);
-                    //_linxLojasRepository.CallDbProcMergeSync(procName, tableName, database);
+                    _linxLojasRepository.InsereRegistroIndividualNotAsync(registro[0], tableName, database);
                     return true;
                 }
                 else
@@ -141,35 +167,11 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
         }
 
-        public void IntegraRegistrosSync(string tableName, string procName, string database)
+        public TEntity? TEntityToObject(TEntity t1)
         {
             try
             {
-                var response = APICaller.CallLinxAPISimplificado(tableName, AUTENTIFICACAO, CHAVE);
-                var registros = APICaller.DeserializeXML(response);
-
-                if (registros.Count() > 0)
-                {
-                    var listResults = DeserializeResponse(registros);
-                    if (listResults.Count() > 0)
-                    {
-                        var list = listResults.ConvertAll(new Converter<T1, LinxLojas>(T1ToObject));
-                        _linxLojasRepository.BulkInsertIntoTableRaw(list, tableName, database);
-                        //_linxLojasRepository.CallDbProcMerge(procName, tableName, database);
-                    }
-                }
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        public T1? T1ToObject(T1 t1)
-        {
-            try
-            {
-                return new T1
+                return new TEntity
                 {
                     lastupdateon = t1.lastupdateon,
                     portal = t1.portal,
@@ -204,7 +206,7 @@ namespace BloomersMicrovixIntegrations.Saida.Microvix.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"LinxLojas - T1ToObject - Erro ao converter registro: {t1.nome_emp} para objeto - {ex.Message}");
+                throw new Exception($"LinxLojas - TEntityToObject - Erro ao converter registro: {t1.nome_emp} para objeto - {ex.Message}");
             }
         }
     }

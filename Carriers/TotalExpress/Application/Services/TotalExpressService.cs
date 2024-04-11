@@ -9,8 +9,8 @@ namespace BloomersCarriersIntegrations.TotalExpress.Application.Services
         private readonly IAPICall _apiCall;
         private readonly ITotalExpressRepository _totalExpressRepository;
 
-        public TotalExpressService(ITotalExpressRepository totalExpressRepository) =>
-            (_totalExpressRepository) = (totalExpressRepository);
+        public TotalExpressService(ITotalExpressRepository totalExpressRepository, IAPICall apiCall) =>
+            (_totalExpressRepository, _apiCall) = (totalExpressRepository, apiCall);
 
         public async Task<bool> SendOrders()
         {
