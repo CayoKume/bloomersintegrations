@@ -1,6 +1,6 @@
-﻿using static BloomersGeneralIntegrations.Dootax.Biz.DootaxAttributes;
+﻿using static BloomersGeneralIntegrations.Dootax.Domain.Entities.DootaxAttributes;
 
-namespace BloomersGeneralIntegrations.Dootax.Models
+namespace BloomersGeneralIntegrations.Dootax.Domain.Entities
 {
     public class XML
     {

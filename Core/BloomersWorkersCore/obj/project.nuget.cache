@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CF0sm1G0FaUOfthpidEKHURyRdZ3AkkUMdJfPfB0eIGzYQPGLsVyU8jKlNvZT2Zlbqi0pYVpb7V9PxQ0/WWlFQ==",
+  "dgSpecHash": "Z74kxV6b6G1pD7/IzaJ2CL2QrzV+yORTVLR6mVkcXEaQR/k0i6nntsAPmbqeS2Xpb6X5xzo+/qzlxM6zb4Xz6g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\BloomersWorkersCore.csproj",
+  "projectFilePath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\NewBloomersWorkerServicesCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

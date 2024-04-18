@@ -10,3 +10,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\refint\Movidesk.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\ref\Movidesk.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\obj\Debug\net8.0\Movidesk.csproj.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\bin\Debug\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Movidesk\bin\Debug\net8.0\NewBloomersWebServicesCore.pdb

@@ -10,3 +10,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\D
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\refint\Mobsim.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\ref\Mobsim.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\obj\Debug\net8.0\Mobsim.csproj.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\bin\Debug\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\Mobsim\bin\Debug\net8.0\NewBloomersWebServicesCore.pdb

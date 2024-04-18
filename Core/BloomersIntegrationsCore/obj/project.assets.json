@@ -607,9 +607,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj",
-      "projectName": "BloomersIntegrationsCore",
-      "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj",
+      "projectUniqueName": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj",
+      "projectName": "NewBloomersWebServicesCore",
+      "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj",
       "packagesPath": "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\obj\\",
       "projectStyle": "PackageReference",

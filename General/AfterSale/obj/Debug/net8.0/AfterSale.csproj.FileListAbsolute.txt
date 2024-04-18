@@ -10,3 +10,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\ob
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\refint\AfterSale.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\ref\AfterSale.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\obj\Debug\net8.0\AfterSale.csproj.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\bin\Debug\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\General\AfterSale\bin\Debug\net8.0\NewBloomersWebServicesCore.pdb

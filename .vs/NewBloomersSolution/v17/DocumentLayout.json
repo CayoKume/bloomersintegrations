@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwsentrada\\infrastructure\\apis\\apicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|solutionrelative:linxmicrovix\\linxmicrovixwsentrada\\infrastructure\\apis\\apicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwsentrada\\infrastructure\\apis\\iapicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|solutionrelative:linxmicrovix\\linxmicrovixwsentrada\\infrastructure\\apis\\iapicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwsentrada\\application\\services\\ilinxcadastraclientesfornecedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|solutionrelative:linxmicrovix\\linxmicrovixwsentrada\\application\\services\\ilinxcadastraclientesfornecedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwsentrada\\application\\services\\linxcadastraclientesfornecedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01FF47E0-D054-4030-9CEB-37D4AF692B89}|LinxMicrovix\\LinxMicrovixWsEntrada\\LinxMicrovixWsEntrada.csproj|solutionrelative:linxmicrovix\\linxmicrovixwsentrada\\application\\services\\linxcadastraclientesfornecedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "APICall.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\APICall.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\APICall.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\APICall.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\APICall.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T15:15:42.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAPICall.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\IAPICall.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\IAPICall.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\IAPICall.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsEntrada\\Infrastructure\\Apis\\IAPICall.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T15:15:28.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ILinxCadastraClientesFornecedores.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\ILinxCadastraClientesFornecedores.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\ILinxCadastraClientesFornecedores.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\ILinxCadastraClientesFornecedores.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\ILinxCadastraClientesFornecedores.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T15:14:53.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LinxCadastraClientesFornecedores.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\LinxCadastraClientesFornecedores.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\LinxCadastraClientesFornecedores.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\LinxCadastraClientesFornecedores.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsEntrada\\Application\\Services\\LinxCadastraClientesFornecedores.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T15:14:40.998Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

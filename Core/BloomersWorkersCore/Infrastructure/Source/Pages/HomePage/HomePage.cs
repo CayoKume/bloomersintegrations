@@ -50,7 +50,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
             try
             {
                 var buttonB2C = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_3\"]", _wait, Page.TypeEnum.Home, "NavigateToB2CScreen");
-                var buttonSalesPanel = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_3\"]/ul/li[2]", _wait, Page.TypeEnum.Home, "NavigateToB2CScreen");
+                var buttonSalesPanel = ExtensionsMethods.GetElementExistsByXpath("//*[@id=\"liModulo_3\"]/ul/li[2]", _wait, Page.TypeEnum.Home, "NavigateToB2CScreen");
 
                 ExtensionsMethods.ClickInElement(buttonB2C);
                 ExtensionsMethods.ClickInElement(buttonSalesPanel);

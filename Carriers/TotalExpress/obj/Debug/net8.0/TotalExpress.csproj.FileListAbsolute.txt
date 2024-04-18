@@ -10,7 +10,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpres
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\refint\TotalExpress.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\ref\TotalExpress.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\BloomersIntegrationsCore.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\BloomersIntegrationsCore.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExpress.csproj.AssemblyReference.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\obj\Debug\net8.0\TotalExp.28B07C4E.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\TotalExpress\bin\Debug\net8.0\NewBloomersWebServicesCore.pdb

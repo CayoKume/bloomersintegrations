@@ -55,8 +55,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
                              A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY
                              FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] A
                              WHERE 
-                             --A.DOCUMENTO IN ()
-                             (SELECT TRIM(RIGHT(A.IDCONTROLE, 1))) = '{botName.Substring(botName.Length - 1, 1)}' AND
+                             --A.DOCUMENTO IN ('')
+                             --(SELECT TRIM(RIGHT(A.IDCONTROLE, 1))) = '{botName.Substring(botName.Length - 1, 1)}' AND
                              A.SERIE = 'MI-'
                              AND A.RETORNO IS NOT NULL
                              AND A.CHAVE_NFE IS NULL

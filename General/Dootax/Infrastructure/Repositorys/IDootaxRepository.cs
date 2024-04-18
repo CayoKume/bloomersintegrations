@@ -1,6 +1,10 @@
-﻿namespace BloomersGeneralIntegrations.Dootax.Infrastructure.Repositorys
+﻿using BloomersGeneralIntegrations.Dootax.Domain.Entities;
+
+namespace BloomersGeneralIntegrations.Dootax.Infrastructure.Repositorys
 {
-    internal interface IDootaxRepository
+    public interface IDootaxRepository
     {
+        public Task<IEnumerable<XML>> GetXMLs();
+        public Task InsertSendXMLOk_Log(string cnpjcpf, string documento, string serie, string chavenfe);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BloomersGeneralIntegrations.Mobsim.Models
+﻿namespace BloomersGeneralIntegrations.Mobsim.Domain.Entities
 {
     public class IT4_WMS_Documento
     {

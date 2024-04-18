@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Serilog;
+using System.Reflection;
 
 namespace BloomersWorkers.InvoiceOrder.Application.Services
 {
@@ -25,11 +26,11 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
         public InvoiceOrderService(ILoginPage loginPage, IHomePage homePage, IVDPage vdPage, IB2CPage b2cPage, IChromeDriver chromeDriver, IInvoiceOrderRepository invoiceOrderRepository, IConfiguration configuration) =>
             (_loginPage, _homePage, _vdPage, _b2cPage, _chromeDriver, _invoiceOrderRepository, _configuration) = (loginPage, homePage, vdPage, b2cPage, chromeDriver, invoiceOrderRepository, configuration);
 
-        public async Task InvoiceOrder()
+        public async Task InvoiceOrder(string workerName)
         {
             try
             {
-                string? workerName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
+                //string? workerName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
                 var orders = await _invoiceOrderRepository.GetOrdersFromIT4(workerName);
                 var user = await _invoiceOrderRepository.GetMicrovixUser(workerName);
 

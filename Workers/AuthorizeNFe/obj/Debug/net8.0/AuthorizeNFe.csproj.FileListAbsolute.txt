@@ -10,12 +10,12 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\AuthorizeNFe.deps.json
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\AuthorizeNFe.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\AuthorizeNFe.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\BloomersIntegrationsCore.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\BloomersWorkersCore.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\BloomersIntegrationsCore.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\BloomersWorkersCore.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\obj\Debug\net8.0\Authoriz.ED744E4B.Up2Date
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\obj\Debug\net8.0\AuthorizeNFe.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\obj\Debug\net8.0\refint\AuthorizeNFe.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\obj\Debug\net8.0\AuthorizeNFe.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\obj\Debug\net8.0\ref\AuthorizeNFe.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\NewBloomersWorkerServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\NewBloomersWebServicesCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\AuthorizeNFe\bin\Debug\net8.0\NewBloomersWorkerServicesCore.pdb

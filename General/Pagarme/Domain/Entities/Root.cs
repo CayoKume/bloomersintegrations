@@ -1,6 +1,4 @@
-﻿using System.Net.NetworkInformation;
-
-namespace BloomersGeneralIntegrations.Pagarme.Models
+﻿namespace BloomersGeneralIntegrations.Pagarme.Domain.Entities
 {
     public class Root
     {

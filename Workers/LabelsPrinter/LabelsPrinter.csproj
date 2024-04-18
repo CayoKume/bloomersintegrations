@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\BloomersIntegrationsCore\BloomersIntegrationsCore.csproj" />
-    <ProjectReference Include="..\..\Core\BloomersWorkersCore\BloomersWorkersCore.csproj" />
+    <ProjectReference Include="..\..\Core\BloomersIntegrationsCore\NewBloomersWebServicesCore.csproj" />
+    <ProjectReference Include="..\..\Core\BloomersWorkersCore\NewBloomersWorkerServicesCore.csproj" />
   </ItemGroup>
 
 </Project>

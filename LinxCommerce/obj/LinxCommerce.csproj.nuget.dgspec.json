@@ -4,12 +4,12 @@
     "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\LinxCommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj": {
+    "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj",
-        "projectName": "BloomersIntegrationsCore",
-        "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj",
+        "projectUniqueName": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj",
+        "projectName": "NewBloomersWebServicesCore",
+        "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj",
         "packagesPath": "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\obj\\",
         "projectStyle": "PackageReference",
@@ -112,8 +112,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj": {
-                "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\BloomersIntegrationsCore.csproj"
+              "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj": {
+                "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersIntegrationsCore\\NewBloomersWebServicesCore.csproj"
               }
             }
           }

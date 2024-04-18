@@ -1,6 +1,9 @@
 ﻿namespace BloomersGeneralIntegrations.Mobsim.Application.Services
 {
-    internal interface IMobsimService
+    public interface IMobsimService
     {
+        public Task SendMessageInvoicedOrder();
+        public Task SendMessageShippdedOrder();
+        public Task SendMessageDeliveredOrder();
     }
 }

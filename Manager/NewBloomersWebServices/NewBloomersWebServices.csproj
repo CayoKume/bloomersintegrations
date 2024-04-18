@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
+    <PackageReference Include="Hangfire" Version="1.8.11" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Carriers\FlashCourier\FlashCourier.csproj" />
+    <ProjectReference Include="..\..\Carriers\TotalExpress\TotalExpress.csproj" />
+    <ProjectReference Include="..\..\General\AfterSale\AfterSale.csproj" />
+    <ProjectReference Include="..\..\General\Dootax\Dootax.csproj" />
+    <ProjectReference Include="..\..\General\Mobsim\Mobsim.csproj" />
+    <ProjectReference Include="..\..\General\Movidesk\Movidesk.csproj" />
+    <ProjectReference Include="..\..\General\Pagarme\Pagarme.csproj" />
+    <ProjectReference Include="..\..\LinxCommerce\LinxCommerce.csproj" />
+    <ProjectReference Include="..\..\LinxMicrovix\LinxMicrovixWsSaida\LinxMicrovixWsSaida.csproj" />
+  </ItemGroup>
+
+</Project>
