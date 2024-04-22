@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
-namespace LinxMicrovixWsEntrada.Infrastructure.Apis
+namespace BloomersMicrovixIntegrations.LinxMicrovixWsEntrada.Infrastructure.Apis
 {
-    internal interface IAPICall
+    public interface IAPICall
     {
+        public Task<string> CallAPI(string body);
+        public string BuildBodyRequest(string parametersList, string? endPointName, string authentication, string key, string? doc_company);
+        public List<Dictionary<string, string>> DeserializeXML(string response);
     }
 }

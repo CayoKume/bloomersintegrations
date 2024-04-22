@@ -39,22 +39,23 @@ public class Worker : BackgroundService
                     {
                         case "AuthorizeNFe":
                             await _authorizeNFeService.AuthorizeNFes();
-                            return;
+                            break;
                         case "ChangingOrder":
                             await _changingOrderService.ChangingOrder();
-                            return;
+                            break;
                         case "ChangingPassword":
                             await _changingPasswordService.ChangePassword();
-                            return;
+                            break;
                         //case "InsertReverse":
                         //    await _insertReverseService.InsereReversa();
-                        //    return;
+                        //    break;
                         case "InvoiceOrder":
+                            Log.Information("Iniciando Faturamento Automatico");
                             await _invoiceOrderService.InvoiceOrder(Assembly.GetExecutingAssembly().GetName().Name);
-                            return;
+                            break;
                         case "LabelsPrinter":
                             await _labelsPrinterService.PrintLabels();
-                            return;
+                            break;
                         default:
                             break;
                     }

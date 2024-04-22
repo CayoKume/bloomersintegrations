@@ -22,6 +22,7 @@
     <ProjectReference Include="..\..\General\Movidesk\Movidesk.csproj" />
     <ProjectReference Include="..\..\General\Pagarme\Pagarme.csproj" />
     <ProjectReference Include="..\..\LinxCommerce\LinxCommerce.csproj" />
+    <ProjectReference Include="..\..\LinxMicrovix\LinxMicrovixWsEntrada\LinxMicrovixWsEntrada.csproj" />
     <ProjectReference Include="..\..\LinxMicrovix\LinxMicrovixWsSaida\LinxMicrovixWsSaida.csproj" />
   </ItemGroup>
 

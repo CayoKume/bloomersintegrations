@@ -41,7 +41,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             builder.Services.AddScopedCarriersServices();
             builder.Services.AddScopedLinxCommerceServices();
             builder.Services.AddScopedLinxMicrovixCommerceServices();
-            builder.Services.AddScopedLinxMicrovixERPServices();
+            builder.Services.AddScopedLinxMicrovixERPWsSaidaServices();
+            builder.Services.AddScopedLinxMicrovixERPWsEntradaServices();
             builder.Services.AddScopedGeneralServices();
             builder.Services.AddHangfireService(connectionString);
 
@@ -99,7 +100,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             return services;
         }
 
-        public static IServiceCollection AddScopedLinxMicrovixERPServices(this IServiceCollection services)
+        public static IServiceCollection AddScopedLinxMicrovixERPWsSaidaServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(ILinxMicrovixRepositoryBase<>), typeof(LinxMicrovixRepositoryBase<>));
             services.AddScoped<BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Apis.IAPICall, BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Apis.APICall>();
@@ -155,6 +156,17 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<ILinxMovimentoPlanosService<LinxMovimentoPlanos>, LinxMovimentoPlanosService<LinxMovimentoPlanos>>();
             services.AddScoped<ILinxMovimentoPlanosRepository, LinxMovimentoPlanosRepository>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddScopedLinxMicrovixERPWsEntradaServices(this IServiceCollection services)
+        {
+            services.AddScoped<BloomersMicrovixIntegrations.LinxMicrovixWsEntrada.Infrastructure.Apis.IAPICall, BloomersMicrovixIntegrations.LinxMicrovixWsEntrada.Infrastructure.Apis.APICall>();
+            services.AddHttpClient("LinxMicrovixWsEntradaAPI", client =>
+            {
+                client.BaseAddress = new Uri("https://webapi.microvix.com.br/1.0/importador.svc");
+                client.Timeout = new TimeSpan(0, 2, 0);
+            });
             return services;
         }
 

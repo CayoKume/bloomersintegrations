@@ -131,7 +131,6 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\ChangingOrder.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\ChangingPassword.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\InsertReverse.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\InvoiceOrder.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\LabelsPrinter.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\NewBloomersWebServicesCore.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\NewBloomersWorkerServicesCore.dll
@@ -140,7 +139,6 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\ChangingOrder.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\ChangingPassword.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\InsertReverse.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\InvoiceOrder.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\LabelsPrinter.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\NewBloomersWorkerServicesCore.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\obj\Debug\net8.0\NewBloomersWorkerServices.csproj.AssemblyReference.cache
@@ -163,3 +161,5 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\obj\Debug\net8.0\refint\Vanabot 9.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\obj\Debug\net8.0\Vanabot 9.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\obj\Debug\net8.0\ref\Vanabot 9.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\Vanabot 0.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Debug\net8.0\Vanabot 0.pdb
