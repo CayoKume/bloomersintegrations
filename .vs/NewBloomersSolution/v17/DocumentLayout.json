@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{012F32C6-D2D6-45D5-B324-44FB9EEDAF1C}|Workers\\InvoiceOrder\\InvoiceOrder.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\workers\\invoiceorder\\application\\services\\invoiceorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012F32C6-D2D6-45D5-B324-44FB9EEDAF1C}|Workers\\InvoiceOrder\\InvoiceOrder.csproj|solutionrelative:workers\\invoiceorder\\application\\services\\invoiceorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42910D61-9B24-4341-B349-A848F6B6DEB1}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{42910D61-9B24-4341-B349-A848F6B6DEB1}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62C51486-E525-4A76-A86D-93178EEFE4AB}|Manager\\NewBloomersWorkerServices\\NewBloomersWorkerServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomersworkerservices\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62C51486-E525-4A76-A86D-93178EEFE4AB}|Manager\\NewBloomersWorkerServices\\NewBloomersWorkerServices.csproj|solutionrelative:manager\\newbloomersworkerservices\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9448298-5F5B-4556-BF1D-C9E336955312}|Core\\BloomersWorkersCore\\NewBloomersWorkerServicesCore.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\core\\bloomersworkerscore\\infrastructure\\source\\pages\\loginpage\\loginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9448298-5F5B-4556-BF1D-C9E336955312}|Core\\BloomersWorkersCore\\NewBloomersWorkerServicesCore.csproj|solutionrelative:core\\bloomersworkerscore\\infrastructure\\source\\pages\\loginpage\\loginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012F32C6-D2D6-45D5-B324-44FB9EEDAF1C}|Workers\\InvoiceOrder\\InvoiceOrder.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\workers\\invoiceorder\\invoiceorder.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{012F32C6-D2D6-45D5-B324-44FB9EEDAF1C}|Workers\\InvoiceOrder\\InvoiceOrder.csproj|solutionrelative:workers\\invoiceorder\\invoiceorder.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{42910D61-9B24-4341-B349-A848F6B6DEB1}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42910D61-9B24-4341-B349-A848F6B6DEB1}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,62 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginPage.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\LoginPage\\LoginPage.cs",
-              "RelativeDocumentMoniker": "Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\LoginPage\\LoginPage.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\LoginPage\\LoginPage.cs",
-              "RelativeToolTip": "Core\\BloomersWorkersCore\\Infrastructure\\Source\\Pages\\LoginPage\\LoginPage.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAnwGUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T12:35:25.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InvoiceOrder",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj",
-              "RelativeDocumentMoniker": "Workers\\InvoiceOrder\\InvoiceOrder.csproj",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj",
-              "RelativeToolTip": "Workers\\InvoiceOrder\\InvoiceOrder.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-04-22T12:06:21.772Z",
+              "DocumentIndex": 0,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\App.razor",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\App.razor",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\App.razor",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-22T16:57:24.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Worker.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWorkerServices\\Worker.cs",
-              "RelativeDocumentMoniker": "Manager\\NewBloomersWorkerServices\\Worker.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWorkerServices\\Worker.cs",
-              "RelativeToolTip": "Manager\\NewBloomersWorkerServices\\Worker.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAnwCsAAABIAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Program.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\Program.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Program.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T12:00:01.21Z",
+              "WhenOpened": "2024-04-22T16:52:27.697Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InvoiceOrderService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\Application\\Services\\InvoiceOrderService.cs",
-              "RelativeDocumentMoniker": "Workers\\InvoiceOrder\\Application\\Services\\InvoiceOrderService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\Application\\Services\\InvoiceOrderService.cs",
-              "RelativeToolTip": "Workers\\InvoiceOrder\\Application\\Services\\InvoiceOrderService.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T11:49:26.145Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }

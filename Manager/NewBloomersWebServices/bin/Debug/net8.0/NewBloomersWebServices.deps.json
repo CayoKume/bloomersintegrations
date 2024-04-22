@@ -14,6 +14,7 @@
           "FluentEmail.Smtp": "3.0.2",
           "Hangfire": "1.8.11",
           "LinxCommerce": "1.0.0",
+          "LinxMicrovixWsEntrada": "1.0.0",
           "LinxMicrovixWsSaida": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.3",
           "Mobsim": "1.0.0",
@@ -422,6 +423,14 @@
           "LinxCommerce.dll": {}
         }
       },
+      "LinxMicrovixWsEntrada/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Http": "8.0.0"
+        },
+        "runtime": {
+          "LinxMicrovixWsEntrada.dll": {}
+        }
+      },
       "LinxMicrovixWsSaida/1.0.0": {
         "dependencies": {
           "NewBloomersWebServicesCore": "1.0.0"
@@ -790,6 +799,11 @@
       "sha512": ""
     },
     "LinxCommerce/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LinxMicrovixWsEntrada/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

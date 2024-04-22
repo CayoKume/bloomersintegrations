@@ -50,7 +50,6 @@ public class Worker : BackgroundService
                         //    await _insertReverseService.InsereReversa();
                         //    break;
                         case "InvoiceOrder":
-                            Log.Information("Iniciando Faturamento Automatico");
                             await _invoiceOrderService.InvoiceOrder(Assembly.GetExecutingAssembly().GetName().Name);
                             break;
                         case "LabelsPrinter":

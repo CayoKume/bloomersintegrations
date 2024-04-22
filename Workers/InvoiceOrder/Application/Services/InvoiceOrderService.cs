@@ -85,8 +85,6 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                         }
                     }
                 }
-                else
-                    Log.Information("Nenhum pedido para ser faturado encontrado");
             }
             catch (Exception ex)
             {
@@ -106,7 +104,7 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                 #region VENDA DIRETA
                 if (order.number.Contains("OA-VD") || order.number.Contains("OA-LJ") || order.number.Contains("MI-VD") || order.number.Contains("MI-LJ"))
                 {
-                    Log.Information("Navegando para tela de faturamento ");
+                    Log.Information("Navegando para tela de faturamento");
                     _homePage.NavigateToVDScreen(driver, wait);
                     Log.Information("Selecionando o pedido");
                     _vdPage.SelectOrder(order.number, driver, wait);
@@ -124,8 +122,11 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                 #region B2C
                 else
                 {
+                    Log.Information("Navegando para tela de pedidos");
                     _homePage.NavigateToB2CScreen(driver, wait);
+                    Log.Information("Selecionando o pedido");
                     _b2cPage.SelectOrder(order.number, driver, wait);
+                    Log.Information("Incluindo dados do pedido");
                     return _b2cPage.SetOrderData(order.shippingCompany.cod_shippingCompany, order.company.doc_company, order.number, driver, wait);
                 }
                 #endregion
