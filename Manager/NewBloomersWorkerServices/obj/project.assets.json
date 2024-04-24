@@ -1032,6 +1032,20 @@
           "bin/placeholder/InsertReverse.dll": {}
         }
       },
+      "InvoiceOrder/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/InvoiceOrder.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InvoiceOrder.dll": {}
+        }
+      },
       "LabelsPrinter/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1081,20 +1095,6 @@
         },
         "runtime": {
           "bin/placeholder/NewBloomersWorkerServicesCore.dll": {}
-        }
-      },
-      "Vanabot 0/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "NewBloomersWebServicesCore": "1.0.0",
-          "NewBloomersWorkerServicesCore": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Vanabot 0.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Vanabot 0.dll": {}
         }
       }
     }
@@ -2767,6 +2767,11 @@
       "path": "../../Workers/InsertReverse/InsertReverse.csproj",
       "msbuildProject": "../../Workers/InsertReverse/InsertReverse.csproj"
     },
+    "InvoiceOrder/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/InvoiceOrder/InvoiceOrder.csproj",
+      "msbuildProject": "../../Workers/InvoiceOrder/InvoiceOrder.csproj"
+    },
     "LabelsPrinter/1.0.0": {
       "type": "project",
       "path": "../../Workers/LabelsPrinter/LabelsPrinter.csproj",
@@ -2781,11 +2786,6 @@
       "type": "project",
       "path": "../../Core/BloomersWorkersCore/NewBloomersWorkerServicesCore.csproj",
       "msbuildProject": "../../Core/BloomersWorkersCore/NewBloomersWorkerServicesCore.csproj"
-    },
-    "Vanabot 0/1.0.0": {
-      "type": "project",
-      "path": "../../Workers/InvoiceOrder/InvoiceOrder.csproj",
-      "msbuildProject": "../../Workers/InvoiceOrder/InvoiceOrder.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2794,12 +2794,12 @@
       "ChangingOrder >= 1.0.0",
       "ChangingPassword >= 1.0.0",
       "InsertReverse >= 1.0.0",
+      "InvoiceOrder >= 1.0.0",
       "LabelsPrinter >= 1.0.0",
       "Microsoft.Extensions.Hosting >= 8.0.0",
       "Microsoft.Extensions.Hosting.WindowsServices >= 8.0.0",
       "NewBloomersWebServicesCore >= 1.0.0",
-      "Serilog >= 3.1.1",
-      "Vanabot 0 >= 1.0.0"
+      "Serilog >= 3.1.1"
     ]
   },
   "packageFolders": {
@@ -2903,7 +2903,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

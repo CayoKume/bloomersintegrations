@@ -12,10 +12,10 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\NewBloomersWorkerServicesCore.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\NewBloomersWebServicesCore.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\NewBloomersWorkerServicesCore.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\Vanabot 0.deps.json
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\Vanabot 0.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\Vanabot 0.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\Vanabot 0.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\refint\Vanabot 0.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\Vanabot 0.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\ref\Vanabot 0.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\InvoiceOrder.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\InvoiceOrder.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\bin\Debug\net8.0\InvoiceOrder.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\InvoiceOrder.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\refint\InvoiceOrder.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\InvoiceOrder.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Workers\InvoiceOrder\obj\Debug\net8.0\ref\InvoiceOrder.dll

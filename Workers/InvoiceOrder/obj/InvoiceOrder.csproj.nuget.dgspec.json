@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -182,7 +182,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -190,7 +190,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj",
-        "projectName": "Vanabot 0",
+        "projectName": "InvoiceOrder",
         "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj",
         "packagesPath": "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\obj\\",
@@ -254,7 +254,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

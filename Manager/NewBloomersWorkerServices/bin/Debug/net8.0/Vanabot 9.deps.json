@@ -12,12 +12,12 @@
           "ChangingOrder": "1.0.0",
           "ChangingPassword": "1.0.0",
           "InsertReverse": "1.0.0",
+          "InvoiceOrder": "1.0.0",
           "LabelsPrinter": "1.0.0",
           "Microsoft.Extensions.Hosting": "8.0.0",
           "Microsoft.Extensions.Hosting.WindowsServices": "8.0.0",
           "NewBloomersWebServicesCore": "1.0.0",
-          "Serilog": "3.1.1",
-          "Vanabot 0.Reference": "1.0.0.0"
+          "Serilog": "3.1.1"
         },
         "runtime": {
           "Vanabot 9.dll": {}
@@ -634,6 +634,15 @@
           "InsertReverse.dll": {}
         }
       },
+      "InvoiceOrder/1.0.0": {
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "runtime": {
+          "InvoiceOrder.dll": {}
+        }
+      },
       "LabelsPrinter/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
@@ -668,23 +677,6 @@
         },
         "runtime": {
           "NewBloomersWorkerServicesCore.dll": {}
-        }
-      },
-      "Vanabot 0/1.0.0": {
-        "dependencies": {
-          "NewBloomersWebServicesCore": "1.0.0",
-          "NewBloomersWorkerServicesCore": "1.0.0"
-        },
-        "runtime": {
-          "Vanabot 0.dll": {}
-        }
-      },
-      "Vanabot 0.Reference/1.0.0.0": {
-        "runtime": {
-          "Vanabot 0.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       }
     }
@@ -1072,6 +1064,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "InvoiceOrder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "LabelsPrinter/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -1084,16 +1081,6 @@
     },
     "NewBloomersWorkerServicesCore/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Vanabot 0/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Vanabot 0.Reference/1.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
