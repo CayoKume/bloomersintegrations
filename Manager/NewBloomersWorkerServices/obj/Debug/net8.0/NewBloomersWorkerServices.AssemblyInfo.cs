@@ -12,12 +12,12 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-BloomersWorkersManager-cb093708-2b55-4811-b79d-457cbeec25c7")]
-[assembly: System.Reflection.AssemblyCompanyAttribute("Vanabot 9")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("NewBloomersWorkerServices")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+637e7c0aa3b92f3ae80ba59c0b35d75b6ef651d8")]
-[assembly: System.Reflection.AssemblyProductAttribute("Vanabot 9")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Vanabot 9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5237e4261d1f293f9e507714f8c2277e1e0cfd3d")]
+[assembly: System.Reflection.AssemblyProductAttribute("NewBloomersWorkerServices")]
+[assembly: System.Reflection.AssemblyTitleAttribute("NewBloomersWorkerServices")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.

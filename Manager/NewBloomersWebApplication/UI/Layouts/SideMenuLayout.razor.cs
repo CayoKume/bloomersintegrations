@@ -1,6 +1,15 @@
 ﻿namespace NewBloomersWebApplication.UI.Layouts
 {
-    public class SideMenuLayout
+    public partial class SideMenuLayout
     {
+        private bool collapseNavMenu = true;
+        private bool expandMenu;
+
+        private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+        private void ToggleNavMenu()
+        {
+            collapseNavMenu = !collapseNavMenu;
+        }
     }
 }

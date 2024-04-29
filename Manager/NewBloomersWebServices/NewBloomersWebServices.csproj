@@ -24,6 +24,11 @@
     <ProjectReference Include="..\..\LinxCommerce\LinxCommerce.csproj" />
     <ProjectReference Include="..\..\LinxMicrovix\LinxMicrovixWsEntrada\LinxMicrovixWsEntrada.csproj" />
     <ProjectReference Include="..\..\LinxMicrovix\LinxMicrovixWsSaida\LinxMicrovixWsSaida.csproj" />
+    <ProjectReference Include="..\..\Workers\AuthorizeNFe\AuthorizeNFe.csproj" />
+    <ProjectReference Include="..\..\Workers\ChangingOrder\ChangingOrder.csproj" />
+    <ProjectReference Include="..\..\Workers\ChangingPassword\ChangingPassword.csproj" />
+    <ProjectReference Include="..\..\Workers\InsertReverse\InsertReverse.csproj" />
+    <ProjectReference Include="..\..\Workers\InvoiceOrder\InvoiceOrder.csproj" />
   </ItemGroup>
 
 </Project>

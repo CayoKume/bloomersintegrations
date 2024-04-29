@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-BloomersWorkersManager-cb093708-2b55-4811-b79d-457cbeec25c7</UserSecretsId>
-    <AssemblyName>Vanabot 9</AssemblyName>
+    <AssemblyName>$(MSBuildProjectName.Replace(" ", "_"))</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

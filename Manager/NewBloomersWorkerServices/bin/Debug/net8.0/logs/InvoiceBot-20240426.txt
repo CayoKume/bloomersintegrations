@@ -1,0 +1,99 @@
+2024-04-26 00:16:32.902 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:16:44.252 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:16:45.226 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:16:46.323 -03:00 [INF] Selecionando empresa
+2024-04-26 00:16:56.684 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:16:58.710 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:16:58.753 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:16:58.900 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:17:06.424 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:18:18.949 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:18:22.386 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:18:22.386 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:18:22.581 -03:00 [INF] Selecionando empresa
+2024-04-26 00:18:30.009 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:18:32.046 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:18:32.657 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:18:33.085 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:18:38.319 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:18:40.940 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:18:44.519 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:18:44.520 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:18:44.719 -03:00 [INF] Selecionando empresa
+2024-04-26 00:18:50.674 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:18:52.721 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:18:52.755 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:18:52.947 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:18:58.152 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:19:02.137 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:19:05.395 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:19:05.396 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:19:05.563 -03:00 [INF] Selecionando empresa
+2024-04-26 00:19:11.787 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:19:13.866 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:19:13.943 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:19:14.287 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:19:19.556 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:19:22.112 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:19:24.961 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:19:24.963 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:19:25.129 -03:00 [INF] Selecionando empresa
+2024-04-26 00:19:31.637 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:19:33.722 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:19:33.826 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:19:34.159 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:19:39.406 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:19:42.645 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:19:46.207 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:19:46.208 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:19:46.382 -03:00 [INF] Selecionando empresa
+2024-04-26 00:19:53.178 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:19:55.218 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:19:55.327 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:19:55.694 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:20:00.947 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:20:03.494 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:20:06.272 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:20:06.273 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:20:06.421 -03:00 [INF] Selecionando empresa
+2024-04-26 00:20:12.650 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:20:14.738 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:20:14.877 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:20:15.277 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:20:20.576 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:20:24.146 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:20:27.158 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:20:27.159 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:20:27.305 -03:00 [INF] Selecionando empresa
+2024-04-26 00:20:33.608 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:20:35.660 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:20:35.751 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:20:36.208 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:20:41.465 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:20:43.963 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:20:47.533 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:20:47.534 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:20:47.695 -03:00 [INF] Selecionando empresa
+2024-04-26 00:20:54.406 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:20:56.452 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:20:56.526 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:20:56.878 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:21:02.063 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:21:04.656 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:21:07.948 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:21:07.950 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:21:08.094 -03:00 [INF] Selecionando empresa
+2024-04-26 00:21:13.943 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:21:15.995 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:21:16.100 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:21:16.455 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:21:21.715 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-26 00:21:24.283 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-26 00:21:27.100 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-26 00:21:27.101 -03:00 [INF] Realizando o login no ERP
+2024-04-26 00:21:27.272 -03:00 [INF] Selecionando empresa
+2024-04-26 00:21:33.960 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-26 00:21:36.028 -03:00 [INF] Abrindo o menu lateral
+2024-04-26 00:21:36.157 -03:00 [INF] Navegando para tela de faturamento
+2024-04-26 00:21:36.535 -03:00 [INF] Selecionando o pedido
+2024-04-26 00:21:41.841 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception

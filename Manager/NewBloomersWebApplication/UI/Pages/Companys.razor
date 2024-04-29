@@ -1,6 +1,24 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
-{
-    public class Companys
-    {
-    }
-}
+﻿@page "/Empresas"
+@layout CompanysLayout
+@inject ICompanyService _empresasService;
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpClient;
+
+<div class="row justify-content-center" id="body" style="margin-top: 15%">
+    <div class="col-sm-4 col-xs-12">
+        <form class="form-login-empresa" id="sel_empresa_login">
+            <h4 class="text-uppercase" id="label_empresa">ESCOLHA A EMPRESA</h4>
+            <div class="form-group">
+                <div class="dropdown" style="width: 100%">
+                    <select class="col-md-12" id="sel_empresa" style="height: 2.2rem" @bind="inputValueEmpresas">
+                        @foreach (var empresa in empresas)
+                        {
+                            <option value="@empresa.cod_company">@empresa.cod_company - @empresa.name_company</option>
+                        }
+                    </select>
+                </div>
+                <button class="btn btn-secondary col-md-12 mt-3" style="background-color: #cc8e00;" id="btn_sel_empresa" @onclick="selecionarEmpresa">Selecionar</button>
+            </div>
+        </form>
+    </div>
+</div>

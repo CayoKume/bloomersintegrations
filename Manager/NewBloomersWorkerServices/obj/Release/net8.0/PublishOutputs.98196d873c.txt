@@ -1,12 +1,12 @@
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Vanabot 9.exe
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\NewBloomersWorkerServices.exe
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\selenium-manager\linux\selenium-manager
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\selenium-manager\macos\selenium-manager
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\selenium-manager\windows\selenium-manager.exe
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\appsettings.json
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Vanabot 9.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Vanabot 9.deps.json
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Vanabot 9.runtimeconfig.json
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Vanabot 9.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\NewBloomersWorkerServices.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\NewBloomersWorkerServices.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\NewBloomersWorkerServices.runtimeconfig.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\NewBloomersWorkerServices.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Dapper.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Microsoft.Extensions.Configuration.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWorkerServices\bin\Release\net8.0\publish\Microsoft.Extensions.Configuration.Abstractions.dll

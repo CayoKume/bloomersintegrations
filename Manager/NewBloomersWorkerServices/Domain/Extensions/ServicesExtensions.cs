@@ -49,7 +49,7 @@ namespace BloomersWorkersManager.Domain.Extensions
         public static IServiceCollection AddScopedWorkersCoreServices(this IServiceCollection services)
         {
             services.AddScoped<IBloomersWorkersCoreRepository, BloomersWorkersCoreRepository>();
-            services.AddScoped<IChromeDriver, ChromeDriver>();
+            services.AddScoped<IDriver, Driver>();
             services.AddScoped<IHomePage, HomePage>();
             services.AddScoped<ILoginPage, LoginPage>();
             return services;

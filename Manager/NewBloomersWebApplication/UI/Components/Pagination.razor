@@ -1,6 +1,11 @@
-﻿namespace NewBloomersWebApplication.UI.Components
-{
-    public class PaginationLayout
-    {
-    }
-}
+﻿<div class="page-size-chooser pagination">
+    <strong>Pedidos:  </strong>
+    <select @bind="@pagination.ItemsPerPage" style="margin-left: .5rem">
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+        <option>100</option>
+    </select>
+</div>
+<Paginator State="@pagination"></Paginator>

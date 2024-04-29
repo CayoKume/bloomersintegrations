@@ -50,7 +50,7 @@ public class Worker : BackgroundService
                         //    await _insertReverseService.InsereReversa();
                         //    break;
                         case "InvoiceOrder":
-                            await _invoiceOrderService.InvoiceOrder(Assembly.GetExecutingAssembly().GetName().Name);
+                            await _invoiceOrderService.InvoiceOrder();
                             break;
                         case "LabelsPrinter":
                             await _labelsPrinterService.PrintLabels();

@@ -145,10 +145,6 @@
               "target": "Package",
               "version": "[4.19.0, )"
             },
-            "Selenium.WebDriver.ChromeDriver": {
-              "target": "Package",
-              "version": "[123.0.6312.8600, )"
-            },
             "SeleniumExtras.WaitHelpers": {
               "target": "Package",
               "version": "[1.0.2, )"
@@ -190,7 +186,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWorkerServices\\NewBloomersWorkerServices.csproj",
-        "projectName": "Vanabot 9",
+        "projectName": "NewBloomersWorkerServices",
         "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWorkerServices\\NewBloomersWorkerServices.csproj",
         "packagesPath": "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWorkerServices\\obj\\",

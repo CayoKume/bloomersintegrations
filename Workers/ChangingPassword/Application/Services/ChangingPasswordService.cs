@@ -13,11 +13,11 @@ namespace BloomersWorkers.ChangingPassword.Application.Services
     {
         private readonly ILoginPage _loginPage;
         private readonly IHomePage _homePage;
-        private readonly IChromeDriver _chromeDriver;
+        private readonly IDriver _chromeDriver;
         private readonly IChangingPasswordPage _changingPasswordPage;
         private readonly IChangingPasswordRepository _changingPasswordRepository;
 
-        public ChangingPasswordService (ILoginPage loginPage, IHomePage homePage, IChromeDriver chromeDriver, IChangingPasswordPage changingPasswordPage, IChangingPasswordRepository changingPasswordRepository) =>
+        public ChangingPasswordService (ILoginPage loginPage, IHomePage homePage, IDriver chromeDriver, IChangingPasswordPage changingPasswordPage, IChangingPasswordRepository changingPasswordRepository) =>
             (_loginPage, _homePage, _chromeDriver, _changingPasswordPage, _changingPasswordRepository) = (loginPage, homePage, chromeDriver, changingPasswordPage, changingPasswordRepository);
 
         public async Task ChangePassword()

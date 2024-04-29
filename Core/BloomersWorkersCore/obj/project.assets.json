@@ -169,12 +169,6 @@
           "buildTransitive/Selenium.WebDriver.targets": {}
         }
       },
-      "Selenium.WebDriver.ChromeDriver/123.0.6312.8600": {
-        "type": "package",
-        "build": {
-          "build/Selenium.WebDriver.ChromeDriver.targets": {}
-        }
-      },
       "SeleniumExtras.WaitHelpers/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -593,30 +587,6 @@
         "selenium.webdriver.nuspec"
       ]
     },
-    "Selenium.WebDriver.ChromeDriver/123.0.6312.8600": {
-      "sha512": "1OnN2EepEdRxCKkVJHZFaLoCNWpwELO1un2RzDcpRsjulemXiBV9xv4Fz0ylKQtTRGeKapTSAK5E1eZL+draQw==",
-      "type": "package",
-      "path": "selenium.webdriver.chromedriver/123.0.6312.8600",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "README.md",
-        "build/DefinePropertiesChromeDriver.targets",
-        "build/Selenium.WebDriver.ChromeDriver.targets",
-        "driver/linux64/LICENSE.chromedriver",
-        "driver/linux64/chromedriver",
-        "driver/mac64/LICENSE.chromedriver",
-        "driver/mac64/chromedriver",
-        "driver/mac64arm/LICENSE.chromedriver",
-        "driver/mac64arm/chromedriver",
-        "driver/win32/LICENSE.chromedriver",
-        "driver/win32/chromedriver.exe",
-        "nupkg-icon.png",
-        "selenium.webdriver.chromedriver.123.0.6312.8600.nupkg.sha512",
-        "selenium.webdriver.chromedriver.nuspec"
-      ]
-    },
     "SeleniumExtras.WaitHelpers/1.0.2": {
       "sha512": "de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
       "type": "package",
@@ -909,7 +879,6 @@
       "NewBloomersWebServicesCore >= 1.0.0",
       "Selenium.Support >= 4.19.0",
       "Selenium.WebDriver >= 4.19.0",
-      "Selenium.WebDriver.ChromeDriver >= 123.0.6312.8600",
       "SeleniumExtras.WaitHelpers >= 1.0.2",
       "Serilog >= 3.1.1",
       "Serilog.Sinks.Console >= 5.0.1",
@@ -981,10 +950,6 @@
           "Selenium.WebDriver": {
             "target": "Package",
             "version": "[4.19.0, )"
-          },
-          "Selenium.WebDriver.ChromeDriver": {
-            "target": "Package",
-            "version": "[123.0.6312.8600, )"
           },
           "SeleniumExtras.WaitHelpers": {
             "target": "Package",

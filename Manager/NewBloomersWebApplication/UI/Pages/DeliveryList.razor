@@ -1,6 +1,79 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
+﻿@page "/Romaneio"
+@inject IDeliveryListService _romaneioService;
+@inject IJSRuntime jsRuntime;
+@inject HttpClient _httpClient;
+
+<PageTitle>Romaneio</PageTitle>
+
+<h2>Impressão de Romaneio</h2>
+
+@if (pedidos == null)
 {
-    public class DeliveryList
-    {
-    }
+    <h3>Carregando Dados...</h3>
 }
+else
+{
+    <MenuDosGridsComDataLayout transportadora="@inputValueTransportadoras" OnChangeEvent="ReloadGrid" OnKeyUpEvent="AdicionaPedidoEnter" OnClickEvent="AdicionaPedidoButton"></MenuDosGridsComDataLayout>
+
+    <div class="row mt-3">
+        <div class="col-md-1">
+            <button class="btn btn-danger" @onclick="RemovePedido">
+                <i class="bi bi-trash3" style="margin-right: .7rem"></i>Remover
+            </button>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-warning" style="height: 62px" @onclick="LimpaGrid">
+                <i class="bi bi-recycle" style="margin-right: .7rem"></i>Limpar
+            </button>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-success" @onclick="ImprimeRomaneio">
+                <i class="bi bi-printer" style="margin-right: .7rem"></i>Imprimir
+            </button>
+        </div>
+        <div class="col-md-1">
+            <div class="dropdown" style="width: 100%">
+                <select class="col-md-12" id="sel_transportadora" title="Nenhuma selecionada" style="height: 3rem; width: 17rem; margin-top: .4rem; margin-left: .5rem" @bind="inputValueTransportadoras">
+                    <option value="7601">TEX COURIER S.A</option>
+                    <option value="3535">AWR EXPRESS TRANSPORTES LTDA</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination">
+            <TemplateColumn Align="Align.Center">
+                <div style="min-height: 1.5rem; padding: 1.5rem">
+                    <input @onclick="(() => RemovePedidoFromList(context))" type="checkbox" name="checkbox" id="checkbox">
+                </div>
+            </TemplateColumn>
+            <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="pedido"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cliente"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Align="Align.Center" Class="nome"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.address_client)" Title="Endereco" Align="Align.Center" Class="endereco"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.street_number_client)" Title="Numero" Align="Align.Center" Class="numero"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.complement_address_client)" Title="Complemento" Align="Align.Center" Class="complemento"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.neighborhood_client)" Title="Bairro" Align="Align.Center" Class="bairro"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.city_client)" Title="Cidade" Align="Align.Center" Class="cidade"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.uf_client)" Title="UF" Align="Align.Center" Class="uf"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.zip_code_client)" Title="CEP" Align="Align.Center" Class="cep"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.invoice.number_nf)" Title="NFe" Align="Align.Center" Class="nfe"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.invoice.amount_nf)" Title="Total" Align="Align.Center" Class="total"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.volumes)" Title="Volumes" Align="Align.Center" Class="volumes"></PropertyColumn>
+        </QuickGrid>
+    </div>
+
+    <PaginacaoLayout Pagination="pagination"></PaginacaoLayout>
+}
+
+@if (modalDataInvalida)
+{
+    <ModalAlertaLayout Title="Erro"
+                       Text="Formato de data inválido"
+                       OnCloseEvent="@(() => modalDataInvalida = false)"
+                       OnClickEvent="@(() => modalDataInvalida = false)">
+    </ModalAlertaLayout>
+}
+
+<script src="js/File.js"></script>

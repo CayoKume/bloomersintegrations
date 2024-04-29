@@ -1,6 +1,10 @@
 ﻿namespace NewBloomersWebApplication.UI.Pages
 {
-    public class Login
+    public partial class Login
     {
+        private void NavigateToHomeCompent()
+        {
+            NavigationManager.NavigateTo("Empresas");
+        }
     }
 }

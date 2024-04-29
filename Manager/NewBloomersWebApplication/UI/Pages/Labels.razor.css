@@ -1,6 +1,80 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
-{
-    public class Labels
-    {
-    }
+﻿body {
+}
+
+.grid {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 85rem;
+}
+
+::deep .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+::deep .quickgrid[theme=corporate] button.col-title:hover, ::deep .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+::deep .quickgrid[theme=corporate] tr, ::deep .quickgrid[theme=corporate] td, ::deep .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+::deep .quickgrid[theme=corporate] .pedido {
+    width: 60rem;
+}
+
+::deep .quickgrid[theme=corporate] .impresso {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .nome {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .endereco {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .transportadora {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .metodo {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }

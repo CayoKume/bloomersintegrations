@@ -5,6 +5,7 @@ using BloomersWorkersCore.Domain.CustomExceptions;
 using BloomersWorkersCore.Domain.Enums;
 using BloomersWorkersCore.Infrastructure.Source.Drivers;
 using BloomersWorkersCore.Infrastructure.Source.Pages;
+using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Serilog;
@@ -17,11 +18,85 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
         private readonly IHomePage _homePage;
         private readonly IVDPage _vdPage;
         private readonly IB2CPage _b2cPage;
-        private readonly IChromeDriver _chromeDriver;
+        private readonly IDriver _chromeDriver;
+        private readonly IConfiguration _configuration;
         private readonly IInvoiceOrderRepository _invoiceOrderRepository;
 
-        public InvoiceOrderService(ILoginPage loginPage, IHomePage homePage, IVDPage vdPage, IB2CPage b2cPage, IChromeDriver chromeDriver, IInvoiceOrderRepository invoiceOrderRepository) =>
-            (_loginPage, _homePage, _vdPage, _b2cPage, _chromeDriver, _invoiceOrderRepository) = (loginPage, homePage, vdPage, b2cPage, chromeDriver, invoiceOrderRepository);
+        public InvoiceOrderService(ILoginPage loginPage, IHomePage homePage, IVDPage vdPage, IB2CPage b2cPage, IDriver chromeDriver, IConfiguration configuration, IInvoiceOrderRepository invoiceOrderRepository) =>
+            (_loginPage, _homePage, _vdPage, _b2cPage, _chromeDriver, _configuration, _invoiceOrderRepository) = (loginPage, homePage, vdPage, b2cPage, chromeDriver, configuration, invoiceOrderRepository);
+
+        public async Task InvoiceOrder()
+        {
+            try
+            {
+                var workerName = $"{_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("BotName").Value} {_configuration.GetSection("ConfigureService").GetSection("InvoiceOrder").GetSection("FinalIdControle").Value}";
+                var orders = await _invoiceOrderRepository.GetOrdersFromIT4(workerName);
+                var user = await _invoiceOrderRepository.GetMicrovixUser(workerName);
+
+                if (orders.Count() > 0)
+                {
+                    Log.Information($"Obtidos: {orders.Count()} pedidos para serem faturados");
+                    var driver = _chromeDriver.GetEdgeDriverInstance();
+                    var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
+
+                    for (int i = 0; i < orders.Count(); i++)
+                    {
+                        try
+                        {
+                            Log.Information($"Iniciando o faturamento do pedido {orders[i].number}");
+                            if (i == 0)
+                            {
+                                Log.Information("Realizando o login no ERP");
+                                _loginPage.InsertLoginAndPassword(user, wait);
+
+                                Log.Information("Selecionando empresa");
+                                _loginPage.SelectCompany(orders[i].company.doc_company, driver, wait);
+                            }
+                            else
+                            {
+                                Log.Information("Selecionando empresa");
+                                _loginPage.SelectCompanyFromTopBar(orders[i].company.doc_company, wait);
+                            }
+
+                            if (InvoiceOrder(orders[i], driver, wait))
+                            {
+                                Log.Information($"Pedido: {orders[i].number}, faturado com sucesso");
+                                await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
+                            }
+                        }
+
+                        catch (CustomNoSuchElementException ex)
+                        {
+                            if (ex.pages == Page.TypeEnum.Login)
+                                Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
+                            else if (ex.pages == Page.TypeEnum.Home)
+                                Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
+                            else
+                                Log.Warning("Warnings => {@order} - {@ex}", orders[i].number, ex.Message);
+
+                            await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
+
+                            continue;
+                        }
+
+                        catch (Exception ex)
+                        {
+                            Log.Error("Errors => {@ex}", ex.Message);
+
+                            await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
+
+                            continue;
+                        }
+                    }
+
+                    _chromeDriver.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Errors => {@ex}", ex.Message);
+            }
+        }
 
         public async Task InvoiceOrder(string workerName)
         {
@@ -33,57 +108,60 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                 if (orders.Count() > 0)
                 {
                     Log.Information($"Obtidos: {orders.Count()} pedidos para serem faturados");
-                    using (var driver = _chromeDriver.GetChromeDriverInstance())
+                    var driver = _chromeDriver.GetChromeDriverInstance();
+                    var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
+
+                    for (int i = 0; i < orders.Count(); i++)
                     {
-                        var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
-
-                        for (int i = 0; i < orders.Count(); i++)
+                        try
                         {
-                            try
+                            Log.Information($"Iniciando o faturamento do pedido {orders[i].number}");
+                            if (i == 0)
                             {
-                                Log.Information($"Iniciando o faturamento do pedido {orders[i].number}");
-                                if (i == 0)
-                                {
-                                    Log.Information("Realizando o login no ERP");
-                                    _loginPage.InsertLoginAndPassword(user, wait);
+                                Log.Information("Realizando o login no ERP");
+                                _loginPage.InsertLoginAndPassword(user, wait);
 
-                                    Log.Information("Selecionando empresa");
-                                    _loginPage.SelectCompany(orders[i].company.doc_company, driver, wait);
-                                }
-                                else
-                                {
-                                    Log.Information("Selecionando empresa");
-                                    _loginPage.SelectCompanyFromTopBar(orders[i].company.doc_company, wait);
-                                }
-
-                                if (InvoiceOrder(orders[i], driver, wait))
-                                {
-                                    Log.Information($"Pedido: {orders[i].number}, faturado com sucesso");
-                                    await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
-                                }
+                                Log.Information("Selecionando empresa");
+                                _loginPage.SelectCompany(orders[i].company.doc_company, driver, wait);
+                            }
+                            else
+                            {
+                                Log.Information("Selecionando empresa");
+                                _loginPage.SelectCompanyFromTopBar(orders[i].company.doc_company, wait);
                             }
 
-                            catch (CustomNoSuchElementException ex)
+                            if (InvoiceOrder(orders[i], driver, wait))
                             {
-                                if (ex.pages == Page.TypeEnum.Login)
-                                    Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
-                                else if (ex.pages == Page.TypeEnum.Home)
-                                    Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
-                                else
-                                    Log.Warning("Warnings => {@order} - {@ex}", orders[i].number, ex.Message);
-
+                                Log.Information($"Pedido: {orders[i].number}, faturado com sucesso");
                                 await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
-
-                                continue;
-                            }
-
-                            catch (Exception ex)
-                            {
-                                Log.Error("Errors => {@ex}", ex.Message);
-                                continue;
                             }
                         }
+
+                        catch (CustomNoSuchElementException ex)
+                        {
+                            if (ex.pages == Page.TypeEnum.Login)
+                                Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
+                            else if (ex.pages == Page.TypeEnum.Home)
+                                Log.Warning("Errors => {@order} - {@ex}", orders[i].number, ex.Message);
+                            else
+                                Log.Warning("Warnings => {@order} - {@ex}", orders[i].number, ex.Message);
+
+                            await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
+
+                            continue;
+                        }
+
+                        catch (Exception ex)
+                        {
+                            Log.Error("Errors => {@ex}", ex.Message);
+
+                            await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
+
+                            continue;
+                        }
                     }
+
+                    _chromeDriver.Dispose();
                 }
             }
             catch (Exception ex)

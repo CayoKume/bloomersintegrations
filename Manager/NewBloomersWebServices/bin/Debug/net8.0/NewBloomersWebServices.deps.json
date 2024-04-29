@@ -9,10 +9,15 @@
       "NewBloomersWebServices/1.0.0": {
         "dependencies": {
           "AfterSale": "1.0.0",
+          "AuthorizeNFe": "1.0.0",
+          "ChangingOrder": "1.0.0",
+          "ChangingPassword": "1.0.0",
           "Dootax": "1.0.0",
           "FlashCourier": "1.0.0",
           "FluentEmail.Smtp": "3.0.2",
           "Hangfire": "1.8.11",
+          "InsertReverse": "1.0.0",
+          "InvoiceOrder": "1.0.0",
           "LinxCommerce": "1.0.0",
           "LinxMicrovixWsEntrada": "1.0.0",
           "LinxMicrovixWsSaida": "1.0.0",
@@ -311,6 +316,70 @@
           }
         }
       },
+      "Selenium.Support/4.19.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.19.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.19.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Selenium.WebDriver.ChromeDriver/123.0.6312.8600": {},
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.19.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      },
+      "Serilog/3.1.1": {
+        "runtime": {
+          "lib/net7.0/Serilog.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "3.1.1.0"
+          }
+        }
+      },
+      "Serilog.Sinks.Console/5.0.1": {
+        "dependencies": {
+          "Serilog": "3.1.1"
+        },
+        "runtime": {
+          "lib/net7.0/Serilog.Sinks.Console.dll": {
+            "assemblyVersion": "5.0.1.0",
+            "fileVersion": "5.0.1.0"
+          }
+        }
+      },
+      "Serilog.Sinks.File/5.0.0": {
+        "dependencies": {
+          "Serilog": "3.1.1"
+        },
+        "runtime": {
+          "lib/net5.0/Serilog.Sinks.File.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -393,6 +462,33 @@
           "AfterSale.dll": {}
         }
       },
+      "AuthorizeNFe/1.0.0": {
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "runtime": {
+          "AuthorizeNFe.dll": {}
+        }
+      },
+      "ChangingOrder/1.0.0": {
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "runtime": {
+          "ChangingOrder.dll": {}
+        }
+      },
+      "ChangingPassword/1.0.0": {
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "runtime": {
+          "ChangingPassword.dll": {}
+        }
+      },
       "Dootax/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -411,6 +507,20 @@
         },
         "runtime": {
           "FlashCourier.dll": {}
+        }
+      },
+      "InsertReverse/1.0.0": {
+        "runtime": {
+          "InsertReverse.dll": {}
+        }
+      },
+      "InvoiceOrder/1.0.0": {
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "runtime": {
+          "InvoiceOrder.dll": {}
         }
       },
       "LinxCommerce/1.0.0": {
@@ -467,6 +577,22 @@
         },
         "runtime": {
           "NewBloomersWebServicesCore.dll": {}
+        }
+      },
+      "NewBloomersWorkerServicesCore/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "NewBloomersWebServicesCore": "1.0.0",
+          "Selenium.Support": "4.19.0",
+          "Selenium.WebDriver": "4.19.0",
+          "Selenium.WebDriver.ChromeDriver": "123.0.6312.8600",
+          "SeleniumExtras.WaitHelpers": "1.0.2",
+          "Serilog": "3.1.1",
+          "Serilog.Sinks.Console": "5.0.1",
+          "Serilog.Sinks.File": "5.0.0"
+        },
+        "runtime": {
+          "NewBloomersWorkerServicesCore.dll": {}
         }
       },
       "Pagarme/1.0.0": {
@@ -727,6 +853,55 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "Selenium.Support/4.19.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mMghl/3vzRNbE1FA57Iqpw8206DCKekvXl+6PKi811/fg98HSomrknvHgI4aZbfJEuL7Y2IKFt1oBbbUQT0elQ==",
+      "path": "selenium.support/4.19.0",
+      "hashPath": "selenium.support.4.19.0.nupkg.sha512"
+    },
+    "Selenium.WebDriver/4.19.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rguRY+Kbiow0s7RHtnHXnJdMgsmqAOOtv7ZGBtIQ1DbErkFtksrZHdUMcKyMK6VKNMmfsViqcCDGw4mPSPT70w==",
+      "path": "selenium.webdriver/4.19.0",
+      "hashPath": "selenium.webdriver.4.19.0.nupkg.sha512"
+    },
+    "Selenium.WebDriver.ChromeDriver/123.0.6312.8600": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1OnN2EepEdRxCKkVJHZFaLoCNWpwELO1un2RzDcpRsjulemXiBV9xv4Fz0ylKQtTRGeKapTSAK5E1eZL+draQw==",
+      "path": "selenium.webdriver.chromedriver/123.0.6312.8600",
+      "hashPath": "selenium.webdriver.chromedriver.123.0.6312.8600.nupkg.sha512"
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "hashPath": "seleniumextras.waithelpers.1.0.2.nupkg.sha512"
+    },
+    "Serilog/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-P6G4/4Kt9bT635bhuwdXlJ2SCqqn2nhh4gqFqQueCOr9bK/e7W9ll/IoX1Ter948cV2Z/5+5v8pAfJYUISY03A==",
+      "path": "serilog/3.1.1",
+      "hashPath": "serilog.3.1.1.nupkg.sha512"
+    },
+    "Serilog.Sinks.Console/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Jt8jl9y2ey8VV7nVEUAyjjyxjAQuvd5+qj4XYAT9CwcsvR70HHULGBeD+K2WCALFXf7CFsNQT4lON6qXcu2AA==",
+      "path": "serilog.sinks.console/5.0.1",
+      "hashPath": "serilog.sinks.console.5.0.1.nupkg.sha512"
+    },
+    "Serilog.Sinks.File/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uwV5hdhWPwUH1szhO8PJpFiahqXmzPzJT/sOijH/kFgUx+cyoDTMM8MHD0adw9+Iem6itoibbUXHYslzXsLEAg==",
+      "path": "serilog.sinks.file/5.0.0",
+      "hashPath": "serilog.sinks.file.5.0.0.nupkg.sha512"
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",
       "serviceable": true,
@@ -788,12 +963,37 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AuthorizeNFe/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ChangingOrder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ChangingPassword/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Dootax/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "FlashCourier/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InsertReverse/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InvoiceOrder/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -824,6 +1024,11 @@
       "sha512": ""
     },
     "NewBloomersWebServicesCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NewBloomersWorkerServicesCore/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

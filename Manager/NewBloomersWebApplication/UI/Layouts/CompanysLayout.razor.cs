@@ -1,6 +1,6 @@
 ﻿namespace NewBloomersWebApplication.UI.Layouts
 {
-    public class CompanysLayout
+    public partial class CompanysLayout
     {
     }
 }

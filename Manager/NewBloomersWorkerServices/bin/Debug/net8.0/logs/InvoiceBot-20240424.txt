@@ -1,0 +1,37 @@
+2024-04-24 16:36:50.340 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-24 16:36:58.622 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38336
+2024-04-24 16:36:58.624 -03:00 [INF] Realizando o login no ERP
+2024-04-24 16:36:58.935 -03:00 [INF] Selecionando empresa
+2024-04-24 16:37:06.380 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-24 16:37:08.427 -03:00 [INF] Abrindo o menu lateral
+2024-04-24 16:37:08.466 -03:00 [INF] Navegando para tela de faturamento
+2024-04-24 16:37:08.617 -03:00 [INF] Selecionando o pedido
+2024-04-24 16:37:13.772 -03:00 [ERR] Errors => Cannot locate option with value: 38336; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-24 16:37:16.307 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-24 16:37:19.242 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38336
+2024-04-24 16:37:19.246 -03:00 [INF] Realizando o login no ERP
+2024-04-24 16:37:19.376 -03:00 [INF] Selecionando empresa
+2024-04-24 16:37:26.825 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-24 16:37:28.865 -03:00 [INF] Abrindo o menu lateral
+2024-04-24 16:37:28.920 -03:00 [INF] Navegando para tela de faturamento
+2024-04-24 16:37:29.079 -03:00 [INF] Selecionando o pedido
+2024-04-24 16:37:34.209 -03:00 [ERR] Errors => Cannot locate option with value: 38336; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-24 16:37:36.739 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-24 16:37:39.662 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38336
+2024-04-24 16:37:39.664 -03:00 [INF] Realizando o login no ERP
+2024-04-24 16:37:39.820 -03:00 [INF] Selecionando empresa
+2024-04-24 16:37:45.967 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-24 16:37:48.003 -03:00 [INF] Abrindo o menu lateral
+2024-04-24 16:37:48.049 -03:00 [INF] Navegando para tela de faturamento
+2024-04-24 16:37:48.183 -03:00 [INF] Selecionando o pedido
+2024-04-24 16:37:53.310 -03:00 [ERR] Errors => Cannot locate option with value: 38336; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-24 16:37:55.782 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-24 16:37:58.566 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38336
+2024-04-24 16:37:58.568 -03:00 [INF] Realizando o login no ERP
+2024-04-24 16:37:58.708 -03:00 [INF] Selecionando empresa
+2024-04-24 16:38:04.682 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-24 16:38:06.720 -03:00 [INF] Abrindo o menu lateral
+2024-04-24 16:38:06.770 -03:00 [INF] Navegando para tela de faturamento
+2024-04-24 16:38:06.937 -03:00 [INF] Selecionando o pedido
+2024-04-24 16:38:12.095 -03:00 [ERR] Errors => Cannot locate option with value: 38336; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-24 16:38:16.125 -03:00 [INF] Obtidos: 1 pedidos para serem faturados

@@ -1,6 +1,44 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
-{
-    public class Login
-    {
-    }
-}
+﻿@layout LoginLayout
+@inject NavigationManager NavigationManager
+@page "/"
+
+<PageTitle>Login</PageTitle>
+
+<section class="vh-100 background-img">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong transparent-card">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5">Sign in</h3>
+
+                        <div class="form-outline mb-4">
+                            <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+                            <label class="form-label label-text" for="typeEmailX-2">Email</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                            <label class="form-label label-text" for="typePasswordX-2">Password</label>
+                        </div>
+
+                        <div class="form-check d-flex justify-content-start mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                            <label class="form-check-label label-remember-password" for="form1Example3">Remember password </label>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" @onclick="NavigateToHomeCompent" type="submit">Login</button>
+
+                        <hr class="my-3">
+
+                        <button class="btn btn-lg btn-block btn-primary microsoft" type="submit">
+                            <i class="bi bi-microsoft me-2"></i> Sign in with Microsoft
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

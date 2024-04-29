@@ -1,6 +1,121 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
-{
-    public class DeliveryList
-    {
-    }
+﻿body {
+}
+
+.grid {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 106rem;
+}
+
+::deep .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+::deep .quickgrid[theme=corporate] button.col-title:hover, ::deep .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+::deep .quickgrid[theme=corporate] tr, ::deep .quickgrid[theme=corporate] td, ::deep .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+::deep .quickgrid[theme=corporate] .pedido {
+    width: 20rem;
+}
+
+::deep .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .nome {
+    width: 20rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .documento {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .endereco {
+    width: 20rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .bairro {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .cidade {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .uf {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .cep {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .contato {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .nfe {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .total {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .volumes {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }

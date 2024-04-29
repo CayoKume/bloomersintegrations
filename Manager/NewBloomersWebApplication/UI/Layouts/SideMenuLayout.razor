@@ -1,6 +1,66 @@
-﻿namespace NewBloomersWebApplication.UI.Layouts
-{
-    public class SideMenuLayout
-    {
-    }
-}
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">New Bloomers</a>
+    </div>
+</div>
+
+<nav class="flex-column">
+
+    <div class="nav-item px-3">
+        <a class="nav-link" href="#" Match="NavLinkMatch.All" @onclick:preventDefault>
+            <i class="bi bi-house"></i> Home
+        </a>
+    </div>
+
+    <div class="nav-item px-3">
+        <a class="nav-link" href="#" Match="NavLinkMatch.All" @onclick:preventDefault>
+            <i class="bi bi-speedometer"></i> Dashboard
+        </a>
+    </div>
+
+    <div class="nav-item px-3">
+        <a class="nav-link" href="#" @onclick="()=>expandMenu= !expandMenu" @onclick:preventDefault>
+            <i class="bi bi-truck"></i> Expedição
+        </a>
+        @if (expandMenu)
+        {
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Etiquetas">
+                        <i class="bi bi-tags"></i> Imprimir Etiquetas
+                    </NavLink>
+                </li>
+
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Conferencia">
+                        <i class="bi bi-upc-scan"></i> Conferir Pedidos
+                    </NavLink>
+                </li>
+
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Romaneio">
+                        <i class="bi bi-filetype-pdf"></i> Imprimir Romaneio
+                    </NavLink>
+                </li>
+
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="counter">
+                        <i class="bi bi-truck"></i> Alterar Transp.
+                    </NavLink>
+                </li>
+            </ul>
+        }
+    </div>
+
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="#" Match="NavLinkMatch.All" @onclick:preventDefault>
+            <i class="bi bi-cash-coin"></i> Venda Direta
+        </NavLink>
+    </div>
+
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="#" Match="NavLinkMatch.All" @onclick:preventDefault>
+            <i class="bi bi-bank2"></i> Financeiro
+        </NavLink>
+    </div>
+</nav>

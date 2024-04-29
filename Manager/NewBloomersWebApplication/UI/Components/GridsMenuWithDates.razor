@@ -1,6 +1,17 @@
-﻿namespace NewBloomersWebApplication.UI.Components
-{
-    public class GridsMenuWithDatesLayout
-    {
-    }
-}
+﻿<div class="form-group row mt-4">
+    <label for="dataInicial" class="col-md-1 col-form-label"><strong>Data Inicial:</strong></label>
+    <div class="col-md-2 col-form-label">
+        <input type="date" @bind-value="@dataInicial" @bind-value:event="oninput" @onchange="InvokeOnChangeEvent" />
+    </div>
+    <label for="dataFinal" class="col-md-1 col-form-label"><strong>Data Final:</strong></label>
+    <div class="col-md-2 col-form-label">
+        <input type="date" @bind-value="@dataFinal" @bind-value:event="oninput" @onchange="InvokeOnChangeEvent" />
+    </div>
+    <label for="pesquisar" class="col-md-1 col-form-label"><strong>Pedido:</strong></label>
+    <div class="col-md-3 col-form-label">
+        <input type="text" @bind-value="@nr_pedido" @bind-value:event="oninput" @onkeyup="InvokeOnKeyUpEvent" />
+        <button type="button" @onclick="InvokeOnClickEvent">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+</div>

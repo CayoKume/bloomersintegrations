@@ -2,6 +2,7 @@
 {
     public interface IInvoiceOrderService
     {
-        public Task InvoiceOrder(string? workerName);
+        public Task InvoiceOrder();
+        public Task InvoiceOrder(string workerName);
     }
 }

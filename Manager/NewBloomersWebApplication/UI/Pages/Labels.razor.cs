@@ -1,6 +1,147 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
+﻿using Microsoft.AspNetCore.Components.QuickGrid;
+using Microsoft.JSInterop;
+using NewBloomersWebApplication.Domain.Entities.Labels;
+using static NewBloomersWebApplication.Domain.Entities.AppContext;
+using DateInterval = NewBloomersWebApplication.Domain.Entities.AppContext.DateInterval;
+
+namespace NewBloomersWebApplication.UI.Pages
 {
-    public class Labels
+    public partial class Labels
     {
+        private string? nr_pedido { get; set; }
+
+        private bool modalDataInvalida { get; set; }
+        private bool modalNotaFiscalPendente { get; set; }
+
+        private IEnumerable<Order>? pedidos { get; set; }
+        private PaginationState pagination = new PaginationState { ItemsPerPage = 50 };
+
+        protected override async Task OnInitializedAsync()
+        {
+            pedidos = await _etiquetasService.GetOrders(Company.doc_company, Company.serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
+
+            foreach (var pedido in pedidos)
+            {
+                if (pedido.printed == "S")
+                {
+                    pedido.buttonText = "Impresso";
+                    pedido.buttonClass = "btn btn-success";
+                }
+                else
+                {
+                    pedido.buttonText = "Imprimir";
+                    pedido.buttonClass = "btn btn-primary";
+                }
+            }
+        }
+
+        private async Task ReloadGrid(DateInterval dateInterval)
+        {
+            if (dateInterval.initialDate <= dateInterval.finalDate)
+            {
+                modalDataInvalida = false;
+                pedidos = await _etiquetasService.GetOrders(Company.doc_company, Company.serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
+
+                foreach (var pedido in pedidos)
+                {
+                    if (pedido.printed == "S")
+                    {
+                        pedido.buttonText = "Impresso";
+                        pedido.buttonClass = "btn btn-success";
+                    }
+                    else
+                    {
+                        pedido.buttonText = "Imprimir";
+                        pedido.buttonClass = "btn btn-primary";
+                    }
+                }
+            }
+            else
+            {
+                modalDataInvalida = true;
+            }
+        }
+
+        private async Task ImprimeEtiqueta(Order pedido)
+        {
+            await _etiquetasService.PrintLabels(pedido);
+
+            for (int i = 0; i < pedido.volumes + 1; i++)
+            {
+                var fileName = pedido.number + " - " + (i + 1) + ".pdf";
+                var parameters = new Dictionary<string, string>
+                {
+                    { "fileName",  fileName}
+                };
+                var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+
+                var response = await _httpClient.GetAsync($"NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetEtiquetaParaImprimir?{encodedParameters}");
+                var base64String = await response.Content.ReadAsStringAsync();
+
+                await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
+            }
+        }
+
+        private async Task ImprimeEtiquetaIndividualButton(string nr_pedido)
+        {
+            this.nr_pedido = nr_pedido;
+            modalNotaFiscalPendente = false;
+            var pedido = await _etiquetasService.PrintLabel(Company.doc_company, Company.serie_order, this.nr_pedido);
+
+            if (pedido.invoice is not null)
+            {
+                for (int i = 0; i < pedido.volumes + 1; i++)
+                {
+                    var fileName = pedido.number + " - " + (i + 1) + ".pdf";
+                    var parameters = new Dictionary<string, string>
+                    {
+                        { "fileName",  fileName}
+                    };
+                    var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+
+                    var response = await _httpClient.GetAsync($"NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetEtiquetaParaImprimir?{encodedParameters}");
+                    var base64String = await response.Content.ReadAsStringAsync();
+
+                    await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
+                }
+            }
+            else
+            {
+                modalNotaFiscalPendente = true;
+            }
+        }
+
+        private async Task ImprimeEtiquetaIndividualEnter(Enter evento)
+        {
+            if (evento.e.Code == "Enter" || evento.e.Code == "NumpadEnter")
+            {
+                this.nr_pedido = evento.orderNumber;
+                modalNotaFiscalPendente = false;
+                var pedido = await _etiquetasService.PrintLabel(Company.doc_company, Company.serie_order, this.nr_pedido);
+
+                if (pedido.invoice is not null)
+                {
+                    for (int i = 0; i < pedido.volumes + 1; i++)
+                    {
+                        var fileName = pedido.number + " - " + (i + 1) + ".pdf";
+                        var parameters = new Dictionary<string, string>
+                    {
+                        { "fileName",  fileName}
+                    };
+                        var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+
+                        var response = await _httpClient.GetAsync($"NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetEtiquetaParaImprimir?{encodedParameters}");
+                        var base64String = await response.Content.ReadAsStringAsync();
+
+                        await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
+                    }
+                }
+                else
+                {
+                    modalNotaFiscalPendente = true;
+                }
+            }
+        }
+
     }
 }

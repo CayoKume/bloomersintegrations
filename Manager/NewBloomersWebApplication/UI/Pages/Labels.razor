@@ -1,6 +1,56 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
+﻿@page "/Etiquetas"
+@inject ILabelsService _etiquetasService;
+@inject IJSRuntime jsRuntime;
+@inject HttpClient _httpClient;
+
+<PageTitle>Etiquetas</PageTitle>
+
+<h2>Impressão Etiquetas</h2>
+
+@if(pedidos == null)
 {
-    public class Labels
-    {
-    }
+    <h3>Carregando Dados...</h3>
 }
+else
+{
+    <MenuDosGridsComDataLayout OnChangeEvent="ReloadGrid" OnKeyUpEvent="ImprimeEtiquetaIndividualEnter" OnClickEvent="ImprimeEtiquetaIndividualButton"></MenuDosGridsComDataLayout>
+
+    <div class="grid">
+        <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination">
+            <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="pedido"></PropertyColumn>
+            <TemplateColumn Title="Impresso" Align="Align.Center" Class="impresso">
+                <button class="@(context.buttonClass)" @onclick="@(() => ImprimeEtiqueta(context))">@(context.buttonText)</button>
+            </TemplateColumn>
+            <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cliente"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Sortable="true" Align="Align.Center" Class="nome"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.address_client)" Title="Endereco" Align="Align.Center" Class="endereco"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.street_number_client)" Title="Numero" Align="Align.Center" Class="numero"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.complement_address_client)" Title="Complemento" Align="Align.Center" Class="complemento"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.shippingCompany.cod_shippingCompany)" Title="Transportadora" Align="Align.Center" Class="transportadora"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.shippingCompany.reason_shippingCompany)" Title="Nome" Align="Align.Center" Class="nome"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.shippingCompany.metodo_shippingCompany)" Title="Metodo" Align="Align.Center" Class="metodo"></PropertyColumn>
+        </QuickGrid>
+    </div>
+
+    <PaginacaoLayout Pagination="pagination"></PaginacaoLayout>
+}
+
+@if (modalDataInvalida)
+{
+    <ModalAlertaLayout Title="Erro"
+                       Text="Formato de data inválido"
+                       OnCloseEvent="@(() => modalDataInvalida = false)"
+                       OnClickEvent="@(() => modalDataInvalida = false)">
+    </ModalAlertaLayout>
+}
+
+@if (modalNotaFiscalPendente)
+{
+    <ModalAlertaLayout Title="Erro"
+                       Text="A etiqueta não pode ser impressa pois a nota fiscal não está autorizada"
+                       OnCloseEvent="@(() => modalNotaFiscalPendente = false)"
+                       OnClickEvent="@(() => modalNotaFiscalPendente = false)">
+    </ModalAlertaLayout>
+}
+
+<script src="js/File.js"></script>

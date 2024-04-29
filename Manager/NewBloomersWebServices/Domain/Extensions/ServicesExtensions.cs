@@ -28,6 +28,24 @@ using BloomersMicrovixIntegrations.Infrastructure.Repositorys.LinxMicrovix;
 using BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Repositorys.Base;
 using Hangfire;
 using Hangfire.SqlServer;
+using BloomersWorkers.InvoiceOrder.Application.Services;
+using BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys;
+using BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages;
+using BloomersWorkersCore.Infrastructure.Source.Pages;
+using BloomersWorkersCore.Infrastructure.Source.Drivers;
+using BloomersWorkersCore.Infrastructure.Repositorys;
+using BloomersWorkers.AuthorizeNFe.Application.Services;
+using BloomersWorkers.AuthorizeNFe.Infrastructure.Repositorys;
+using BloomersWorkers.ChangingOrder.Application.Services;
+using BloomersWorkers.ChangingOrder.Infrastructure.Repositorys;
+using BloomersWorkers.ChangingPassword.Application.Services;
+using BloomersWorkers.ChangingPassword.Infrastructure.Repositorys;
+using BloomersWorkers.InsertReverse.Application.Services;
+using BloomersWorkers.InsertReverse.Infrastructure.Repositorys;
+using BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages;
+using BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages;
+using BloomersWorkers.ChangingPassword.Infrastructure.Source.Pages;
+using BloomersWorkers.InsertReverse.Infrastructure.Source.Pages;
 
 namespace BloomersIntegrationsManager.Domain.Extensions
 {
@@ -35,16 +53,29 @@ namespace BloomersIntegrationsManager.Domain.Extensions
     {
         public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder)
         {
+            var serverName = builder.Configuration.GetSection("ConfigureServer").GetSection("ServerName").Value;
             var connectionString = builder.Configuration.GetConnectionString("Connection");
 
             builder.Services.AddScopedSQLServerConnection();
-            builder.Services.AddScopedCarriersServices();
+
+            builder.Services.AddScopedFlashCourierServices();
+            builder.Services.AddScopedTotalExpressServices();
+
             builder.Services.AddScopedLinxCommerceServices();
             builder.Services.AddScopedLinxMicrovixCommerceServices();
             builder.Services.AddScopedLinxMicrovixERPWsSaidaServices();
             builder.Services.AddScopedLinxMicrovixERPWsEntradaServices();
-            builder.Services.AddScopedGeneralServices();
-            builder.Services.AddHangfireService(connectionString);
+            
+            builder.Services.AddScopedAfterSaleServices();
+            builder.Services.AddScopedDootaxServices();
+            builder.Services.AddScopedMobsimServices();
+            builder.Services.AddScopedPagarmeServices();
+            builder.Services.AddScopedMovideskServices();
+            
+            builder.Services.AddScopedWorkersServices();
+            builder.Services.AddScopedPagesServices();
+            
+            builder.Services.AddHangfireService(connectionString, serverName);
 
             return builder;
         }
@@ -175,7 +206,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             return services;
         }
 
-        public static IServiceCollection AddScopedCarriersServices(this IServiceCollection services)
+        public static IServiceCollection AddScopedFlashCourierServices(this IServiceCollection services)
         {
             services.AddScoped<BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis.IAPICall, BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis.APICall>();
             services.AddHttpClient("FlashCourierAPI", client =>
@@ -190,6 +221,11 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<IFlashCourierService, FlashCourierService>();
             services.AddScoped<IFlashCourierRepository, FlashCourierRepository>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddScopedTotalExpressServices(this IServiceCollection services)
+        {
             services.AddScoped<BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis.IAPICall, BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis.APICall>();
             services.AddHttpClient("TotalExpressAPI", client =>
             {
@@ -207,7 +243,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             return services;
         }
 
-        public static IServiceCollection AddScopedGeneralServices(this IServiceCollection services)
+        public static IServiceCollection AddScopedAfterSaleServices(this IServiceCollection services)
         {
             services.AddScoped<BloomersGeneralIntegrations.AfterSale.Infrastructure.Apis.IAPICall, BloomersGeneralIntegrations.AfterSale.Infrastructure.Apis.APICall>();
             services.AddHttpClient("AfterSaleAPI", client =>
@@ -219,6 +255,11 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<IAfterSaleService, AfterSaleService>();
             services.AddScoped<IAfterSaleRepository, AfterSaleRepository>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddScopedDootaxServices(this IServiceCollection services)
+        {
             services.AddScoped<BloomersGeneralIntegrations.Dootax.Infrastructure.Apis.IAPICall, BloomersGeneralIntegrations.Dootax.Infrastructure.Apis.APICall>();
             services.AddHttpClient("DootaxAPI", client =>
             {
@@ -232,6 +273,11 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<IDootaxService, DootaxService>();
             services.AddScoped<IDootaxRepository, DootaxRepository>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddScopedMobsimServices(this IServiceCollection services)
+        {
             services.AddScoped<BloomersGeneralIntegrations.Mobsim.Infrastructure.Apis.IAPICall, BloomersGeneralIntegrations.Mobsim.Infrastructure.Apis.APICall>();
             services.AddHttpClient("MobsimAPI", client =>
             {
@@ -242,6 +288,11 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<IMobsimService, MobsimService>();
             services.AddScoped<IMobsimRepository, MobsimRepository>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddScopedPagarmeServices(this IServiceCollection services)
+        {
             services.AddScoped<BloomersGeneralIntegrations.Pagarme.Infrastructure.Apis.IAPICall, BloomersGeneralIntegrations.Pagarme.Infrastructure.Apis.APICall>();
             services.AddHttpClient("PagarmeAPI", client =>
             {
@@ -252,6 +303,11 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<IPagarmeService, PagarmeService>();
             services.AddScoped<IPagarmeRepository, PagarmeRepository>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddScopedMovideskServices(this IServiceCollection services)
+        {
             services.AddScoped<BloomersGeneralIntegrations.Movidesk.Infrastructure.Apis.IAPICall, BloomersGeneralIntegrations.Movidesk.Infrastructure.Apis.APICall>();
             services.AddHttpClient("MovideskAPI", client =>
             {
@@ -265,6 +321,44 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             return services;
         }
 
+        public static IServiceCollection AddScopedWorkersServices(this IServiceCollection services)
+        {
+            services.AddScoped<IDriver, Driver>();
+            services.AddScoped<IBloomersWorkersCoreRepository, BloomersWorkersCoreRepository>();
+
+            services.AddScoped<IAuthorizeNFeService, AuthorizeNFeService>();
+            services.AddScoped<IAuthorizeNFeRepository, AuthorizeNFeRepository>();
+
+            services.AddScoped<IChangingOrderService, ChangingOrderService>();
+            services.AddScoped<IChangingOrderRepository, ChangingOrderRepository>();
+
+            services.AddScoped<IChangingPasswordService, ChangingPasswordService>();
+            services.AddScoped<IChangingPasswordRepository, ChangingPasswordRepository>();
+
+            services.AddScoped<IInsertReverseService, InsertReverseService>();
+            services.AddScoped<IInsertReverseRepository, InsertReverseRepository>();
+
+            services.AddScoped<IInvoiceOrderService, InvoiceOrderService>();
+            services.AddScoped<IInvoiceOrderRepository, InvoiceOrderRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddScopedPagesServices(this IServiceCollection services)
+        {
+            services.AddScoped<IAuthorizeNFePage, AuthorizeNFePage>();
+            services.AddScoped<IChangingOrderPage, ChangingOrderPage>();
+            services.AddScoped<IChangingPasswordPage, ChangingPasswordPage>();
+            services.AddScoped<IInsertReversePage, InsertReversePage>();
+            services.AddScoped<IB2CPage, B2CPage>();
+            services.AddScoped<IVDPage, VDPage>();
+
+            services.AddScoped<IHomePage, HomePage>();
+            services.AddScoped<ILoginPage, LoginPage>();
+
+            return services;
+        }
+
         public static IServiceCollection AddScopedSQLServerConnection(this IServiceCollection services)
         {
             services.AddScoped<ISQLServerConnection, SQLServerConnection>();
@@ -272,7 +366,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             return services;
         }
 
-        public static IServiceCollection AddHangfireService(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddHangfireService(this IServiceCollection services, string? connectionString, string? serverName)
         {
             services.AddHangfire(configuration => configuration
                 .UseFilter(new AutomaticRetryAttribute { Attempts = 0 })
@@ -294,6 +388,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHangfireServer(options =>
             {
                 options.WorkerCount = 50;
+                options.ServerName = serverName;
+                options.Queues = new [] { serverName.ToLower() }; 
             });
 
             return services;

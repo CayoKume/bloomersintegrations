@@ -1,0 +1,348 @@
+2024-04-25 09:45:00.704 -03:00 [INF] Obtidos: 10 pedidos para serem faturados
+2024-04-25 09:45:06.223 -03:00 [INF] Iniciando o faturamento do pedido OA-20821
+2024-04-25 09:45:06.224 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:45:06.429 -03:00 [INF] Selecionando empresa
+2024-04-25 09:45:14.334 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:45:16.351 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:45:16.392 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:45:16.468 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:45:22.776 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:45:42.927 -03:00 [INF] Iniciando o faturamento do pedido OA-20824-01
+2024-04-25 09:45:42.974 -03:00 [INF] Selecionando empresa
+2024-04-25 09:46:13.247 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:46:15.289 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:46:15.343 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:46:15.433 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:46:21.738 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:46:42.033 -03:00 [INF] Pedido: OA-20824-01, faturado com sucesso
+2024-04-25 09:46:42.163 -03:00 [INF] Iniciando o faturamento do pedido OA-20826-01
+2024-04-25 09:46:42.165 -03:00 [INF] Selecionando empresa
+2024-04-25 09:47:12.633 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:47:14.667 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:47:14.734 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:47:14.887 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:47:21.601 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:47:41.882 -03:00 [INF] Pedido: OA-20826-01, faturado com sucesso
+2024-04-25 09:47:41.951 -03:00 [INF] Iniciando o faturamento do pedido OA-20829-01
+2024-04-25 09:47:41.953 -03:00 [INF] Selecionando empresa
+2024-04-25 09:48:12.363 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:48:14.387 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:48:14.424 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:48:14.505 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:48:20.772 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:48:40.925 -03:00 [INF] Iniciando o faturamento do pedido OA-20831
+2024-04-25 09:48:40.928 -03:00 [INF] Selecionando empresa
+2024-04-25 09:49:11.160 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:49:13.198 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:49:13.236 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:49:13.343 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:49:19.697 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:49:39.810 -03:00 [INF] Pedido: OA-20831, faturado com sucesso
+2024-04-25 09:49:40.043 -03:00 [INF] Iniciando o faturamento do pedido OA-20832-01
+2024-04-25 09:49:40.055 -03:00 [INF] Selecionando empresa
+2024-04-25 09:50:10.464 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:50:12.491 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:50:12.555 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:50:12.659 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:50:19.425 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:50:39.504 -03:00 [INF] Pedido: OA-20832-01, faturado com sucesso
+2024-04-25 09:50:39.903 -03:00 [INF] Iniciando o faturamento do pedido OA-20837-01
+2024-04-25 09:50:39.904 -03:00 [INF] Selecionando empresa
+2024-04-25 09:51:10.224 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:51:12.251 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:51:12.281 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:51:12.373 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:51:18.865 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:51:39.028 -03:00 [INF] Pedido: OA-20837-01, faturado com sucesso
+2024-04-25 09:51:39.126 -03:00 [INF] Iniciando o faturamento do pedido OA-20841
+2024-04-25 09:51:39.127 -03:00 [INF] Selecionando empresa
+2024-04-25 09:52:09.530 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:52:11.569 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:52:11.602 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:52:11.707 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:52:18.006 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:52:38.062 -03:00 [INF] Pedido: OA-20841, faturado com sucesso
+2024-04-25 09:52:38.187 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:52:38.188 -03:00 [INF] Selecionando empresa
+2024-04-25 09:53:08.582 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:53:10.601 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:53:10.633 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:53:10.781 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:53:18.815 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:53:18.905 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38351
+2024-04-25 09:53:18.907 -03:00 [INF] Selecionando empresa
+2024-04-25 09:53:49.104 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:53:51.127 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:53:51.152 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:53:51.211 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:53:58.865 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 09:54:06.781 -03:00 [INF] Incluindo dados da transportadora
+2024-04-25 09:54:28.105 -03:00 [INF] Incluindo dados do centro de custo
+2024-04-25 09:54:42.636 -03:00 [INF] Pedido: OA-VD38351, faturado com sucesso
+2024-04-25 09:54:46.832 -03:00 [INF] Obtidos: 4 pedidos para serem faturados
+2024-04-25 09:54:49.927 -03:00 [INF] Iniciando o faturamento do pedido OA-20837-01
+2024-04-25 09:54:49.928 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:54:50.059 -03:00 [INF] Selecionando empresa
+2024-04-25 09:54:55.816 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:54:57.834 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:54:57.868 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:54:57.943 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:55:06.100 -03:00 [WRN] Warnings => OA-20837-01 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 09:55:06.210 -03:00 [INF] Iniciando o faturamento do pedido OA-20841
+2024-04-25 09:55:06.211 -03:00 [INF] Selecionando empresa
+2024-04-25 09:55:36.706 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:55:38.729 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:55:38.758 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 09:55:38.827 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:55:46.981 -03:00 [WRN] Warnings => OA-20841 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 09:55:47.100 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:55:47.101 -03:00 [INF] Selecionando empresa
+2024-04-25 09:56:17.602 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:56:19.619 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:56:19.654 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:56:19.799 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:56:24.911 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:56:24.986 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38351
+2024-04-25 09:56:24.987 -03:00 [INF] Selecionando empresa
+2024-04-25 09:56:55.232 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:56:57.277 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:56:57.306 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:56:57.384 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:57:02.485 -03:00 [ERR] Errors => Cannot locate option with value: 38351; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:57:06.699 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:57:09.694 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:57:09.695 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:57:09.862 -03:00 [INF] Selecionando empresa
+2024-04-25 09:57:16.063 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:57:18.107 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:57:18.148 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:57:18.299 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:57:23.431 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:57:25.912 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:57:28.760 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:57:28.760 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:57:28.903 -03:00 [INF] Selecionando empresa
+2024-04-25 09:57:35.443 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:57:37.462 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:57:37.501 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:57:37.652 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:57:42.777 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:57:45.268 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:57:46.932 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:57:46.934 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:57:48.226 -03:00 [INF] Selecionando empresa
+2024-04-25 09:57:54.569 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:57:56.590 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:57:56.623 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:57:56.807 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:58:01.925 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:58:05.977 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:58:07.654 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:58:07.658 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:58:08.955 -03:00 [INF] Selecionando empresa
+2024-04-25 09:58:15.102 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:58:17.125 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:58:17.169 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:58:17.328 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:58:22.460 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:58:24.971 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:58:27.706 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:58:27.707 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:58:27.881 -03:00 [INF] Selecionando empresa
+2024-04-25 09:58:33.740 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:58:35.756 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:58:35.798 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:58:35.968 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:58:41.097 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:58:43.601 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:58:46.339 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:58:46.341 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:58:46.493 -03:00 [INF] Selecionando empresa
+2024-04-25 09:58:52.994 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:58:55.021 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:58:55.069 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:58:55.226 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:59:00.357 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 09:59:02.874 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 09:59:05.642 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 09:59:05.643 -03:00 [INF] Realizando o login no ERP
+2024-04-25 09:59:05.794 -03:00 [INF] Selecionando empresa
+2024-04-25 09:59:13.227 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 09:59:15.254 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 09:59:15.300 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 09:59:15.472 -03:00 [INF] Selecionando o pedido
+2024-04-25 09:59:21.221 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 10:04:19.435 -03:00 [INF] Obtidos: 5 pedidos para serem faturados
+2024-04-25 10:04:22.683 -03:00 [INF] Iniciando o faturamento do pedido OA-20823
+2024-04-25 10:04:22.684 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:04:23.063 -03:00 [INF] Selecionando empresa
+2024-04-25 10:04:30.611 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:04:32.641 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:04:32.687 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:04:32.782 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:04:39.153 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 10:04:59.374 -03:00 [INF] Pedido: OA-20823, faturado com sucesso
+2024-04-25 10:04:59.517 -03:00 [INF] Iniciando o faturamento do pedido OA-20833
+2024-04-25 10:04:59.518 -03:00 [INF] Selecionando empresa
+2024-04-25 10:05:29.593 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:05:31.621 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:05:31.664 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:05:31.749 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:05:38.102 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 10:05:58.236 -03:00 [INF] Pedido: OA-20833, faturado com sucesso
+2024-04-25 10:05:58.297 -03:00 [INF] Iniciando o faturamento do pedido OA-20834
+2024-04-25 10:05:58.299 -03:00 [INF] Selecionando empresa
+2024-04-25 10:06:28.607 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:06:30.631 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:06:30.672 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:06:30.758 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:06:37.076 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 10:06:59.398 -03:00 [ERR] Errors => B2CPage (SetOrderData) - Erro ao selecionar pedido para ser faturado -  - B2CPage (SetOrderData) - Erro ao faturar o pedido: OA-20834, porém houve alguma inconsistência: Uma venda não foi faturada! Favor verificar as mensagens de validação na listagem. - Uma venda não foi faturada! Favor verificar as mensagens de validação na listagem.
+2024-04-25 10:06:59.467 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-25 10:06:59.468 -03:00 [INF] Selecionando empresa
+2024-04-25 10:07:29.512 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:07:31.529 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:07:31.573 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:07:31.738 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:07:37.104 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 10:07:37.184 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38344
+2024-04-25 10:07:37.187 -03:00 [INF] Selecionando empresa
+2024-04-25 10:08:07.241 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:08:09.269 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:08:09.311 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:08:09.395 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:08:20.440 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 10:08:34.186 -03:00 [INF] Incluindo dados da transportadora
+2024-04-25 10:08:58.131 -03:00 [INF] Incluindo dados do centro de custo
+2024-04-25 10:09:17.346 -03:00 [INF] Pedido: OA-VD38344, faturado com sucesso
+2024-04-25 10:23:14.050 -03:00 [INF] Obtidos: 5 pedidos para serem faturados
+2024-04-25 10:23:17.507 -03:00 [INF] Iniciando o faturamento do pedido OA-20823
+2024-04-25 10:23:17.508 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:23:17.788 -03:00 [INF] Selecionando empresa
+2024-04-25 10:24:06.097 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:24:28.726 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:24:28.810 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:24:28.967 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:24:37.243 -03:00 [WRN] Warnings => OA-20823 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 10:24:37.316 -03:00 [INF] Iniciando o faturamento do pedido OA-20833
+2024-04-25 10:24:37.317 -03:00 [INF] Selecionando empresa
+2024-04-25 10:31:06.920 -03:00 [INF] Obtidos: 5 pedidos para serem faturados
+2024-04-25 10:31:11.581 -03:00 [INF] Iniciando o faturamento do pedido OA-20823
+2024-04-25 10:31:11.583 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:31:11.844 -03:00 [INF] Selecionando empresa
+2024-04-25 10:31:18.003 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:31:20.036 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:31:20.112 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:31:20.253 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:31:28.668 -03:00 [WRN] Warnings => OA-20823 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 10:31:28.844 -03:00 [INF] Iniciando o faturamento do pedido OA-20833
+2024-04-25 10:31:28.847 -03:00 [INF] Selecionando empresa
+2024-04-25 10:31:59.322 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:32:01.352 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:32:01.427 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:32:01.563 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:32:09.855 -03:00 [WRN] Warnings => OA-20833 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 10:32:09.935 -03:00 [INF] Iniciando o faturamento do pedido OA-20834
+2024-04-25 10:32:09.938 -03:00 [INF] Selecionando empresa
+2024-04-25 10:32:40.484 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:32:42.526 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:32:42.580 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:32:42.658 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:32:49.072 -03:00 [INF] Incluindo dados do pedido
+2024-04-25 10:33:11.573 -03:00 [ERR] Errors => B2CPage (SetOrderData) - Erro ao selecionar pedido para ser faturado -  - B2CPage (SetOrderData) - Erro ao faturar o pedido: OA-20834, porém houve alguma inconsistência: Uma venda não foi faturada! Favor verificar as mensagens de validação na listagem. - Uma venda não foi faturada! Favor verificar as mensagens de validação na listagem.
+2024-04-25 10:33:11.639 -03:00 [INF] Iniciando o faturamento do pedido OA-LJ38333
+2024-04-25 10:33:11.640 -03:00 [INF] Selecionando empresa
+2024-04-25 10:33:41.940 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:33:44.017 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:33:44.089 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:33:44.290 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:33:49.523 -03:00 [ERR] Errors => Cannot locate option with value: 38333; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 10:33:49.674 -03:00 [INF] Iniciando o faturamento do pedido OA-VD38344
+2024-04-25 10:33:49.676 -03:00 [INF] Selecionando empresa
+2024-04-25 10:34:20.202 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:34:22.247 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:34:22.341 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:34:22.498 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:34:27.778 -03:00 [ERR] Errors => Cannot locate option with value: 38344; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 10:34:32.158 -03:00 [INF] Obtidos: 5 pedidos para serem faturados
+2024-04-25 10:34:35.385 -03:00 [INF] Iniciando o faturamento do pedido OA-20823
+2024-04-25 10:34:35.386 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:34:35.529 -03:00 [INF] Selecionando empresa
+2024-04-25 10:34:46.398 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:34:48.492 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:34:51.464 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:34:51.645 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:35:02.151 -03:00 [WRN] Warnings => OA-20823 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 10:35:02.330 -03:00 [INF] Iniciando o faturamento do pedido OA-20833
+2024-04-25 10:35:02.331 -03:00 [INF] Selecionando empresa
+2024-04-25 10:35:32.471 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:35:34.498 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:35:34.545 -03:00 [INF] Navegando para tela de pedidos
+2024-04-25 10:35:34.689 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:35:42.893 -03:00 [WRN] Warnings => OA-20833 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2024-04-25 10:35:42.978 -03:00 [INF] Iniciando o faturamento do pedido OA-20834
+2024-04-25 10:35:42.979 -03:00 [INF] Selecionando empresa
+2024-04-25 10:50:22.931 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 10:50:27.560 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 10:50:27.561 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:50:27.797 -03:00 [INF] Selecionando empresa
+2024-04-25 10:50:34.775 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:50:36.821 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:50:36.888 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:50:37.106 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:50:42.602 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 10:52:09.647 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 10:52:12.708 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 10:52:12.709 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:52:12.904 -03:00 [INF] Selecionando empresa
+2024-04-25 10:52:19.828 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:52:21.879 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:52:21.941 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:52:22.209 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:52:27.491 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 10:59:11.308 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 10:59:14.848 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 10:59:14.851 -03:00 [INF] Realizando o login no ERP
+2024-04-25 10:59:15.091 -03:00 [INF] Selecionando empresa
+2024-04-25 10:59:22.438 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 10:59:24.483 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 10:59:24.559 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 10:59:24.778 -03:00 [INF] Selecionando o pedido
+2024-04-25 10:59:30.079 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 11:01:17.822 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 11:01:21.572 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 11:01:21.581 -03:00 [INF] Realizando o login no ERP
+2024-04-25 11:01:21.882 -03:00 [INF] Selecionando empresa
+2024-04-25 11:01:29.483 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 11:01:32.021 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 11:01:32.633 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 11:01:32.842 -03:00 [INF] Selecionando o pedido
+2024-04-25 11:02:08.220 -03:00 [WRN] Errors => OA-VD36228 - InvoiceOrder (SelectOrder) - O bot nao foi capaz de encontrar o elemento: B2 - B2
+2024-04-25 11:03:07.150 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 11:03:11.586 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 11:03:11.587 -03:00 [INF] Realizando o login no ERP
+2024-04-25 11:03:11.923 -03:00 [INF] Selecionando empresa
+2024-04-25 11:03:20.894 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 11:03:22.924 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 11:03:25.092 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 11:03:25.272 -03:00 [INF] Selecionando o pedido
+2024-04-25 11:03:33.064 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 11:20:15.234 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 11:20:19.897 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 11:20:19.899 -03:00 [INF] Realizando o login no ERP
+2024-04-25 11:20:20.280 -03:00 [INF] Selecionando empresa
+2024-04-25 11:20:26.734 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 11:20:28.777 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 11:20:28.833 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 11:20:29.052 -03:00 [INF] Selecionando o pedido
+2024-04-25 11:20:34.338 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 12:32:41.149 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-04-25 12:32:47.479 -03:00 [INF] Iniciando o faturamento do pedido OA-VD36228
+2024-04-25 12:32:47.481 -03:00 [INF] Realizando o login no ERP
+2024-04-25 12:32:47.671 -03:00 [INF] Selecionando empresa
+2024-04-25 12:32:53.789 -03:00 [INF] Fechando modal de notas pendentes
+2024-04-25 12:32:55.825 -03:00 [INF] Abrindo o menu lateral
+2024-04-25 12:32:55.871 -03:00 [INF] Navegando para tela de faturamento
+2024-04-25 12:32:56.033 -03:00 [INF] Selecionando o pedido
+2024-04-25 12:33:01.552 -03:00 [ERR] Errors => Cannot locate option with value: 36228; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-04-25 15:20:04.517 -03:00 [INF] Obtidos: 5 pedidos para serem faturados

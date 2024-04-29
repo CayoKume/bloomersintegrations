@@ -1,6 +1,6 @@
-﻿namespace NewBloomersWebApplication.UI.Components
-{
-    public class PaginationLayout
-    {
-    }
+﻿body {
+}
+
+.pagination {
+    margin-top: 1rem;
 }

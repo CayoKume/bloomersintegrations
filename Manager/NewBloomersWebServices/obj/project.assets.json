@@ -581,6 +581,98 @@
           }
         }
       },
+      "Selenium.Support/4.19.0": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.19.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.19.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
+        }
+      },
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.0.0-beta2"
+        },
+        "compile": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        }
+      },
+      "Serilog/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog.Sinks.Console/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "3.1.1"
+        },
+        "compile": {
+          "lib/net7.0/Serilog.Sinks.Console.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Serilog.Sinks.Console.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog.Sinks.File/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "2.10.0"
+        },
+        "compile": {
+          "lib/net5.0/Serilog.Sinks.File.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Serilog.Sinks.File.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -748,6 +840,48 @@
           "bin/placeholder/AfterSale.dll": {}
         }
       },
+      "AuthorizeNFe/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AuthorizeNFe.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuthorizeNFe.dll": {}
+        }
+      },
+      "ChangingOrder/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ChangingOrder.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ChangingOrder.dll": {}
+        }
+      },
+      "ChangingPassword/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ChangingPassword.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ChangingPassword.dll": {}
+        }
+      },
       "Dootax/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -776,6 +910,30 @@
         },
         "runtime": {
           "bin/placeholder/FlashCourier.dll": {}
+        }
+      },
+      "InsertReverse/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/InsertReverse.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InsertReverse.dll": {}
+        }
+      },
+      "InvoiceOrder/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "NewBloomersWebServicesCore": "1.0.0",
+          "NewBloomersWorkerServicesCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/InvoiceOrder.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InvoiceOrder.dll": {}
         }
       },
       "LinxCommerce/1.0.0": {
@@ -862,6 +1020,26 @@
         },
         "runtime": {
           "bin/placeholder/NewBloomersWebServicesCore.dll": {}
+        }
+      },
+      "NewBloomersWorkerServicesCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "NewBloomersWebServicesCore": "1.0.0",
+          "Selenium.Support": "4.19.0",
+          "Selenium.WebDriver": "4.19.0",
+          "SeleniumExtras.WaitHelpers": "1.0.2",
+          "Serilog": "3.1.1",
+          "Serilog.Sinks.Console": "5.0.1",
+          "Serilog.Sinks.File": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/NewBloomersWorkerServicesCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NewBloomersWorkerServicesCore.dll": {}
         }
       },
       "Pagarme/1.0.0": {
@@ -2039,6 +2217,134 @@
         "version.txt"
       ]
     },
+    "Selenium.Support/4.19.0": {
+      "sha512": "mMghl/3vzRNbE1FA57Iqpw8206DCKekvXl+6PKi811/fg98HSomrknvHgI4aZbfJEuL7Y2IKFt1oBbbUQT0elQ==",
+      "type": "package",
+      "path": "selenium.support/4.19.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.0/WebDriver.Support.dll",
+        "lib/netstandard2.0/WebDriver.Support.xml",
+        "selenium.support.4.19.0.nupkg.sha512",
+        "selenium.support.nuspec"
+      ]
+    },
+    "Selenium.WebDriver/4.19.0": {
+      "sha512": "rguRY+Kbiow0s7RHtnHXnJdMgsmqAOOtv7ZGBtIQ1DbErkFtksrZHdUMcKyMK6VKNMmfsViqcCDGw4mPSPT70w==",
+      "type": "package",
+      "path": "selenium.webdriver/4.19.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Selenium.WebDriver.targets",
+        "buildTransitive/Selenium.WebDriver.targets",
+        "icon.png",
+        "lib/netstandard2.0/WebDriver.dll",
+        "lib/netstandard2.0/WebDriver.xml",
+        "manager/linux/selenium-manager",
+        "manager/macos/selenium-manager",
+        "manager/windows/selenium-manager.exe",
+        "selenium.webdriver.4.19.0.nupkg.sha512",
+        "selenium.webdriver.nuspec"
+      ]
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "sha512": "de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "type": "package",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll",
+        "seleniumextras.waithelpers.1.0.2.nupkg.sha512",
+        "seleniumextras.waithelpers.nuspec"
+      ]
+    },
+    "Serilog/3.1.1": {
+      "sha512": "P6G4/4Kt9bT635bhuwdXlJ2SCqqn2nhh4gqFqQueCOr9bK/e7W9ll/IoX1Ter948cV2Z/5+5v8pAfJYUISY03A==",
+      "type": "package",
+      "path": "serilog/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net462/Serilog.dll",
+        "lib/net462/Serilog.xml",
+        "lib/net471/Serilog.dll",
+        "lib/net471/Serilog.xml",
+        "lib/net5.0/Serilog.dll",
+        "lib/net5.0/Serilog.xml",
+        "lib/net6.0/Serilog.dll",
+        "lib/net6.0/Serilog.xml",
+        "lib/net7.0/Serilog.dll",
+        "lib/net7.0/Serilog.xml",
+        "lib/netstandard2.0/Serilog.dll",
+        "lib/netstandard2.0/Serilog.xml",
+        "lib/netstandard2.1/Serilog.dll",
+        "lib/netstandard2.1/Serilog.xml",
+        "serilog.3.1.1.nupkg.sha512",
+        "serilog.nuspec"
+      ]
+    },
+    "Serilog.Sinks.Console/5.0.1": {
+      "sha512": "6Jt8jl9y2ey8VV7nVEUAyjjyxjAQuvd5+qj4XYAT9CwcsvR70HHULGBeD+K2WCALFXf7CFsNQT4lON6qXcu2AA==",
+      "type": "package",
+      "path": "serilog.sinks.console/5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net462/Serilog.Sinks.Console.dll",
+        "lib/net462/Serilog.Sinks.Console.xml",
+        "lib/net471/Serilog.Sinks.Console.dll",
+        "lib/net471/Serilog.Sinks.Console.xml",
+        "lib/net5.0/Serilog.Sinks.Console.dll",
+        "lib/net5.0/Serilog.Sinks.Console.xml",
+        "lib/net6.0/Serilog.Sinks.Console.dll",
+        "lib/net6.0/Serilog.Sinks.Console.xml",
+        "lib/net7.0/Serilog.Sinks.Console.dll",
+        "lib/net7.0/Serilog.Sinks.Console.xml",
+        "lib/netstandard2.0/Serilog.Sinks.Console.dll",
+        "lib/netstandard2.0/Serilog.Sinks.Console.xml",
+        "lib/netstandard2.1/Serilog.Sinks.Console.dll",
+        "lib/netstandard2.1/Serilog.Sinks.Console.xml",
+        "serilog.sinks.console.5.0.1.nupkg.sha512",
+        "serilog.sinks.console.nuspec"
+      ]
+    },
+    "Serilog.Sinks.File/5.0.0": {
+      "sha512": "uwV5hdhWPwUH1szhO8PJpFiahqXmzPzJT/sOijH/kFgUx+cyoDTMM8MHD0adw9+Iem6itoibbUXHYslzXsLEAg==",
+      "type": "package",
+      "path": "serilog.sinks.file/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/icon.png",
+        "lib/net45/Serilog.Sinks.File.dll",
+        "lib/net45/Serilog.Sinks.File.pdb",
+        "lib/net45/Serilog.Sinks.File.xml",
+        "lib/net5.0/Serilog.Sinks.File.dll",
+        "lib/net5.0/Serilog.Sinks.File.pdb",
+        "lib/net5.0/Serilog.Sinks.File.xml",
+        "lib/netstandard1.3/Serilog.Sinks.File.dll",
+        "lib/netstandard1.3/Serilog.Sinks.File.pdb",
+        "lib/netstandard1.3/Serilog.Sinks.File.xml",
+        "lib/netstandard2.0/Serilog.Sinks.File.dll",
+        "lib/netstandard2.0/Serilog.Sinks.File.pdb",
+        "lib/netstandard2.0/Serilog.Sinks.File.xml",
+        "lib/netstandard2.1/Serilog.Sinks.File.dll",
+        "lib/netstandard2.1/Serilog.Sinks.File.pdb",
+        "lib/netstandard2.1/Serilog.Sinks.File.xml",
+        "serilog.sinks.file.5.0.0.nupkg.sha512",
+        "serilog.sinks.file.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "sha512": "eUBr4TW0up6oKDA5Xwkul289uqSMgY0xGN4pnbOIBqCcN9VKGGaPvHX3vWaG/hvocfGDP+MGzMA0bBBKz2fkmQ==",
       "type": "package",
@@ -2340,6 +2646,21 @@
       "path": "../../General/AfterSale/AfterSale.csproj",
       "msbuildProject": "../../General/AfterSale/AfterSale.csproj"
     },
+    "AuthorizeNFe/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/AuthorizeNFe/AuthorizeNFe.csproj",
+      "msbuildProject": "../../Workers/AuthorizeNFe/AuthorizeNFe.csproj"
+    },
+    "ChangingOrder/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/ChangingOrder/ChangingOrder.csproj",
+      "msbuildProject": "../../Workers/ChangingOrder/ChangingOrder.csproj"
+    },
+    "ChangingPassword/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/ChangingPassword/ChangingPassword.csproj",
+      "msbuildProject": "../../Workers/ChangingPassword/ChangingPassword.csproj"
+    },
     "Dootax/1.0.0": {
       "type": "project",
       "path": "../../General/Dootax/Dootax.csproj",
@@ -2349,6 +2670,16 @@
       "type": "project",
       "path": "../../Carriers/FlashCourier/FlashCourier.csproj",
       "msbuildProject": "../../Carriers/FlashCourier/FlashCourier.csproj"
+    },
+    "InsertReverse/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/InsertReverse/InsertReverse.csproj",
+      "msbuildProject": "../../Workers/InsertReverse/InsertReverse.csproj"
+    },
+    "InvoiceOrder/1.0.0": {
+      "type": "project",
+      "path": "../../Workers/InvoiceOrder/InvoiceOrder.csproj",
+      "msbuildProject": "../../Workers/InvoiceOrder/InvoiceOrder.csproj"
     },
     "LinxCommerce/1.0.0": {
       "type": "project",
@@ -2380,6 +2711,11 @@
       "path": "../../Core/BloomersIntegrationsCore/NewBloomersWebServicesCore.csproj",
       "msbuildProject": "../../Core/BloomersIntegrationsCore/NewBloomersWebServicesCore.csproj"
     },
+    "NewBloomersWorkerServicesCore/1.0.0": {
+      "type": "project",
+      "path": "../../Core/BloomersWorkersCore/NewBloomersWorkerServicesCore.csproj",
+      "msbuildProject": "../../Core/BloomersWorkersCore/NewBloomersWorkerServicesCore.csproj"
+    },
     "Pagarme/1.0.0": {
       "type": "project",
       "path": "../../General/Pagarme/Pagarme.csproj",
@@ -2394,10 +2730,15 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AfterSale >= 1.0.0",
+      "AuthorizeNFe >= 1.0.0",
+      "ChangingOrder >= 1.0.0",
+      "ChangingPassword >= 1.0.0",
       "Dootax >= 1.0.0",
       "FlashCourier >= 1.0.0",
       "FluentEmail.Smtp >= 3.0.2",
       "Hangfire >= 1.8.11",
+      "InsertReverse >= 1.0.0",
+      "InvoiceOrder >= 1.0.0",
       "LinxCommerce >= 1.0.0",
       "LinxMicrovixWsEntrada >= 1.0.0",
       "LinxMicrovixWsSaida >= 1.0.0",
@@ -2471,6 +2812,21 @@
             },
             "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj": {
               "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\AuthorizeNFe.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\AuthorizeNFe\\AuthorizeNFe.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingOrder\\ChangingOrder.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingOrder\\ChangingOrder.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingPassword\\ChangingPassword.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\ChangingPassword\\ChangingPassword.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InsertReverse\\InsertReverse.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InsertReverse\\InsertReverse.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Workers\\InvoiceOrder\\InvoiceOrder.csproj"
             }
           }
         }

@@ -113,7 +113,6 @@
           }
         }
       },
-      "Selenium.WebDriver.ChromeDriver/123.0.6312.8600": {},
       "SeleniumExtras.WaitHelpers/1.0.2": {
         "dependencies": {
           "Selenium.WebDriver": "4.19.0"
@@ -205,7 +204,6 @@
           "NewBloomersWebServicesCore": "1.0.0",
           "Selenium.Support": "4.19.0",
           "Selenium.WebDriver": "4.19.0",
-          "Selenium.WebDriver.ChromeDriver": "123.0.6312.8600",
           "SeleniumExtras.WaitHelpers": "1.0.2",
           "Serilog": "3.1.1",
           "Serilog.Sinks.Console": "5.0.1",
@@ -306,13 +304,6 @@
       "sha512": "sha512-rguRY+Kbiow0s7RHtnHXnJdMgsmqAOOtv7ZGBtIQ1DbErkFtksrZHdUMcKyMK6VKNMmfsViqcCDGw4mPSPT70w==",
       "path": "selenium.webdriver/4.19.0",
       "hashPath": "selenium.webdriver.4.19.0.nupkg.sha512"
-    },
-    "Selenium.WebDriver.ChromeDriver/123.0.6312.8600": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1OnN2EepEdRxCKkVJHZFaLoCNWpwELO1un2RzDcpRsjulemXiBV9xv4Fz0ylKQtTRGeKapTSAK5E1eZL+draQw==",
-      "path": "selenium.webdriver.chromedriver/123.0.6312.8600",
-      "hashPath": "selenium.webdriver.chromedriver.123.0.6312.8600.nupkg.sha512"
     },
     "SeleniumExtras.WaitHelpers/1.0.2": {
       "type": "package",

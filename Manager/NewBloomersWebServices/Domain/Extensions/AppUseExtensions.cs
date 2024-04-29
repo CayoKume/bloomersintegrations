@@ -5,7 +5,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 {
     public static class AppUseExtensions
     {
-        public static IApplicationBuilder UseApplication(this IApplicationBuilder app)
+        public static IApplicationBuilder UseApplication(this IApplicationBuilder app, string? serverName)
         {
             app.UseCors(policy =>
                 policy.WithOrigins("https://localhost:7277", "https://localhost:7277")
@@ -19,6 +19,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.UseHangfireDashboard();
+
+            //RecurringJobsExtensions.AddRecurringJobs(serverName);
 
             return app;
         }

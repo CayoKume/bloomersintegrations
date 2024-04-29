@@ -1,6 +1,6 @@
 ﻿namespace NewBloomersWebApplication.UI.Pages
 {
-    public class Home
+    public partial class Home
     {
     }
 }

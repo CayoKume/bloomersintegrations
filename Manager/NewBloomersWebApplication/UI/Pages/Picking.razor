@@ -1,6 +1,153 @@
-﻿namespace NewBloomersWebApplication.UI.Pages
+﻿@page "/Conferencia"
+@inject IPickingService _conferenciaService;
+@inject IJSRuntime jsRuntime;
+@inject HttpClient _httpClient;
+
+<PageTitle>Conferência</PageTitle>
+
+<h2>Conferência de Pedidos</h2>
+
+@if (pedidos == null)
 {
-    public class Picking
+    <h3>Carregando Dados...</h3>
+}
+else
+{
+    <MenuDosGridsComDataLayout OnChangeEvent="ReloadGrid" OnKeyUpEvent="ConferePedidoIndividualEnter" OnClickEvent="ConferePedidoIndividualButton"></MenuDosGridsComDataLayout>
+
+    <div class="grid">
+        <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
+            <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="pedido"></PropertyColumn>
+            <TemplateColumn Title="Conferido" Align="Align.Center" Class="conferencia">
+                <button class="@(context.buttonClass)" @onclick="@(() => BtnConferir(context))">@(context.buttonText)</button>
+            </TemplateColumn>
+            <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cliente"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Sortable="true" Align="Align.Center" Class="nome"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.address_client)" Title="Endereco" Align="Align.Center" Class="endereco"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.street_number_client)" Title="Numero" Align="Align.Center" Class="numero"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.complement_address_client)" Title="Complemento" Align="Align.Center" Class="complemento"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.invoice.amount_nf.ToString("C"))" Title="Valor Total" Align="Align.Center" Class="valor"></PropertyColumn>
+        </QuickGrid>
+    </div>
+
+    <PaginacaoLayout Pagination="pagination"></PaginacaoLayout>
+}
+
+@if (modalSeparacao)
+{
+    <ModalConfirmacaoLayout 
+        opened="modalSeparacao"
+        size="modal-xl"
+        title="CONFERIR"
+        closeButtonText="FECHAR"
+        clickButtonText="FINALIZAR"
+        OnCloseEvent="@(() => modalSeparacao = false)"
+        OnClickEvent="BtnFinalizar">
+        <BodyContent>
+            <div class="row mb-1">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div>Pedido</div>
+                        <strong>@nr_pedido</strong>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="inputVolumesProdutos">Informe o volume</label>
+                        <div class="input-group mb-3">
+                            <input id="inputVolumesProdutos" type="text" @bind-value="inputValueVolumes" @bind-value:event="oninput" @onkeyup="Enter" placeholder="Informe os volumes" aria-label="Informe os volumes" aria-describedby="volumesPedido" autocomplete="off" class="form-control form-control-sm mt-3 mb-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="inputSeparaProdutos">Informe o produto</label>
+                        <div class="input-group mb-3">
+                            <input id="inputSeparaProdutos" type="text" @bind-value="inputValueProduto" @bind-value:event="oninput" @onkeyup="Enter" placeholder="Informe o código de barras do produto..." aria-label="Informe o código de barras do produto..." aria-describedby="separarProdutos" autocomplete="off" class="form-control form-control-sm mt-3 mb-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-secondary" style="margin-top: 2rem" @onclick="@RemoveQtde">
+                        <i class="bi bi-trash3-fill" style="font-size: 1.3rem"></i>
+                    </button>
+                </div>
+            </div>
+
+            <QuickGrid Items="@itens.AsQueryable()" Theme="corporate" Pagination="@pagination">
+                <TemplateColumn Title="Imagem" Align="Align.Center" Class="img_produto">
+                    <div class="flex items-center">
+                        @if (@context.urlImg is not null)
+                        {
+                            <img class="w-8 h-6 mr-4" src="@context.urlImg" style="width: 70px; height: 70px" />
+                        }
+                        else
+                        {
+                            <i class="bi bi-card-image w-8 h-6 mr-4" style="font-size: 2.5rem;"></i>
+                        }
+                    </div>
+                </TemplateColumn>
+                <PropertyColumn Property="@(p => $"{p.cod_product} - {p.description_product}")" Title="Descrição" Align="Align.Center" Class="descricao_produto"></PropertyColumn>
+                <PropertyColumn Property="@(p => p.sku_product)" Align="Align.Center" Title="Referência" Class="sku_produto"></PropertyColumn>
+                <PropertyColumn Property="@(p => p.quantity_product)" Align="Align.Center" Title="Qtde" Class="qtde_produto"></PropertyColumn>
+                <PropertyColumn Property="@(p => p.quantityPicked)" Align="Align.Center" Title="Conferido" Class="qtde_conferida"></PropertyColumn>
+            </QuickGrid>
+        </BodyContent>
+    </ModalConfirmacaoLayout>
+}
+
+@if (modalConfirmacao)
+{
+    if (resultado)
     {
+        <ModalAlertaLayout 
+            Title="Sucesso" 
+            Text="Pedido Conferido com Sucesso"
+            OnCloseEvent="@(() => modalConfirmacao = false)"
+            OnClickEvent="@(() => modalConfirmacao = false)">
+        </ModalAlertaLayout>
+    }
+    else
+    {
+        <ModalAlertaLayout 
+            Title="Erro" 
+            Text="Falha na Conferência do Pedido"
+            OnCloseEvent="@(() => modalConfirmacao = false)"
+            OnClickEvent="@(() => modalConfirmacao = false)">
+        </ModalAlertaLayout>
     }
 }
+
+@if (modalDataInvalida)
+{
+    <ModalAlertaLayout 
+        Title="Erro" 
+        Text="Formato de data inválido"
+        OnCloseEvent="@(() => modalDataInvalida = false)"
+        OnClickEvent="@(() => modalDataInvalida = false)">
+    </ModalAlertaLayout>
+}
+
+@if (modalPedidoJaConferido)
+{
+    <ModalConfirmacaoLayout 
+        opened="modalPedidoJaConferido"
+        title="Erro"
+        closeButtonText="NÃO"
+        clickButtonText="SIM"
+        OnCloseEvent="@(() => modalPedidoJaConferido = false)" 
+        OnClickEvent="BtnSim">
+        <BodyContent>
+            <div class="row mb-1">
+                <div class="form-group">
+                    <strong>Este pedido já está conferido, deseja conferi-lo novamente?</strong>
+                </div>
+            </div>
+        </BodyContent>
+    </ModalConfirmacaoLayout>
+}
+
+<script src="js/AutoFocus.js"></script>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6/ulx9YQBG8OqMZ4TTtK63J3/H4O4QY28w65C0Vn4vlXMO8VbtHhnCvWmT8/x1iaZGtoahKFrzSzZllF/AEUtw==",
+  "dgSpecHash": "LGdCsSx4zIQ35VI+l22coF4bGgLDrL0Bq/fZGxy2Kt1/nCQ5MHbLzCSwGx2K9ZXAWKcSBpCe1z2VWS8GeNTYKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWorkerServices\\NewBloomersWorkerServices.csproj",
   "expectedPackageFiles": [
@@ -42,7 +42,6 @@
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\selenium.support\\4.19.0\\selenium.support.4.19.0.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\selenium.webdriver\\4.19.0\\selenium.webdriver.4.19.0.nupkg.sha512",
-    "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\selenium.webdriver.chromedriver\\123.0.6312.8600\\selenium.webdriver.chromedriver.123.0.6312.8600.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\seleniumextras.waithelpers\\1.0.2\\seleniumextras.waithelpers.1.0.2.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\serilog.sinks.console\\5.0.1\\serilog.sinks.console.5.0.1.nupkg.sha512",
