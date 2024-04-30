@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBloomersWebApplication",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBloomersWorkerServices", "Manager\NewBloomersWorkerServices\NewBloomersWorkerServices.csproj", "{4938C5C1-8D99-4F60-90B4-0C77919EC81F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniWms", "MiniWms\MiniWms.csproj", "{E8AA7B13-C207-4748-A689-FE835C63EE76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniWms", "MiniWms\MiniWms.csproj", "{E8AA7B13-C207-4748-A689-FE835C63EE76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

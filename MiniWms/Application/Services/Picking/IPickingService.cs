@@ -1,6 +1,6 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Picking;
+﻿using BloomersMiniWmsIntegrations.Domain.Entities.Picking;
 
-namespace NewBloomersWebApplication.Application.Services
+namespace BloomersMiniWmsIntegrations.Application.Services
 {
     public interface IPickingService
     {
@@ -8,6 +8,5 @@ namespace NewBloomersWebApplication.Application.Services
         public Task<Order?> GetUnpickedOrder(string cnpj_emp, string serie, string nr_pedido);
         public Task<bool> UpdateRetorno(Order pedido);
         public Task<bool> UpdateShippingCompany(string nr_pedido, int cod_transportador);
-
     }
 }

@@ -6,8 +6,9 @@ namespace BloomersWorkersCore.Infrastructure.Source.Drivers
     public interface IDriver
     {
         public IWebDriver GetChromeDriverInstance();
-        public IWebDriver GetEdgeDriverInstance();
+        public Tuple<IWebDriver, int> GetEdgeDriverInstance();
         public WebDriverWait GetWebDriverWaitInstance(IWebDriver _driver);
+        public void Dispose(int pid);
         public void Dispose();
     }
 }

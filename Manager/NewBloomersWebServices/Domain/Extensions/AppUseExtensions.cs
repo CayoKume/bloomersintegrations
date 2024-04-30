@@ -18,7 +18,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             app.UseSwaggerUI();
             app.UseHttpsRedirection();
             app.UseAuthorization();
-            app.UseHangfireDashboard();
+            //app.UseHangfireDashboard();
 
             //RecurringJobsExtensions.AddRecurringJobs(serverName);
 

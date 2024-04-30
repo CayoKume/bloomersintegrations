@@ -1,0 +1,13 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\bin\Debug\net8.0\MiniWms.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\bin\Debug\net8.0\MiniWms.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\bin\Debug\net8.0\MiniWms.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\refint\MiniWms.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\ref\MiniWms.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\MiniWms\obj\Debug\net8.0\MiniWms.csproj.AssemblyReference.cache

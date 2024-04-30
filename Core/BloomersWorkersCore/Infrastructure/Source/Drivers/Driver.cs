@@ -2,9 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using System.Data.Common;
+using System.Diagnostics;
 
 namespace BloomersWorkersCore.Infrastructure.Source.Drivers
 {
@@ -17,6 +16,14 @@ namespace BloomersWorkersCore.Infrastructure.Source.Drivers
             _driver?.Close();
             _driver?.Dispose();
             _driver?.Quit();
+        }
+
+        public void Dispose(int pid)
+        {
+            _driver?.Close();
+            _driver?.Dispose();
+            _driver?.Quit();
+            Process.GetProcessById(pid).Kill();
         }
 
         public IWebDriver GetChromeDriverInstance()
@@ -36,18 +43,24 @@ namespace BloomersWorkersCore.Infrastructure.Source.Drivers
             return _driver;
         }
 
-        public IWebDriver GetEdgeDriverInstance()
+        public Tuple<IWebDriver, int> GetEdgeDriverInstance()
         {
             var driverService = EdgeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
+            var pid = driverService.ProcessId;
             var edgeOptions = new EdgeOptions();
             edgeOptions.AddArgument("--no-sandbox");
             edgeOptions.AddArgument("--start-maximized");
-            //edgeOptions.AddArgument("--headless=new");
+            edgeOptions.AddArgument("--ignore-certificate-errors");
+            edgeOptions.AddArgument("--allow-running-insecure-content");
+            edgeOptions.AddArgument("--user-agent=Chrome/80.0.3987.132");
+            edgeOptions.AddArgument("--headless=new");
             edgeOptions.AddArgument("--disable-crash-reporter");
+            edgeOptions.AddArgument("user-data-dir=C:\\Users\\Adm-NewBloomers\\AppData\\Local\\Microsoft\\Edge\\User Data1");
             _driver = new OpenQA.Selenium.Edge.EdgeDriver(edgeOptions);
             _driver.Url = $"https://erp.microvix.com.br/";
-            return _driver;
+
+            return new Tuple<IWebDriver, int>(_driver, pid);
         }
 
         public WebDriverWait GetWebDriverWaitInstance(IWebDriver _driver)

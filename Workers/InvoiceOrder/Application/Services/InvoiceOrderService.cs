@@ -36,7 +36,7 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                 if (orders.Count() > 0)
                 {
                     Log.Information($"Obtidos: {orders.Count()} pedidos para serem faturados");
-                    var driver = _chromeDriver.GetEdgeDriverInstance();
+                    var driver = _chromeDriver.GetChromeDriverInstance();
                     var wait = _chromeDriver.GetWebDriverWaitInstance(driver);
 
                     for (int i = 0; i < orders.Count(); i++)
@@ -86,7 +86,7 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                             await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
 
                             continue;
-                        }
+                        }   
                     }
 
                     _chromeDriver.Dispose();

@@ -75,7 +75,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             builder.Services.AddScopedWorkersServices();
             builder.Services.AddScopedPagesServices();
             
-            builder.Services.AddHangfireService(connectionString, serverName);
+            //builder.Services.AddHangfireService(connectionString, serverName);
 
             return builder;
         }
