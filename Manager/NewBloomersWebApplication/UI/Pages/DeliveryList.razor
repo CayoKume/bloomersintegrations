@@ -13,7 +13,7 @@
 }
 else
 {
-    <MenuDosGridsComDataLayout transportadora="@inputValueTransportadoras" OnChangeEvent="ReloadGrid" OnKeyUpEvent="AdicionaPedidoEnter" OnClickEvent="AdicionaPedidoButton"></MenuDosGridsComDataLayout>
+    <GridsMenuWithDates transportadora="@inputValueTransportadoras" OnChangeEvent="ReloadGrid" OnKeyUpEvent="AdicionaPedidoEnter" OnClickEvent="AdicionaPedidoButton"></GridsMenuWithDates>
 
     <div class="row mt-3">
         <div class="col-md-1">
@@ -64,16 +64,16 @@ else
         </QuickGrid>
     </div>
 
-    <PaginacaoLayout Pagination="pagination"></PaginacaoLayout>
+    <Pagination pagination="pagination"></Pagination>
 }
 
 @if (modalDataInvalida)
 {
-    <ModalAlertaLayout Title="Erro"
-                       Text="Formato de data inválido"
-                       OnCloseEvent="@(() => modalDataInvalida = false)"
-                       OnClickEvent="@(() => modalDataInvalida = false)">
-    </ModalAlertaLayout>
+    <AlertModal Title="Erro"
+                Text="Formato de data inválido"
+                OnCloseEvent="@(() => modalDataInvalida = false)"
+                OnClickEvent="@(() => modalDataInvalida = false)">
+    </AlertModal>
 }
 
-<script src="js/File.js"></script>
+<script src="js/Utils.js"></script>

@@ -74,15 +74,8 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 await _romaneioService.PrintOrder(pedidos);
 
-                var fileName = $@"romaneio{pedidos.First().company.doc_company.Substring(pedidos.First().company.doc_company.Length - 3)} - {DateTime.Now.Date.ToString("yyyy-mm-dd")}.pdf";
-                var parameters = new Dictionary<string, string>
-                    {
-                        { "fileName",  fileName}
-                    };
-                var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-
-                var response = await _httpClient.GetAsync($"NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetRomaneioParaImprimir?{encodedParameters}");
-                var base64String = await response.Content.ReadAsStringAsync();
+                var fileName = $@"deliverylists{pedidos.First().company.doc_company.Substring(pedidos.First().company.doc_company.Length - 3)} - {DateTime.Now.Date.ToString("yyyy-mm-dd")}.pdf";
+                var base64String = await _romaneioService.GetDeliveryListToPrint(fileName);
 
                 await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
 

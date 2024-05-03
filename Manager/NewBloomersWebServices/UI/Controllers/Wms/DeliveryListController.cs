@@ -58,7 +58,7 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
         {
             try
             {
-                var result = await _deliveryListService.PrintOrder(""/*JsonConvert.SerializeObject(request.serializePedidosList)*/);
+                var result = await _deliveryListService.PrintOrder(JsonConvert.SerializeObject(request.serializePedidosList));
 
                 if (!result)
                     return BadRequest($"Nao foi possivel gerar o romaneio.");

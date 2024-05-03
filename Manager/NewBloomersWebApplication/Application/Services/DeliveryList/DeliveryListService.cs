@@ -1,6 +1,7 @@
 ﻿using NewBloomersWebApplication.Domain.Entities.DeliveryList;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace NewBloomersWebApplication.Application.Services
 {
@@ -10,6 +11,17 @@ namespace NewBloomersWebApplication.Application.Services
 
         public DeliveryListService(IAPICall apiCall) =>
             (_apiCall) = (apiCall);
+
+        public async Task<string> GetDeliveryListToPrint(string fileName)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                { "fileName",  fileName}
+            };
+            var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+
+            return await _apiCall.GetAsync($"GetDeliveryListToPrint", encodedParameters);
+        }
 
         public async Task<Order?> GetOrderShipped(string nr_pedido, string serie, string cnpj_emp, string transportadora)
         {
@@ -23,7 +35,7 @@ namespace NewBloomersWebApplication.Application.Services
                     { "cod_transportadora", transportadora }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-                var result = await _apiCall.GetAsync("GetPedidoEnviado", encodedParameters);
+                var result = await _apiCall.GetAsync("GetOrderShipped", encodedParameters);
 
                 return System.Text.Json.JsonSerializer.Deserialize<Order>(result);
             }
@@ -46,7 +58,7 @@ namespace NewBloomersWebApplication.Application.Services
                     { "data_final", data_final }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-                var result = await _apiCall.GetAsync("GetPedidosEnviados", encodedParameters);
+                var result = await _apiCall.GetAsync("GetOrdersShipped", encodedParameters);
 
                 return System.Text.Json.JsonSerializer.Deserialize<List<Order>>(result);
             }
@@ -60,7 +72,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                var response = await _apiCall.PostAsync($"ImprimeRomaneio", JsonConvert.SerializeObject(new { serializePedidosList = pedidos }));
+                var response = await _apiCall.PostAsync($"PrintDeliveryList", JsonConvert.SerializeObject(new { serializePedidosList = pedidos }));
             }
             catch
             {

@@ -22,7 +22,7 @@ namespace NewBloomersWebApplication.Application.Services
                     { "nr_pedido", nr_pedido }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-                var result = await _apiCall.GetAsync("GetPedidoNaoConferido", encodedParameters);
+                var result = await _apiCall.GetAsync("GetUnpickedOrder", encodedParameters);
 
                 return JsonSerializer.Deserialize<Order>(result);
             }
@@ -44,7 +44,7 @@ namespace NewBloomersWebApplication.Application.Services
                     { "data_final", data_final }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-                var result = await _apiCall.GetAsync("GetPedidosNaoConferidos", encodedParameters);
+                var result = await _apiCall.GetAsync("GetUnpickedOrders", encodedParameters);
 
                 return JsonSerializer.Deserialize<List<Order>>(result);
             }
@@ -58,7 +58,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                var result = await _apiCall.PostAsync($"UpdateRetornoIT4_WMS_DOCUMENTO", JsonSerializer.Serialize(pedido));
+                var result = await _apiCall.PostAsync($"UpdateRetorno", JsonSerializer.Serialize(pedido));
 
                 return true;
             }

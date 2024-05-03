@@ -13,7 +13,7 @@
 }
 else
 {
-    <MenuDosGridsComDataLayout OnChangeEvent="ReloadGrid" OnKeyUpEvent="ConferePedidoIndividualEnter" OnClickEvent="ConferePedidoIndividualButton"></MenuDosGridsComDataLayout>
+    <GridsMenuWithDates OnChangeEvent="ReloadGrid" OnKeyUpEvent="ConferePedidoIndividualEnter" OnClickEvent="ConferePedidoIndividualButton"></GridsMenuWithDates>
 
     <div class="grid">
         <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
@@ -30,12 +30,12 @@ else
         </QuickGrid>
     </div>
 
-    <PaginacaoLayout Pagination="pagination"></PaginacaoLayout>
+    <Pagination pagination="pagination"></Pagination>
 }
 
 @if (modalSeparacao)
 {
-    <ModalConfirmacaoLayout 
+    <ConfirmationModal 
         opened="modalSeparacao"
         size="modal-xl"
         title="CONFERIR"
@@ -96,44 +96,44 @@ else
                 <PropertyColumn Property="@(p => p.quantityPicked)" Align="Align.Center" Title="Conferido" Class="qtde_conferida"></PropertyColumn>
             </QuickGrid>
         </BodyContent>
-    </ModalConfirmacaoLayout>
+    </ConfirmationModal>
 }
 
 @if (modalConfirmacao)
 {
     if (resultado)
     {
-        <ModalAlertaLayout 
+        <AlertModal 
             Title="Sucesso" 
             Text="Pedido Conferido com Sucesso"
             OnCloseEvent="@(() => modalConfirmacao = false)"
             OnClickEvent="@(() => modalConfirmacao = false)">
-        </ModalAlertaLayout>
+        </AlertModal>
     }
     else
     {
-        <ModalAlertaLayout 
+        <AlertModal 
             Title="Erro" 
             Text="Falha na Conferência do Pedido"
             OnCloseEvent="@(() => modalConfirmacao = false)"
             OnClickEvent="@(() => modalConfirmacao = false)">
-        </ModalAlertaLayout>
+        </AlertModal>
     }
 }
 
 @if (modalDataInvalida)
 {
-    <ModalAlertaLayout 
+    <AlertModal 
         Title="Erro" 
         Text="Formato de data inválido"
         OnCloseEvent="@(() => modalDataInvalida = false)"
         OnClickEvent="@(() => modalDataInvalida = false)">
-    </ModalAlertaLayout>
+    </AlertModal>
 }
 
 @if (modalPedidoJaConferido)
 {
-    <ModalConfirmacaoLayout 
+    <ConfirmationModal 
         opened="modalPedidoJaConferido"
         title="Erro"
         closeButtonText="NÃO"
@@ -147,7 +147,7 @@ else
                 </div>
             </div>
         </BodyContent>
-    </ModalConfirmacaoLayout>
+    </ConfirmationModal>
 }
 
-<script src="js/AutoFocus.js"></script>
+<script src="js/Utils.js"></script>

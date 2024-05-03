@@ -32,25 +32,25 @@ else
         </QuickGrid>
     </div>
 
-    <PaginacaoLayout Pagination="pagination"></PaginacaoLayout>
+    <Pagination pagination="pagination"></Pagination>
 }
 
 @if (modalDataInvalida)
 {
-    <ModalAlertaLayout Title="Erro"
-                       Text="Formato de data inválido"
-                       OnCloseEvent="@(() => modalDataInvalida = false)"
-                       OnClickEvent="@(() => modalDataInvalida = false)">
-    </ModalAlertaLayout>
+    <AlertModal Title="Erro"
+                Text="Formato de data inválido"
+                OnCloseEvent="@(() => modalDataInvalida = false)"
+                OnClickEvent="@(() => modalDataInvalida = false)">
+    </AlertModal>
 }
 
 @if (modalNotaFiscalPendente)
 {
-    <ModalAlertaLayout Title="Erro"
-                       Text="A etiqueta não pode ser impressa pois a nota fiscal não está autorizada"
-                       OnCloseEvent="@(() => modalNotaFiscalPendente = false)"
-                       OnClickEvent="@(() => modalNotaFiscalPendente = false)">
-    </ModalAlertaLayout>
+    <AlertModal Title="Erro"
+                Text="A etiqueta não pode ser impressa pois a nota fiscal não está autorizada"
+                OnCloseEvent="@(() => modalNotaFiscalPendente = false)"
+                OnClickEvent="@(() => modalNotaFiscalPendente = false)">
+    </AlertModal>
 }
 
 <script src="js/Utils.js"></script>
