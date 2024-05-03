@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\NewBloomersWebApplication.styles.css"
     },
     {
+      "Id": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\Wallpaper.png",
+      "PackagePath": "staticwebassets\\Wallpaper.png"
+    },
+    {
       "Id": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },

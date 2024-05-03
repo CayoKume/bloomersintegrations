@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "g5saw+GS2E6YUkMFsWU6JX5S/rgXSUzOhMaU6QJe4VvWnIx+EvM4VG7tB3dxg6r4f2uhWoUbPoF4bGTyXdeRkA==",
+  "dgSpecHash": "E3Rn3LjBTdmExwv5P64YtkSpode71hbF873k/YkUZmhjHhTD+O3LQmqmkUMwtvnQqjdauQN3K4Jrr6h+GVVF0A==",
   "success": true,
   "projectFilePath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\questpdf\\2024.3.3\\questpdf.2024.3.3.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\CayoHenriqueKume\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

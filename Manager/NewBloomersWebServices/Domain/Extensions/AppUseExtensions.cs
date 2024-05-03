@@ -8,7 +8,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         public static IApplicationBuilder UseApplication(this IApplicationBuilder app, string? serverName)
         {
             app.UseCors(policy =>
-                policy.WithOrigins("https://localhost:7277", "https://localhost:7277")
+                policy.WithOrigins("https://localhost:7083", "https://localhost:7083")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .WithHeaders(HeaderNames.ContentType)

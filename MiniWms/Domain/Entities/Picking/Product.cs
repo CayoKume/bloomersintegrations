@@ -3,6 +3,6 @@
     public class Product : BloomersIntegrationsCore.Domain.Entities.Product
     {
         public string urlImg { get; set; }
-        public double quantidade_conferida { get; set; }
+        public double picked_quantity { get; set; }
     }
 }

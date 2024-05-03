@@ -14,7 +14,7 @@
         public string? returnShippingCompany { get; set; }
         public string? roteShippingCompany { get; set; }
         public string? printed { get; set; }
-        public string? serie_order { get; set; }
+        public string? serie { get; set; }
 
         public DateTime dateProt { get; set; }
 

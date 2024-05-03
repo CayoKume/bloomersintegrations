@@ -17,7 +17,21 @@ namespace NewBloomersWebApplication.Infrastructure.Apis
             try
             {
                 var client = CreateClient(route);
-                var result = await client.GetAsync($"{client}{route}?{encodedParameters}");
+                var result = await client.GetAsync($"{client.BaseAddress}{route}?{encodedParameters}");
+                return await result.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<string> GetAsync(string route)
+        {
+            try
+            {
+                var client = CreateClient(route);
+                var result = await client.GetAsync($"{client.BaseAddress}{route}");
                 return await result.Content.ReadAsStringAsync();
             }
             catch (Exception)
@@ -31,7 +45,7 @@ namespace NewBloomersWebApplication.Infrastructure.Apis
             try
             {
                 var client = CreateClient(route);
-                var result = await client.PostAsync($"{client}{route}", new StringContent(JsonConvert.SerializeObject(jsonContent), Encoding.UTF8, "application/json"));
+                var result = await client.PostAsync($"{client.BaseAddress}{route}", new StringContent(jsonContent, Encoding.UTF8, "application/json"));
                 return await result.Content.ReadAsStringAsync();
             }
             catch (Exception)
@@ -50,7 +64,7 @@ namespace NewBloomersWebApplication.Infrastructure.Apis
             }
             catch (Exception ex)
             {
-                throw new Exception($"{route} - CreateClient - Erro ao criar HttpClientRequest para o end-point {route} na microvix - {ex}");
+                throw new Exception($"{route} - CreateClient - Erro ao criar HttpClientRequest para o end-point {route} - {ex}");
             }
         }
     }

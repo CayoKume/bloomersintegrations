@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BloomersIntegrationsCore.Domain.Entities;
 
 namespace BloomersMiniWmsIntegrations.Application.Services
 {
     public interface IHomeService
     {
+        public Task<string> GetPickupOrders(string doc_company);
     }
 }

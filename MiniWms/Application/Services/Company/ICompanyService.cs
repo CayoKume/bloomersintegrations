@@ -1,6 +1,7 @@
 ﻿namespace BloomersMiniWmsIntegrations.Application.Services
 {
-    internal interface ICompanyService
+    public interface ICompanyService
     {
+        public Task<string> GetCompanys();
     }
 }

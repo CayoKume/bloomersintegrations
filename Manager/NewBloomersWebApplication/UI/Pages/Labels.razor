@@ -13,7 +13,7 @@
 }
 else
 {
-    <MenuDosGridsComDataLayout OnChangeEvent="ReloadGrid" OnKeyUpEvent="ImprimeEtiquetaIndividualEnter" OnClickEvent="ImprimeEtiquetaIndividualButton"></MenuDosGridsComDataLayout>
+    <GridsMenuWithDates OnChangeEvent="ReloadGrid" OnKeyUpEvent="ImprimeEtiquetaIndividualEnter" OnClickEvent="ImprimeEtiquetaIndividualButton"></GridsMenuWithDates>
 
     <div class="grid">
         <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination">
@@ -53,4 +53,4 @@ else
     </ModalAlertaLayout>
 }
 
-<script src="js/File.js"></script>
+<script src="js/Utils.js"></script>

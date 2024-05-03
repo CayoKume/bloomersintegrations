@@ -15,7 +15,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                var result = await _apiCall.GetAsync("GetEmpresas", "");
+                var result = await _apiCall.GetAsync("GetCompanys");
                 return JsonSerializer.Deserialize<List<Company>>(result);
             }
             catch

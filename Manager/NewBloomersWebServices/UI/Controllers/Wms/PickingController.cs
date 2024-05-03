@@ -1,0 +1,94 @@
+﻿using BloomersIntegrationsManager.Domain.Entities.MiniWms;
+using BloomersMiniWmsIntegrations.Application.Services;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+
+namespace NewBloomersWebServices.UI.Controllers.Wms
+{
+    [ApiController]
+    [Route("NewBloomers/BloomersInvoiceIntegrations/MiniWms")]
+    public class PickingController : Controller
+    {
+        private readonly IPickingService _pickingService;
+
+        public PickingController(IPickingService pickingService) =>
+            (_pickingService) = (pickingService);
+
+        [HttpGet("GetUnpickedOrder")]
+        public async Task<ActionResult<string>> GetUnpickedOrder([Required][FromQuery] string cnpj_emp, [Required][FromQuery] string serie, [Required][FromQuery] string nr_pedido)
+        {
+            try
+            {
+                var result = await _pickingService.GetUnpickedOrder(cnpj_emp, serie, nr_pedido);
+
+                if (String.IsNullOrEmpty(result))
+                    return BadRequest($"Nao foi possivel encontrar o pedido: {nr_pedido}.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel encontrar o pedido: {nr_pedido}. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("GetUnpickedOrders")]
+        public async Task<ActionResult<string>> GetUnpickedOrders([Required][FromQuery] string cnpj_emp, [Required][FromQuery] string serie, [Required][FromQuery] string data_inicial, [Required][FromQuery] string data_final)
+        {
+            try
+            {
+                var result = await _pickingService.GetUnpickedOrders(cnpj_emp, serie, data_inicial, data_final);
+
+                if (String.IsNullOrEmpty(result))
+                    return BadRequest($"Nao foi possivel encontrar os pedidos para o intervalo de datas determinado.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel encontrar os pedidos para o intervalo de datas determinado. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("UpdateRetorno")]
+        public async Task<ActionResult> UpdateRetorno([FromBody] UpdateRetornoRequest request)
+        {
+            try
+            {
+                var result = await _pickingService.UpdateRetorno(request.nr_pedido, request.volumes, JsonConvert.SerializeObject(request.itens));
+
+                if (!result)
+                    return BadRequest($"Nao foi possivel atualizar o retorno do pedido na tabela.");
+                else
+                    return Ok();
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel atualizar o retorno do pedido na tabela. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPut("UpdateShippingCompany")]
+        public async Task<ActionResult> UpdateShippingCompany([Required][FromQuery] string nr_pedido, [Required][FromQuery] int cod_transportadora)
+        {
+            try
+            {
+                var result = await _pickingService.UpdateShippingCompany(nr_pedido, cod_transportadora);
+
+                if (!result)
+                    return BadRequest($"Nao foi possivel atualizar a transportadora do pedido: {nr_pedido} para {cod_transportadora}.");
+                else
+                    return Ok();
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel atualizar a transportadora do pedido: {nr_pedido} para {cod_transportadora}. Erro: {ex.Message}");
+            }
+        }
+    }
+}

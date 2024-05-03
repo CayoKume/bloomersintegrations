@@ -1,4 +1,5 @@
 ﻿using NewBloomersWebApplication.Application.Services;
+using NewBloomersWebApplication.Infrastructure.Apis;
 
 namespace NewBloomersWebApplication.Domain.Extensions
 {
@@ -8,10 +9,11 @@ namespace NewBloomersWebApplication.Domain.Extensions
         {
             services.AddHttpClient("MiniWMS", client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44378/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
+                client.BaseAddress = new Uri("https://localhost:7049/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
                 client.Timeout = new TimeSpan(0, 2, 0);
             });
 
+            services.AddScoped<IAPICall, APICall>();
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IDeliveryListService, DeliveryListService>();
             services.AddScoped<ILabelsService, LabelsService>();

@@ -1,6 +1,7 @@
 ﻿using NewBloomersWebApplication.Domain.Entities.Labels;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Text;
 
 namespace NewBloomersWebApplication.Application.Services
@@ -24,11 +25,11 @@ namespace NewBloomersWebApplication.Application.Services
                     { "data_final", data_final }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-                var result = await _apiCall.GetAsync($"GetPedidosParaImprimir", encodedParameters);
+                var result = await _apiCall.GetAsync($"GetOrdersToPrint", encodedParameters);
 
                 return System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Order>?>(result);
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }
@@ -45,7 +46,7 @@ namespace NewBloomersWebApplication.Application.Services
                     { "nr_pedido", nr_pedido }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-                var result = await _apiCall.GetAsync($"GetPedidoParaImprimir", encodedParameters);
+                var result = await _apiCall.GetAsync($"GetOrderToPrint", encodedParameters);
                 var pedido = System.Text.Json.JsonSerializer.Deserialize<Order>(result);
 
                 if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.city_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
@@ -99,13 +100,13 @@ namespace NewBloomersWebApplication.Application.Services
 
                     for (int i = 0; i < requests.Count(); i++)
                     {
-                        await _apiCall.PostAsync($"EnviaZPLToAPI", JsonConvert.SerializeObject(new { zpl = requests[i], nr_pedido = pedido.number, volumes = $"{i + 1}" }));
+                        await _apiCall.PostAsync($"SendZPLToAPI", JsonConvert.SerializeObject(new { zpl = requests[i], nr_pedido = $"{pedido.number} - {i + 1}", volumes = $"{i + 1}" }));
                     }
                 }
 
                 return pedido;
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }
@@ -116,7 +117,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.city_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
+                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
                 {
                     pedido.client.reason_client = RemoveInvalidCharactersForZebra(pedido.client.reason_client);
                     pedido.client.address_client = RemoveInvalidCharactersForZebra(pedido.client.address_client);
@@ -167,11 +168,11 @@ namespace NewBloomersWebApplication.Application.Services
 
                     for (int i = 0; i < requests.Count(); i++)
                     {
-                        await _apiCall.PostAsync($"EnviaZPLToAPI", JsonConvert.SerializeObject(new { zpl = requests[i], nr_pedido = pedido.number, volumes = $"{i + 1}" }));
+                        await _apiCall.PostAsync($"SendZPLToAPI", JsonConvert.SerializeObject(new { zpl = requests[i], nr_pedido = $"{pedido.number} - {i + 1}", volumes = $"{i + 1}" }));
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }
@@ -185,7 +186,7 @@ namespace NewBloomersWebApplication.Application.Services
                 string empresa = string.Empty;
                 List<String> requests = new List<String>();
 
-                if (pedido.serie_order == "MI-")
+                if (pedido.serie == "MI-")
                 {
                     empresa = "MISHA";
                     logo = "FO25,114^GFA,1321,7128,44,:Z64:eJztWEuu4jAQ7FggWVkFadhHs3rKKXIEkOA+LVaIU6BZRTnluH+2CTEEDWg29JM/cZtKpV67bRlg3s4IWHD9m7lx+dxqv3QmAoy4HPi4cJ4LpVsOC9uF8zy8xncpLtkrfDev4OLyuUv5tvAZvoT7CX0J9618feo+1XeVuk/5KlgLC/hmJJ/ijgn3qb7H/mVcslf4PtVXdfDwZn1daj6y3vBD+QHfwdcjVef0zN2gr4114xCdfawym+HbQU3UHNSE7q5cXCsOR2Okdk1tRbQqsKoUv+wMMiIhBTziNGobynhC6YO8K9ghcqXeNvR2wHHBuL8MeMe49L8fLAC6K8NQv6Ngq20uv4C3scaqjVJrlHplc3nGSBoKRuBXX+XbQzDQK3jMg75U+DKtNZWeG9rcmO+6V1ye0bUlXGrp+wUXTcZNxE06C98mF57DlH8VMKnUissON5gTQbfdyG3Kt9qJ5kKcf8Xf7BRXP7uLuFd9qRARbj0XC4mN4W56dQotZlMPia+fxRW+Rsn4wjxfMFzjizKXHRG3i3wFQ8otrum7jvrWub66tiQ/DOq8EO7hju9uwpct8b3RVw9mUQfmPadvOphFfcGcM/pqMuiML5lP+q4zvtXx8JBvrq8baTFn+gJnjyvk8VupjNtNxrcxvlHGXF8YRx6L+rKbce/0hfWRd7kl+hLhAXJ9zXEfv+Fpv7vRtyrqGyomnPQdoRS/NEaEE99dUV/QPB71Zc6Jbx6/VG+bZfHLg5YfIH7DvL70fCivtxt9WQnM1rG99D5+ubvP84M55/SFlCd544i4d/HLFgSOfA9xxpy+/AFRX15/hfhVOWP8/jLnvL7URn0T31l9qS3xnepL/ahv4jsTv5DycMCVpfFA34CX9I24c/HLMMa3eqavS/q6Cd9J/HJr8Sspohy/hJv0jbjz+lav6IsTfdN+MY1famP87s1Z0LfOcalzKeu7UkdlC2/CV3WwY8jNenOT+F1bUoDsvNOotCl+OZPXskfyuSSG7SjvGyQeeqvWmguo39vYQbToia9jSNlyByk/IrW8a+SbCIc0Uu3p55Jwd1JUYRnb69cQOO9mIeGCJjHuXAZ1hIyJ2k0n4K997Wtf+9rXvvZZ8w5/uOPOCKD3RgVbxYuX1YNZYrUhOb75cw8nVw+9ap7v0WqPHjB0nA8jPtS4ELfE+Tezc4KDdIN2AnT+AeOqkpsnPvgW2f+BM534EL0n4u4MJ8RQn2fm9hOWxrW5nxoEbQn3ii1Ai6Sv8G0fECagBiYXZxM7B1nDme+CP470rU/h8ezCXxn3vxq+F+4vgfk6hA==:9633";
@@ -502,6 +503,23 @@ namespace NewBloomersWebApplication.Application.Services
                 byte[] utfBytes = utf8.GetBytes(text);
                 byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
                 return iso.GetString(isoBytes);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<string> GetLabelToPrint(string fileName)
+        {
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "fileName",  fileName}
+                };
+                var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+                return await _apiCall.GetAsync($"GetLabelToPrint", encodedParameters);
             }
             catch (Exception ex)
             {

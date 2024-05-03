@@ -46,6 +46,8 @@ using BloomersWorkers.AuthorizeNFe.Infrastructure.Source.Pages;
 using BloomersWorkers.ChangingOrder.Infrastructure.Source.Pages;
 using BloomersWorkers.ChangingPassword.Infrastructure.Source.Pages;
 using BloomersWorkers.InsertReverse.Infrastructure.Source.Pages;
+using BloomersMiniWmsIntegrations.Application.Services;
+using BloomersMiniWmsIntegrations.Infrastructure.Repositorys;
 
 namespace BloomersIntegrationsManager.Domain.Extensions
 {
@@ -75,6 +77,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             builder.Services.AddScopedWorkersServices();
             builder.Services.AddScopedPagesServices();
             
+            builder.Services.AddScopedWmsServices();
+
             //builder.Services.AddHangfireService(connectionString, serverName);
 
             return builder;
@@ -203,6 +207,23 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
         public static IServiceCollection AddScopedWmsServices(this IServiceCollection services)
         {
+            services.AddScoped<BloomersMiniWmsIntegrations.Infrastructure.Apis.Labels.IAPICall, BloomersMiniWmsIntegrations.Infrastructure.Apis.Labels.APICall>();
+
+            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
+
+            services.AddScoped<IDeliveryListService, DeliveryListService>();
+            services.AddScoped<IDeliveryListRepository, DeliveryListRepository>();
+
+            services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
+
+            services.AddScoped<ILabelsService, LabelsService>();
+            services.AddScoped<ILabelsRepository, LabelsRepository>();
+
+            services.AddScoped<IPickingService, PickingService>();
+            services.AddScoped<IPickingRepository, PickingRepository>();
+
             return services;
         }
 

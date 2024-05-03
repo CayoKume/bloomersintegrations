@@ -9,10 +9,10 @@
         public DateTime dateProt { get; set; }
         public string? nProt { get; set; }
         public string? tpNF { get; set; }
-        public string? complemento_endereco_loja { get; set; }
-        public string? retorno_transportadora { get; set; }
-        public string? rota_transportadora { get; set; }
-        public string? impresso { get; set; }
+        public string? complementAddressStore { get; set; }
+        public string? returnShippingCompany { get; set; }
+        public string? roteShippingCompany { get; set; }
+        public string? printed { get; set; }
         public string? serie { get; set; }
 
         public List<string> awb { get { return _awb; } set { _awb = value; } }

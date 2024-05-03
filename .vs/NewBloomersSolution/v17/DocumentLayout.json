@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\infrastructure\\repositorys\\picking\\ipickingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\infrastructure\\repositorys\\picking\\ipickingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\domain\\entities\\miniwms\\printorderrequest.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\domain\\entities\\miniwms\\printorderrequest.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\wms\\deliverylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\wms\\deliverylistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IPickingRepository.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\Picking\\IPickingRepository.cs",
-              "RelativeDocumentMoniker": "MiniWms\\Infrastructure\\Repositorys\\Picking\\IPickingRepository.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\Picking\\IPickingRepository.cs",
-              "RelativeToolTip": "MiniWms\\Infrastructure\\Repositorys\\Picking\\IPickingRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Title": "PrintOrderRequest.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\Domain\\Entities\\MiniWms\\PrintOrderRequest.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\Domain\\Entities\\MiniWms\\PrintOrderRequest.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\Domain\\Entities\\MiniWms\\PrintOrderRequest.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\Domain\\Entities\\MiniWms\\PrintOrderRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T21:59:18.926Z",
+              "WhenOpened": "2024-05-03T07:36:08.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeliveryListController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\Wms\\DeliveryListController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\Wms\\DeliveryListController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\Wms\\DeliveryListController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\Wms\\DeliveryListController.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAqwDAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T06:50:38.939Z",
               "EditorCaption": ""
             }
           ]

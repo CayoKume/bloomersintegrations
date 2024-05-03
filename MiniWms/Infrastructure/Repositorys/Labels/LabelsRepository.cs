@@ -18,7 +18,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         TRIM(A.DOCUMENTO) as number,
                         A.VOLUMES as volumes,
                         A.NB_CFOP_PEDIDO as cfop,
-                        A.NB_ETIQUETA_IMPRESSA as impresso,
+                        A.NB_ETIQUETA_IMPRESSA as printed,
                         A.SERIE as serie,
                              
                         (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) as nProt,
@@ -29,7 +29,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
 						END AS tpNF,
                              
-                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') as retorno_transportadora,
+                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') as returnShippingCompany,
                              
                         A.NB_CODIGO_CLIENTE as cod_client,
                         A.NB_RAZAO_CLIENTE as reason_client,
@@ -105,7 +105,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                     pedido.company = empresa;
                     pedido.invoice = notaFiscal;
                     return pedido;
-                }, splitOn: "cod_cliente, cod_transportadora, cod_empresa, numero_nf");
+                }, splitOn: "cod_client, cod_shippingCompany, cod_company, number_nf");
             }
             catch (Exception ex)
             {
@@ -119,7 +119,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         TRIM(A.DOCUMENTO) as number,
                         A.VOLUMES as volumes,
                         A.NB_CFOP_PEDIDO as cfop,
-                        A.NB_ETIQUETA_IMPRESSA as impresso,
+                        A.NB_ETIQUETA_IMPRESSA as printed,
                         A.SERIE as serie,
                              
                         (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) as nProt,
@@ -130,7 +130,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
 						END AS tpNF,
                              
-                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') as retorno_transportadora,
+                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') as returnShippingCompany,
                              
                         A.NB_CODIGO_CLIENTE as cod_client,
                         A.NB_RAZAO_CLIENTE as reason_client,

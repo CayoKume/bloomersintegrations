@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "t8C7bfvpufEuaolFtDTmx8qK5yB23RZYY2i3mOMRCFI=",
+  "Hash": "4Sq8jpFpxbHde9kXtMNk6VzHo14ozRPBDdQmGtl2FHQ=",
   "Source": "NewBloomersWebApplication",
   "BasePath": "/",
   "Mode": "Root",
@@ -8356,6 +8356,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Utils.js"
+    },
+    {
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\Wallpaper.png",
+      "SourceId": "NewBloomersWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "Wallpaper.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Wallpaper.png"
     }
   ]
 }
