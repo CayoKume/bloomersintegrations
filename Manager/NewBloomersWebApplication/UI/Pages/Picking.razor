@@ -35,7 +35,7 @@ else
 
 @if (modalSeparacao)
 {
-    <ConfirmationModal 
+    <ConfirmationModalWithFocusById
         opened="modalSeparacao"
         size="modal-xl"
         title="CONFERIR"
@@ -96,7 +96,7 @@ else
                 <PropertyColumn Property="@(p => p.quantityPicked)" Align="Align.Center" Title="Conferido" Class="qtde_conferida"></PropertyColumn>
             </QuickGrid>
         </BodyContent>
-    </ConfirmationModal>
+    </ConfirmationModalWithFocusById>
 }
 
 @if (modalConfirmacao)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 using NewBloomersWebApplication.Domain.Entities.Picking;
 using static NewBloomersWebApplication.Domain.Entities.AppContext;
 
@@ -6,6 +7,9 @@ namespace NewBloomersWebApplication.UI.Pages
 {
     public partial class ShippingCompanys
     {
+        private string? doc_company;
+        private string? serie_order;
+
         private bool modalConfirmationAlert { get; set; }
         private bool modalOrderNumberEmpty { get; set; }
         private bool modalUpdateIsSuccessful { get; set; }
@@ -17,6 +21,9 @@ namespace NewBloomersWebApplication.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            doc_company = await GetTextInLocalStorage("doc_company");
+            serie_order = await GetTextInLocalStorage("serie_order");
+
             shippingCompanies = await _pickingService.GetShippingCompanys();
         }
 
@@ -26,7 +33,7 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 if (!System.String.IsNullOrEmpty(orderNumber))
                 {
-                    var order = await _pickingService.GetUnpickedOrder(Company.doc_company, Company.serie_order, orderNumber);
+                    var order = await _pickingService.GetUnpickedOrder(doc_company, serie_order, orderNumber);
                     shippingCompany = order.shippingCompany.cod_shippingCompany + " - " + order.shippingCompany.reason_shippingCompany;
                     modalConfirmationAlert = true;
                 }
@@ -60,7 +67,7 @@ namespace NewBloomersWebApplication.UI.Pages
                 {
                     if (!System.String.IsNullOrEmpty(orderNumber))
                     {
-                        var order = await _pickingService.GetUnpickedOrder(Company.doc_company, Company.serie_order, orderNumber);
+                        var order = await _pickingService.GetUnpickedOrder(doc_company, serie_order, orderNumber);
                         shippingCompany = order.shippingCompany.cod_shippingCompany + " - " + order.shippingCompany.reason_shippingCompany;
                         Thread.Sleep(2 * 1000);
                     }
@@ -72,6 +79,11 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 throw;
             }
+        }
+
+        private async Task<string> GetTextInLocalStorage(string key)
+        {
+            return await jsRuntime.InvokeAsync<string>("localStorage.getItem", key);
         }
     }
 }

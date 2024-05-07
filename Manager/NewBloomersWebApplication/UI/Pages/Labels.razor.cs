@@ -8,6 +8,9 @@ namespace NewBloomersWebApplication.UI.Pages
 {
     public partial class Labels
     {
+        private string? doc_company;
+        private string? serie_order;
+
         private string? nr_pedido { get; set; }
 
         private bool modalDataInvalida { get; set; }
@@ -18,7 +21,10 @@ namespace NewBloomersWebApplication.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            pedidos = await _etiquetasService.GetOrders(Company.doc_company, Company.serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
+            doc_company = await GetTextInLocalStorage("doc_company");
+            serie_order = await GetTextInLocalStorage("serie_order");
+
+            pedidos = await _etiquetasService.GetOrders(doc_company, serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
 
             foreach (var pedido in pedidos)
             {
@@ -40,7 +46,7 @@ namespace NewBloomersWebApplication.UI.Pages
             if (dateInterval.initialDate <= dateInterval.finalDate)
             {
                 modalDataInvalida = false;
-                pedidos = await _etiquetasService.GetOrders(Company.doc_company, Company.serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
+                pedidos = await _etiquetasService.GetOrders(doc_company, serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
 
                 foreach (var pedido in pedidos)
                 {
@@ -79,7 +85,7 @@ namespace NewBloomersWebApplication.UI.Pages
         {
             this.nr_pedido = nr_pedido;
             modalNotaFiscalPendente = false;
-            var pedido = await _etiquetasService.PrintLabel(Company.doc_company, Company.serie_order, this.nr_pedido);
+            var pedido = await _etiquetasService.PrintLabel(doc_company, serie_order, this.nr_pedido);
 
             if (pedido.invoice is not null)
             {
@@ -110,7 +116,7 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 this.nr_pedido = evento.orderNumber;
                 modalNotaFiscalPendente = false;
-                var pedido = await _etiquetasService.PrintLabel(Company.doc_company, Company.serie_order, this.nr_pedido);
+                var pedido = await _etiquetasService.PrintLabel(doc_company, serie_order, this.nr_pedido);
 
                 if (pedido.invoice is not null)
                 {
@@ -136,5 +142,9 @@ namespace NewBloomersWebApplication.UI.Pages
             }
         }
 
+        private async Task<string> GetTextInLocalStorage(string key)
+        {
+            return await jsRuntime.InvokeAsync<string>("localStorage.getItem", key);
+        }
     }
 }

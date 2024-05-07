@@ -7,6 +7,9 @@ namespace NewBloomersWebApplication.UI.Pages
 {
     public partial class DeliveryList
     {
+        private string? doc_company;
+        private string? serie_order;
+
         private string? inputValueTransportadoras { get; set; } = "7601";
 
         private bool modalDataInvalida { get; set; }
@@ -17,7 +20,10 @@ namespace NewBloomersWebApplication.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            pedidos = await _romaneioService.GetOrdersShipped(inputValueTransportadoras, Company.doc_company, Company.serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
+            doc_company = await GetTextInLocalStorage("doc_company");
+            serie_order = await GetTextInLocalStorage("serie_order");
+
+            pedidos = await _romaneioService.GetOrdersShipped(inputValueTransportadoras, doc_company, serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
         }
 
         private async Task ReloadGrid(DateInterval dateInterval)
@@ -25,7 +31,7 @@ namespace NewBloomersWebApplication.UI.Pages
             if (dateInterval.initialDate <= dateInterval.finalDate)
             {
                 modalDataInvalida = false;
-                pedidos = await _romaneioService.GetOrdersShipped(inputValueTransportadoras, Company.doc_company, Company.serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
+                pedidos = await _romaneioService.GetOrdersShipped(inputValueTransportadoras, doc_company, serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
             }
             else
             {
@@ -37,7 +43,7 @@ namespace NewBloomersWebApplication.UI.Pages
         {
             if (evento.e.Code == "Enter" || evento.e.Code == "NumpadEnter")
             {
-                var _pedido = await _romaneioService.GetOrderShipped(evento.orderNumber, Company.serie_order, Company.doc_company, inputValueTransportadoras);
+                var _pedido = await _romaneioService.GetOrderShipped(evento.orderNumber, serie_order, doc_company, inputValueTransportadoras);
                 pedidos.Add(_pedido);
                 Thread.Sleep(1 * 1000);
             }
@@ -45,7 +51,7 @@ namespace NewBloomersWebApplication.UI.Pages
 
         private async Task AdicionaPedidoButton(string nr_pedido)
         {
-            var _pedido = await _romaneioService.GetOrderShipped(nr_pedido, Company.serie_order, Company.doc_company, inputValueTransportadoras);
+            var _pedido = await _romaneioService.GetOrderShipped(nr_pedido, serie_order, doc_company, inputValueTransportadoras);
             pedidos.Add(_pedido);
             Thread.Sleep(1 * 1000);
         }
@@ -86,5 +92,9 @@ namespace NewBloomersWebApplication.UI.Pages
             }
         }
 
+        private async Task<string> GetTextInLocalStorage(string key)
+        {
+            return await jsRuntime.InvokeAsync<string>("localStorage.getItem", key);
+        }
     }
 }

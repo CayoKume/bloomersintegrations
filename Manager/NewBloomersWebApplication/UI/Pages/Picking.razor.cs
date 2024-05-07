@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 using static NewBloomersWebApplication.Domain.Entities.AppContext;
-using Company = NewBloomersWebApplication.Domain.Entities.AppContext.Company;
 using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
 using Product = NewBloomersWebApplication.Domain.Entities.Picking.Product;
 
@@ -10,6 +10,9 @@ namespace NewBloomersWebApplication.UI.Pages
 {
     public partial class Picking
     {
+        private string? doc_company;
+        private string? serie_order;
+
         private string? nr_pedido { get; set; }
         private string? inputValueProduto { get; set; }
 
@@ -30,7 +33,10 @@ namespace NewBloomersWebApplication.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            pedidos = await _conferenciaService.GetUnpickedOrders(Company.doc_company, Company.serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
+            doc_company = await GetTextInLocalStorage("doc_company");
+            serie_order = await GetTextInLocalStorage("serie_order");
+
+            pedidos = await _conferenciaService.GetUnpickedOrders(doc_company, serie_order, DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
 
             foreach (var pedido in pedidos)
             {
@@ -52,7 +58,7 @@ namespace NewBloomersWebApplication.UI.Pages
             if (dateInterval.initialDate <= dateInterval.finalDate)
             {
                 modalDataInvalida = false;
-                pedidos = await _conferenciaService.GetUnpickedOrders(Company.doc_company, Company.serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
+                pedidos = await _conferenciaService.GetUnpickedOrders(doc_company, serie_order, dateInterval.initialDate.ToString("yyyy-MM-dd"), dateInterval.finalDate.ToString("yyyy-MM-dd"));
 
                 foreach (var pedido in pedidos)
                 {
@@ -96,7 +102,7 @@ namespace NewBloomersWebApplication.UI.Pages
             }
             else
             {
-                pedido = await _conferenciaService.GetUnpickedOrder(Company.doc_company, Company.serie_order, this.nr_pedido.Trim());
+                pedido = await _conferenciaService.GetUnpickedOrder(doc_company, serie_order, this.nr_pedido.Trim());
                 pedidos.Add(pedido);
                 if (pedido.retorno != null)
                 {
@@ -150,7 +156,7 @@ namespace NewBloomersWebApplication.UI.Pages
                 }
                 else
                 {
-                    pedido = await _conferenciaService.GetUnpickedOrder(Company.doc_company, Company.serie_order, this.nr_pedido.Trim());
+                    pedido = await _conferenciaService.GetUnpickedOrder(doc_company, serie_order, this.nr_pedido.Trim());
                     pedidos.Add(pedido);
                     if (pedido.retorno != null)
                     {
@@ -239,5 +245,9 @@ namespace NewBloomersWebApplication.UI.Pages
             inputValueProduto = "";
         }
 
+        private async Task<string> GetTextInLocalStorage(string key)
+        {
+            return await jsRuntime.InvokeAsync<string>("localStorage.getItem", key);
+        }
     }
 }

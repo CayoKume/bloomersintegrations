@@ -1,4 +1,5 @@
-﻿using static NewBloomersWebApplication.Domain.Entities.AppContext;
+﻿using Microsoft.JSInterop;
+using static NewBloomersWebApplication.Domain.Entities.AppContext;
 
 namespace NewBloomersWebApplication.UI.Pages
 {
@@ -12,19 +13,20 @@ namespace NewBloomersWebApplication.UI.Pages
             empresas = await _empresasService.GetCompanies();
         }
 
-        private void selecionarEmpresa()
+        private async Task selecionarEmpresa()
         {
             try
             {
                 var empresa = empresas.Where(e => e.cod_company == inputValueEmpresas).First();
-                Company.cod_company = Convert.ToInt32(empresa.cod_company);
-                Company.reason_company = empresa.name_company;
-                Company.doc_company = empresa.doc_company;
+                await SaveTextInLocalStorage("cod_company", empresa.cod_company);
+                await SaveTextInLocalStorage("name_company", empresa.name_company);
+                await SaveTextInLocalStorage("doc_company", empresa.doc_company);
 
                 if (empresa.name_company.ToUpper().Contains("MISHA"))
-                    Company.serie_order = "MI-";
+                    await SaveTextInLocalStorage("serie_order", "MI-");
+
                 else if (empresa.name_company.ToUpper().Contains("OPEN ERA"))
-                    Company.serie_order = "OA-";
+                    await SaveTextInLocalStorage("serie_order", "OA-");
 
                 NavigationManager.NavigateTo("Home");
             }
@@ -32,6 +34,11 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 throw;
             }
+        }
+
+        private async Task SaveTextInLocalStorage(string key, string value)
+        {
+            await jsRuntime.InvokeVoidAsync("localStorage.setItem", key, value);
         }
     }
 }

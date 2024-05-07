@@ -26,12 +26,12 @@ namespace NewBloomersWebApplication.Domain.Entities
             public static string serie_order { get; set; }
         }
 
-        public static class Company
-        {
-            public static string reason_company { get; set; }
-            public static string doc_company { get; set; }
-            public static int cod_company { get; set; }
-            public static string serie_order { get; set; }
-        }
+        //public static class Company
+        //{
+        //    public static string reason_company { get; set; }
+        //    public static string doc_company { get; set; }
+        //    public static int cod_company { get; set; }
+        //    public static string serie_order { get; set; }
+        //}
     }
 }
