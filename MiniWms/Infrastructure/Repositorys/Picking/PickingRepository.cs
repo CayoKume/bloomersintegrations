@@ -14,6 +14,39 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public PickingRepository(ISQLServerConnection conn) =>
             (_conn) = (conn);
 
+        public async Task<List<ShippingCompany>?> GetShippingCompanys()
+        {
+            var sql = $@"SELECT 
+                         cod_cliente as cod_shippingCompany,
+                         doc_cliente as doc_shippingCompany,
+                         razao_cliente as reason_shippingCompany,
+                         nome_cliente as name_shippingCompany,
+                         email_cliente as email_shippingCompany,
+                         endereco_cliente as address_shippingCompany,
+                         numero_rua_cliente as street_number_shippingCompany,
+                         complement_end_cli as complement_address_shippingCompany,
+                         bairro_cliente as neighborhood_shippingCompany,
+                         cidade_cliente as city_shippingCompany,
+                         uf_cliente as uf_shippingCompany,
+                         cep_cliente as zip_code_shippingCompany,
+                         fone_cliente as fone_shippingCompany,
+                         inscricao_estadual as state_registration_shippingCompany,
+                         incricao_municipal as municipal_registration_shippingCompany
+                         FROM BLOOMERS_LINX..LinxClientesFornec_trusted (NOLOCK)
+                         WHERE tipo_cadastro = 'T'
+                         ORDER BY cod_cliente";
+
+            try
+            {
+                var result = await _conn.GetDbConnection().QueryAsync<ShippingCompany>(sql);
+                return result.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"MiniWms [Picking] - GetShippingCompanys - Erro ao obter transportadoras da tabela LinxClientesFornec_trusted  - {ex.Message}");
+            }
+        }
+
         public async Task<Order?> GetUnpickedOrder(string cnpj_emp, string serie, string nr_pedido)
         {
             var sql = $@"SELECT DISTINCT
@@ -32,6 +65,22 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         A.NB_ESTADO as uf_client,
                         TRIM(REPLACE(A.NB_CEP, '-', '')) as zip_code_client,
                         A.NB_FONE_CLIENTE as fone_client,
+
+                        A.NB_TRANSPORTADORA as cod_shippingCompany,
+                        A.NB_METODO_TRANSPORTADORA as metodo_shippingCompany,
+                        A.NB_RAZAO_TRANSPORTADORA as reason_shippingCompany,
+                        A.NB_NOME_TRANSPORTADORA as name_shippingCompany,
+                        A.NB_DOC_TRANSPORTADORA as doc_shippingCompany,
+                        A.NB_EMAIL_TRANSPORTADORA as email_shippingCompany,
+                        A.NB_ENDERECO_TRANSPORTADORA as address_shippingCompany,
+                        A.NB_NUMERO_RUA_TRANSPORTADORA as street_number_shippingCompany,
+                        A.NB_COMPLEMENTO_END_TRANSPORTADORA as complement_address_shippingCompany,
+                        A.NB_BAIRRO_TRANSPORTADORA as neighborhood_shippingCompany,
+                        A.NB_CIDADE_TRANSPORTADORA as city_shippingCompany,
+                        A.NB_UF_TRANSPORTADORA as uf_shippingCompany,
+                        A.NB_CEP_TRANSPORTADORA as zip_code_shippingCompany,
+                        A.NB_FONE_TRANSPORTADORA as fone_shippingCompany,
+                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA as state_registration_shippingCompany,
                               
                         A.NB_VALOR_PEDIDO as amount_nf,
 
@@ -47,7 +96,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
                         FROM GENERAL..IT4_WMS_DOCUMENTO A
                         JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B ON A.IDCONTROLE = B.IDCONTROLE
-						JOIN BLOOMERS_OPERACOES..CANAL_MOVIMENTACAO C ON B.CODIGO_BARRA = C.COD_PRODUTO AND C.PEDIDO = A.DOCUMENTO
+						LEFT JOIN BLOOMERS_OPERACOES..CANAL_MOVIMENTACAO C ON B.CODIGO_BARRA = C.COD_PRODUTO AND C.PEDIDO = A.DOCUMENTO
                         WHERE
                         A.SERIE = '{serie}'
                         AND A.NB_DOC_REMETENTE = '{cnpj_emp}' 
@@ -56,13 +105,14 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, Invoice, Product, Order>(sql, (pedido, cliente, nota_fiscal, produto) =>
+                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
                 {
                     pedido.client = cliente;
+                    pedido.shippingCompany = transportadora;
                     pedido.invoice = nota_fiscal;
                     pedido.itens.Add(produto);
                     return pedido;
-                }, splitOn: "cod_client, amount_nf, cod_product");
+                }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
 
                 var pedidos = result.GroupBy(p => p.number).Select(g =>
                 {
@@ -97,7 +147,23 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         A.NB_ESTADO as uf_client,
                         TRIM(REPLACE(A.NB_CEP, '-', '')) as zip_code_client,
                         A.NB_FONE_CLIENTE as fone_client,
-                              
+                        
+                        A.NB_TRANSPORTADORA as cod_shippingCompany,
+                        A.NB_METODO_TRANSPORTADORA as metodo_shippingCompany,
+                        A.NB_RAZAO_TRANSPORTADORA as reason_shippingCompany,
+                        A.NB_NOME_TRANSPORTADORA as name_shippingCompany,
+                        A.NB_DOC_TRANSPORTADORA as doc_shippingCompany,
+                        A.NB_EMAIL_TRANSPORTADORA as email_shippingCompany,
+                        A.NB_ENDERECO_TRANSPORTADORA as address_shippingCompany,
+                        A.NB_NUMERO_RUA_TRANSPORTADORA as street_number_shippingCompany,
+                        A.NB_COMPLEMENTO_END_TRANSPORTADORA as complement_address_shippingCompany,
+                        A.NB_BAIRRO_TRANSPORTADORA as neighborhood_shippingCompany,
+                        A.NB_CIDADE_TRANSPORTADORA as city_shippingCompany,
+                        A.NB_UF_TRANSPORTADORA as uf_shippingCompany,
+                        A.NB_CEP_TRANSPORTADORA as zip_code_shippingCompany,
+                        A.NB_FONE_TRANSPORTADORA as fone_shippingCompany,
+                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA as state_registration_shippingCompany,
+
                         A.NB_VALOR_PEDIDO as amount_nf,
 
                         TRIM(B.CODIGO_BARRA) as cod_product,
@@ -123,13 +189,14 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, Invoice, Product, Order>(sql, (pedido, cliente, nota_fiscal, produto) =>
+                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
                 {
                     pedido.client = cliente;
+                    pedido.shippingCompany = transportadora;
                     pedido.invoice = nota_fiscal;
                     pedido.itens.Add(produto);
                     return pedido;
-                }, splitOn: "cod_client, amount_nf, cod_product");
+                }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
 
                 var pedidos = result.GroupBy(p => p.number).Select(g =>
                 {
@@ -186,7 +253,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         NB_EMAIL_TRANSPORTADORA = B.EMAIL_CLIENTE,
                         NB_ENDERECO_TRANSPORTADORA = B.ENDERECO_CLIENTE,
                         NB_NUMERO_RUA_TRANSPORTADORA = B.NUMERO_RUA_CLIENTE,
-                        NB_COMPLEMENTO_END_TRANSPORTADORA = B.COMPLEMENT_END_CLIENTE,
+                        NB_COMPLEMENTO_END_TRANSPORTADORA = B.COMPLEMENT_END_CLI,
                         NB_BAIRRO_TRANSPORTADORA = B.BAIRRO_CLIENTE,
                         NB_CIDADE_TRANSPORTADORA = B.CIDADE_CLIENTE,
                         NB_CEP_TRANSPORTADORA = B.CEP_CLIENTE,

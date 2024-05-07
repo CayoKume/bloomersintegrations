@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope = b-xtaq10uk5w
 build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xDb25maXJtYXRpb25Nb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-vbr92q76v6
 
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/ConfirmationModalWithFocusById.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xDb25maXJtYXRpb25Nb2RhbFdpdGhGb2N1c0J5SWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-y2ovcjk9je
+
 [C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/GridsMenuWithDates.razor]
 build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xHcmlkc01lbnVXaXRoRGF0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-6mu2tpbjcj
@@ -46,13 +50,9 @@ build_metadata.AdditionalFiles.CssScope = b-6mu2tpbjcj
 build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xQYWdpbmF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-9altva86od
 
-[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/CompanysLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xDb21wYW55c0xheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-wwkk3b9f01
-
-[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/LoginLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xMb2dpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-2ua7524tfu
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/BlankLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xCbGFua0xheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-bx84vkduym
 
 [C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xNYWluTGF5b3V0LnJhem9y
@@ -85,3 +85,7 @@ build_metadata.AdditionalFiles.CssScope = b-kxq2tuiutp
 [C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Picking.razor]
 build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUGlja2luZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-ip9mzgq12i
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/ShippingCompanys.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcU2hpcHBpbmdDb21wYW55cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-yafwm4c9do

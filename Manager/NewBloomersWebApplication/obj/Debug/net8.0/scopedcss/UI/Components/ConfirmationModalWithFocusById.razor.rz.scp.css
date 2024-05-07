@@ -1,0 +1,117 @@
+body[b-y2ovcjk9je] {
+}
+
+.grid[b-y2ovcjk9je] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+.pagination[b-y2ovcjk9je] {
+    margin-top: 1rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] button.col-title:hover, [b-y2ovcjk9je] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] tr, [b-y2ovcjk9je] .quickgrid[theme=corporate] td, [b-y2ovcjk9je] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .pedido {
+    width: 60rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .conferencia {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .nome {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .endereco {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .valor {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .img_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 10rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .descricao_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 32rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .sku_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 15rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .qtde_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .qtde_conferida {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}

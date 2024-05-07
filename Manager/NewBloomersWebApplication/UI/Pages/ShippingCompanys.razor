@@ -1,0 +1,71 @@
+﻿@page "/Transportadoras"
+@inject IPickingService _pickingService;
+@inject IJSRuntime jsRuntime;
+@inject HttpClient _httpClient;
+
+<h1>Alterar Transportadora do Pedido</h1>
+
+<input type="hidden" name="projeto" value="">
+
+<div class="form" id="form">
+    <label>Pedido: </label>
+    <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="orderNumber" @bind-value:event="oninput" @onkeyup="Enter">
+    <select class="col-md-4 inputs" id="sel_transportadora" @bind="inputValueShippCompanie">
+        @foreach (var shippingCompany in shippingCompanies)
+        {
+            <option value="@shippingCompany.cod_shippingCompany">@shippingCompany.cod_shippingCompany - @shippingCompany.reason_shippingCompany</option>
+        }
+    </select>
+    <label>@shippingCompany</label>
+</div>
+
+<div class="toolbar">
+	<div class="dir">
+        <button name="B1" id="B1" @onclick="@(() => selecionarTransportadora())">Prosseguir</button>
+	</div>
+</div>
+
+@if (modalOrderNumberEmpty)
+{
+    <AlertModal Title="Erro"
+                Text="Informe o código do pedido"
+                OnCloseEvent="@(() => modalOrderNumberEmpty = false)"
+                OnClickEvent="@(() => modalOrderNumberEmpty = false)">
+    </AlertModal>
+}
+
+@if (modalUpdateIsSuccessful)
+{
+    <AlertModal Title="Success"
+                Text="Transportadora do pedido alterada com sucesso"
+                OnCloseEvent="@(() => modalUpdateIsSuccessful = false)"
+                OnClickEvent="@(() => modalUpdateIsSuccessful = false)">
+    </AlertModal>
+}
+
+@if (modalUpdateIsFailed)
+{
+    <AlertModal Title="Erro"
+                Text="Erro ao alterar transportadora do pedido"
+                OnCloseEvent="@(() => modalUpdateIsFailed = false)"
+                OnClickEvent="@(() => modalUpdateIsFailed = false)">
+    </AlertModal>
+}
+
+@if (modalConfirmationAlert)
+{
+    <ConfirmationModal opened="modalConfirmationAlert"
+        title="Warning"
+        closeButtonText="NÃO"
+        clickButtonText="SIM"
+        OnCloseEvent="@(() => modalConfirmationAlert = false)"
+        OnClickEvent="UpdateShippingCompany">
+        <BodyContent>
+            <div class="row mb-1">
+                <div class="form-group">
+                    <strong>Você tem certeza que deseja alterar a transportadora do pedido: @orderNumber, de @shippingCompany, para @shippingCompanies.First(e => e.cod_shippingCompany == inputValueShippCompanie).cod_shippingCompany - @shippingCompanies.First(e => e.cod_shippingCompany == inputValueShippCompanie).reason_shippingCompany?</strong>
+                </div>
+            </div>
+        </BodyContent>
+    </ConfirmationModal>
+}

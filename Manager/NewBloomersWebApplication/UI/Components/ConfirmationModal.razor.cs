@@ -22,12 +22,6 @@ namespace NewBloomersWebApplication.UI.Components
         [Parameter]
         public EventCallback OnCloseEvent { get; set; }
 
-        protected async override Task OnAfterRenderAsync(bool firstRender)
-        {
-            await jsRuntime.InvokeVoidAsync("focusById", "inputSeparaProdutos");
-            await base.OnAfterRenderAsync(firstRender);
-        }
-
         private async Task InvokeOnClickEvent()
         {
             opened = false;

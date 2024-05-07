@@ -1,6 +1,6 @@
 ﻿namespace NewBloomersWebApplication.UI.Layouts
 {
-    public partial class LoginLayout
+    public class BlankLayout
     {
     }
 }

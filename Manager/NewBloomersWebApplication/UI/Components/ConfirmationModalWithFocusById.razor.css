@@ -1,0 +1,117 @@
+﻿body {
+}
+
+.grid {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+.pagination {
+    margin-top: 1rem;
+}
+
+::deep .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+::deep .quickgrid[theme=corporate] button.col-title:hover, ::deep .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+::deep .quickgrid[theme=corporate] tr, ::deep .quickgrid[theme=corporate] td, ::deep .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+::deep .quickgrid[theme=corporate] .pedido {
+    width: 60rem;
+}
+
+::deep .quickgrid[theme=corporate] .conferencia {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .nome {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .endereco {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+::deep .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .valor {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+::deep .quickgrid[theme=corporate] .img_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 10rem;
+}
+
+::deep .quickgrid[theme=corporate] .descricao_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 32rem;
+}
+
+::deep .quickgrid[theme=corporate] .sku_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 15rem;
+}
+
+::deep .quickgrid[theme=corporate] .qtde_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}
+
+::deep .quickgrid[theme=corporate] .qtde_conferida {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}

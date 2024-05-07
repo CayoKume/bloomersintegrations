@@ -11,6 +11,12 @@ namespace BloomersMiniWmsIntegrations.Application.Services
         public PickingService(IPickingRepository pickingRepository) =>
             (_pickingRepository) = (pickingRepository);
 
+        public async Task<string> GetShippingCompanys()
+        {
+            var list = await _pickingRepository.GetShippingCompanys();
+            return JsonConvert.SerializeObject(list);
+        }
+
         public async Task<string> GetUnpickedOrder(string cnpj_emp, string serie, string nr_pedido)
         {
             var list = await _pickingRepository.GetUnpickedOrder(cnpj_emp, serie, nr_pedido);

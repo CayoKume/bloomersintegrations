@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Companys;
+﻿using BloomersIntegrationsCore.Domain.Entities;
 
 namespace NewBloomersWebApplication.Application.Services
 {

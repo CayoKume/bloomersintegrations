@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Companys;
+﻿using BloomersIntegrationsCore.Domain.Entities;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using System.Text.Json;
 

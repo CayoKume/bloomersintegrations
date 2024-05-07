@@ -15,6 +15,25 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
         public PickingController(IPickingService pickingService) =>
             (_pickingService) = (pickingService);
 
+        [HttpGet("GetShippingCompanys")]
+        public async Task<ActionResult<string>> GetShippingCompanys()
+        {
+            try
+            {
+                var result = await _pickingService.GetShippingCompanys();
+
+                if (String.IsNullOrEmpty(result))
+                    return BadRequest($"Nao foi possivel obter as transportadoras da tabela LinxClientesFornec.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel obter as transportadoras da tabela LinxClientesFornec. Erro: {ex.Message}");
+            }
+        }
+
         [HttpGet("GetUnpickedOrder")]
         public async Task<ActionResult<string>> GetUnpickedOrder([Required][FromQuery] string cnpj_emp, [Required][FromQuery] string serie, [Required][FromQuery] string nr_pedido)
         {
@@ -72,22 +91,22 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             }
         }
 
-        [HttpPut("UpdateShippingCompany")]
-        public async Task<ActionResult> UpdateShippingCompany([Required][FromQuery] string nr_pedido, [Required][FromQuery] int cod_transportadora)
+        [HttpPost("UpdateShippingCompany")]
+        public async Task<ActionResult> UpdateShippingCompany([FromBody] UpdateShippingCompanyRequest request)
         {
             try
             {
-                var result = await _pickingService.UpdateShippingCompany(nr_pedido, cod_transportadora);
+                var result = await _pickingService.UpdateShippingCompany(request.orderNumber, request.cod_shippingCompany);
 
                 if (!result)
-                    return BadRequest($"Nao foi possivel atualizar a transportadora do pedido: {nr_pedido} para {cod_transportadora}.");
+                    return BadRequest($"Nao foi possivel atualizar a transportadora do pedido: {request.orderNumber} para {request.cod_shippingCompany}.");
                 else
                     return Ok();
             }
             catch (Exception ex)
             {
                 Response.StatusCode = 400;
-                return Content($"Nao foi possivel atualizar a transportadora do pedido: {nr_pedido} para {cod_transportadora}. Erro: {ex.Message}");
+                return Content($"Nao foi possivel atualizar a transportadora do pedido: {request.orderNumber} para {request.cod_shippingCompany}. Erro: {ex.Message}");
             }
         }
     }

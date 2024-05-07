@@ -125,6 +125,124 @@ body[b-vbr92q76v6] {
     padding-bottom: .5rem;
     width: 5rem;
 }
+/* /UI/Components/ConfirmationModalWithFocusById.razor.rz.scp.css */
+body[b-y2ovcjk9je] {
+}
+
+.grid[b-y2ovcjk9je] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+.pagination[b-y2ovcjk9je] {
+    margin-top: 1rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] button.col-title:hover, [b-y2ovcjk9je] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] tr, [b-y2ovcjk9je] .quickgrid[theme=corporate] td, [b-y2ovcjk9je] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .pedido {
+    width: 60rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .conferencia {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .nome {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .endereco {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .valor {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .img_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 10rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .descricao_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 32rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .sku_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 15rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .qtde_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}
+
+[b-y2ovcjk9je] .quickgrid[theme=corporate] .qtde_conferida {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}
 /* /UI/Components/GridsMenuWithDates.razor.rz.scp.css */
 /* /UI/Components/Pagination.razor.rz.scp.css */
 body[b-9altva86od] {
@@ -133,17 +251,10 @@ body[b-9altva86od] {
 .pagination[b-9altva86od] {
     margin-top: 1rem;
 }
-/* /UI/Layouts/CompanysLayout.razor.rz.scp.css */
-namespace NewBloomersWebApplication.UI.Layouts[b-wwkk3b9f01]
+/* /UI/Layouts/BlankLayout.razor.rz.scp.css */
+namespace NewBloomersWebApplication.UI.Layouts[b-bx84vkduym]
 {
-    public class CompanysLayout
-    {
-    }
-}
-/* /UI/Layouts/LoginLayout.razor.rz.scp.css */
-namespace NewBloomersWebApplication.UI.Layouts[b-2ua7524tfu]
-{
-    public class LoginLayout
+    public class BlankLayout
     {
     }
 }
@@ -720,4 +831,77 @@ body[b-ip9mzgq12i] {
     padding-top: .5rem;
     padding-bottom: .5rem;
     width: 5rem;
+}
+/* /UI/Pages/ShippingCompanys.razor.rz.scp.css */
+*[b-yafwm4c9do] {
+    font-size: 13px;
+}
+
+h1[b-yafwm4c9do] {
+    display: inline-block;
+    font-size: 18px;
+    width: 99%;
+    margin: 10px auto 10px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EBEBEB;
+    font-family: 'Dosis', Verdana, Arial;
+    color: #5B2E90;
+}
+
+.toolbar[b-yafwm4c9do] {
+    float: left;
+    margin: 0 auto;
+    width: 98%;
+    min-height: 25px;
+    background: #f8f8f8;
+    padding: 5px 1%;
+    border: 0px;
+}
+
+.dir[b-yafwm4c9do] {
+    float: right !important;
+}
+
+label[b-yafwm4c9do] {
+/*    float: left;*/
+    clear: left;
+    /*width: 220px;*/
+    height: auto;
+    text-align: right;
+    margin: 3px 20px 0 0;
+    color: #60656C;
+    font-family: 'Neo Sans', Verdana, Arial !important;
+}
+
+#B1[b-yafwm4c9do] {
+    float: left;
+    padding: 3px 15px;
+    margin: 0px 5px 2px 5px;
+    width: auto;
+    text-align: center;
+    cursor: pointer;
+    overflow: visible;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #d69137;
+    background: linear-gradient(to bottom, #f7c078 0%, #ed9a2e 100%);
+    border-radius: 50px;
+}
+
+.text[b-yafwm4c9do] {
+    width: 100px;
+}
+
+.inputs[b-yafwm4c9do] {
+    padding: 1px 2px;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #60656C;
+    font-family: 'Neo Sans', Verdana, Arial !important;
+    font-size: 13px;
+    margin-left: .5rem;
+    margin-right: .5rem;
 }

@@ -5,7 +5,7 @@ namespace NewBloomersWebApplication.UI.Pages
     public partial class Companys
     {
         private string? inputValueEmpresas { get; set; } = "1";
-        private List<NewBloomersWebApplication.Domain.Entities.Companys.Company>? empresas { get; set; } = new List<NewBloomersWebApplication.Domain.Entities.Companys.Company>();
+        private List<BloomersIntegrationsCore.Domain.Entities.Company>? empresas { get; set; } = new List<BloomersIntegrationsCore.Domain.Entities.Company>();
 
         protected override async Task OnInitializedAsync()
         {

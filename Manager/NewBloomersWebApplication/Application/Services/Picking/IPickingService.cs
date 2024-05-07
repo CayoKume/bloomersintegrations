@@ -1,9 +1,11 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Picking;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
 
 namespace NewBloomersWebApplication.Application.Services
 {
     public interface IPickingService
     {
+        public Task<List<ShippingCompany>?> GetShippingCompanys();
         public Task<List<Order>?> GetUnpickedOrders(string cnpj_emp, string serie_pedido, string data_inicial, string data_final);
         public Task<Order?> GetUnpickedOrder(string cnpj_emp, string serie, string nr_pedido);
         public Task<bool> UpdateRetorno(Order pedido);

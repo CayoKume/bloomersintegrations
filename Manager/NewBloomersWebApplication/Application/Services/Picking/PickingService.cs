@@ -1,6 +1,8 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Picking;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using NewBloomersWebApplication.Domain.Entities.Picking;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using System.Text.Json;
+using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
 
 namespace NewBloomersWebApplication.Application.Services
 {
@@ -10,6 +12,20 @@ namespace NewBloomersWebApplication.Application.Services
 
         public PickingService(IAPICall apiCall) =>
             (_apiCall) = (apiCall);
+
+        public async Task<List<ShippingCompany>?> GetShippingCompanys()
+        {
+            try
+            {
+                var result = await _apiCall.GetAsync("GetShippingCompanys");
+
+                return JsonSerializer.Deserialize<List<ShippingCompany>>(result);
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
         public async Task<Order?> GetUnpickedOrder(string cnpj_emp, string serie, string nr_pedido)
         {
@@ -68,9 +84,18 @@ namespace NewBloomersWebApplication.Application.Services
             }
         }
 
-        public Task<bool> UpdateShippingCompany(string nr_pedido, int cod_transportador)
+        public async Task<bool> UpdateShippingCompany(string nr_pedido, int cod_transportador)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await _apiCall.PostAsync($"UpdateShippingCompany", JsonSerializer.Serialize(new { orderNumber = nr_pedido, cod_shippingCompany = cod_transportador } ));
+
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }
