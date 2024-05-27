@@ -26,7 +26,7 @@ namespace BloomersGeneralIntegrations.Dootax.Infrastructure.Apis
                     { "content", xmlText },
                 };
 
-                var response = await client.PostAsync(client + "/api/v2/doodoc/pagtrib/upload/import", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync(client.BaseAddress + "/api/v2/doodoc/pagtrib/upload/import", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
 
                 if (response.StatusCode == HttpStatusCode.OK)
                     return xml;
@@ -44,7 +44,6 @@ namespace BloomersGeneralIntegrations.Dootax.Infrastructure.Apis
             var client = _httpClientFactory.CreateClient("DootaxAPI");
             client.DefaultRequestHeaders.Add("oauth-token", token);
             client.DefaultRequestHeaders.Add("tenant-alias", userName);
-            client.DefaultRequestHeaders.Add("content-type", "application/json");
 
             return client;
         }

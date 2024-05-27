@@ -25,7 +25,7 @@ namespace BloomersGeneralIntegrations.AfterSale.Infrastructure.Apis
                 var response = await client.SendAsync(
                     new HttpRequestMessage(
                         HttpMethod.Get,
-                        client + encodedParameters
+                        client.BaseAddress + encodedParameters
                     )
                 );
 
@@ -58,7 +58,7 @@ namespace BloomersGeneralIntegrations.AfterSale.Infrastructure.Apis
                 var response = await client.SendAsync(
                     new HttpRequestMessage(
                         HttpMethod.Get,
-                        client + encodedParameters
+                        client.BaseAddress + encodedParameters
                     )
                 );
 

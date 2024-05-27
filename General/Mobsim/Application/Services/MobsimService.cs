@@ -123,7 +123,7 @@ namespace BloomersGeneralIntegrations.Mobsim.Application.Services
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }

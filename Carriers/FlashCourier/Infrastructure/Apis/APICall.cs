@@ -34,7 +34,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                     authResponse.access_token
                 );
 
-                var response = await client.PostAsync("/padrao/v2/consulta", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync(client.BaseAddress + "/padrao/v2/consulta", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {

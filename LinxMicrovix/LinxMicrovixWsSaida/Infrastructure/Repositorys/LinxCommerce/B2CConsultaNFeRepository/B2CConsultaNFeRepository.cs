@@ -73,7 +73,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
 
             try
             {
-                return await _linxMicrovixRepositoryBase.GetRegistersExistsAsync(tableName, database);
+                return await _linxMicrovixRepositoryBase.GetRegistersExistsAsync(tableName, query);
             }
             catch
             {
@@ -95,7 +95,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
 
             try
             {
-                return _linxMicrovixRepositoryBase.GetRegistersExistsNotAsync(tableName, database);
+                return _linxMicrovixRepositoryBase.GetRegistersExistsNotAsync(tableName, query);
             }
             catch
             {

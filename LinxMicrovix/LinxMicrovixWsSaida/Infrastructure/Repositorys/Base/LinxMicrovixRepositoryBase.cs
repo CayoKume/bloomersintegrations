@@ -39,7 +39,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
             {
                 using (var conn = _conn.GetDbConnection())
                 {
-                    await conn.ExecuteAsync($"{database}..{procName}", commandType: CommandType.StoredProcedure);
+                    await conn.ExecuteAsync($"{database}..{procName}", commandType: CommandType.StoredProcedure, commandTimeout: 2700);
                 }
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
             {
                 using (var conn = _conn.GetDbConnection())
                 {
-                    conn.Execute($"{database}..{procName}", commandType: CommandType.StoredProcedure);
+                    conn.Execute($"{database}..{procName}", commandType: CommandType.StoredProcedure, commandTimeout: 2700);
                 }
             }
             catch (Exception ex)

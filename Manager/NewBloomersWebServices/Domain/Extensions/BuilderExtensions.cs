@@ -2,13 +2,16 @@
 {
     public static class BuilderExtensions
     {
-        public static WebApplicationBuilder AddArchitectures (this WebApplicationBuilder builder)
+        public static WebApplicationBuilder AddArchitectures (this WebApplicationBuilder builder, string? serverName)
         {
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddCors();
-
+            if (serverName == "SRV-VM-APP03")
+            {
+                builder.Services.AddControllers();
+                builder.Services.AddEndpointsApiExplorer();
+                builder.Services.AddSwaggerGen();
+                builder.Services.AddCors();
+            }
+            
             return builder;
         }
     }

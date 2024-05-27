@@ -158,7 +158,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 	                            A.NB_TRANSPORTADORA = '18035'
                                 --TESTE
 	                            --AND A.DOCUMENTO IN ('')
-	                            AND D.PEDIDO IS NULL
+	                            --AND D.PEDIDO IS NULL
 	                            AND A.CHAVE_NFE IS NOT NULL
 	                            AND A.[DATA] > GETDATE() - 15
                             GROUP BY 

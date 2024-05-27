@@ -27,84 +27,84 @@ namespace BloomersIntegrationsManager.Domain.Filters
 
                 if (File.Exists(filePath))
                 {
-                    var text = File.ReadAllText(filePath);
-                    listLogs = JsonSerializer.Deserialize<List<IntegrationLogModel>>(text);
+                    //var text = File.ReadAllText(filePath);
+                    //listLogs = JsonSerializer.Deserialize<List<IntegrationLogModel>>(text);
 
-                    listLogs.Add(new IntegrationLogModel
-                    {
-                        lastupdateon = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                        origem = subs[0],
-                        metodo = subs[1],
-                        mensagem = subs[2],
-                        exception = subs[3]
-                    });
+                    //listLogs.Add(new IntegrationLogModel
+                    //{
+                    //    lastupdateon = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    //    origem = subs[0],
+                    //    metodo = subs[1],
+                    //    mensagem = subs[2],
+                    //    exception = subs[3]
+                    //});
 
-                    var listMailSending = listLogs.Where(a => a.mailsendAt is not null);
+                    //var listMailSending = listLogs.Where(a => a.mailsendAt is not null);
 
-                    if (listMailSending.Count() > 0)
-                    {
-                        if ((DateTime.Now - Convert.ToDateTime(listLogs.Where(a => a.mailsendAt is not null).Last().mailsendAt)).Minutes > 15)
-                        {
-                            var sender = new SmtpSender(() => new System.Net.Mail.SmtpClient(host: "smtp.office365.com")
-                            {
-                                EnableSsl = true,
-                                Port = 587,
-                                UseDefaultCredentials = false,
-                                Credentials = new NetworkCredential("robot@newbloomers.com.br", "Qon45227")
-                            });
+                    //if (listMailSending.Count() > 0)
+                    //{
+                    //    if ((DateTime.Now - Convert.ToDateTime(listLogs.Where(a => a.mailsendAt is not null).Last().mailsendAt)).Minutes > 15)
+                    //    {
+                    //        var sender = new SmtpSender(() => new System.Net.Mail.SmtpClient(host: "smtp.office365.com")
+                    //        {
+                    //            EnableSsl = true,
+                    //            Port = 587,
+                    //            UseDefaultCredentials = false,
+                    //            Credentials = new NetworkCredential("robot@newbloomers.com.br", "Qon45227")
+                    //        });
 
-                            Email.DefaultSender = sender;
+                    //        Email.DefaultSender = sender;
 
-                            var email = await Email
-                                .From("robot@newbloomers.com.br")
-                                .To("suporte@newbloomers.com.br")
-                                .Subject($"[The job failed.] {listLogs.Last().origem}")
-                                .Body($"JOB: {listLogs.Last().origem}\nMethod: {listLogs.Last().metodo}\nDate: {listLogs.Last().lastupdateon}\nStatus: Failed\nMessage: {listLogs.Last().mensagem}\nException: {listLogs.Last().exception}")
-                                .SendAsync();
+                    //        var email = await Email
+                    //            .From("robot@newbloomers.com.br")
+                    //            .To("suporte@newbloomers.com.br")
+                    //            .Subject($"[The job failed.] {listLogs.Last().origem}")
+                    //            .Body($"JOB: {listLogs.Last().origem}\nMethod: {listLogs.Last().metodo}\nDate: {listLogs.Last().lastupdateon}\nStatus: Failed\nMessage: {listLogs.Last().mensagem}\nException: {listLogs.Last().exception}")
+                    //            .SendAsync();
 
-                            listLogs.Last().mailsendAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                        }
-                    }
+                    //        listLogs.Last().mailsendAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    //    }
+                    //}
 
-                    File.Delete(filePath);
+                    //File.Delete(filePath);
                 }
                 else
                 {
-                    listLogs.Add(new IntegrationLogModel
-                    {
-                        lastupdateon = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                        origem = subs[0],
-                        metodo = subs[1],
-                        mensagem = subs[2],
-                        exception = subs[3]
-                    });
+                    //listLogs.Add(new IntegrationLogModel
+                    //{
+                    //    lastupdateon = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    //    origem = subs[0],
+                    //    metodo = subs[1],
+                    //    mensagem = subs[2],
+                    //    exception = subs[3]
+                    //});
 
-                    var sender = new SmtpSender(() => new System.Net.Mail.SmtpClient(host: "smtp.office365.com")
-                    {
-                        EnableSsl = true,
-                        Port = 587,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential("robot@newbloomers.com.br", "Qon45227")
-                    });
+                    //var sender = new SmtpSender(() => new System.Net.Mail.SmtpClient(host: "smtp.office365.com")
+                    //{
+                    //    EnableSsl = true,
+                    //    Port = 587,
+                    //    UseDefaultCredentials = false,
+                    //    Credentials = new NetworkCredential("robot@newbloomers.com.br", "Qon45227")
+                    //});
 
-                    Email.DefaultSender = sender;
+                    //Email.DefaultSender = sender;
 
-                    var email = await Email
-                        .From("robot@newbloomers.com.br")
-                        .To("fabiano.rokutan@newbloomers.com.br")
-                        .Subject($"[The job failed.] {listLogs.Last().origem}")
-                        .Body($"JOB: {listLogs.Last().origem}\nMethod: {listLogs.Last().metodo}\nDate: {listLogs.Last().lastupdateon}\nStatus: Failed\nMessage: {listLogs.Last().mensagem}\nException: {listLogs.Last().exception}")
-                        .SendAsync();
+                    //var email = await Email
+                    //    .From("robot@newbloomers.com.br")
+                    //    .To("fabiano.rokutan@newbloomers.com.br")
+                    //    .Subject($"[The job failed.] {listLogs.Last().origem}")
+                    //    .Body($"JOB: {listLogs.Last().origem}\nMethod: {listLogs.Last().metodo}\nDate: {listLogs.Last().lastupdateon}\nStatus: Failed\nMessage: {listLogs.Last().mensagem}\nException: {listLogs.Last().exception}")
+                    //    .SendAsync();
 
-                    listLogs.Last().mailsendAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    //listLogs.Last().mailsendAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 }
 
-                string json = JsonSerializer.Serialize(listLogs);
+                //string json = JsonSerializer.Serialize(listLogs);
 
-                using (StreamWriter sw = File.AppendText(filePath))
-                {
-                    sw.WriteLine(json);
-                }
+                //using (StreamWriter sw = File.AppendText(filePath))
+                //{
+                //    sw.WriteLine(json);
+                //}
             }
         }
     }

@@ -26,7 +26,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
         {
             try
             {
-                var result = await _linxOrderService.IntegraRegistrosIndividual("HOMOLOG_LINX_COMMERCE", nr_pedido);
+                var result = await _linxOrderService.IntegraRegistrosIndividual("LINX_COMMERCE", nr_pedido);
 
                 if (result != true)
                     return BadRequest($"A API Pedido não conseguiu integrar o pedido: {nr_pedido}.");
@@ -45,7 +45,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
         {
             try
             {
-                await _linxOrderService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
+                await _linxOrderService.IntegraRegistros("LINX_COMMERCE");
                 return Ok($"Pedidos integrados com sucesso.");
             }
             catch (Exception ex)
@@ -60,7 +60,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
         {
             try
             {
-                await _linxProductService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
+                await _linxProductService.IntegraRegistros("LINX_COMMERCE");
                 return Ok($"Produtos integrados com sucesso.");
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
         {
             try
             {
-                await _linxSKUService.IntegraRegistros("HOMOLOG_LINX_COMMERCE");
+                await _linxSKUService.IntegraRegistros("LINX_COMMERCE");
                 return Ok($"SKUs integrados com sucesso.");
             }
             catch (Exception ex)

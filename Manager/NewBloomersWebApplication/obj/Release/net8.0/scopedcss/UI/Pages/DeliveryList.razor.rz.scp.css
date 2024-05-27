@@ -1,0 +1,121 @@
+body[b-d4jxg2gr91] {
+}
+
+.grid[b-d4jxg2gr91] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 106rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] button.col-title:hover, [b-d4jxg2gr91] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] tr, [b-d4jxg2gr91] .quickgrid[theme=corporate] td, [b-d4jxg2gr91] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .pedido {
+    width: 20rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .nome {
+    width: 20rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .documento {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .endereco {
+    width: 20rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .bairro {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .cidade {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .uf {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .cep {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .contato {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .nfe {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .total {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-d4jxg2gr91] .quickgrid[theme=corporate] .volumes {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}

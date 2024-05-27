@@ -21,8 +21,12 @@ namespace BloomersCarriersIntegrations.TotalExpress.Application.Services
                 {
                     foreach (var order in orders)
                     {
-                        var response = await _apiCall.PostAWB(order);
-                        await _totalExpressRepository.GeraResponseLog(order.number, order.REMETENTEID, response);
+                        var registros = _apiCall.BuildRegistro(order);
+                        for (int i = 0; i < registros.Count(); i++)
+                        {
+                            var response = await _apiCall.PostAWB(order.number, registros[i]);
+                            await _totalExpressRepository.GeraResponseLog(order.number, order.REMETENTEID, response);
+                        }
                     }
                     return true;
                 }
@@ -42,8 +46,12 @@ namespace BloomersCarriersIntegrations.TotalExpress.Application.Services
                 var order = await _totalExpressRepository.GetInvoicedOrder(order_number);
                 if (order is not null)
                 {
-                    var response = await _apiCall.PostAWB(order);
-                    await _totalExpressRepository.GeraResponseLog(order.number, order.REMETENTEID, response);
+                    var registros = _apiCall.BuildRegistro(order);
+                    for (int i = 0; i < registros.Count(); i++)
+                    {
+                        var response = await _apiCall.PostAWB(order.number, registros[i]);
+                        await _totalExpressRepository.GeraResponseLog(order.number, order.REMETENTEID, response);
+                    }
                     return true;
                 }
                 else
@@ -62,9 +70,13 @@ namespace BloomersCarriersIntegrations.TotalExpress.Application.Services
                 var order = await _totalExpressRepository.GetInvoicedOrderETUR(order_number);
                 if (order is not null)
                 {
-                    var response = await _apiCall.PostAWB(order);
-                    await _totalExpressRepository.GeraResponseLog(order.number, order.REMETENTEID, response);
-                    await _totalExpressRepository.UpdatePedidoETUR(order_number);
+                    var registros = _apiCall.BuildRegistro(order);
+                    for (int i = 0; i < registros.Count(); i++)
+                    {
+                        var response = await _apiCall.PostAWB(order.number, registros[i]);
+                        await _totalExpressRepository.GeraResponseLog(order.number, order.REMETENTEID, response);
+                        await _totalExpressRepository.UpdatePedidoETUR(order_number);
+                    }
                     return true;
                 }
                 else
@@ -86,7 +98,9 @@ namespace BloomersCarriersIntegrations.TotalExpress.Application.Services
                 {
                     var status = await _apiCall.GetAWB(order.remetenteid, order.pedido);
 
-                    if (status.detalhes == null)
+                    if (status is null)
+                        continue;
+                    else if (status.detalhes == null)
                         continue;
 
                     //PEGA PEDIDOS ENVIADOS E AINDA NÃO COLETADOS E ATUALIZA NB_DATA_COLETA, NB_DATA_ULTIMO_STATUS, NB_DESCRICAO_ULTIMO_STATUS

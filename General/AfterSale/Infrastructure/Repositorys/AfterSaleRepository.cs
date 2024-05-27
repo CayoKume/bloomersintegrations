@@ -30,7 +30,7 @@ public class AfterSaleRepository : IAfterSaleRepository
 
     public async Task<BearerToken> GetBearerToken(string doc_company)
     {
-        var sql = $@"SELECT * FROM [GENERAL].[dbo].[PARAMETROS_AFTERSALE] WHERE CNPJ_EMP = '{doc_company}'";
+        var sql = $@"SELECT CNPJ_EMP AS DOC_COMPANY, TOKEN FROM [GENERAL].[dbo].[PARAMETROS_AFTERSALE] WHERE CNPJ_EMP = '{doc_company}'";
 
         try
         {
@@ -48,7 +48,7 @@ public class AfterSaleRepository : IAfterSaleRepository
 
     public async Task<IEnumerable<Company>> GetCompanys()
     {
-        var sql = $@"SELECT CNPJ_EMP AS DOC_EMPRESA FROM [BLOOMERS_LINX].[dbo].[LINXLOJAS_TRUSTED] WHERE EMPRESA = 1 OR EMPRESA = 5";
+        var sql = $@"SELECT CNPJ_EMP AS DOC_COMPANY FROM [BLOOMERS_LINX].[dbo].[LINXLOJAS_TRUSTED] WHERE EMPRESA = 1 OR EMPRESA = 5";
 
         try
         {

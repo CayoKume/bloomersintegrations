@@ -24,47 +24,37 @@ namespace BloomersIntegrationsManager.Domain.Extensions
     {
         public static void AddRecurringJobs(string? serverName)
         {
-            if (serverName == "CarriersServer")
+            if (serverName == "SRV-VM-APP02")
             {
                 FlashCourierRecurringJobs();
                 TotalExpressRecurringJobs();
-            }
-
-            else if (serverName == "GeneralServer")
-            {
                 AfterSaleRecurringJobs();
                 DootaxRecurringJobs();
                 MobsimRecurringJobs();
-            }
-            
-            else if (serverName == "WorkerServer")
-            {
+                LinxCommerceRecurringJobs();
+
                 //AuthorizeNFeRecurringJobs();
                 //ChangingOrderRecurringJobs();
                 //ChangingPasswordRecurringJobs();
-                InvoicedBotsRecurringJobs();
+                //InvoicedBotsRecurringJobs();
             }
-
-            else if (serverName == "LinxMicrovixServer")
+            else if (serverName == "SRV-VM-APP01")
             {
                 LinxMicrovixB2CRecurringJobs();
                 LinxMicrovixERPRecurringJobs();
             }
-
-            else if (serverName == "LinxCommerceServer")
-                LinxCommerceRecurringJobs();
         }
 
         private static void FlashCourierRecurringJobs()
         {
             RecurringJob.AddOrUpdate<IFlashCourierService>("FlashCourierEnviaPedidos", service => service.EnviaPedidosFlash(),
                 Cron.MinuteInterval(3),
-                queue: "carriersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IFlashCourierService>("FlashCourierAtualizaLogPedido", service => service.AtualizaLogPedidoEnviado(),
                 Cron.MinuteInterval(5),
-                queue: "carriersserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -72,12 +62,12 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<ITotalExpressService>("TotalExpressEnviaPedidos", service => service.SendOrders(),
                 Cron.MinuteInterval(3),
-                queue: "carriersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<ITotalExpressService>("TotalExpressAtualizaLogPedido", service => service.UpdateOrderSendLog(),
                 Cron.MinuteInterval(5),
-                queue: "carriersserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -94,7 +84,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IAfterSaleService>("GetAfterSaleReversas", service => service.GetReverses(),
                 Cron.MinuteInterval(5),
-                queue: "generalserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -102,7 +92,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IDootaxService>("DootaxEnviaXMLs", service => service.EnviaXML(),
                 Cron.MinuteInterval(3),
-                queue: "generalserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -110,17 +100,17 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IMobsimService>("EnviaMensagensPedidosFaturados", service => service.SendMessageInvoicedOrder(),
                 Cron.MinuteInterval(3),
-                queue: "generalserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IMobsimService>("EnviaMensagensPedidosExpedidos", service => service.SendMessageShippdedOrder(),
                 Cron.MinuteInterval(3),
-                queue: "generalserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IMobsimService>("EnviaMensagensPedidosEntregues", service => service.SendMessageDeliveredOrder(),
                 Cron.MinuteInterval(3),
-                queue: "generalserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -133,21 +123,21 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         private static void LinxCommerceRecurringJobs()
         {
             RecurringJob.AddOrUpdate<IOrderService<SearchOrderResponse.Root>>("LinxCommerceOrders", service => service.IntegraRegistros(
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
-                Cron.MinuteInterval(5), 
-                queue: "linxcommerceserver"
+                BloomersCommerceIntegrations.LinxCommerce.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                Cron.MinuteInterval(5),
+                queue: "srv-vm-app02"
             );
 
-            RecurringJob.AddOrUpdate<ISKUService<SKUs>>("LinxCommerceSKUs", service => service.IntegraRegistros(
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+            RecurringJob.AddOrUpdate<ISKUService<SearchSKUResponse.Root>>("LinxCommerceSKUs", service => service.IntegraRegistros(
+                BloomersCommerceIntegrations.LinxCommerce.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(5),
-                queue: "linxcommerceserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IProductService<SearchProductResponse.Root>>("LinxCommerceProdutos", service => service.IntegraRegistros(
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersCommerceIntegrations.LinxCommerce.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(5),
-                queue: "linxcommerceserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -156,57 +146,57 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             RecurringJob.AddOrUpdate<IB2CConsultaClientesServices<B2CConsultaClientes>>("B2CConsultaClientes", service => service.IntegraRegistrosAsync(
             "B2CConsultaClientes",
                 "p_B2CConsultaClientes_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(3),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<IB2CConsultaNFeService<B2CConsultaNFe>>("B2CConsultaNFe", service => service.IntegraRegistrosAsync(
                 "B2CConsultaNFe",
                 "p_B2CConsultaNFe_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(3),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<IB2CConsultaNFeSituacaoService<B2CConsultaNFeSituacao>>("B2CConsultaNFeSituacao", service => service.IntegraRegistrosAsync(
                 "B2CConsultaNFeSituacao",
                 "p_B2CConsultaNFeSituacao_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Daily,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<IB2CConsultaPedidosItensService<B2CConsultaPedidosItens>>("B2CConsultaPedidosItens", service => service.IntegraRegistrosAsync(
                 "B2CConsultaPedidosItens",
                 "p_B2CConsultaPedidosItens_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(3),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<IB2CConsultaPedidosService<B2CConsultaPedidos>>("B2CConsultaPedidos", service => service.IntegraRegistrosAsync(
                 "B2CConsultaPedidos",
                 "p_B2CConsultaPedidos_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(3),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<IB2CConsultaPedidosStatusService<B2CConsultaPedidosStatus>>("B2CConsultaPedidosStatus", service => service.IntegraRegistrosAsync(
                 "B2CConsultaPedidosStatus",
                 "p_B2CConsultaPedidosStatus_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(10),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<IB2CConsultaStatusService<B2CConsultaStatus>>("B2CConsultaStatus", service => service.IntegraRegistrosAsync(
                 "B2CConsultaStatus",
                 "p_B2CConsultaStatus_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Daily,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
         }
 
@@ -215,113 +205,113 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             RecurringJob.AddOrUpdate<ILinxClientesFornecService<LinxClientesFornec>>("LinxClientesFornec", service => service.IntegraRegistrosAsync(
                 "LinxClientesFornec",
                 "p_LinxClientesFornec_trusted_unificado",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(3),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxMovimentoCartoesService<LinxMovimentoCartoes>>("LinxMovimentoCartoes", service => service.IntegraRegistrosAsync(
                 "LinxMovimentoCartoes",
                 "p_LinxMovimentoCartoes_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(10),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxMovimentoService<LinxMovimento>>("LinxMovimento", service => service.IntegraRegistrosNotAsync(
                 "LinxMovimento",
                 "p_LinxMovimento_trusted_unificado",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(5),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxPedidosCompraService<LinxPedidosCompra>>("LinxPedidosCompra", service => service.IntegraRegistrosAsync(
                 "LinxPedidosCompra",
                 "p_LinxPedidosCompra_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(10),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxPedidosVendaService<LinxPedidosVenda>>("LinxPedidosVenda", service => service.IntegraRegistrosNotAsync(
                 "LinxPedidosVenda",
                 "p_LinxPedidosVenda_trusted_unificado",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(5),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosService<LinxProdutos>>("LinxProdutos", service => service.IntegraRegistrosAsync(
                 "LinxProdutos",
                 "p_LinxProdutos_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(3),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosPromocoesService<LinxProdutosPromocoes>>("LinxProdutosPromocoes", service => service.IntegraRegistrosAsync(
                 "LinxProdutosPromocoes",
                 "p_LinxProdutosPromocoes_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Hourly,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosDepositosService<LinxProdutosDepositos>>("LinxProdutosDepositos", service => service.IntegraRegistrosAsync(
                 "LinxProdutosDepositos",
                 "p_LinxProdutosDepositos_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Daily,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosDetalhesService<LinxProdutosDetalhes>>("LinxProdutosDetalhes", service => service.IntegraRegistrosAsync(
                 "LinxProdutosDetalhes",
                 "p_LinxProdutosDetalhes_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Hourly,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosInventarioService<LinxProdutosInventario>>("LinxProdutosInventario", service => service.IntegraRegistrosAsync(
                 "LinxProdutosInventario",
                 "p_LinxProdutosInventario_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Hourly,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosTabelasService<LinxProdutosTabelas>>("LinxProdutosTabelas", service => service.IntegraRegistrosAsync(
                 "LinxProdutosTabelas",
                 "p_LinxProdutosTabelas_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Daily,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosTabelasPrecosService<LinxProdutosTabelasPrecos>>("LinxProdutosTabelasPrecos", service => service.IntegraRegistrosNotAsync(
                 "LinxProdutosTabelasPrecos",
                 "p_LinxProdutosTabelasPrecos_trusted",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Hourly,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxProdutosCamposAdicionaisService<LinxProdutosCamposAdicionais>>("LinxProdutosCamposAdicionais", service => service.IntegraRegistrosAsync(
                 "LinxProdutosCamposAdicionais",
                 "p_LinxProdutosCamposAdicionais_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Daily,
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
 
             RecurringJob.AddOrUpdate<ILinxXMLDocumentosService<LinxXMLDocumentos>>("LinxXMLDocumentos", service => service.IntegraRegistrosAsync(
                 "LinxXMLDocumentos",
                 "p_LinxXMLDocumentos_Sincronizacao",
-                LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.MinuteInterval(5),
-                queue: "linxmicrovixserver"
+                queue: "srv-vm-app01"
             );
         }
         
@@ -329,7 +319,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IAuthorizeNFeService>("AuthorizeNFe", service => service.AuthorizeNFes("AuthorizeNFe"),
                 Cron.MinuteInterval(3),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -337,7 +327,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IChangingOrderService>("ChangingOrder", service => service.ChangingOrder("ChangingOrder"),
                 Cron.MinuteInterval(3),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -345,7 +335,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IChangingPasswordService>("ChangingPassword", service => service.ChangePassword(),
                 Cron.Daily,
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
         }
 
@@ -361,77 +351,77 @@ namespace BloomersIntegrationsManager.Domain.Extensions
         {
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Gabot 1 e 2", service => service.InvoiceOrder("Gabot 1 e 2"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Gabot 3 e 4", service => service.InvoiceOrder("Gabot 3 e 4"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Gabot 5 e 6", service => service.InvoiceOrder("Gabot 5 e 6"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Gabot 7 e 8", service => service.InvoiceOrder("Gabot 7 e 8"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Gabot 9 e 0", service => service.InvoiceOrder("Gabot 9 e 0"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 0", service => service.InvoiceOrder("Vanabot 0"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 1", service => service.InvoiceOrder("Vanabot 1"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 2", service => service.InvoiceOrder("Vanabot 2"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 3", service => service.InvoiceOrder("Vanabot 3"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 4", service => service.InvoiceOrder("Vanabot 4"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 5", service => service.InvoiceOrder("Vanabot 5"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 6", service => service.InvoiceOrder("Vanabot 6"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 7", service => service.InvoiceOrder("Vanabot 7"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 8", service => service.InvoiceOrder("Vanabot 8"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
 
             RecurringJob.AddOrUpdate<IInvoiceOrderService>("Vanabot 9", service => service.InvoiceOrder("Vanabot 9"),
                 Cron.MinuteInterval(1),
-                queue: "workersserver"
+                queue: "srv-vm-app02"
             );
         }
 

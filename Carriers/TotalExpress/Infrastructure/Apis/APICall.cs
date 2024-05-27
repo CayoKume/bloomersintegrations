@@ -14,60 +14,58 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
         public APICall(ITotalExpressRepository totalExpressRepository, IHttpClientFactory httpClientFactory) =>
             (_totalExpressRepository, _httpClientFactory) = (totalExpressRepository, httpClientFactory);
 
-        public async Task<string> PostAWB(Order order)
+        public JArray BuildRegistro(Order order)
         {
-            try
-            {
-                var jArrayObj = new JArray();
+            var jArrayObj = new JArray();
 
-                foreach (var item in order.itens)
-                {
-                    var jObject = new JObject
+            foreach (var item in order.itens)
+            {
+                var jObject = new JObject
                     {
                         { "remetenteId", order.REMETENTEID },
                         { "cnpj", order.company.doc_company },
                         { "encomendas", new JArray(
-                                new JObject
-                                {
-                                    { "servicoTipoInfo", null },
-                                    { "servicoTipo", order.SERVICOTIPO },
-                                    { "coletaInfo", String.Empty },
-                                    { "condFrete", "CIF" },
-                                    { "entregaTipo", 0 },
-                                    { "icmsIsencao", 0 },
-                                    { "natureza", item.description_product.Replace("Ç","C").Replace("Ú","U").PadRight(25).Substring(0, item.description_product.Length > 24 ? 24 : item.description_product.Length) },
-                                    { "pedido", order.number.Trim() },
-                                    { "peso", 0 },
-                                    { "volumes", order.volumes },
-                                    { "volumesTipo", "CX" },
-                                    { "clienteCodigo", int.Parse(order.client.cod_client) },
-                                    { "destinatario", new JObject 
-                                        {
-                                            { "nome", order.client.reason_client },    
-                                            { "cpfCnpj", order.client.doc_client },    
-                                            { "ie", order.client.state_registration_client },    
-                                            { "email", order.client.email_client },    
-                                            { "telefone1", order.client.fone_client.Replace("(","").Replace(")","").Replace("-","").Replace(" ","") },    
-                                            { "telefone2", "" },    
-                                            { "telefone3", "" },    
-                                            { "endereco", new JObject
-                                                {
-                                                    { "bairro", order.client.neighborhood_client },
-                                                    { "cep", order.client.zip_code_client },
-                                                    { "cidade", order.client.city_client },
-                                                    { "complemento", order.client.complement_address_client },
-                                                    { "estado", order.client.uf_client },
-                                                    { "logradouro", order.client.address_client },
-                                                    { "numero", order.client.street_number_client },
-                                                    { "pais", "BR" },
-                                                    { "pontoReferencia", "" }
-                                                }
+                            new JObject
+                            {
+                                { "servicoTipoInfo", null },
+                                { "servicoTipo", order.SERVICOTIPO },
+                                { "coletaInfo", String.Empty },
+                                { "condFrete", "CIF" },
+                                { "entregaTipo", 0 },
+                                { "icmsIsencao", 0 },
+                                { "natureza", item.description_product.Replace("Ç","C").Replace("Ú","U").PadRight(25).Substring(0, item.description_product.Length > 24 ? 24 : item.description_product.Length) },
+                                { "pedido", order.number.Trim() },
+                                { "peso", 0 },
+                                { "volumes", order.volumes },
+                                { "volumesTipo", "CX" },
+                                { "clienteCodigo", int.Parse(order.client.cod_client) },
+                                { "destinatario", new JObject
+                                    {
+                                        { "nome", order.client.reason_client },
+                                        { "cpfCnpj", order.client.doc_client },
+                                        { "ie", order.client.state_registration_client },
+                                        { "email", order.client.email_client },
+                                        { "telefone1", order.client.fone_client.Replace("(","").Replace(")","").Replace("-","").Replace(" ","") },
+                                        { "telefone2", "" },
+                                        { "telefone3", "" },
+                                        { "endereco", new JObject
+                                            {
+                                                { "bairro", order.client.neighborhood_client },
+                                                { "cep", order.client.zip_code_client },
+                                                { "cidade", order.client.city_client },
+                                                { "complemento", order.client.complement_address_client },
+                                                { "estado", order.client.uf_client },
+                                                { "logradouro", order.client.address_client },
+                                                { "numero", order.client.street_number_client },
+                                                { "pais", "BR" },
+                                                { "pontoReferencia", "" }
                                             }
                                         }
-                                    },
-                                    { "docFiscal", new JObject
-                                        { 
-                                            "nfe", new JArray(
+                                    }
+                                },
+                                { "docFiscal", new JObject
+                                    {
+                                        { "nfe", new JArray(
                                                 new JObject
                                                 {
                                                     { "nfeCfop", order.cfop.Replace(".","") },
@@ -81,21 +79,26 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
                                             )
                                         }
                                     }
-                                }
-                            )
+                                },
+                            })
                         },
                     };
 
-                    jArrayObj.Add(jObject);
-                }
+                jArrayObj.Add(jObject);
+            }
 
-                await _totalExpressRepository.GeraRequestLog(order.number, Newtonsoft.Json.JsonConvert.SerializeObject(jArrayObj));
+            return jArrayObj;
+        }
 
+        public async Task<string> PostAWB(string orderNumber, Newtonsoft.Json.Linq.JToken jArrayObj)
+        {
+            try
+            {
+                await _totalExpressRepository.GeraRequestLog(orderNumber, Newtonsoft.Json.JsonConvert.SerializeObject(jArrayObj));
+                
                 var token = await GetAuthToken("api-newbloomers", "He7weir@o");
-
                 var client = CreateClientToSendAWB(token);
-
-                var response = await client.PostAsync(client + "ics-edi/v1/coleta/smartLabel/registrar", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jArrayObj), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync(client.BaseAddress + "ics-edi/v1/coleta/smartLabel/registrar", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jArrayObj), Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {
@@ -103,7 +106,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
                     return result.ToString();
                 }
                 else
-                    throw new Exception($"{response.StatusCode}");
+                    throw new Exception($"{response.StatusCode} - {await response.Content.ReadAsStringAsync()}");
             }
             catch (Exception ex) when (ex.Message.Contains("GetAuthToken"))
             {
@@ -111,7 +114,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
             }
             catch (Exception ex)
             {
-                throw new Exception(@$"TotalExpress - SendData - Erro ao enviar o pedido: {order.number} para total - {ex.Message}");
+                throw new Exception(@$"TotalExpress - SendData - Erro ao enviar o pedido: {orderNumber} para total - {ex.Message}");
             }
         }
 
@@ -146,7 +149,11 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
                         return null;
                 }
                 else
-                    throw new Exception($"{response.StatusCode}");
+                    throw new Exception($"{response.StatusCode} - {await response.Content.ReadAsStringAsync()}");
+            }
+            catch (Exception ex) when (ex.Message.Contains(@"Erro sist\u00eamico ao carregar dados do cliente(b1)"))
+            {
+                return null;
             }
             catch (Exception ex)
             {
@@ -163,24 +170,23 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
 
                 var jObject = new JObject
                 {
+                    { "grant_type", "password" },
                     { "username", username },
                     { "password", password }
                 };
 
                 var client = CreateClientToAuthToken("SUNTOnRvdGFs");
-
                 var response = await client.PostAsync(client.BaseAddress + "ics-seguranca/v1/oauth2/tokenGerar", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {
-                    var res = response.Content.ReadAsStringAsync().Result;
-
+                    var res = await response.Content.ReadAsStringAsync();
                     var token = (((Newtonsoft.Json.Linq.JObject)Newtonsoft.Json.JsonConvert.DeserializeObject(res.ToString())).First).Last.ToString();
 
                     return token;
                 }
                 else
-                    throw new Exception($"{response.StatusCode}");
+                    throw new Exception($"{response.StatusCode} - {await response.Content.ReadAsStringAsync()}");
             }
             catch (Exception ex)
             {
@@ -190,7 +196,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
 
         private HttpClient CreateClientToGetAWB(string username, string password)
         {
-            var client = _httpClientFactory.CreateClient("TotalExpressAPI");
+            var client = _httpClientFactory.CreateClient("TotalExpressEdiAPI");
             client.DefaultRequestHeaders.Add("ContentType", "application/xml");
             client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(Encoding.Default.GetBytes($"{username}:{password}")));
 
@@ -199,7 +205,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
 
         private HttpClient CreateClientToSendAWB(string token)
         {
-            var client = _httpClientFactory.CreateClient("TotalExpressEdiAPI");
+            var client = _httpClientFactory.CreateClient("TotalExpressAPI");
             client.DefaultRequestHeaders.Add("ContentType", "application/json");
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 

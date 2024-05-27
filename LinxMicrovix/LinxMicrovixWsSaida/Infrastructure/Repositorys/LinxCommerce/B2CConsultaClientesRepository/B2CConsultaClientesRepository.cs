@@ -39,8 +39,8 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
                             FROM [{database}].[dbo].[{tableName}_trusted] A (nolock) 
                             WHERE 
                             --DOC_CLIENTE IN ()
-                            DATA_CADASTRO > '{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}T00:00:00' 
-                            AND DATA_CADASTRO < '{DateTime.Today.ToString("yyyy-MM-dd")}T23:59:59'";
+                            DT_CADASTRO > '{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}T00:00:00' 
+                            AND DT_CADASTRO < '{DateTime.Today.ToString("yyyy-MM-dd")}T23:59:59'";
 
             try
             {
@@ -58,8 +58,8 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
                             FROM [{database}].[dbo].[{tableName}_trusted] A (nolock) 
                             WHERE 
                             --DOC_CLIENTE IN ()
-                            DATA_CADASTRO > '{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}T00:00:00' 
-                            AND DATA_CADASTRO < '{DateTime.Today.ToString("yyyy-MM-dd")}T23:59:59'";
+                            DT_CADASTRO > '{DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd")}T00:00:00' 
+                            AND DT_CADASTRO < '{DateTime.Today.ToString("yyyy-MM-dd")}T23:59:59'";
 
             try
             {

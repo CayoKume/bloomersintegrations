@@ -7,20 +7,25 @@ namespace BloomersIntegrationsManager.Domain.Extensions
     {
         public static IApplicationBuilder UseApplication(this IApplicationBuilder app, string? serverName)
         {
-            app.UseCors(policy =>
-                policy.WithOrigins("https://localhost:7083", "https://localhost:7083")
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .WithHeaders(HeaderNames.ContentType)
-            );
+            if (serverName == "SRV-VM-APP03")
+            {
+                app.UseCors(policy =>
+                    policy.WithOrigins("http://172.25.1.6:7575", "http://localhost:5215")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithHeaders(HeaderNames.ContentType)
+                );
 
-            app.UseSwagger();
-            app.UseSwaggerUI();
-            app.UseHttpsRedirection();
-            app.UseAuthorization();
-            //app.UseHangfireDashboard();
-
-            //RecurringJobsExtensions.AddRecurringJobs(serverName);
+                app.UseSwagger();
+                app.UseSwaggerUI();
+                app.UseHttpsRedirection();
+                app.UseAuthorization();
+            }
+            else
+            {
+                app.UseHangfireDashboard();
+                RecurringJobsExtensions.AddRecurringJobs(serverName);
+            }
 
             return app;
         }

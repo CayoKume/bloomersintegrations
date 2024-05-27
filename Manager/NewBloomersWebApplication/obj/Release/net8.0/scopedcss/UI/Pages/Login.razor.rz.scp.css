@@ -1,0 +1,75 @@
+h3[b-kxq2tuiutp] {
+    color: #d3d3d3;
+}
+
+label[b-kxq2tuiutp] {
+    color: #d3d3d3;
+}
+
+.label-remember-password[b-kxq2tuiutp] {
+    margin-left: .5rem;
+}
+
+.label-text[b-kxq2tuiutp] {
+    margin-top: .5rem;
+}
+
+.btn[b-kxq2tuiutp] {
+    border-radius: 0;
+    width: 18rem;
+}
+
+.microsoft[b-kxq2tuiutp] {
+    color: #2d2d2d;
+    background-color: white;
+}
+
+.background-img[b-kxq2tuiutp] {
+    width: 100vw;
+    background-image: url('/Wallpaper.png');
+}
+
+.transparent-card[b-kxq2tuiutp] {
+    border-radius: 1rem;
+    background-color: rgb(128, 128, 128, 0.4);
+}
+
+@media (max-width: 640.98px) {
+    .top-row[b-kxq2tuiutp] {
+        justify-content: space-between;
+    }
+
+        .top-row[b-kxq2tuiutp]  a, .top-row[b-kxq2tuiutp]  .btn-link {
+            margin-left: 0;
+        }
+}
+
+@media (min-width: 641px) {
+    .page[b-kxq2tuiutp] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-kxq2tuiutp] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-kxq2tuiutp] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+        .top-row.auth[b-kxq2tuiutp]  a:first-child {
+            flex: 1;
+            text-align: right;
+            width: 0;
+        }
+
+    .top-row[b-kxq2tuiutp], article[b-kxq2tuiutp] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}

@@ -6,10 +6,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Domain.Enums
     {
         public enum TypeEnum
         {
-            [Description("BLOOMERS_LINX")]
+            [Description("LINX_COMMERCE")]
             Producao,
 
-            [Description("HOMOLOG_BLOOMERS_LINX")]
+            [Description("HOMOLOG_LINX_COMMERCE")]
             Homologacao,
 
             [Description(@"layer.misha")]

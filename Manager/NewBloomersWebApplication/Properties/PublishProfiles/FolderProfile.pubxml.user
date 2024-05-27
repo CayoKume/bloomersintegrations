@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\bin\Release\net8.0\browser-wasm\publish\</_PublishTargetUrl>
+    <History>True|2024-05-09T04:15:29.4780243Z;True|2024-05-08T23:47:10.2334076-03:00;True|2024-05-08T23:45:29.3101628-03:00;True|2024-05-08T02:01:43.2456687-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

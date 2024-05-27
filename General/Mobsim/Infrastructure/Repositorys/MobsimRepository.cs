@@ -29,7 +29,7 @@ namespace BloomersGeneralIntegrations.Mobsim.Infrastructure.Repositorys
             {
                 using (var conn = _conn.GetDbConnection())
                 {
-                    var result = await conn.QueryAsync<Domain.Entities.Client>(sql, new { cod_client = cod_client }, commandTimeout: 360);
+                    var result = await conn.QueryAsync<Domain.Entities.Client>(sql, new { codCliente = cod_client }, commandTimeout: 360);
                     return result.First();
                 }
             }
@@ -85,7 +85,7 @@ namespace BloomersGeneralIntegrations.Mobsim.Infrastructure.Repositorys
         {
             var sql = $@"SELECT
                          TRIM(DOCUMENTO) AS Documento,
-                         Cliente_Ou_Fornecedor AS CodCliente,
+                         TRIM(Cliente_Ou_Fornecedor) AS CodCliente,
                          NB_DESCRICAO_ULTIMO_STATUS AS Descricao,
                          NB_DATA_ULTIMO_STATUS AS DataUltimoStatus,
                          TIPO AS Tipo,

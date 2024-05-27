@@ -40,7 +40,7 @@ public class AfterSaleService : IAfterSaleService
                 await _afterSaleRepository.CallDbProcMerge();
             }
         }
-        catch
+        catch (Exception ex)
         {
             throw;
         }

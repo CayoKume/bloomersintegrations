@@ -79,7 +79,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             
             builder.Services.AddScopedWmsServices();
 
-            //builder.Services.AddHangfireService(connectionString, serverName);
+            builder.Services.AddHangfireService(connectionString, serverName);
 
             return builder;
         }
@@ -91,7 +91,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("LinxCommerceAPI", client =>
             {
                 client.BaseAddress = new Uri("https://misha.layer.core.dcg.com.br");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IOrderService<SearchOrderResponse.Root>, OrderService<SearchOrderResponse.Root>>();
@@ -200,7 +200,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("LinxMicrovixWsEntradaAPI", client =>
             {
                 client.BaseAddress = new Uri("https://webapi.microvix.com.br/1.0/importador.svc");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
             return services;
         }
@@ -236,7 +236,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
                 //https://homolog.flashpegasus.com.br/FlashPegasus/rest
 
                 client.BaseAddress = new Uri("https://webservice.flashpegasus.com.br/FlashPegasus/rest");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IFlashCourierService, FlashCourierService>();
@@ -251,12 +251,12 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("TotalExpressAPI", client =>
             {
                 client.BaseAddress = new Uri("https://apis.totalexpress.com.br/");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
             services.AddHttpClient("TotalExpressEdiAPI", client =>
             {
                 client.BaseAddress = new Uri("https://edi.totalexpress.com.br/");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
             services.AddScoped<ITotalExpressService, TotalExpressService>();
             services.AddScoped<ITotalExpressRepository, TotalExpressRepository>();
@@ -270,7 +270,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("AfterSaleAPI", client =>
             {
                 client.BaseAddress = new Uri("https://api.send4.com.br/v3/api/reverses?");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IAfterSaleService, AfterSaleService>();
@@ -288,7 +288,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
                 //https://hom.app.dootax.com.br
 
                 client.BaseAddress = new Uri("https://app.dootax.com.br");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IDootaxService, DootaxService>();
@@ -303,7 +303,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("MobsimAPI", client =>
             {
                 client.BaseAddress = new Uri("https://mobsim-api.com.br");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IMobsimService, MobsimService>();
@@ -318,7 +318,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("PagarmeAPI", client =>
             {
                 client.BaseAddress = new Uri("https://api.pagar.me/core/v5/payables?created_since=");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IPagarmeService, PagarmeService>();
@@ -333,7 +333,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("MovideskAPI", client =>
             {
                 client.BaseAddress = new Uri("https://api.movidesk.com");
-                client.Timeout = new TimeSpan(0, 2, 0);
+                client.Timeout = new TimeSpan(0, 20, 0);
             });
 
             services.AddScoped<IMovideskService, MovideskService>();
