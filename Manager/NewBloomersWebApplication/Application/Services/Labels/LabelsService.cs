@@ -49,7 +49,7 @@ namespace NewBloomersWebApplication.Application.Services
                 var result = await _apiCall.GetAsync($"GetOrderToPrint", encodedParameters);
                 var pedido = System.Text.Json.JsonSerializer.Deserialize<Order>(result);
 
-                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.city_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
+                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
                 {
                     pedido.client.reason_client = RemoveInvalidCharactersForZebra(pedido.client.reason_client);
                     pedido.client.address_client = RemoveInvalidCharactersForZebra(pedido.client.address_client);

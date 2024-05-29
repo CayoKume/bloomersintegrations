@@ -3,7 +3,8 @@
     public partial class SideMenuLayout
     {
         private bool collapseNavMenu = true;
-        private bool expandMenu;
+        private bool expandMenuExpedicao;
+        private bool expandMenuFinanceiro;
 
         private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 

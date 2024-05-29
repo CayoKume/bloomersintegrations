@@ -93,7 +93,7 @@ else
                 <PropertyColumn Property="@(p => $"{p.cod_product} - {p.description_product}")" Title="Descrição" Align="Align.Center" Class="descricao_produto"></PropertyColumn>
                 <PropertyColumn Property="@(p => p.sku_product)" Align="Align.Center" Title="Referência" Class="sku_produto"></PropertyColumn>
                 <PropertyColumn Property="@(p => p.quantity_product)" Align="Align.Center" Title="Qtde" Class="qtde_produto"></PropertyColumn>
-                <PropertyColumn Property="@(p => p.quantityPicked)" Align="Align.Center" Title="Conferido" Class="qtde_conferida"></PropertyColumn>
+                <PropertyColumn Property="@(p => p.picked_quantity)" Align="Align.Center" Title="Conferido" Class="qtde_conferida"></PropertyColumn>
             </QuickGrid>
         </BodyContent>
     </ConfirmationModalWithFocusById>

@@ -90,7 +90,8 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         --A.NB_ETIQUETA_IMPRESSA = 'N' AND 
                         A.SERIE = '{serie}' 
                         AND A.CHAVE_NFE IS NOT NULL 
-                        AND A.XML_FATURAMENTO IS NOT NULL 
+                        AND A.XML_FATURAMENTO IS NOT NULL
+						AND LEFT(CONVERT(VARCHAR(MAX), A.XML_FATURAMENTO), 8) = '<nfeProc'
                         AND A.NB_DOC_REMETENTE = '{cnpj_emp}'
                         AND A.RETORNO >= '{data_inicial} 00:00:00'
                         AND A.RETORNO <= '{data_final} 23:59:59'
@@ -189,6 +190,9 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         FROM GENERAL..IT4_WMS_DOCUMENTO A
                         WHERE
                         A.SERIE = '{serie}'
+                        AND A.CHAVE_NFE IS NOT NULL 
+                        AND A.XML_FATURAMENTO IS NOT NULL
+						AND LEFT(CONVERT(VARCHAR(MAX), A.XML_FATURAMENTO), 8) = '<nfeProc'
                         AND A.NB_DOC_REMETENTE = '{cnpj_emp}' 
 						AND A.DOCUMENTO = '{nr_pedido}'";
 

@@ -230,7 +230,7 @@ namespace NewBloomersWebApplication.UI.Pages
             if (e.Code == "Enter" || e.Code == "NumpadEnter")
             {
                 var item = pedidos.Where(p => p.number == this.nr_pedido).First().itens.Where(p => p.cod_product == Convert.ToInt32(inputValueProduto)).First();
-                item.quantityPicked = item.quantityPicked + 1;
+                item.picked_quantity = item.picked_quantity + 1;
                 Thread.Sleep(2 * 1000);
                 inputValueProduto = "";
             }
@@ -240,7 +240,7 @@ namespace NewBloomersWebApplication.UI.Pages
         {
             var pedido = pedidos.Where(p => p.number == this.nr_pedido).First();
             var item = pedido.itens.Where(p => p.cod_product == Convert.ToInt32(inputValueProduto)).First();
-            item.quantity_product = item.quantity_product - 1;
+            item.picked_quantity = item.picked_quantity - 1;
             Thread.Sleep(2 * 1000);
             inputValueProduto = "";
         }

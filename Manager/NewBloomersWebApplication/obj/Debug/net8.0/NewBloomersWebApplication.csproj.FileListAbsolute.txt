@@ -1092,3 +1092,4 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\refint\NewBloomersWebApplication.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\NewBloomersWebApplication.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\ref\NewBloomersWebApplication.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\InvoicePayment.razor.rz.scp.css

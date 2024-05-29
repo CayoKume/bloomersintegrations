@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Movidesk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13285321c25007bc7831985e6e08520082498da9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39831b0fadf7ef53ffa9956af4f99b1dfccd96fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("Movidesk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Movidesk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

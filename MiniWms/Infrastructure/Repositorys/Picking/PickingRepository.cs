@@ -92,7 +92,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 						B.NB_VALOR_UNITARIO_PRODUTO as unitary_value_product,
 						B.NB_VALOR_TOTAL_PRODUTO as amount_product,
 						B.NB_VALOR_FRETE_PRODUTO as shipping_value_product,
-                        C.IMG1 as urlImg
+                        IIF(C.IMG1 IS NULL, '', C.IMG1) as urlImg
 
                         FROM GENERAL..IT4_WMS_DOCUMENTO A
                         JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B ON A.IDCONTROLE = B.IDCONTROLE
@@ -174,7 +174,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 						B.NB_VALOR_UNITARIO_PRODUTO as unitary_value_product,
 						B.NB_VALOR_TOTAL_PRODUTO as amount_product,
 						B.NB_VALOR_FRETE_PRODUTO as shipping_value_product,
-                        C.IMG1 as urlImg
+                        IIF(C.IMG1 IS NULL, '', C.IMG1) as urlImg
 
                         FROM GENERAL..IT4_WMS_DOCUMENTO A
 						JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B ON A.IDCONTROLE = B.IDCONTROLE

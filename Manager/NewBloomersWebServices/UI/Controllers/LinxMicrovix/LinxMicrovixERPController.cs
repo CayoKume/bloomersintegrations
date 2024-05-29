@@ -275,6 +275,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+
                 var result = await _linxProdutosDetalhes.IntegraRegistrosIndividualAsync(
                         "LinxProdutosDetalhes",
                         "p_LinxProdutosDetalhes_Sincronizacao",

@@ -38,8 +38,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
                 }
                 catch (Exception ex)
                 {
-                    var registroComErro = "id_tabela: " + registros[i].Where(pair => pair.Key == "id_tabela").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "id_tabela").Select(pair => pair.Value).First() + " cod_produto: " + registros[i].Where(pair => pair.Key == "cod_produto").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "cod_produto").Select(pair => pair.Value).First();
-                    throw new Exception($"LinxProdutosTabelasPrecos - DeserializeResponse - Erro ao deserealizar registro: {registroComErro} - {ex.Message}");
+                    throw new Exception($"LinxProdutosTabelasPrecos - DeserializeResponse - Erro ao deserealizar registro: {registros[i].ToString()} - {ex.Message}");
                 }
             }
 

@@ -39,7 +39,7 @@ namespace NewBloomersWebApplication.Application.Services
 
                 return System.Text.Json.JsonSerializer.Deserialize<Order>(result);
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }

@@ -13,7 +13,7 @@ namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
         [Required(ErrorMessage = "O Campo Volumes é Obrigatório")]
         public int volumes { get; set; }
 
-        [Required(ErrorMessage = "A Lista de Itens do Pedido é Obrigatória")]
+        [Required(ErrorMessage = "A Lista de Pedidos é Obrigatória")]
         public List<Product> itens { get { return _itens; } set { _itens = value; } }
     }
 }

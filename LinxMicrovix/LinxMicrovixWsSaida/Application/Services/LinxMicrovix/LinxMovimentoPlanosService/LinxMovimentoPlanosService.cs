@@ -46,8 +46,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
                 }
                 catch (Exception ex)
                 {
-                    var registroComErro = registros[i].Where(pair => pair.Key == "identificador").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "identificador").Select(pair => pair.Value).First();
-                    throw new Exception($"LinxMovimentoPlanos - DeserializeResponse - Erro ao deserealizar registro: {registroComErro} - {ex.Message}");
+                    throw new Exception($"LinxMovimentoPlanos - DeserializeResponse - Erro ao deserealizar registro: {registros[i].ToString()} - {ex.Message}");
                 }
             }
 

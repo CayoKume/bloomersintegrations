@@ -41,7 +41,7 @@ namespace BloomersMiniWmsIntegrations.Application.Services
 
         public async Task<string> GetOrderShipped(string nr_pedido, string serie, string cnpj_emp, string transportadora)
         {
-            var list = _deliveryListRepository.GetOrderShipped(nr_pedido, serie, cnpj_emp, transportadora);
+            var list = await _deliveryListRepository.GetOrderShipped(nr_pedido, serie, cnpj_emp, transportadora);
             return JsonConvert.SerializeObject(list);
         }
 

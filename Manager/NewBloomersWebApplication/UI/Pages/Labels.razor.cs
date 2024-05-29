@@ -92,14 +92,7 @@ namespace NewBloomersWebApplication.UI.Pages
                 for (int i = 0; i < pedido.volumes + 1; i++)
                 {
                     var fileName = pedido.number + " - " + (i + 1) + ".pdf";
-                    var parameters = new Dictionary<string, string>
-                    {
-                        { "fileName",  fileName}
-                    };
-                    var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-
-                    var response = await _httpClient.GetAsync($"NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetLabelToPrint?{encodedParameters}");
-                    var base64String = await response.Content.ReadAsStringAsync();
+                    var base64String = await _etiquetasService.GetLabelToPrint(fileName);
 
                     await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
                 }
@@ -123,14 +116,7 @@ namespace NewBloomersWebApplication.UI.Pages
                     for (int i = 0; i < pedido.volumes + 1; i++)
                     {
                         var fileName = pedido.number + " - " + (i + 1) + ".pdf";
-                        var parameters = new Dictionary<string, string>
-                    {
-                        { "fileName",  fileName}
-                    };
-                        var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
-
-                        var response = await _httpClient.GetAsync($"NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetLabelToPrint?{encodedParameters}");
-                        var base64String = await response.Content.ReadAsStringAsync();
+                        var base64String = await _etiquetasService.GetLabelToPrint(fileName);
 
                         await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
                     }

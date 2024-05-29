@@ -41,11 +41,18 @@ namespace NewBloomersWebApplication.UI.Pages
 
         private async Task AdicionaPedidoEnter(Enter evento)
         {
-            if (evento.e.Code == "Enter" || evento.e.Code == "NumpadEnter")
+            try
             {
-                var _pedido = await _romaneioService.GetOrderShipped(evento.orderNumber, serie_order, doc_company, inputValueTransportadoras);
-                pedidos.Add(_pedido);
-                Thread.Sleep(1 * 1000);
+                if (evento.e.Code == "Enter" || evento.e.Code == "NumpadEnter")
+                {
+                    var _pedido = await _romaneioService.GetOrderShipped(evento.orderNumber, serie_order, doc_company, inputValueTransportadoras);
+                    pedidos.Add(_pedido);
+                    Thread.Sleep(1 * 1000);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 

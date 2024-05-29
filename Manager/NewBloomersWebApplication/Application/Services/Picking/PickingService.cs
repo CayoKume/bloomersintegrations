@@ -74,7 +74,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                var result = await _apiCall.PostAsync($"UpdateRetorno", JsonSerializer.Serialize(pedido));
+                var result = await _apiCall.PostAsync($"UpdateRetorno", JsonSerializer.Serialize(new { nr_pedido = pedido.number, volumes = pedido.volumes, itens = pedido.itens }));
 
                 return true;
             }
