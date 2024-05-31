@@ -105,6 +105,8 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                             }
                         );
 
+                await _flashCourierRepository.GenerateRequestLog(model.number, Newtonsoft.Json.JsonConvert.SerializeObject(jObject));
+
                 var client = CreateCliente(userName: authentication.login, password: authentication.senha);
 
                 var response = await client.PostAsync(client.BaseAddress + "/padrao/importacao", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
@@ -167,6 +169,6 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
             client.DefaultRequestHeaders.Add("Cookie", "ROUTEID=.1");
 
             return client;
-        }
+        }  
     }
 }

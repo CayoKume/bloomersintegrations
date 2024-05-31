@@ -11,6 +11,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
         public Task<IEnumerable<FlashCourierRegisterLog>> GetShippedOrders();
         public Task<HAWBRequest> GetAWBRequest(string cnpj);
         public Task<FlashCourierParameters> GetAuthenticationUser(string cnpj);
+        public Task GenerateRequestLog(string orderNumber, string request);
         public Task GenerateSucessLog(string orderNumber, string senderID, string _return, string statusFlash, string keyNFe);
         public Task UpdateCollectionDate(string dtSla, string cardCode);
         public Task UpdateRealDeliveryForecastDate(string dtSla, string cardCode);

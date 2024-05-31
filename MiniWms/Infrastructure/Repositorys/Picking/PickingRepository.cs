@@ -86,6 +86,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
                         TRIM(B.CODIGO_BARRA) as cod_product,
 						B.QTDE as quantity_product,
+                        B.QTDERETORNO as picked_quantity,
 						B.NB_SKU_PRODUTO as sku_product,
 						B.DESCRICAO as description_product,
 						TRIM(B.CODIGO_BARRA) as cod_ean_product,
@@ -168,6 +169,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
                         TRIM(B.CODIGO_BARRA) as cod_product,
 						B.QTDE as quantity_product,
+                        B.QTDERETORNO as picked_quantity,
 						B.NB_SKU_PRODUTO as sku_product,
 						B.DESCRICAO as description_product,
 						TRIM(B.CODIGO_BARRA) as cod_ean_product,

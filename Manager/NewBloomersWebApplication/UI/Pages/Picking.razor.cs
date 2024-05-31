@@ -22,6 +22,7 @@ namespace NewBloomersWebApplication.UI.Pages
         private bool modalConfirmacao { get; set; }
         private bool modalPedidoJaConferido { get; set; }
         private bool modalSeparacao { get; set; }
+        private bool modalQuantidadeExcedida { get; set; }
         private bool resultado { get; set; }
 
         private QuickGrid<Order> myGrid;
@@ -193,6 +194,18 @@ namespace NewBloomersWebApplication.UI.Pages
             modalSeparacao = true;
         }
 
+        private async Task BtnContinuar()
+        {
+            var item = pedidos.Where(p => p.number == this.nr_pedido).First().itens.Where(p => p.cod_product == Convert.ToInt32(inputValueProduto)).First();
+
+            item.picked_quantity = item.picked_quantity + 1;
+            Thread.Sleep(2 * 1000);
+            inputValueProduto = "";
+
+            modalQuantidadeExcedida = false;
+            await OnClose.InvokeAsync(true);
+        }
+
         private async Task BtnFinalizar()
         {
             var pedido = pedidos.Where(p => p.number == this.nr_pedido).First();
@@ -225,14 +238,28 @@ namespace NewBloomersWebApplication.UI.Pages
             return OnClose.InvokeAsync(true);
         }
 
-        private void Enter(KeyboardEventArgs e)
+        private Task BtnImprimir(Order pedido)
+        {
+            return OnClose.InvokeAsync(true);
+        }
+
+        private async void Enter(KeyboardEventArgs e)
         {
             if (e.Code == "Enter" || e.Code == "NumpadEnter")
             {
                 var item = pedidos.Where(p => p.number == this.nr_pedido).First().itens.Where(p => p.cod_product == Convert.ToInt32(inputValueProduto)).First();
-                item.picked_quantity = item.picked_quantity + 1;
-                Thread.Sleep(2 * 1000);
-                inputValueProduto = "";
+                
+                if (item.quantity_product < item.picked_quantity)
+                {
+                    item.picked_quantity = item.picked_quantity + 1;
+                    Thread.Sleep(2 * 1000);
+                    inputValueProduto = "";
+                }
+                else
+                {
+                    modalQuantidadeExcedida = true;
+                    await OnClose.InvokeAsync(true);
+                }
             }
         }
 

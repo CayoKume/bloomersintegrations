@@ -7,12 +7,22 @@ namespace NewBloomersWebApplication.Domain.Extensions
     {
         public static IServiceCollection AddScopedServices(this IServiceCollection services)
         {
-            services.AddHttpClient("MiniWMS", client =>
+            if (System.Diagnostics.Debugger.IsAttached)
             {
-                client.BaseAddress = new Uri("http://172.25.1.6:7172/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
-                //client.BaseAddress = new Uri("http://localhost:5118/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
-                client.Timeout = new TimeSpan(0, 2, 0);
-            });
+                services.AddHttpClient("MiniWMS", client =>
+                {
+                    client.BaseAddress = new Uri("http://localhost:5118/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
+                    client.Timeout = new TimeSpan(0, 2, 0);
+                });
+            }
+            else
+            {
+                services.AddHttpClient("MiniWMS", client =>
+                {
+                    client.BaseAddress = new Uri("http://172.25.1.6:7172/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
+                    client.Timeout = new TimeSpan(0, 2, 0);
+                });
+            }
 
             services.AddScoped<IAPICall, APICall>();
             services.AddScoped<ICompanyService, CompanyService>();

@@ -13,6 +13,31 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
         public FlashCourierRepository(ISQLServerConnection conn) =>
             _conn = conn;
 
+        public async Task GenerateRequestLog(string orderNumber, string request)
+        {
+            var sql = $@"INSERT INTO [GENERAL].[dbo].FlashCourierRequestLog (Pedido, DataEnvio, Request) 
+                         VALUES(@OrderNumber, GETDATE(), @request)";
+            try
+            {
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    await conn.ExecuteAsync(
+                        sql,
+                        new
+                        {
+                            OrderNumber = orderNumber,
+                            Request = request
+                        },
+                        commandTimeout: 360
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(@$"FlashCourier - GenerateRequestLog - Erro ao inserir registro: {orderNumber} na tabela GENERAL..FlashCourierRequestLog - {ex.Message}");
+            }
+        }
+
         public async Task GenerateSucessLog(string orderNumber, string senderID, string _return, string statusFlash, string keyNFe)
         {
             var sql = $@"INSERT INTO [GENERAL].[dbo].FlashCourierRegistroLog (Pedido, DataEnvio, Retorno, Remetente, StatusFlash, ChaveNFe) 

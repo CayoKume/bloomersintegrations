@@ -18,6 +18,9 @@ else
     <div class="grid">
         <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
             <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="pedido"></PropertyColumn>
+@*             <TemplateColumn Title="Imprimir" Align="Align.Center" Class="conferencia">
+                <button class="btn btn-primary" @onclick="@(() => BtnImprimir(context))">Imprimir</button>
+            </TemplateColumn> *@
             <TemplateColumn Title="Conferido" Align="Align.Center" Class="conferencia">
                 <button class="@(context.buttonClass)" @onclick="@(() => BtnConferir(context))">@(context.buttonText)</button>
             </TemplateColumn>
@@ -144,6 +147,25 @@ else
             <div class="row mb-1">
                 <div class="form-group">
                     <strong>Este pedido já está conferido, deseja conferi-lo novamente?</strong>
+                </div>
+            </div>
+        </BodyContent>
+    </ConfirmationModal>
+}
+
+@if (modalQuantidadeExcedida)
+{
+    <ConfirmationModal 
+        opened="modalQuantidadeExcedida"
+        title="Warning"
+        closeButtonText="VOLTAR"
+        clickButtonText="CONTINUAR"
+        OnCloseEvent="@(() => modalQuantidadeExcedida = false)"
+        OnClickEvent="BtnContinuar">
+        <BodyContent>
+            <div class="row mb-1">
+                <div class="form-group">
+                    <strong>Você está tentando conferir uma quantidade maior do que a necessária deste produto, deseja continuar?</strong>
                 </div>
             </div>
         </BodyContent>
