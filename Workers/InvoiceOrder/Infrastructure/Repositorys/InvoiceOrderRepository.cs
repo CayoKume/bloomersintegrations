@@ -43,7 +43,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
                              AND A.NB_DOC_REMETENTE = '42538267000268'
                              AND A.CANCELADO IS NULL
                              AND A.NB_TENTATIVAS_DE_FATURAMENTO <= 10
-                             AND NOT EXISTS (SELECT 0 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B WHERE A.IDCONTROLE = B.IDCONTROLE AND B.QTDE != B.QTDERETORNO)";
+                             AND NOT EXISTS (SELECT 0 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B WHERE A.IDCONTROLE = B.IDCONTROLE AND B.QTDE != B.QTDERETORNO)
+							 AND NOT EXISTS (SELECT 0 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B WHERE A.IDCONTROLE = B.IDCONTROLE AND B.QTDERETORNO IS NULL)";
                 }
                 else if (botName.Contains("Vanabot"))
                 {
@@ -66,7 +67,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
                              AND A.NB_DOC_REMETENTE IN ('38367316000199', '38367316000865')
                              AND A.CANCELADO IS NULL
                              AND A.NB_TENTATIVAS_DE_FATURAMENTO <= 10
-                             AND NOT EXISTS (SELECT 0 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B WHERE A.IDCONTROLE = B.IDCONTROLE AND B.QTDE != B.QTDERETORNO)";
+                             AND NOT EXISTS (SELECT 0 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B WHERE A.IDCONTROLE = B.IDCONTROLE AND B.QTDE != B.QTDERETORNO)
+							 AND NOT EXISTS (SELECT 0 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B WHERE A.IDCONTROLE = B.IDCONTROLE AND B.QTDERETORNO IS NULL)";
                 }
 
                 using (var conn = _conn.GetIDbConnection())

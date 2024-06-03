@@ -170,7 +170,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 	
 	                            A.NF_SAIDA AS number_nf,
 	                            A.NB_VALOR_PEDIDO AS amount_nf,
-	                            A.CHAVE_NFE AS key_nf
+	                            A.CHAVE_NFE AS key_nfe_nf
                             FROM 
 	                            GENERAL..IT4_WMS_DOCUMENTO (NOLOCK) A
                             JOIN 
@@ -183,7 +183,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 	                            A.NB_TRANSPORTADORA = '18035'
                                 --TESTE
 	                            --AND A.DOCUMENTO IN ('')
-	                            --AND D.PEDIDO IS NULL
+	                            AND D.PEDIDO IS NULL
 	                            AND A.CHAVE_NFE IS NOT NULL
 	                            AND A.[DATA] > GETDATE() - 15
                             GROUP BY 
