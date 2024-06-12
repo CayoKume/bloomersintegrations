@@ -215,6 +215,138 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             }
         }
 
+        public async Task<Order?> GetUnpickedOrderToPrint(string cnpj_emp, string serie, string nr_pedido)
+        {
+            string sql = $@"SELECT DISTINCT
+                         A.NB_CFOP_PEDIDO AS CFOP,
+                         C.[1] AS OBS,
+                         D.NOME_VENDEDOR AS SELLER,
+
+                         A.NB_NOME_REMETENTE AS NAME_COMPANY,
+                         A.NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
+                         A.NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
+                         A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
+                         A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
+                         A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
+                         A.NB_UF_REMETENTE AS UF_COMPANY,
+                         A.NB_DOC_REMETENTE AS DOC_COMPANY,
+                         A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
+                         
+                         A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
+                         A.NB_CODIGO_CLIENTE AS COD_CLIENT,
+                         A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+                         A.NB_NUMERO_RUA_CLIENTE AS STREET_NUMBER_CLIENT,
+                         A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
+                         A.NB_CEP AS ZIP_CODE_CLIENT,
+                         A.NB_EMAIL_CLIENTE AS EMAIL_CLIENT,
+                         A.NB_DOC_CLIENTE AS DOC_CLIENT,
+                         A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
+                         
+                         A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
+                         A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
+
+                         B.IDITEM AS IDITEM,
+                         B.CODIGO_BARRA AS COD_PRODUCT,
+                         B.DESCRICAO AS DESCRIPTION_PRODUCT,
+                         B.NB_SKU_PRODUTO AS SKU_PRODUCT,
+                         B.QTDE AS QUANTITY_PRODUCT,
+                         B.NB_VALOR_UNITARIO_PRODUTO AS UNITARY_VALUE_PRODUCT,
+                         B.NB_VALOR_TOTAL_PRODUTO AS AMOUNT_PRODUCT
+                         
+                         [0]";
+
+            if (nr_pedido.Contains("-VD"))
+            {
+                sql = sql.Replace("[1]", "OBS").Replace("[0]", $@"FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
+                                      JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+                                      JOIN BLOOMERS_LINX..LINXPEDIDOSVENDA_TRUSTED C (NOLOCK) ON C.COD_PEDIDO = REPLACE(A.DOCUMENTO, 'MI-VD', '') AND C.CNPJ_EMP = A.NB_DOC_REMETENTE
+                                      JOIN BLOOMERS_LINX..LINXVENDEDORES_TRUSTED D (NOLOCK) ON C.COD_VENDEDOR = D.COD_VENDEDOR
+                                      WHERE 
+                                      A.DOCUMENTO = '{nr_pedido}'
+                                      AND A.NB_DOC_REMETENTE = '{cnpj_emp}'
+                                      AND A.SERIE = '{serie}'");
+            }
+            else if (nr_pedido.Contains("-VF"))
+            {
+                sql = sql.Replace("[1]", "OBS").Replace("[0]", $@"FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
+                                      JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+                                      JOIN BLOOMERS_LINX..LINXMOVIMENTO_TRUSTED C (NOLOCK) ON C.DOCUMENTO = REPLACE(RIGHT(A.DOCUMENTO, 4), 'MI-VF', '') AND C.CNPJ_EMP = A.NB_DOC_REMETENTE
+                                      JOIN BLOOMERS_LINX..LINXVENDEDORES_TRUSTED D (NOLOCK) ON C.COD_VENDEDOR = D.COD_VENDEDOR
+                                      WHERE 
+                                      (C.CODIGO_ROTINA_ORIGEM = 12 OR C.CODIGO_ROTINA_ORIGEM = 16) AND
+						              A.DOCUMENTO = '{nr_pedido}'
+                                      AND A.NB_DOC_REMETENTE = '{cnpj_emp}'
+                                      AND A.SERIE = '{serie}'");
+            }
+            else
+            {
+                sql = sql.Replace("[1]", "ANOTACAO").Replace("[0]", $@"FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
+                                      JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+                                      JOIN BLOOMERS_LINX..B2CCONSULTAPEDIDOS_TRUSTED C (NOLOCK) ON C.ORDER_ID = A.DOCUMENTO AND C.EMPRESA = A.NB_COD_REMETENTE
+                                      JOIN BLOOMERS_LINX..LINXVENDEDORES_TRUSTED D (NOLOCK) ON C.COD_VENDEDOR = D.COD_VENDEDOR
+                                      WHERE 
+                                      A.DOCUMENTO = '{nr_pedido}'
+                                      AND A.NB_DOC_REMETENTE = '{cnpj_emp}'
+                                      AND A.SERIE = '{serie}'");
+            }
+
+            try
+            {
+                var result = await _conn.GetDbConnection().QueryAsync<Order, Company, Client, ShippingCompany, Product, Order>(sql, (pedido, empresa, cliente, transportadora, produto) =>
+                {
+                    pedido.client = cliente;
+                    pedido.company = empresa;
+                    pedido.client = cliente;
+                    pedido.shippingCompany = transportadora;
+                    pedido.itens.Add(produto);
+                    return pedido;
+                }, splitOn: "name_company, reason_client, cod_shippingcompany, iditem");
+
+                var pedidos = result.GroupBy(p => p.number).Select(g =>
+                {
+                    var groupedOrder = g.First();
+                    groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+                    return groupedOrder;
+                });
+
+                return pedidos.First();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"MiniWms [Picking] - GetUnpickedOrder - Erro ao obter pedido: {nr_pedido} na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
+            }
+        }
+
+        public async Task<List<Order>?> GetUnpickedOrdersToPrint(string cnpj_emp, string serie_pedido, string data_inicial, string data_final)
+        {
+            var sql = $@"";
+
+            try
+            {
+                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
+                {
+                    pedido.client = cliente;
+                    pedido.shippingCompany = transportadora;
+                    pedido.invoice = nota_fiscal;
+                    pedido.itens.Add(produto);
+                    return pedido;
+                }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
+
+                var pedidos = result.GroupBy(p => p.number).Select(g =>
+                {
+                    var groupedOrder = g.First();
+                    groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+                    return groupedOrder;
+                });
+
+                return pedidos.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"MiniWms [Confere Pedido] - GetPedidosNaoConferidos - Erro ao obter pedidos na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
+            }
+        }
+
         public async Task<int> UpdateRetorno(string nr_pedido, int volumes, string listProdutos)
         {
             var listaDeProdutos = JsonConvert.DeserializeObject<List<Product>>(listProdutos);

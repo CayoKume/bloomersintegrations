@@ -268,7 +268,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
             RecurringJob.AddOrUpdate<ILinxProdutosDetalhesService<LinxProdutosDetalhes>>("LinxProdutosDetalhes", service => service.IntegraRegistrosAsync(
                 "LinxProdutosDetalhes",
-                "p_LinxProdutosDetalhes_Sincronizacao",
+                "p_LinxProdutosDetalhes_trusted",
                 BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
                 Cron.Hourly,
                 queue: "srv-vm-app01"

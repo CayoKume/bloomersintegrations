@@ -25,6 +25,7 @@ namespace NewBloomersWebApplication.Domain.Extensions
             }
 
             services.AddScoped<IAPICall, APICall>();
+            services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IDeliveryListService, DeliveryListService>();
             services.AddScoped<ILabelsService, LabelsService>();

@@ -10,7 +10,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             if (serverName == "SRV-VM-APP03")
             {
                 app.UseCors(policy =>
-                    policy.WithOrigins("http://172.25.1.6:7575", "http://localhost:5215")
+                    policy.WithOrigins("http://172.25.1.6:7575", "http://localhost:5215", "https://localhost:7083")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .WithHeaders(HeaderNames.ContentType)

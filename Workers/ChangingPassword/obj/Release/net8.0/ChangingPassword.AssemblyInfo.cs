@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChangingPassword")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bf95199d4cf6e729b0f7df762c21d9f42a8bb3c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a4c0b13416d059943ee007be5d249e6669afd89")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChangingPassword")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChangingPassword")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

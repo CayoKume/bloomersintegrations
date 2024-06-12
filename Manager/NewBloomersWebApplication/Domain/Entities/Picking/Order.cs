@@ -9,6 +9,9 @@ namespace NewBloomersWebApplication.Domain.Entities.Picking
         public string? buttonText { get; set; }
         public string? buttonClass { get; set; }
 
+        public string? obs { get; set; }
+        public string? seller { get; set; }
+
         public DateTime? retorno { get; set; }
 
         public List<Product> itens { get { return _itens; } set { _itens = value; } }

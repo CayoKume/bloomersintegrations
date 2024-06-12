@@ -63,6 +63,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBloomersWorkerServices",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniWms", "MiniWms\MiniWms.csproj", "{E8AA7B13-C207-4748-A689-FE835C63EE76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintersHelpers", "PrintersHelpers\PrintersHelpers.csproj", "{DB0DC944-8C74-474B-899A-D784576617C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{E8AA7B13-C207-4748-A689-FE835C63EE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8AA7B13-C207-4748-A689-FE835C63EE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8AA7B13-C207-4748-A689-FE835C63EE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB0DC944-8C74-474B-899A-D784576617C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0DC944-8C74-474B-899A-D784576617C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB0DC944-8C74-474B-899A-D784576617C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB0DC944-8C74-474B-899A-D784576617C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +192,7 @@ Global
 		{E46D5465-F345-4542-808B-D922B4FED1BE} = {B9B7C654-94BF-497D-827A-2A143886ABA5}
 		{01FF47E0-D054-4030-9CEB-37D4AF692B89} = {B9B7C654-94BF-497D-827A-2A143886ABA5}
 		{E8AA7B13-C207-4748-A689-FE835C63EE76} = {134982F8-C479-43E6-B487-489A57BD1D79}
+		{DB0DC944-8C74-474B-899A-D784576617C6} = {C42A61D6-766D-415B-9F2D-A246F09AFCC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B809C985-26F2-4923-99F1-58136D8B519E}

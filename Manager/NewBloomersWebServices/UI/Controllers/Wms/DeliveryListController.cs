@@ -54,7 +54,7 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
         }
 
         [HttpPost("PrintDeliveryList")]
-        public async Task<ActionResult<string>> PrintDeliveryList([FromBody] PrintOrderRequest request)
+        public async Task<ActionResult<string>> PrintDeliveryList([FromBody] PrintOrdersRequest request)
         {
             try
             {

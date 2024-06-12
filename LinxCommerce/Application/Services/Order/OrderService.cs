@@ -155,7 +155,7 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 
                     _orderRepository.BulkInsertIntoTableRaw(ordersListToAdd, database);
                 }
-            }
+             }
             catch (Exception ex) when (
                 ex.Message.Contains("BulkInsertIntoTableRaw") ||
                 ex.Message.Contains("GetParameters") ||

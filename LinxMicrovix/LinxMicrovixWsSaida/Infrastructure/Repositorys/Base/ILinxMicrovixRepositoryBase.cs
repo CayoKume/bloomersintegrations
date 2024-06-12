@@ -7,6 +7,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
     public interface ILinxMicrovixRepositoryBase<TEntity> where TEntity : class
     {
         public void BulkInsertIntoTableRaw(DataTable dataTable, string database, string tableName, int dataTableRowsNumber);
+        public Task<IEnumerable<string>> GetProductsAsync(string tableName, string sql);
         public Task<string> GetParametersAsync(string tableName, string sql);
         public string GetParametersNotAsync(string tableName, string sql);
         public Task<string> GetTableLastTimestampAsync(string tableName, string sql);

@@ -110,6 +110,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
         public async Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database)
         {
             string sql = $@"SELECT empresa as cod_company, nome_emp as name_company, cnpj_emp as doc_company FROM BLOOMERS_LINX..LinxLojas_trusted WHERE nome_emp LIKE '%MISHA%' or nome_emp LIKE '%OPEN%'";
+            //string sql = $@"SELECT empresa as cod_company, nome_emp as name_company, cnpj_emp as doc_company FROM BLOOMERS_LINX..LinxLojas_trusted WHERE nome_emp = 'MISHA - ECOMMERCE' or nome_emp = 'OPEN ERA - ECOMMERCE'";
 
             try
             {
@@ -196,6 +197,25 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
             try
             {
                 _linxMicrovixRepositoryBase.CallDbProcMergeNotAsync(procName, tableName, database);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetProductsAsync(string tableName, string database, Company company)
+        {
+            string sql = $@"select distinct cod_produto from BLOOMERS_LINX..LinxProdutos_trusted where desc_setor = 'GERAL'";
+
+            if (company.doc_company == "38367316000199")
+                sql += "or desc_setor = 'MISHA'";
+            else if (company.doc_company == "42538267000268")
+                sql += "or desc_setor = 'OPEN ERA'";
+
+            try
+            {
+                return await _linxMicrovixRepositoryBase.GetProductsAsync(tableName, sql);
             }
             catch
             {

@@ -327,5 +327,19 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
             }
         }
 
+        public async Task<IEnumerable<string>> GetProductsAsync(string tableName, string sql)
+        {
+            try
+            {
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.QueryAsync<string>(sql: sql, commandTimeout: 360);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{tableName} - GetProductsAsync - Erro ao obter produtos da tabela LinxProdutos_trusted, atraves do sql: {sql} - {ex.Message}");
+            }
+        }
     }
 }

@@ -72,6 +72,45 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             }
         }
 
+
+        [HttpGet("GetUnpickedOrderToPrint")]
+        public async Task<ActionResult<string>> GetUnpickedOrderToPrint([Required][FromQuery] string cnpj_emp, [Required][FromQuery] string serie, [Required][FromQuery] string nr_pedido)
+        {
+            try
+            {
+                var result = await _pickingService.GetUnpickedOrderToPrint(cnpj_emp, serie, nr_pedido);
+
+                if (String.IsNullOrEmpty(result))
+                    return BadRequest($"Nao foi possivel encontrar o pedido: {nr_pedido}.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel encontrar o pedido: {nr_pedido}. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("GetUnpickedOrdersToPrint")]
+        public async Task<ActionResult<string>> GetUnpickedOrdersToPrint([Required][FromQuery] string cnpj_emp, [Required][FromQuery] string serie, [Required][FromQuery] string data_inicial, [Required][FromQuery] string data_final)
+        {
+            try
+            {
+                var result = await _pickingService.GetUnpickedOrdersToPrint(cnpj_emp, serie, data_inicial, data_final);
+
+                if (String.IsNullOrEmpty(result))
+                    return BadRequest($"Nao foi possivel encontrar os pedidos para o intervalo de datas determinado.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel encontrar os pedidos para o intervalo de datas determinado. Erro: {ex.Message}");
+            }
+        }
+
         [HttpPost("UpdateRetorno")]
         public async Task<ActionResult> UpdateRetorno([FromBody] UpdateRetornoRequest request)
         {
@@ -107,6 +146,25 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             {
                 Response.StatusCode = 400;
                 return Content($"Nao foi possivel atualizar a transportadora do pedido: {request.orderNumber} para {request.cod_shippingCompany}. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("PrintOrder")]
+        public async Task<ActionResult<string>> PrintOrder([FromBody] PrintOrderRequest request)
+        {
+            try
+            {
+                var result = await _pickingService.PrintOrder(JsonConvert.SerializeObject(request.serializePedido));
+
+                if (!result)
+                    return BadRequest($"Nao foi possivel gerar o romaneio.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel gerar o romaneio. Erro: {ex.Message}");
             }
         }
     }

@@ -62,23 +62,32 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
             {
                 var cnpjs = await _linxProdutosDetalhesRepository.GetCompanysAsync(tableName, database);
 
-                foreach (var cnpj in cnpjs)
+                foreach (var cnpj in cnpjs.Where(x => x.doc_company == "38367316000270"))
                 {
                     PARAMETERS = await _linxProdutosDetalhesRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
-                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
-                    var response = await _apiCall.CallAPIAsync(tableName, body);
-                    var registros = _apiCall.DeserializeXML(response);
+                    //var products = await _linxProdutosDetalhesRepository.GetProductsAsync(tableName, database, cnpj);
 
-                    if (registros.Count() > 0)
-                    {
-                        var listResults = DeserializeResponse(registros);
-                        if (listResults.Count() > 0)
+                    //foreach (var product in products)
+                    //{
+                        //var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[cod_produto]", $"{product}").Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
+                        var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[0]", "0").Replace("[data_inicio]", $"{DateTime.Today.AddMonths(-1).ToString("yyyy-MM-dd")}").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, cnpj.doc_company);
+                        var response = await _apiCall.CallAPIAsync(tableName, body);
+                        var registros = _apiCall.DeserializeXML(response);
+
+                        if (registros.Count() > 0)
                         {
-                            var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutosDetalhes>(TEntityToObject));
-                            _linxProdutosDetalhesRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                            var listResults = DeserializeResponse(registros);
+                            if (listResults.Count() > 0)
+                            {
+
+                                //await _linxProdutosDetalhesRepository.InsereRegistroIndividualAsync(listResults[0], tableName, "HOMOLOG_BLOOMERS_LINX");
+
+                                var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutosDetalhes>(TEntityToObject));
+                                _linxProdutosDetalhesRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                            }
                         }
-                    }
+                    //}
                 }
                 await _linxProdutosDetalhesRepository.CallDbProcMergeAsync(procName, tableName, database);
             }

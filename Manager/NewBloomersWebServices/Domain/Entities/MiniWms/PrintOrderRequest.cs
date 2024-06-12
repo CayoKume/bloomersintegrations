@@ -3,10 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
 {
-    public class PrintOrderRequest
+    public class PrintOrdersRequest
     {
         [Required(ErrorMessage = "A Lista de Pedidos é Obrigatória")]
         public List<Order> serializePedidosList { get; set; }
+    }
+
+    public class PrintOrderRequest
+    {
+        [Required(ErrorMessage = "O Pedido é Obrigatório")]
+        public Order serializePedido { get; set; }
     }
 
     public class Order

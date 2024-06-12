@@ -238,9 +238,24 @@ namespace NewBloomersWebApplication.UI.Pages
             return OnClose.InvokeAsync(true);
         }
 
-        private Task BtnImprimir(Order pedido)
+        private async Task BtnImprimir(Order pedido)
         {
-            return OnClose.InvokeAsync(true);
+            try
+            {
+                await _conferenciaService.PrintCoupon(doc_company, serie_order, pedido.number);
+
+                for (int i = 0; i < pedido.volumes + 1; i++)
+                {
+                    var fileName = pedido.number + " - " + (i + 1) + ".pdf";
+                    //var base64String = await _conferenciaService.GetLabelToPrint(fileName);
+
+                    //await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }        
         }
 
         private async void Enter(KeyboardEventArgs e)
@@ -249,16 +264,16 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 var item = pedidos.Where(p => p.number == this.nr_pedido).First().itens.Where(p => p.cod_product == Convert.ToInt32(inputValueProduto)).First();
                 
-                if (item.quantity_product < item.picked_quantity)
+                if (item.picked_quantity >= item.quantity_product)
+                {
+                    modalQuantidadeExcedida = true;
+                    await OnClose.InvokeAsync(true);
+                }
+                else
                 {
                     item.picked_quantity = item.picked_quantity + 1;
                     Thread.Sleep(2 * 1000);
                     inputValueProduto = "";
-                }
-                else
-                {
-                    modalQuantidadeExcedida = true;
-                    await OnClose.InvokeAsync(true);
                 }
             }
         }

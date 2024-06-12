@@ -2,6 +2,8 @@
 {
     public class Order : BloomersIntegrationsCore.Domain.Entities.Order
     {
+        public string? obs { get; set; }
+        public string? seller { get; set; }
         public DateTime? retorno { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
-using NewBloomersWebApplication.Domain.Entities.Picking;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using System.Text.Json;
 using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
@@ -96,6 +95,31 @@ namespace NewBloomersWebApplication.Application.Services
             {
                 throw;
             }
+        }
+
+        public Task<string> GetCouponToPrint(string fileName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PrintCoupons(Order pedido)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task PrintCoupon(string cnpj_emp, string serie, string nr_pedido)
+        {
+            var parameters = new Dictionary<string, string>
+                {
+                    { "cnpj_emp", cnpj_emp },
+                    { "serie", serie },
+                    { "nr_pedido", nr_pedido }
+                };
+            var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+            var result = await _apiCall.GetAsync("GetUnpickedOrderToPrint", encodedParameters);
+            var pedido = JsonSerializer.Deserialize<Order>(result);
+
+            await _apiCall.PostAsync($"PrintOrder", JsonSerializer.Serialize(new { serializePedido = pedido }));
         }
     }
 }
