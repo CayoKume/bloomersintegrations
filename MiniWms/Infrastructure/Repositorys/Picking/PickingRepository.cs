@@ -218,23 +218,28 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<Order?> GetUnpickedOrderToPrint(string cnpj_emp, string serie, string nr_pedido)
         {
             string sql = $@"SELECT DISTINCT
+                         A.DOCUMENTO AS NUMBER,
                          A.NB_CFOP_PEDIDO AS CFOP,
                          C.[1] AS OBS,
                          D.NOME_VENDEDOR AS SELLER,
+                         A.NB_VALOR_PEDIDO AS AMOUNT,
 
                          A.NB_NOME_REMETENTE AS NAME_COMPANY,
                          A.NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
+                         A.NB_NUMERO_RUA_REMETENTE AS STREET_NUMBER_COMPANY,
                          A.NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
                          A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
                          A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
                          A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
                          A.NB_UF_REMETENTE AS UF_COMPANY,
+                         A.NB_FONE_REMETENTE AS FONE_COMPANY,
                          A.NB_DOC_REMETENTE AS DOC_COMPANY,
                          A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
                          
                          A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
                          A.NB_CODIGO_CLIENTE AS COD_CLIENT,
                          A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+                         A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
                          A.NB_NUMERO_RUA_CLIENTE AS STREET_NUMBER_CLIENT,
                          A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
                          A.NB_CEP AS ZIP_CODE_CLIENT,
@@ -319,32 +324,33 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
         public async Task<List<Order>?> GetUnpickedOrdersToPrint(string cnpj_emp, string serie_pedido, string data_inicial, string data_final)
         {
-            var sql = $@"";
+            throw new NotImplementedException();
+            //var sql = $@"";
 
-            try
-            {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
-                {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.invoice = nota_fiscal;
-                    pedido.itens.Add(produto);
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
+            //try
+            //{
+            //    var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
+            //    {
+            //        pedido.client = cliente;
+            //        pedido.shippingCompany = transportadora;
+            //        pedido.invoice = nota_fiscal;
+            //        pedido.itens.Add(produto);
+            //        return pedido;
+            //    }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
 
-                var pedidos = result.GroupBy(p => p.number).Select(g =>
-                {
-                    var groupedOrder = g.First();
-                    groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
-                    return groupedOrder;
-                });
+            //    var pedidos = result.GroupBy(p => p.number).Select(g =>
+            //    {
+            //        var groupedOrder = g.First();
+            //        groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+            //        return groupedOrder;
+            //    });
 
-                return pedidos.ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"MiniWms [Confere Pedido] - GetPedidosNaoConferidos - Erro ao obter pedidos na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
-            }
+            //    return pedidos.ToList();
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception($"MiniWms [Confere Pedido] - GetPedidosNaoConferidos - Erro ao obter pedidos na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
+            //}
         }
 
         public async Task<int> UpdateRetorno(string nr_pedido, int volumes, string listProdutos)

@@ -1,6 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Picking;
-
-namespace NewBloomersWebApplication.Domain.Entities.Picking
+﻿namespace NewBloomersWebApplication.Domain.Entities.Picking
 {
     public class Order : BloomersIntegrationsCore.Domain.Entities.Order
     {
@@ -8,9 +6,6 @@ namespace NewBloomersWebApplication.Domain.Entities.Picking
 
         public string? buttonText { get; set; }
         public string? buttonClass { get; set; }
-
-        public string? obs { get; set; }
-        public string? seller { get; set; }
 
         public DateTime? retorno { get; set; }
 

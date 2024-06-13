@@ -172,4 +172,22 @@ else
     </ConfirmationModal>
 }
 
+@if (modalQuantidadeFaltante)
+{
+    <ConfirmationModal opened="modalQuantidadeFaltante"
+                       title="Warning"
+                       closeButtonText="VOLTAR"
+                       clickButtonText="CONTINUAR"
+                       OnCloseEvent="@(() => modalQuantidadeFaltante = false)"
+                       OnClickEvent="BtnContinuar">
+        <BodyContent>
+            <div class="row mb-1">
+                <div class="form-group">
+                    <strong>Você está tentando conferir uma quantidade de produtos menor do que a necessária para este pedido, deseja continuar?</strong>
+                </div>
+            </div>
+        </BodyContent>
+    </ConfirmationModal>
+}
+
 <script src="js/Utils.js"></script>

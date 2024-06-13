@@ -23,6 +23,7 @@ namespace NewBloomersWebApplication.UI.Pages
         private bool modalPedidoJaConferido { get; set; }
         private bool modalSeparacao { get; set; }
         private bool modalQuantidadeExcedida { get; set; }
+        private bool modalQuantidadeFaltante { get; set; }
         private bool resultado { get; set; }
 
         private QuickGrid<Order> myGrid;
@@ -209,24 +210,33 @@ namespace NewBloomersWebApplication.UI.Pages
         private async Task BtnFinalizar()
         {
             var pedido = pedidos.Where(p => p.number == this.nr_pedido).First();
-            pedido.volumes = inputValueVolumes;
-            var result = await _conferenciaService.UpdateRetorno(pedido);
 
-            if (result)
+            if (pedido.itens.Where(p => p.picked_quantity < p.quantity_product).Count() > 0)
             {
-                resultado = true;
-                modalConfirmacao = true;
+                modalQuantidadeFaltante = true;
                 await OnClose.InvokeAsync(true);
             }
             else
             {
-                resultado = false;
-                modalConfirmacao = true;
+                pedido.volumes = inputValueVolumes;
+                var result = await _conferenciaService.UpdateRetorno(pedido);
+
+                if (result)
+                {
+                    resultado = true;
+                    modalConfirmacao = true;
+                    await OnClose.InvokeAsync(true);
+                }
+                else
+                {
+                    resultado = false;
+                    modalConfirmacao = true;
+                    await OnClose.InvokeAsync(true);
+                }
+
+                modalSeparacao = true;
                 await OnClose.InvokeAsync(true);
             }
-
-            modalSeparacao = true;
-            await OnClose.InvokeAsync(true);
         }
 
         private Task BtnConferir(Order pedido)
@@ -242,15 +252,8 @@ namespace NewBloomersWebApplication.UI.Pages
         {
             try
             {
-                await _conferenciaService.PrintCoupon(doc_company, serie_order, pedido.number);
-
-                for (int i = 0; i < pedido.volumes + 1; i++)
-                {
-                    var fileName = pedido.number + " - " + (i + 1) + ".pdf";
-                    //var base64String = await _conferenciaService.GetLabelToPrint(fileName);
-
-                    //await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
-                }
+                var base64String = await _conferenciaService.PrintCoupon(doc_company, serie_order, pedido.number);
+                await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, pedido.number);
             }
             catch (Exception ex)
             {

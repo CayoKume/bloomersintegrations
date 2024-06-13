@@ -149,22 +149,41 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             }
         }
 
-        [HttpPost("PrintOrder")]
-        public async Task<ActionResult<string>> PrintOrder([FromBody] PrintOrderRequest request)
+        [HttpPost("PrintOrderToCupoun")]
+        public async Task<ActionResult<string>> PrintOrderToCupoun([FromBody] PrintOrderRequest request)
         {
             try
             {
-                var result = await _pickingService.PrintOrder(JsonConvert.SerializeObject(request.serializePedido));
+                var result = await _pickingService.PrintOrderToCupoun(JsonConvert.SerializeObject(request.serializePedido));
 
-                if (!result)
-                    return BadRequest($"Nao foi possivel gerar o romaneio.");
+                if (result is null)
+                    return BadRequest($"Nao foi possivel gerar o cupom de separação.");
                 else
                     return Ok(result);
             }
             catch (Exception ex)
             {
                 Response.StatusCode = 400;
-                return Content($"Nao foi possivel gerar o romaneio. Erro: {ex.Message}");
+                return Content($"Nao foi possivel gerar o cupom de separação. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("PrintExchangeCupounToPrint")]
+        public async Task<ActionResult<string>> PrintExchangeCupounToPrint([FromBody] PrintOrderRequest request)
+        {
+            try
+            {
+                var result = await _pickingService.PrintExchangeCupounToPrint(JsonConvert.SerializeObject(request.serializePedido));
+
+                if (result is null)
+                    return BadRequest($"Nao foi possivel gerar o cupom de troca.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel gerar o cupom de troca. Erro: {ex.Message}");
             }
         }
     }

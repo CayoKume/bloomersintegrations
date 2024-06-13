@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\application\\services\\picking\\pickingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\application\\services\\picking\\pickingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\application\\services\\picking\\pickingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\application\\services\\picking\\pickingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\picking.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\picking.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PickingService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Application\\Services\\Picking\\PickingService.cs",
-              "RelativeDocumentMoniker": "MiniWms\\Application\\Services\\Picking\\PickingService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Application\\Services\\Picking\\PickingService.cs",
-              "RelativeToolTip": "MiniWms\\Application\\Services\\Picking\\PickingService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T20:46:40.156Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PickingService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\Picking\\PickingService.cs",
-              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\Application\\Services\\Picking\\PickingService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\Picking\\PickingService.cs",
-              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\Application\\Services\\Picking\\PickingService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAGMAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T20:46:22.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Picking.razor.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\Picking.razor.cs",
-              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\Picking.razor.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\Picking.razor.cs",
-              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\Picking.razor.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAPQAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T19:14:13.744Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
