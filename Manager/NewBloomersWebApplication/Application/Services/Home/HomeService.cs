@@ -1,6 +1,5 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Picking;
+﻿using NewBloomersWebApplication.Domain.Entities.Home;
 using NewBloomersWebApplication.Infrastructure.Apis;
-using Newtonsoft.Json;
 
 namespace NewBloomersWebApplication.Application.Services
 {
@@ -10,5 +9,23 @@ namespace NewBloomersWebApplication.Application.Services
 
         public HomeService(IAPICall apiCall) =>
             (_apiCall) = (apiCall);
+
+        public async Task<List<Order>?> GetPickupOrders(string cnpj_emp)
+        {
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "cnpj_emp", cnpj_emp }
+                };
+                var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+                var result = await _apiCall.GetAsync("GetPickupOrders", encodedParameters);
+                return System.Text.Json.JsonSerializer.Deserialize<List<Order>>(result);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

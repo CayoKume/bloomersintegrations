@@ -2,3 +2,41 @@
 @inject IJSRuntime jsRuntime;
 @inject IHomeService _homeService;
 
+<h1>Empresa: @name_company - @doc_company</h1>
+
+@if (@orders.Count() > 0)
+{
+    <h1>Você tem pedidos pickup para serem separados</h1>
+
+    <script>popup.close()</script>
+
+    @foreach (var order in orders)
+    {
+        jsRuntime.InvokeVoidAsync("writeToPopup", $"{@order.number}", $"{@order.data_pedido}");
+        <h3>@order.number</h3>
+    }
+}
+else
+{
+    <h1>Você não tem pedidos pickup para serem separados</h1>
+}
+
+<script>
+    setInterval(function () {
+        window.location.reload(1);
+    }, 20000);
+
+    window.writeToPopup = function (orderNumber, dateOrder) {
+        var popup = window.open("", "Popup", "width=200,height=100");
+        popup.document.write("<h1> Pedido pickup in store: " + orderNumber + " - Data e Hora:" + dateOrder + "</h1>");
+        popup.moveTo(0, 0);
+        popup.resizeTo(screen.availWidth, screen.availHeight);
+        popup.document.body.style.backgroundColor = 'yellow';
+        popup.focus();
+
+    };
+
+    window.clearPopup = function () {
+        window.popup.document.body.innerHTML = '';
+    }
+</script>
