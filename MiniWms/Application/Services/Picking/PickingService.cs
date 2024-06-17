@@ -232,6 +232,7 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                         var titleStyle = TextStyle.Default.FontSize(18).SemiBold().FontColor(Colors.Black);
                         var normalStyle = TextStyle.Default.FontSize(8).FontColor(Colors.Black);
                         var boldStyle = TextStyle.Default.FontSize(10).SemiBold().FontColor(Colors.Black);
+                        var totalStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
 
                         page.Size(new PageSize((float)226.77, (float)850.39));
                         page.Margin(10);
@@ -300,7 +301,7 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                                 }
                             }));
 
-                            column.Item().PaddingTop(10).Text($"Total do Pedido: {Convert.ToDouble(pedido.amount.Replace(".", ",")).ToString("C")}").Style(normalStyle).AlignRight();//Obs do Pedido
+                            column.Item().PaddingTop(10).PaddingRight(10).Text($"Total do Pedido: {Convert.ToDouble(pedido.amount.Replace(".", ",")).ToString("C")}").Style(totalStyle).AlignRight();//Obs do Pedido
                         }));
                     });
                 }).GeneratePdf($@"{fileName}");

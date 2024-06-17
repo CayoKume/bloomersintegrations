@@ -233,7 +233,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddHttpClient("FlashCourierAPI", client =>
             {
                 //HOMOLOG
-                //https://homolog.flashpegasus.com.br/FlashPegasus/rest
+                //client.BaseAddress = new Uri("https://homolog.flashpegasus.com.br/FlashPegasus/rest");
 
                 client.BaseAddress = new Uri("https://webservice.flashpegasus.com.br/FlashPegasus/rest");
                 client.Timeout = new TimeSpan(0, 20, 0);

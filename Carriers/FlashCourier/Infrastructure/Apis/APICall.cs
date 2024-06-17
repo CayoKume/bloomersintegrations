@@ -54,18 +54,41 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
         {
             try
             {
+                int ccusto_id = 0;
+                int tipo_enc_id = 0;
+                int id_local_rem = 0;
+                int cliente_id = 0;
+                int ctt_id = 0;
+
+                if (model.number.Contains("MI-"))
+                {
+                    ccusto_id = 47993;
+                    tipo_enc_id = 26687;
+                    id_local_rem = 47809;
+                    cliente_id = 12507;
+                    ctt_id = 14511;
+                }
+                else //OPEN ERA
+                {
+                    ccusto_id = 32277;
+                    tipo_enc_id = 18582;
+                    id_local_rem = 39512;
+                    cliente_id = 6801;
+                    ctt_id = 8912;
+                }
+
                 var authentication = await _flashCourierRepository.GetAuthenticationUser(model.company.doc_company);
 
                 var jObject = new JArray(
                             new JObject {
                                 { "dna_hawb", 7 },
-                                { "ccusto_id", 32277 },
-                                { "tipo_enc_id", 18582 },
+                                { "ccusto_id", ccusto_id },
+                                { "tipo_enc_id", tipo_enc_id },
                                 { "prod_flash_id", 152 },
                                 { "frq_rec_id", "DSP" },
-                                { "id_local_rem", 39512 },
-                                { "cliente_id", 6801 },
-                                { "ctt_id", 8912 },
+                                { "id_local_rem", id_local_rem },
+                                { "cliente_id", cliente_id },
+                                { "ctt_id", ctt_id },
                                 //registro no banco
                                 { "num_enc_cli", model.number }, //codigo de rastreio alfanumerico com ate 30 digitos, pode ser um sequencial nosso
                                 { "num_cliente", model.invoice.number_nf },
@@ -106,6 +129,9 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                         );
 
                 await _flashCourierRepository.GenerateRequestLog(model.number, Newtonsoft.Json.JsonConvert.SerializeObject(jObject));
+
+                //HOMOLOG
+                //var client = CreateCliente(userName: "sao.erick", password: "123");
 
                 var client = CreateCliente(userName: authentication.login, password: authentication.senha);
 

@@ -6,6 +6,6 @@ namespace BloomersIntegrationsManager.UI.Controllers.General
     [Route("NewBloomers/BloomersGeneralJobs/AfterSale")]
     public class AfterSaleController : Controller
     {
-        
+
     }
 }

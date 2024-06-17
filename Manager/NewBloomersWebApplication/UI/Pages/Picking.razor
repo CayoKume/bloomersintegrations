@@ -15,8 +15,19 @@ else
 {
     <GridsMenuWithDates OnChangeEvent="ReloadGrid" OnKeyUpEvent="ConferePedidoIndividualEnter" OnClickEvent="ConferePedidoIndividualButton"></GridsMenuWithDates>
 
+@*     <div class="row mt-3">
+        <div class="col-md-2">
+            <button class="btn btn-warning" @onclick="RemovePedido">Conferir Todos</button>
+        </div>
+    </div> *@
+
     <div class="grid">
         <QuickGrid Items="@pedidos.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
+@*             <TemplateColumn Align="Align.Center">
+                <div style="min-height: 1.5rem; padding: 1.5rem">
+                    <input @onchange="(() => ConferePedidos(context))" type="checkbox" name="checkbox" id="checkbox">
+                </div>
+            </TemplateColumn> *@
             <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="pedido"></PropertyColumn>
             <TemplateColumn Title="Imprimir" Align="Align.Center" Class="conferencia">
                 <button class="btn btn-primary" @onclick="@(() => BtnImprimir(context))">Imprimir</button>

@@ -189,6 +189,11 @@ namespace NewBloomersWebApplication.UI.Pages
             }
         }
 
+        private async Task ConferePedidos()
+        {
+
+        }
+
         private void BtnSim()
         {
             modalPedidoJaConferido = false;

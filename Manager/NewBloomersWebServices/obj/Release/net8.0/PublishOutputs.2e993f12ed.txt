@@ -36,6 +36,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Hangfire.SqlServer.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\QuestPDF.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\WebDriver.Support.dll
@@ -48,6 +49,9 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\System.Data.SqlClient.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\System.Drawing.Common.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\zxing.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\ZXing.Windows.Compatibility.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\ca\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\de\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\es\Hangfire.Core.resources.dll
@@ -62,6 +66,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\tr-TR\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\zh-TW\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\zh\Hangfire.Core.resources.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\runtimes\linux-arm64\native\libQuestPdfSkia.so
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Release\net8.0\PubTmp\Out\runtimes\linux-x64\native\libQuestPdfSkia.so

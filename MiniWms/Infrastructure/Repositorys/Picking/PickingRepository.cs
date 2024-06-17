@@ -260,11 +260,11 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                          
                          [0]";
 
-            if (nr_pedido.Contains("-VD"))
+            if (nr_pedido.Contains("-VD") || nr_pedido.Contains("-LJ"))
             {
                 sql = sql.Replace("[1]", "OBS").Replace("[0]", $@"FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                                       JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
-                                      JOIN BLOOMERS_LINX..LINXPEDIDOSVENDA_TRUSTED C (NOLOCK) ON C.COD_PEDIDO = REPLACE(A.DOCUMENTO, 'MI-VD', '') AND C.CNPJ_EMP = A.NB_DOC_REMETENTE
+                                      JOIN BLOOMERS_LINX..LINXPEDIDOSVENDA_TRUSTED C (NOLOCK) ON C.COD_PEDIDO = REPLACE(REPLACE(A.DOCUMENTO, 'MI-VD', ''), 'MI-LJ', '') AND C.CNPJ_EMP = A.NB_DOC_REMETENTE
                                       JOIN BLOOMERS_LINX..LINXVENDEDORES_TRUSTED D (NOLOCK) ON C.COD_VENDEDOR = D.COD_VENDEDOR
                                       WHERE 
                                       A.DOCUMENTO = '{nr_pedido}'
