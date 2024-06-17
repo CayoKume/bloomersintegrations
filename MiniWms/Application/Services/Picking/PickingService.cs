@@ -112,22 +112,16 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                         page.Size(new PageSize((float)226.77, (float)850.39));
                         page.Margin(10);
 
-                        page.Header().Element(x => x.Row(row =>
-                        {
-                            row.RelativeItem().AlignTop().Column(column =>
-                            {
-                                column.Item().Text($"{pedido.company.name_company}").Style(boldStyle).AlignLeft();//Nome Emp
-                                column.Item().Text($"{pedido.company.address_company}, {pedido.company.street_number_company} ({pedido.company.complement_address_company})").Style(normalStyle).AlignLeft();//Rua, Numero, Complemento, Bairro
-                                column.Item().Text($"{pedido.company.zip_code_company} - {pedido.company.neighborhood_company} - {pedido.company.city_company}/{pedido.company.uf_company}").Style(normalStyle).AlignLeft();//CEP, Cidade, UF
-                                column.Item().Text($"Tel: {pedido.company.fone_company}").Style(normalStyle).AlignLeft();//Telefone
-                                column.Item().Text($"Cnpj: {pedido.company.doc_company} - Insc.Est. {pedido.company.state_registration_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
-                                column.Item().Text($"Email: {pedido.company.email_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
-                            });
-                        }));
-
                         page.Content().Element(x => x.Column(column =>
                         {
                             column.Spacing(1);
+                            column.Item().Text($"{pedido.company.name_company}").Style(boldStyle).AlignLeft();//Nome Emp
+                            column.Item().Text($"{pedido.company.address_company}, {pedido.company.street_number_company} ({pedido.company.complement_address_company})").Style(normalStyle).AlignLeft();//Rua, Numero, Complemento, Bairro
+                            column.Item().Text($"{pedido.company.zip_code_company} - {pedido.company.neighborhood_company} - {pedido.company.city_company}/{pedido.company.uf_company}").Style(normalStyle).AlignLeft();//CEP, Cidade, UF
+                            column.Item().Text($"Tel: {pedido.company.fone_company}").Style(normalStyle).AlignLeft();//Telefone
+                            column.Item().Text($"Cnpj: {pedido.company.doc_company} - Insc.Est. {pedido.company.state_registration_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
+                            column.Item().Text($"Email: {pedido.company.email_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
+
                             column.Item().PaddingTop(10).PaddingBottom(10).AlignCenter().MinHeight(100).MaxWidth(100).Image(stream.ToArray());
                             column.Item().PaddingBottom(10).AlignCenter().Text($"{pedido.number}").Style(titleStyle).AlignCenter();//Código do Pedido
 
@@ -237,22 +231,17 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                         page.Size(new PageSize((float)226.77, (float)850.39));
                         page.Margin(10);
 
-                        page.Header().Element(x => x.Row(row =>
-                        {
-                            row.RelativeItem().AlignTop().Column(column =>
-                            {
-                                column.Item().Text($"{pedido.company.name_company}").Style(boldStyle).AlignLeft();//Nome Emp
-                                column.Item().Text($"{pedido.company.address_company}, {pedido.company.street_number_company} ({pedido.company.complement_address_company})").Style(normalStyle).AlignLeft();//Rua, Numero, Complemento, Bairro
-                                column.Item().Text($"{pedido.company.zip_code_company} - {pedido.company.neighborhood_company} - {pedido.company.city_company}/{pedido.company.uf_company}").Style(normalStyle).AlignLeft();//CEP, Cidade, UF
-                                column.Item().Text($"Tel: {pedido.company.fone_company}").Style(normalStyle).AlignLeft();//Telefone
-                                column.Item().Text($"Cnpj: {pedido.company.doc_company} - Insc.Est. {pedido.company.state_registration_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
-                                column.Item().Text($"Email: {pedido.company.email_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
-                            });
-                        }));
-
                         page.Content().Element(x => x.Column(column =>
                         {
                             column.Spacing(1);
+                            column.Item().Text($"{pedido.company.name_company}").Style(boldStyle).AlignLeft();//Nome Emp
+                            column.Item().Text($"{pedido.company.address_company}, {pedido.company.street_number_company} ({pedido.company.complement_address_company})").Style(normalStyle).AlignLeft();//Rua, Numero, Complemento, Bairro
+                            column.Item().Text($"{pedido.company.zip_code_company} - {pedido.company.neighborhood_company} - {pedido.company.city_company}/{pedido.company.uf_company}").Style(normalStyle).AlignLeft();//CEP, Cidade, UF
+                            column.Item().Text($"Tel: {pedido.company.fone_company}").Style(normalStyle).AlignLeft();//Telefone
+                            column.Item().Text($"Cnpj: {pedido.company.doc_company} - Insc.Est. {pedido.company.state_registration_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
+                            column.Item().Text($"Email: {pedido.company.email_company}").Style(normalStyle).AlignLeft();//CNPJ, I.E
+
+
                             column.Item().PaddingTop(10).PaddingBottom(10).AlignCenter().MinHeight(100).MaxWidth(100).Image(stream.ToArray());
                             column.Item().PaddingBottom(10).AlignCenter().Text($"{pedido.number}").Style(titleStyle).AlignCenter();//Código do Pedido
 

@@ -115,9 +115,7 @@ namespace NewBloomersWebApplication.Application.Services
             var result = await _apiCall.GetAsync("GetUnpickedOrderToPrint", encodedParameters);
             var pedido = JsonSerializer.Deserialize<OrderToPrint>(result);
 
-            var teste =  await _apiCall.PostAsync($"PrintOrderToCupoun", JsonSerializer.Serialize(new { serializePedido = pedido }));
-
-            return teste;
+            return await _apiCall.PostAsync($"PrintOrderToCupoun", JsonSerializer.Serialize(new { serializePedido = pedido }));
         }
     }
 }

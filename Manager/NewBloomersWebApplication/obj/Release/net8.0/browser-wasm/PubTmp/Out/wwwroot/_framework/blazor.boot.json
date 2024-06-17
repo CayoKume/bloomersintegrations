@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "NewBloomersWebApplication",
   "resources": {
-    "hash": "sha256-d+oVeiR5hA5OEWoiDFvdOIUvs2mm0H7/SX6Chp0UPu4=",
+    "hash": "sha256-WJ6XliHYQfLESqxjowQgq8bsbyrQ9OaLK1LUQ/N7E5k=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.b1icm8yjm6.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -37,7 +37,7 @@
       "Microsoft.Extensions.Primitives.wasm": "sha256-Ms2HR5Gpug/0uRAzdk4SUNT76Ml3CjFv9Jo+dUIMGac=",
       "Microsoft.JSInterop.wasm": "sha256-ph4bhlI4IO1hPIrtjrX0yA/19B79nhT1eOrvfWXqxww=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-i8yLC1pzEZMAPAHK2MyunJW81S6Tpyvwka9LDZSylx8=",
-      "NewBloomersWebApplication.wasm": "sha256-WcnBeEojfQvJT5vUv5J58ZU42EZWlYacvT9ve5zfTgA=",
+      "NewBloomersWebApplication.wasm": "sha256-SX4ek0UN1KueJaL7D9XKQ69Kqc1iTjOHPXOGnJOqEA0=",
       "NewBloomersWebServicesCore.wasm": "sha256-qHd/LlIlF52xirnWVNIPZw8JeEzxqd3Sw1wOy5sXGLI=",
       "Newtonsoft.Json.wasm": "sha256-GlXMWKvDs45M2pACoR3Y4Qh8mcrOZGljqmvJY+6JZ5s=",
       "System.Collections.Concurrent.wasm": "sha256-XNtuVqlY2kcTqmT80lCbmxq2XjZUbB/kgd/IqQs2zHk=",

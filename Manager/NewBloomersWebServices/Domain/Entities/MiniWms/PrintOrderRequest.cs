@@ -5,13 +5,12 @@ namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
 {
     public class PrintOrderRequest
     {
-        [Required(ErrorMessage = "O Pedido é Obrigatório")]
         public Order serializePedido { get; set; }
     }
 
     public class Order
     {
-        private List<BloomersIntegrationsManager.Domain.Entities.MiniWms.Product> _itens = new List<BloomersIntegrationsManager.Domain.Entities.MiniWms.Product>();
+        private List<BloomersMiniWmsIntegrations.Domain.Entities.Picking.ProductToPrint> _itens = new List<BloomersMiniWmsIntegrations.Domain.Entities.Picking.ProductToPrint>();
 
         public string number { get; set; }
         public string? obs { get; set; }
@@ -21,11 +20,6 @@ namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
         public Client? client { get; set; }
         public ShippingCompany? shippingCompany { get; set; }
         public Company company { get; set; }
-        public List<BloomersIntegrationsManager.Domain.Entities.MiniWms.Product> itens { get { return _itens; } set { _itens = value; } }
-    }
-
-    public class Product : BloomersIntegrationsCore.Domain.Entities.Product
-    {
-        public string idItem { get; set; }
+        public List<BloomersMiniWmsIntegrations.Domain.Entities.Picking.ProductToPrint> itens { get { return _itens; } set { _itens = value; } }
     }
 }

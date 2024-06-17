@@ -1,5 +1,6 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
+using BloomersMiniWmsIntegrations.Domain.Entities.Picking;
 using Dapper;
 using Newtonsoft.Json;
 using Order = BloomersMiniWmsIntegrations.Domain.Entities.Picking.Order;
@@ -297,7 +298,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Company, Client, ShippingCompany, Product, Order>(sql, (pedido, empresa, cliente, transportadora, produto) =>
+                var result = await _conn.GetDbConnection().QueryAsync<Order, Company, Client, ShippingCompany, ProductToPrint, Order>(sql, (pedido, empresa, cliente, transportadora, produto) =>
                 {
                     pedido.client = cliente;
                     pedido.company = empresa;
