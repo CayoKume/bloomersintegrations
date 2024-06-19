@@ -1,4 +1,5 @@
-﻿using BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Entities.LinxMicrovix;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Entities.LinxMicrovix;
 
 namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Repositorys.LinxMicrovix
 {
@@ -11,6 +12,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
         public string GetParametersNotAsync(string tableName, string database, string parameterCol);
         public Task InsereRegistroIndividualAsync(LinxProdutosCamposAdicionais registro, string tableName, string database);
         public void InsereRegistroIndividualNotAsync(LinxProdutosCamposAdicionais registro, string tableName, string database);
-
+        public Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database);
+        public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database);
     }
 }

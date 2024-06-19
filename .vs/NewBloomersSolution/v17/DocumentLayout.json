@@ -1,12 +1,109 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\labels.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\labels.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\labels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\labels.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\linxmicrovix\\linxmicrovixerpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\linxmicrovix\\linxmicrovixerpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwssaida\\application\\services\\linxmicrovix\\linxprodutoscamposadicionaisservice\\linxprodutoscamposadicionaisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|solutionrelative:linxmicrovix\\linxmicrovixwssaida\\application\\services\\linxmicrovix\\linxprodutoscamposadicionaisservice\\linxprodutoscamposadicionaisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Labels.razor.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAEkAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T15:19:36.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Labels.razor",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\Labels.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-19T15:13:31.905Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "d176a487-3d06-45f5-836e-0d8e680d602c",
+        "Display": 0,
+        "X": 1,
+        "Y": 1,
+        "Width": 1918,
+        "Height": 1030,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LinxMicrovixERPController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAAAIYBAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T12:36:53.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LinxProdutosCamposAdicionaisService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABpAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T14:20:43.769Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

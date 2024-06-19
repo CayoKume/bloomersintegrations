@@ -1,4 +1,4 @@
-﻿using BloomersIntegrationsCore.Domain.Entities;
+﻿using BloomersMiniWmsIntegrations.Domain.Entities.Home;
 
 namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 {

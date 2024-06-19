@@ -32,6 +32,13 @@
     padding-bottom: .5rem;
 }
 
+::deep .quickgrid[theme=corporate] .troca {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
 ::deep .quickgrid[theme=corporate] .cliente {
     padding-left: .8rem;
     padding-right: .8rem;

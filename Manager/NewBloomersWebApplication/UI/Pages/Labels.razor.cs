@@ -68,6 +68,11 @@ namespace NewBloomersWebApplication.UI.Pages
             }
         }
 
+        //private async Task ImprimeCompTroca(Order pedido)
+        //{
+
+        //}
+
         private async Task ImprimeEtiqueta(Order pedido)
         {
             await _etiquetasService.PrintLabels(pedido);

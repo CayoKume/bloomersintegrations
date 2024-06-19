@@ -50,17 +50,22 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
             {
                 PARAMETERS = await _linxProdutosCamposAdicionaisRepository.GetParametersAsync(tableName, database, "parameters_lastday");
 
-                var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[data_inicio]", $"2000-01-01").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, "38367316000199");
-                var response = await _apiCall.CallAPIAsync(tableName, body);
-                var registros = _apiCall.DeserializeXML(response);
+                var cnpjs = await _linxProdutosCamposAdicionaisRepository.GetCompanysAsync(tableName, database);
 
-                if (registros.Count() > 0)
+                foreach ( var company in cnpjs )
                 {
-                    var listResults = DeserializeResponse(registros);
-                    if (listResults.Count() > 0)
+                    var body = _apiCall.BuildBodyRequest(PARAMETERS.Replace("[data_inicio]", $"2000-01-01").Replace("[data_fim]", $"{DateTime.Today.ToString("yyyy-MM-dd")}"), tableName, AUTENTIFICACAO, CHAVE, company.doc_company);
+                    var response = await _apiCall.CallAPIAsync(tableName, body);
+                    var registros = _apiCall.DeserializeXML(response);
+
+                    if (registros.Count() > 0)
                     {
-                        var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutosCamposAdicionais>(TEntityToObject));
-                        _linxProdutosCamposAdicionaisRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                        var listResults = DeserializeResponse(registros);
+                        if (listResults.Count() > 0)
+                        {
+                            var list = listResults.ConvertAll(new Converter<TEntity, LinxProdutosCamposAdicionais>(TEntityToObject));
+                            _linxProdutosCamposAdicionaisRepository.BulkInsertIntoTableRaw(list, tableName, database);
+                        }
                     }
                 }
             }

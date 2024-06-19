@@ -1,4 +1,5 @@
-﻿using BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Entities.LinxMicrovix;
+﻿using BloomersIntegrationsCore.Domain.Entities;
+using BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Entities.LinxMicrovix;
 using BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Repositorys.Base;
 
 namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Repositorys.LinxMicrovix
@@ -22,6 +23,34 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
                 }
 
                 _linxMicrovixRepositoryBase.BulkInsertIntoTableRaw(table, database, tableName, table.Rows.Count);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database)
+        {
+            string sql = $@"SELECT empresa as cod_company, nome_emp as name_company, cnpj_emp as doc_company FROM BLOOMERS_LINX..LinxLojas_trusted WHERE nome_emp LIKE '%MISHA%' or nome_emp LIKE '%OPEN%'";
+
+            try
+            {
+                return await _linxMicrovixRepositoryBase.GetCompanysAsync(tableName, sql);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database)
+        {
+            string sql = $@"SELECT empresa as cod_company, nome_emp as name_company, cnpj_emp as doc_company FROM BLOOMERS_LINX..LinxLojas_trusted WHERE nome_emp LIKE '%MISHA%' or nome_emp LIKE '%OPEN%'";
+
+            try
+            {
+                return _linxMicrovixRepositoryBase.GetCompanysNotAsync(tableName, sql);
             }
             catch
             {
