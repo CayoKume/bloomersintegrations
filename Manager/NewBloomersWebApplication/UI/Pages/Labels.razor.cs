@@ -38,6 +38,19 @@ namespace NewBloomersWebApplication.UI.Pages
                     pedido.buttonText = "Imprimir";
                     pedido.buttonClass = "btn btn-primary";
                 }
+
+                if (pedido.present == "S")
+                {
+                    pedido.buttonDisabled = false;
+                    pedido.buttonPresentText = "Imprimir";
+                    pedido.buttonPresentClass = "btn btn-primary";
+                }
+                else
+                {
+                    pedido.buttonDisabled = true;
+                    pedido.buttonPresentText = "Imprimir";
+                    pedido.buttonPresentClass = "btn btn-secondary";
+                }
             }
         }
 
@@ -60,6 +73,19 @@ namespace NewBloomersWebApplication.UI.Pages
                         pedido.buttonText = "Imprimir";
                         pedido.buttonClass = "btn btn-primary";
                     }
+
+                    if (pedido.present == "S")
+                    {
+                        pedido.buttonDisabled = false;
+                        pedido.buttonPresentText = "Imprimir";
+                        pedido.buttonPresentClass = "btn btn-primary";
+                    }
+                    else
+                    {
+                        pedido.buttonDisabled = true;
+                        pedido.buttonPresentText = "Imprimir";
+                        pedido.buttonPresentClass = "btn btn-secondary";
+                    }
                 }
             }
             else
@@ -68,10 +94,18 @@ namespace NewBloomersWebApplication.UI.Pages
             }
         }
 
-        //private async Task ImprimeCompTroca(Order pedido)
-        //{
-
-        //}
+        private async Task ImprimeCompTroca(Order pedido)
+        {
+            try
+            {
+                var base64String = await _etiquetasService.PrintCoupon(doc_company, serie_order, pedido.number);
+                await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, pedido.number);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
         private async Task ImprimeEtiqueta(Order pedido)
         {

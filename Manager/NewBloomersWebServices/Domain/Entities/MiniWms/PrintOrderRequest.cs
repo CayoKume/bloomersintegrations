@@ -1,5 +1,4 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
-using System.ComponentModel.DataAnnotations;
 
 namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
 {

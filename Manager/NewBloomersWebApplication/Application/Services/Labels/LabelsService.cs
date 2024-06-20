@@ -1,7 +1,6 @@
 ﻿using NewBloomersWebApplication.Domain.Entities.Labels;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using Newtonsoft.Json;
-using System.Net.Http;
 using System.Text;
 
 namespace NewBloomersWebApplication.Application.Services
@@ -525,6 +524,21 @@ namespace NewBloomersWebApplication.Application.Services
             {
                 throw;
             }
+        }
+
+        public async Task<string> PrintCoupon(string cnpj_emp, string serie, string nr_pedido)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                { "cnpj_emp", cnpj_emp },
+                { "serie", serie },
+                { "nr_pedido", nr_pedido }
+            };
+            var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+            var result = await _apiCall.GetAsync("GetOrderToPresent", encodedParameters);
+            var pedido = System.Text.Json.JsonSerializer.Deserialize<Order>(result);
+
+            return await _apiCall.PostAsync($"PrintExchangeCupoun", System.Text.Json.JsonSerializer.Serialize(new { serializePedido = pedido }));
         }
     }
 }

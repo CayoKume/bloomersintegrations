@@ -1,6 +1,7 @@
 ﻿using BloomersIntegrationsManager.Domain.Entities.MiniWms;
 using BloomersMiniWmsIntegrations.Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using NewBloomersWebServices.Domain.Entities.MiniWms;
 using System.ComponentModel.DataAnnotations;
 
 namespace NewBloomersWebServices.UI.Controllers.Wms
@@ -90,6 +91,25 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             }
         }
 
+        [HttpGet("GetOrderToPresent")]
+        public async Task<ActionResult<string>> GetOrderToPresent([Required][FromQuery] string cnpj_emp, [Required][FromQuery] string serie, [Required][FromQuery] string nr_pedido)
+        {
+            try
+            {
+                var result = await _labelsService.GetOrdersToPresent(cnpj_emp, serie, nr_pedido);
+
+                if (result is null)
+                    return BadRequest($"Nao foi possivel gerar o cupom de separação.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel gerar o cupom de separação. Erro: {ex.Message}");
+            }
+        }
+
         [HttpPut("UpdateFlagPrinted")]
         public async Task<ActionResult> UpdateFlagPrinted([Required][FromQuery] string nr_pedido)
         {
@@ -106,6 +126,25 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             {
                 Response.StatusCode = 400;
                 return Content($"Nao foi possivel atualizar o retorno do pedido na tabela. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("PrintExchangeCupoun")]
+        public async Task<ActionResult<string>> PrintExchangeCupoun([FromBody] PrintOrderToPresentRequest request)
+        {
+            try
+            {
+                var result = await _labelsService.PrintExchangeCupoun(System.Text.Json.JsonSerializer.Serialize(request.serializePedido));
+
+                if (result is null)
+                    return BadRequest($"Nao foi possivel gerar o cupom de troca.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel gerar o cupom de troca. Erro: {ex.Message}");
             }
         }
     }

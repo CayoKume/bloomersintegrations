@@ -21,10 +21,9 @@ else
             <TemplateColumn Title="Impresso" Align="Align.Center" Class="impresso">
                 <button class="@(context.buttonClass)" @onclick="@(() => ImprimeEtiqueta(context))">@(context.buttonText)</button>
             </TemplateColumn>
-@*             <TemplateColumn Title="Comp. Troca" Align="Align.Center" Class="troca">
-                <button class="@(context.buttonClass)" @onclick="@(() => ImprimeEtiqueta(context))">@(context.buttonText)</button>
-                <button class="btn btn-primary" @onclick="@(() => ImprimeCompTroca(context))">Imprimir</button>
-            </TemplateColumn> *@
+            <TemplateColumn Title="Comp. Troca" Align="Align.Center" Class="troca">
+                <button class="@(context.buttonPresentClass)" @onclick="@(() => ImprimeCompTroca(context))" disabled="@(context.buttonDisabled)">@(context.buttonPresentText)</button>
+            </TemplateColumn>
             <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cliente"></PropertyColumn>
             <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Sortable="true" Align="Align.Center" Class="nome"></PropertyColumn>
             <PropertyColumn Property="@(p => p.client.address_client)" Title="Endereco" Align="Align.Center" Class="endereco"></PropertyColumn>

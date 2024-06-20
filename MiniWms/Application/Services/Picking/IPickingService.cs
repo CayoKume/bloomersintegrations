@@ -12,6 +12,5 @@ namespace BloomersMiniWmsIntegrations.Application.Services
         public Task<bool> UpdateRetorno(string nr_pedido, int volumes, string listProdutos);
         public Task<bool> UpdateShippingCompany(string nr_pedido, int cod_transportador);
         public Task<string> PrintOrderToCupoun(string serializedOrder);
-        public Task<string> PrintExchangeCupounToPrint(string serializedOrder);
     }
 }

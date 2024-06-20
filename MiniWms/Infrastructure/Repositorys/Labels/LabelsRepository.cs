@@ -12,6 +12,100 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public LabelsRepository(ISQLServerConnection conn) =>
             (_conn) = (conn);
 
+        public async Task<Order> GetOrdersToPresent(string cnpj_emp, string serie, string nr_pedido)
+        {
+            var sql = $@"SELECT
+                         DOCUMENTO AS NUMBER,
+                         SUBSTRING (
+	                         OBS,
+	                         CHARINDEX(IIF(DOCUMENTO LIKE '%-VD%', 'Token do Troca Fácil:', 'Token:'), OBS),
+	                         IIF(DOCUMENTO LIKE '%-VD%', 42, 28)
+                         ) AS TOKEN,
+
+                         COD_CLIENT,
+                         REASON_CLIENT,
+                         
+                         COD_COMPANY,
+                         REASON_COMPANY,
+                         NAME_COMPANY,
+                         DOC_COMPANY,
+                         EMAIL_COMPANY,
+                         ADDRESS_COMPANY,
+                         STREET_NUMBER_COMPANY,
+                         COMPLEMENT_ADDRESS_COMPANY,
+                         NEIGHBORHOOD_COMPANY,
+                         CITY_COMPANY,
+                         UF_COMPANY,
+                         ZIP_CODE_COMPANY,
+                         FONE_COMPANY,
+                         STATE_REGISTRATION_COMPANY,
+                         
+                         NUMBER_NF,
+                         AMOUNT_NF,
+                         KEY_NFE_NF,
+                         XML_DISTRIBUITION_NF,
+                         TYPE_NF,
+                         SERIE_NF,
+                         DATE_EMISSION_NF
+
+                         FROM 
+                         (
+	                         SELECT
+	                         DOCUMENTO,
+							 NB_CODIGO_CLIENTE AS COD_CLIENT,
+							 NB_RAZAO_CLIENTE AS REASON_CLIENT,
+                         
+							 NB_COD_REMETENTE AS COD_COMPANY,
+							 NB_RAZAO_REMETENTE AS REASON_COMPANY,
+							 NB_NOME_REMETENTE AS NAME_COMPANY,
+							 NB_DOC_REMETENTE AS DOC_COMPANY,
+							 NB_EMAIL_REMETENTE AS EMAIL_COMPANY,
+							 NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
+							 NB_NUMERO_RUA_REMETENTE AS STREET_NUMBER_COMPANY,
+							 NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
+							 NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
+							 NB_CIDADE_REMETENTE AS CITY_COMPANY,
+							 NB_UF_REMETENTE AS UF_COMPANY,
+							 NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
+							 NB_FONE_REMETENTE AS FONE_COMPANY,
+							 NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
+                         
+							 NF_SAIDA AS NUMBER_NF,
+							 NB_VALOR_PEDIDO AS AMOUNT_NF,
+							 CHAVE_NFE AS KEY_NFE_NF,
+							 CAST(XML_FATURAMENTO AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
+							 'NF' AS TYPE_NF,
+							 (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<serie>', [XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
+							 (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<dhEmi>', [XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF,
+	                         (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))), CHARINDEX('</infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))))) AS OBS
+	                         FROM GENERAL..IT4_WMS_DOCUMENTO 
+	                         WHERE 
+	                         NB_PARA_PRESENTE = 'S' 
+	                         AND NB_DOC_REMETENTE = '{cnpj_emp}'
+                             AND SERIE = '{serie}'
+                             AND DOCUMENTO = '{nr_pedido}'
+	                         AND CHAVE_NFE IS NOT NULL
+	                         AND (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))), CHARINDEX('</infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))))) LIKE '%Token%'
+                         ) AS PEDIDOS_PARA_PRESENTE";
+
+            try
+            {
+                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, Company, Invoice, Order>(sql, (pedido, cliente, empresa, notaFiscal) =>
+                {
+                    pedido.client = cliente;
+                    pedido.company = empresa;
+                    pedido.invoice = notaFiscal;
+                    return pedido;
+                }, splitOn: "cod_client, cod_company, number_nf");
+
+                return result.First();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"MiniWms [Labels] - GetOrdersToPresent - Erro ao obter pedidos na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
+            }
+        }
+
         public async Task<IEnumerable<Order>> GetOrdersToPrint(string cnpj_emp, string serie, string data_inicial, string data_final)
         {
             var sql = $@"SELECT DISTINCT
@@ -19,6 +113,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         A.VOLUMES as volumes,
                         A.NB_CFOP_PEDIDO as cfop,
                         A.NB_ETIQUETA_IMPRESSA as printed,
+                        A.NB_PARA_PRESENTE as present,
                         A.SERIE as serie,
                              
                         (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) as nProt,

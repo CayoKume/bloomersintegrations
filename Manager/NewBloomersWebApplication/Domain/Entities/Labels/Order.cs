@@ -6,14 +6,19 @@
         private List<string> _zpl = new List<string>();
         private List<byte[]> _requests = new List<byte[]>();
 
+        public bool buttonDisabled { get; set; }
         public string? buttonText { get; set; }
         public string? buttonClass { get; set; }
+        public string? buttonPresentText { get; set; }
+        public string? buttonPresentClass { get; set; }
         public string? nProt { get; set; }
         public string? tpNF { get; set; }
         public string? complementAddressStore { get; set; }
         public string? returnShippingCompany { get; set; }
         public string? roteShippingCompany { get; set; }
         public string? printed { get; set; }
+        public string? present { get; set; }
+        public string? token { get; set; }
         public string? serie { get; set; }
 
         public DateTime dateProt { get; set; }

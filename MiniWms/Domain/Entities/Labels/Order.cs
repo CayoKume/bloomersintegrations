@@ -13,6 +13,8 @@
         public string? returnShippingCompany { get; set; }
         public string? roteShippingCompany { get; set; }
         public string? printed { get; set; }
+        public string? present { get; set; }
+        public string? token { get; set; }
         public string? serie { get; set; }
 
         public List<string> awb { get { return _awb; } set { _awb = value; } }
