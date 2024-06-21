@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InvoiceOrder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+448e388fb368d959e190b95bfb458023c4b99eaf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03b0893ee15674d69aa7ec126c1b852ac02642ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("InvoiceOrder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InvoiceOrder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

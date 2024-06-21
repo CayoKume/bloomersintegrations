@@ -223,6 +223,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                          A.NB_CFOP_PEDIDO AS CFOP,
                          C.[1] AS OBS,
                          D.NOME_VENDEDOR AS SELLER,
+                         IIF(A.NB_PARA_PRESENTE = 'S', 'SIM', 'NÃO') AS PRESENT,
                          A.NB_VALOR_PEDIDO AS AMOUNT,
 
                          A.NB_NOME_REMETENTE AS NAME_COMPANY,

@@ -118,6 +118,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Hangfire.SqlServer.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\QuestPDF.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\WebDriver.Support.dll
@@ -130,6 +131,9 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\zxing.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\ZXing.Windows.Compatibility.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\ca\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\de\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\es\Hangfire.Core.resources.dll
@@ -144,6 +148,7 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\tr-TR\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\zh-TW\Hangfire.Core.resources.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\zh\Hangfire.Core.resources.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\runtimes\linux-arm64\native\libQuestPdfSkia.so
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\runtimes\linux-x64\native\libQuestPdfSkia.so
@@ -163,7 +168,6 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\FlashCourier.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\InsertReverse.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\InvoiceOrder.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxCommerce.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxMicrovixWsEntrada.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxMicrovixWsSaida.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\MiniWms.dll
@@ -180,7 +184,6 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Mobsim.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Movidesk.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Pagarme.pdb
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxCommerce.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxMicrovixWsEntrada.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxMicrovixWsSaida.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\MiniWms.pdb
@@ -213,8 +216,5 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.genruntimeconfig.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\ref\NewBloomersWebServices.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\System.Drawing.Common.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\zxing.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\ZXing.Windows.Compatibility.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxCommerce.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\LinxCommerce.pdb

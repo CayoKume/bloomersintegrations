@@ -3,32 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\linxmicrovix\\linxmicrovixerpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\linxmicrovix\\linxmicrovixerpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwssaida\\application\\services\\linxmicrovix\\linxprodutoscamposadicionaisservice\\linxprodutoscamposadicionaisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|solutionrelative:linxmicrovix\\linxmicrovixwssaida\\application\\services\\linxmicrovix\\linxprodutoscamposadicionaisservice\\linxprodutoscamposadicionaisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\infrastructure\\repositorys\\picking\\pickingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\infrastructure\\repositorys\\picking\\pickingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "d176a487-3d06-45f5-836e-0d8e680d602c",
-        "Display": 0,
-        "X": 1,
-        "Y": 1,
-        "Width": 1534,
-        "Height": 814,
-        "WindowState": 0
-      },
       "DocumentGroups": [
         {
           "DockedWidth": 200,
@@ -37,27 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LinxMicrovixERPController.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
-              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
-              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA8AAAA",
+              "Title": "PickingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\Picking\\PickingRepository.cs",
+              "RelativeDocumentMoniker": "MiniWms\\Infrastructure\\Repositorys\\Picking\\PickingRepository.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\Picking\\PickingRepository.cs",
+              "RelativeToolTip": "MiniWms\\Infrastructure\\Repositorys\\Picking\\PickingRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T12:36:53.836Z",
+              "WhenOpened": "2024-06-21T05:41:04.136Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LinxProdutosCamposAdicionaisService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
-              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
-              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxProdutosCamposAdicionaisService\\LinxProdutosCamposAdicionaisService.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAC8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T14:20:43.769Z"
             }
           ]
         }

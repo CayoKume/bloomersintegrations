@@ -123,7 +123,7 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                             column.Item().Text($"{pedido.client.reason_client}").Style(boldStyle).AlignLeft();
 
                             column.Item().PaddingTop(10).AlignLeft().Text($"NFe: {pedido.invoice.number_nf}").Style(normalStyle);//NFe
-                            column.Item().Text($"Data: {pedido.invoice.date_emission_nf}").Style(normalStyle).AlignCenter();//Data em que a Nota foi Autorizada
+                            column.Item().Text($"Data: {pedido.invoice.date_emission_nf}").Style(normalStyle).AlignLeft();//Data em que a Nota foi Autorizada
                             column.Item().AlignLeft().Text($"Chave NFe:").Style(normalStyle);//Chave NFe
                             column.Item().AlignLeft().Text($"{pedido.invoice.key_nfe_nf}").Style(normalStyle);
                         }));

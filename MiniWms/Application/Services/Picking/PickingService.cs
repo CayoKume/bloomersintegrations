@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using System.Globalization;
 using ZXing;
 using ZXing.Common;
 
@@ -44,8 +45,9 @@ namespace BloomersMiniWmsIntegrations.Application.Services
 
         public async Task<string> GetUnpickedOrdersToPrint(string cnpj_emp, string serie_pedido, string data_inicial, string data_final)
         {
-            var list = await _pickingRepository.GetUnpickedOrdersToPrint(cnpj_emp, serie_pedido, data_inicial, data_final);
-            return JsonConvert.SerializeObject(list);
+            throw new NotImplementedException();
+            //var list = await _pickingRepository.GetUnpickedOrdersToPrint(cnpj_emp, serie_pedido, data_inicial, data_final);
+            //return JsonConvert.SerializeObject(list);
         }
 
         public async Task<bool> UpdateRetorno(string nr_pedido, int volumes, string listProdutos)
@@ -128,6 +130,8 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                             column.Item().Text($"Doc: {pedido.client.doc_client} - Insc.Est. {pedido.client.state_registration_client}").Style(normalStyle).AlignLeft();//CNPJ, I.E
                             column.Item().Text($"Email: {pedido.client.email_client}").Style(normalStyle).AlignLeft();//CNPJ, I.E
                             
+                            column.Item().PaddingTop(10).Text($"Para Presente: {pedido.present}").Style(normalStyle).AlignLeft();//Para presente
+                            
                             column.Item().PaddingTop(10).Text($"Transportadora: {pedido.shippingCompany.cod_shippingCompany} - {pedido.shippingCompany.reason_shippingCompany}").Style(normalStyle).AlignLeft();//Código da Transportadora, Transportadora
                             
                             column.Item().PaddingTop(10).Text($"OBS.\n{pedido.obs}").Style(normalStyle).AlignLeft();//Obs do Pedido
@@ -166,7 +170,7 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                                 }
                             }));
 
-                            column.Item().PaddingTop(10).Text($"Total do Pedido: {Convert.ToDouble(pedido.amount.Replace(".", ",")).ToString("C")}").Style(normalStyle).AlignRight();//Obs do Pedido
+                            column.Item().PaddingTop(10).Text($"Total do Pedido: {Convert.ToDouble(pedido.amount.Replace(".", ",")).ToString("C", new CultureInfo("pt-BR"))}").Style(normalStyle).AlignRight();//Obs do Pedido
                         }));
                     });
                 }).GeneratePdf($@"{fileName}");

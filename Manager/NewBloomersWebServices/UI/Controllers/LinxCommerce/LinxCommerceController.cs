@@ -12,14 +12,16 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
         private readonly IOrderService<SearchOrderResponse.Root> _linxOrderService;
         private readonly ISKUService<SearchSKUResponse.Root> _linxSKUService;
         private readonly IProductService<SearchProductResponse.Root> _linxProductService;
+        private readonly ISalesRepresentativeService _salesRepresentativeService;
 
         public LinxCommerceController(
             IOrderService<SearchOrderResponse.Root> linxOrderService,
             ISKUService<SearchSKUResponse.Root> linxSKUService,
-            IProductService<SearchProductResponse.Root> linxProductService
+            IProductService<SearchProductResponse.Root> linxProductService,
+            ISalesRepresentativeService salesRepresentativeService
         ) =>
-            (_linxOrderService, _linxSKUService, _linxProductService) =
-            (linxOrderService, linxSKUService, linxProductService);
+            (_linxOrderService, _linxSKUService, _linxProductService, _salesRepresentativeService) =
+            (linxOrderService, linxSKUService, linxProductService, salesRepresentativeService);
 
         [HttpPost("Pedido")]
         public async Task<ActionResult> IntegraPedido([Required][FromQuery] string nr_pedido)
@@ -82,6 +84,21 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxCommerce
             {
                 Response.StatusCode = 400;
                 return Content($"Nao foi possivel integrar os SKUs. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("SalesRepresentative")]
+        public async Task<ActionResult> AlteraSalesRepresentative()
+        {
+            try
+            {
+                await _salesRepresentativeService.AlteraRegistros();
+                return Ok($"Registros alterados com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel alterar os registros. Erro: {ex.Message}");
             }
         }
     }

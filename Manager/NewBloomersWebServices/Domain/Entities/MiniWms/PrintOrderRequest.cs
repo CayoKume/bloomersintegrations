@@ -14,6 +14,7 @@ namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
         public string number { get; set; }
         public string? obs { get; set; }
         public string? seller { get; set; }
+        public string? present { get; set; }
         public string? amount { get; set; }
 
         public Client? client { get; set; }

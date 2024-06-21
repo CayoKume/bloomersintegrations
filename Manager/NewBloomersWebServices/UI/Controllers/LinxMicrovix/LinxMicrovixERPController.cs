@@ -384,12 +384,6 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
-                await _linxProdutosCamposAdicionaisService.IntegraRegistrosAsync(
-                        "LinxProdutosCamposAdicionais",
-                        "p_LinxProdutosCamposAdicionais_Sincronizacao",
-                        LinxAPIAttributes.TypeEnum.Producao.ToName()
-                    );
-
                 var result = await _linxProdutosCamposAdicionaisService.IntegraRegistrosIndividualAsync(
                         "LinxProdutosCamposAdicionais",
                         "p_LinxProdutosCamposAdicionais_Sincronizacao",

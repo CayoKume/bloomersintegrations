@@ -103,6 +103,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<ISKUService<SearchSKUResponse.Root>, SKUService<SearchSKUResponse.Root>>();
             services.AddScoped<ISKURepository, SKURepository>();
 
+            services.AddScoped<ISalesRepresentativeService, SalesRepresentativeService>();
+
             return services;
         }
 

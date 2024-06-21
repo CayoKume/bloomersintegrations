@@ -78,7 +78,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 							 (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<serie>', [XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
 							 (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<dhEmi>', [XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF,
 	                         (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))), CHARINDEX('</infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))))) AS OBS
-	                         FROM GENERAL..IT4_WMS_DOCUMENTO 
+	                         FROM GENERAL..IT4_WMS_DOCUMENTO (NOLOCK)
 	                         WHERE 
 	                         NB_PARA_PRESENTE = 'S' 
 	                         AND NB_DOC_REMETENTE = '{cnpj_emp}'
@@ -109,78 +109,79 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<IEnumerable<Order>> GetOrdersToPrint(string cnpj_emp, string serie, string data_inicial, string data_final)
         {
             var sql = $@"SELECT DISTINCT
-                        TRIM(A.DOCUMENTO) as number,
-                        A.VOLUMES as volumes,
-                        A.NB_CFOP_PEDIDO as cfop,
-                        A.NB_ETIQUETA_IMPRESSA as printed,
-                        A.NB_PARA_PRESENTE as present,
-                        A.SERIE as serie,
+                        TRIM(A.DOCUMENTO) AS NUMBER,
+                        A.VOLUMES AS VOLUMES,
+                        A.NB_CFOP_PEDIDO AS CFOP,
+                        A.NB_ETIQUETA_IMPRESSA AS PRINTED,
+                        A.NB_PARA_PRESENTE AS PRESENT,
+                        A.SERIE AS SERIE,
                              
-                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) as nProt,
-						(SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhRecbto>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 10, 25)) as dateProt,
+                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) AS NPROT,
+						(SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhRecbto>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 10, 25)) AS DATEPROT,
                              
 						CASE
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '1' THEN '1-SAIDA'
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
-						END AS tpNF,
+						END AS TPNF,
                              
-                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') as returnShippingCompany,
+                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') AS RETURNSHIPPINGCOMPANY,
                              
-                        A.NB_CODIGO_CLIENTE as cod_client,
-                        A.NB_RAZAO_CLIENTE as reason_client,
-                        A.NB_NOME_CLIENTE as name_client,
-                        A.NB_DOC_CLIENTE as doc_client,
-                        A.NB_EMAIL_CLIENTE as email_client,
-                        A.NB_ENDERECO_CLIENTE as address_client,
-                        A.NB_NUMERO_RUA_CLIENTE as street_number_client,
-                        A.NB_COMPLEMENTO_END_CLIENTE as complement_address_client,
-                        A.NB_BAIRRO_CLIENTE as neighborhood_client,
-                        A.NB_CIDADE as city_client,
-                        A.NB_ESTADO as uf_client,
-                        TRIM(REPLACE(A.NB_CEP, '-', '')) as zip_code_client,
-                        A.NB_FONE_CLIENTE as fone_client,
-                        A.NB_INSCRICAO_ESTADUAL_CLIENTE as state_registration_client,
-                        A.NB_INSCRICAO_MUNICIPAL_CLIENTE as municipal_registration_client,
+                        A.NB_CODIGO_CLIENTE AS COD_CLIENT,
+                        A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
+                        A.NB_NOME_CLIENTE AS NAME_CLIENT,
+                        A.NB_DOC_CLIENTE AS DOC_CLIENT,
+                        A.NB_EMAIL_CLIENTE AS EMAIL_CLIENT,
+                        A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+                        A.NB_NUMERO_RUA_CLIENTE AS STREET_NUMBER_CLIENT,
+                        A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
+                        A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
+                        A.NB_CIDADE AS CITY_CLIENT,
+                        A.NB_ESTADO AS UF_CLIENT,
+                        TRIM(REPLACE(A.NB_CEP, '-', '')) AS ZIP_CODE_CLIENT,
+                        A.NB_FONE_CLIENTE AS FONE_CLIENT,
+                        A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
+                        A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
                               
-                        A.NB_TRANSPORTADORA as cod_shippingCompany,
-                        A.NB_METODO_TRANSPORTADORA as metodo_shippingCompany,
-                        A.NB_RAZAO_TRANSPORTADORA as reason_shippingCompany,
-                        A.NB_NOME_TRANSPORTADORA as name_shippingCompany,
-                        A.NB_DOC_TRANSPORTADORA as doc_shippingCompany,
-                        A.NB_EMAIL_TRANSPORTADORA as email_shippingCompany,
-                        A.NB_ENDERECO_TRANSPORTADORA as address_shippingCompany,
-                        A.NB_NUMERO_RUA_TRANSPORTADORA as street_number_shippingCompany,
-                        A.NB_COMPLEMENTO_END_TRANSPORTADORA as complement_address_shippingCompany,
-                        A.NB_BAIRRO_TRANSPORTADORA as neighborhood_shippingCompany,
-                        A.NB_CIDADE_TRANSPORTADORA as city_shippingCompany,
-                        A.NB_UF_TRANSPORTADORA as uf_shippingCompany,
-                        A.NB_CEP_TRANSPORTADORA as zip_code_shippingCompany,
-                        A.NB_FONE_TRANSPORTADORA as fone_shippingCompany,
-                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA as state_registration_shippingCompany,
+                        A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
+                        A.NB_METODO_TRANSPORTADORA AS METODO_SHIPPINGCOMPANY,
+                        A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
+                        A.NB_NOME_TRANSPORTADORA AS NAME_SHIPPINGCOMPANY,
+                        A.NB_DOC_TRANSPORTADORA AS DOC_SHIPPINGCOMPANY,
+                        A.NB_EMAIL_TRANSPORTADORA AS EMAIL_SHIPPINGCOMPANY,
+                        A.NB_ENDERECO_TRANSPORTADORA AS ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_NUMERO_RUA_TRANSPORTADORA AS STREET_NUMBER_SHIPPINGCOMPANY,
+                        A.NB_COMPLEMENTO_END_TRANSPORTADORA AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_BAIRRO_TRANSPORTADORA AS NEIGHBORHOOD_SHIPPINGCOMPANY,
+                        A.NB_CIDADE_TRANSPORTADORA AS CITY_SHIPPINGCOMPANY,
+                        A.NB_UF_TRANSPORTADORA AS UF_SHIPPINGCOMPANY,
+                        A.NB_CEP_TRANSPORTADORA AS ZIP_CODE_SHIPPINGCOMPANY,
+                        A.NB_FONE_TRANSPORTADORA AS FONE_SHIPPINGCOMPANY,
+                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA AS STATE_REGISTRATION_SHIPPINGCOMPANY,
                               
-                        A.NB_COD_REMETENTE as cod_company,
-                        A.NB_RAZAO_REMETENTE as reason_company,
-                        A.NB_NOME_REMETENTE as name_company,
-                        A.NB_DOC_REMETENTE as doc_company,
-                        A.NB_EMAIL_REMETENTE as email_company,
-                        A.NB_ENDERECO_REMETENTE as address_company,
-                        A.NB_NUMERO_RUA_REMETENTE as street_number_company,
-                        A.NB_COMPLEMENTO_END_REMETENTE as complement_address_company,
-                        A.NB_BAIRRO_REMETENTE as neighborhood_company,
-                        A.NB_CIDADE_REMETENTE as city_company,
-                        A.NB_UF_REMETENTE as uf_company,
-                        A.NB_CEP_REMETENTE as zip_code_company,
-                        A.NB_FONE_REMETENTE as fone_company,
-                        A.NB_INSCRICAO_ESTADUAL_REMETENTE as state_registration_company,
+                        A.NB_COD_REMETENTE AS COD_COMPANY,
+                        A.NB_RAZAO_REMETENTE AS REASON_COMPANY,
+                        A.NB_NOME_REMETENTE AS NAME_COMPANY,
+                        A.NB_DOC_REMETENTE AS DOC_COMPANY,
+                        A.NB_EMAIL_REMETENTE AS EMAIL_COMPANY,
+                        A.NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
+                        A.NB_NUMERO_RUA_REMETENTE AS STREET_NUMBER_COMPANY,
+                        A.NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
+                        A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
+                        A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
+                        A.NB_UF_REMETENTE AS UF_COMPANY,
+                        A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
+                        A.NB_FONE_REMETENTE AS FONE_COMPANY,
+                        A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
                               
-                        A.NF_SAIDA as number_nf,
-                        A.NB_VALOR_PEDIDO as amount_nf,
-                        A.CHAVE_NFE as key_nfe_nf,
-                        CAST(A.XML_FATURAMENTO AS VARCHAR(MAX)) as xml_distribuition_nf,
-                        'NF' as type_nf,
-                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', a.[XML_FATURAMENTO]) + 7, 1)) as serie_nf,
-                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', a.[XML_FATURAMENTO]) + 7, 25)) as date_emission_nf
-                        FROM GENERAL..IT4_WMS_DOCUMENTO A
+                        A.NF_SAIDA AS NUMBER_NF,
+                        A.NB_VALOR_PEDIDO AS AMOUNT_NF,
+                        A.CHAVE_NFE AS KEY_NFE_NF,
+                        CAST(A.XML_FATURAMENTO AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
+                        'NF' AS TYPE_NF,
+                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', a.[XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
+                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', a.[XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF
+
+                        FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                         WHERE
                         --A.NB_ETIQUETA_IMPRESSA = 'N' AND 
                         A.SERIE = '{serie}' 
@@ -212,77 +213,79 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<Order> GetOrderToPrint(string cnpj_emp, string serie, string nr_pedido)
         {
             var sql = $@"SELECT DISTINCT
-                        TRIM(A.DOCUMENTO) as number,
-                        A.VOLUMES as volumes,
-                        A.NB_CFOP_PEDIDO as cfop,
-                        A.NB_ETIQUETA_IMPRESSA as printed,
-                        A.SERIE as serie,
+                        TRIM(A.DOCUMENTO) AS NUMBER,
+                        A.VOLUMES AS VOLUMES,
+                        A.NB_CFOP_PEDIDO AS CFOP,
+                        A.NB_ETIQUETA_IMPRESSA AS PRINTED,
+                        A.NB_PARA_PRESENTE AS PRESENT,
+                        A.SERIE AS SERIE,
                              
-                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) as nProt,
-						(SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhRecbto>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 10, 25)) as dateProt,
+                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<nProt>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 15)) AS NPROT,
+						(SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhRecbto>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 10, 25)) AS DATEPROT,
                              
 						CASE
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '1' THEN '1-SAIDA'
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
-						END AS tpNF,
+						END AS TPNF,
                              
-                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') as returnShippingCompany,
+                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') AS RETURNSHIPPINGCOMPANY,
                              
-                        A.NB_CODIGO_CLIENTE as cod_client,
-                        A.NB_RAZAO_CLIENTE as reason_client,
-                        A.NB_NOME_CLIENTE as name_client,
-                        A.NB_DOC_CLIENTE as doc_client,
-                        A.NB_EMAIL_CLIENTE as email_client,
-                        A.NB_ENDERECO_CLIENTE as address_client,
-                        A.NB_NUMERO_RUA_CLIENTE as street_number_client,
-                        A.NB_COMPLEMENTO_END_CLIENTE as complement_address_client,
-                        A.NB_BAIRRO_CLIENTE as neighborhood_client,
-                        A.NB_CIDADE as city_client,
-                        A.NB_ESTADO as uf_client,
-                        TRIM(REPLACE(A.NB_CEP, '-', '')) as zip_code_client,
-                        A.NB_FONE_CLIENTE as fone_client,
-                        A.NB_INSCRICAO_ESTADUAL_CLIENTE as state_registration_client,
-                        A.NB_INSCRICAO_MUNICIPAL_CLIENTE as municipal_registration_client,
+                        A.NB_CODIGO_CLIENTE AS COD_CLIENT,
+                        A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
+                        A.NB_NOME_CLIENTE AS NAME_CLIENT,
+                        A.NB_DOC_CLIENTE AS DOC_CLIENT,
+                        A.NB_EMAIL_CLIENTE AS EMAIL_CLIENT,
+                        A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+                        A.NB_NUMERO_RUA_CLIENTE AS STREET_NUMBER_CLIENT,
+                        A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
+                        A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
+                        A.NB_CIDADE AS CITY_CLIENT,
+                        A.NB_ESTADO AS UF_CLIENT,
+                        TRIM(REPLACE(A.NB_CEP, '-', '')) AS ZIP_CODE_CLIENT,
+                        A.NB_FONE_CLIENTE AS FONE_CLIENT,
+                        A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
+                        A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
                               
-                        A.NB_TRANSPORTADORA as cod_shippingCompany,
-                        A.NB_METODO_TRANSPORTADORA as metodo_shippingCompany,
-                        A.NB_RAZAO_TRANSPORTADORA as reason_shippingCompany,
-                        A.NB_NOME_TRANSPORTADORA as name_shippingCompany,
-                        A.NB_DOC_TRANSPORTADORA as doc_shippingCompany,
-                        A.NB_EMAIL_TRANSPORTADORA as email_shippingCompany,
-                        A.NB_ENDERECO_TRANSPORTADORA as address_shippingCompany,
-                        A.NB_NUMERO_RUA_TRANSPORTADORA as street_number_shippingCompany,
-                        A.NB_COMPLEMENTO_END_TRANSPORTADORA as complement_address_shippingCompany,
-                        A.NB_BAIRRO_TRANSPORTADORA as neighborhood_shippingCompany,
-                        A.NB_CIDADE_TRANSPORTADORA as city_shippingCompany,
-                        A.NB_UF_TRANSPORTADORA as uf_shippingCompany,
-                        A.NB_CEP_TRANSPORTADORA as zip_code_shippingCompany,
-                        A.NB_FONE_TRANSPORTADORA as fone_shippingCompany,
-                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA as state_registration_shippingCompany,
+                        A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
+                        A.NB_METODO_TRANSPORTADORA AS METODO_SHIPPINGCOMPANY,
+                        A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
+                        A.NB_NOME_TRANSPORTADORA AS NAME_SHIPPINGCOMPANY,
+                        A.NB_DOC_TRANSPORTADORA AS DOC_SHIPPINGCOMPANY,
+                        A.NB_EMAIL_TRANSPORTADORA AS EMAIL_SHIPPINGCOMPANY,
+                        A.NB_ENDERECO_TRANSPORTADORA AS ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_NUMERO_RUA_TRANSPORTADORA AS STREET_NUMBER_SHIPPINGCOMPANY,
+                        A.NB_COMPLEMENTO_END_TRANSPORTADORA AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_BAIRRO_TRANSPORTADORA AS NEIGHBORHOOD_SHIPPINGCOMPANY,
+                        A.NB_CIDADE_TRANSPORTADORA AS CITY_SHIPPINGCOMPANY,
+                        A.NB_UF_TRANSPORTADORA AS UF_SHIPPINGCOMPANY,
+                        A.NB_CEP_TRANSPORTADORA AS ZIP_CODE_SHIPPINGCOMPANY,
+                        A.NB_FONE_TRANSPORTADORA AS FONE_SHIPPINGCOMPANY,
+                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA AS STATE_REGISTRATION_SHIPPINGCOMPANY,
                               
-                        A.NB_COD_REMETENTE as cod_company,
-                        A.NB_RAZAO_REMETENTE as reason_company,
-                        A.NB_NOME_REMETENTE as name_company,
-                        A.NB_DOC_REMETENTE as doc_company,
-                        A.NB_EMAIL_REMETENTE as email_company,
-                        A.NB_ENDERECO_REMETENTE as address_company,
-                        A.NB_NUMERO_RUA_REMETENTE as street_number_company,
-                        A.NB_COMPLEMENTO_END_REMETENTE as complement_address_company,
-                        A.NB_BAIRRO_REMETENTE as neighborhood_company,
-                        A.NB_CIDADE_REMETENTE as city_company,
-                        A.NB_UF_REMETENTE as uf_company,
-                        A.NB_CEP_REMETENTE as zip_code_company,
-                        A.NB_FONE_REMETENTE as fone_company,
-                        A.NB_INSCRICAO_ESTADUAL_REMETENTE as state_registration_company,
+                        A.NB_COD_REMETENTE AS COD_COMPANY,
+                        A.NB_RAZAO_REMETENTE AS REASON_COMPANY,
+                        A.NB_NOME_REMETENTE AS NAME_COMPANY,
+                        A.NB_DOC_REMETENTE AS DOC_COMPANY,
+                        A.NB_EMAIL_REMETENTE AS EMAIL_COMPANY,
+                        A.NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
+                        A.NB_NUMERO_RUA_REMETENTE AS STREET_NUMBER_COMPANY,
+                        A.NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
+                        A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
+                        A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
+                        A.NB_UF_REMETENTE AS UF_COMPANY,
+                        A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
+                        A.NB_FONE_REMETENTE AS FONE_COMPANY,
+                        A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
                               
-                        A.NF_SAIDA as number_nf,
-                        A.NB_VALOR_PEDIDO as amount_nf,
-                        A.CHAVE_NFE as key_nfe_nf,
-                        CAST(A.XML_FATURAMENTO AS VARCHAR(MAX)) as xml_distribuition_nf,
-                        'NF' as type_nf,
-                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', a.[XML_FATURAMENTO]) + 7, 1)) as serie_nf,
-                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', a.[XML_FATURAMENTO]) + 7, 25)) as date_emission_nf
-                        FROM GENERAL..IT4_WMS_DOCUMENTO A
+                        A.NF_SAIDA AS NUMBER_NF,
+                        A.NB_VALOR_PEDIDO AS AMOUNT_NF,
+                        A.CHAVE_NFE AS KEY_NFE_NF,
+                        CAST(A.XML_FATURAMENTO AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
+                        'NF' AS TYPE_NF,
+                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', a.[XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
+                        (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', a.[XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF
+
+                        FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                         WHERE
                         A.SERIE = '{serie}'
                         AND A.CHAVE_NFE IS NOT NULL 
@@ -314,7 +317,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         {
             var sql = $@"UPDATE [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] SET 
 	                    NB_ETIQUETA_IMPRESSA = 'S'
-                        WHERE TRIM(Documento) = '{nr_pedido}'";
+                        WHERE TRIM(DOCUMENTO) = '{nr_pedido}'";
 
             try
             {

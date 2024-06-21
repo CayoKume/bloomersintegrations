@@ -14,24 +14,24 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<IEnumerable<Company>?> GetCompanys()
         {
             var sql = $@"SELECT 
-                         empresa as cod_company,
-                         cnpj_emp as doc_company,
-                         razao_emp as reason_company,
-                         nome_emp as name_company,
-                         email_emp as email_company,
-                         endereco_emp as address_company,
-                         num_emp as street_number_company,
-                         complement_emp as complement_address_company,
-                         bairro_emp as neighborhood_company,
-                         cidade_emp as city_company,
-                         estado_emp as uf_company,
-                         cep_emp as zip_code_company,
-                         fone_emp as fone_company,
-                         inscricao_emp as state_registration_company,
-                         inscricao_municipal_emp as municipal_registration_company
-                         FROM BLOOMERS_LINX..LinxLojas_trusted
-                         WHERE empresa != 0
-                         ORDER BY empresa asc";
+                         EMPRESA AS COD_COMPANY,
+                         CNPJ_EMP AS DOC_COMPANY,
+                         RAZAO_EMP AS REASON_COMPANY,
+                         NOME_EMP AS NAME_COMPANY,
+                         EMAIL_EMP AS EMAIL_COMPANY,
+                         ENDERECO_EMP AS ADDRESS_COMPANY,
+                         NUM_EMP AS STREET_NUMBER_COMPANY,
+                         COMPLEMENT_EMP AS COMPLEMENT_ADDRESS_COMPANY,
+                         BAIRRO_EMP AS NEIGHBORHOOD_COMPANY,
+                         CIDADE_EMP AS CITY_COMPANY,
+                         ESTADO_EMP AS UF_COMPANY,
+                         CEP_EMP AS ZIP_CODE_COMPANY,
+                         FONE_EMP AS FONE_COMPANY,
+                         INSCRICAO_EMP AS STATE_REGISTRATION_COMPANY,
+                         INSCRICAO_MUNICIPAL_EMP AS MUNICIPAL_REGISTRATION_COMPANY
+                         FROM BLOOMERS_LINX..LINXLOJAS_TRUSTED (NOLOCK)
+                         WHERE EMPRESA != 0
+                         ORDER BY EMPRESA ASC";
 
             try
             {
