@@ -597,6 +597,13 @@ body[b-g4dd7fnjmr] {
     padding-bottom: .5rem;
 }
 
+[b-g4dd7fnjmr] .quickgrid[theme=corporate] .troca {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
 [b-g4dd7fnjmr] .quickgrid[theme=corporate] .cliente {
     padding-left: .8rem;
     padding-right: .8rem;

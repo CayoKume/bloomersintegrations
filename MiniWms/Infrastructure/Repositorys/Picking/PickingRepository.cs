@@ -18,24 +18,24 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<List<ShippingCompany>?> GetShippingCompanys()
         {
             var sql = $@"SELECT 
-                         cod_cliente as cod_shippingCompany,
-                         doc_cliente as doc_shippingCompany,
-                         razao_cliente as reason_shippingCompany,
-                         nome_cliente as name_shippingCompany,
-                         email_cliente as email_shippingCompany,
-                         endereco_cliente as address_shippingCompany,
-                         numero_rua_cliente as street_number_shippingCompany,
-                         complement_end_cli as complement_address_shippingCompany,
-                         bairro_cliente as neighborhood_shippingCompany,
-                         cidade_cliente as city_shippingCompany,
-                         uf_cliente as uf_shippingCompany,
-                         cep_cliente as zip_code_shippingCompany,
-                         fone_cliente as fone_shippingCompany,
-                         inscricao_estadual as state_registration_shippingCompany,
-                         incricao_municipal as municipal_registration_shippingCompany
-                         FROM BLOOMERS_LINX..LinxClientesFornec_trusted (NOLOCK)
-                         WHERE tipo_cadastro = 'T'
-                         ORDER BY cod_cliente";
+                         COD_CLIENTE AS COD_SHIPPINGCOMPANY,
+                         DOC_CLIENTE AS DOC_SHIPPINGCOMPANY,
+                         RAZAO_CLIENTE AS REASON_SHIPPINGCOMPANY,
+                         NOME_CLIENTE AS NAME_SHIPPINGCOMPANY,
+                         EMAIL_CLIENTE AS EMAIL_SHIPPINGCOMPANY,
+                         ENDERECO_CLIENTE AS ADDRESS_SHIPPINGCOMPANY,
+                         NUMERO_RUA_CLIENTE AS STREET_NUMBER_SHIPPINGCOMPANY,
+                         COMPLEMENT_END_CLI AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
+                         BAIRRO_CLIENTE AS NEIGHBORHOOD_SHIPPINGCOMPANY,
+                         CIDADE_CLIENTE AS CITY_SHIPPINGCOMPANY,
+                         UF_CLIENTE AS UF_SHIPPINGCOMPANY,
+                         CEP_CLIENTE AS ZIP_CODE_SHIPPINGCOMPANY,
+                         FONE_CLIENTE AS FONE_SHIPPINGCOMPANY,
+                         INSCRICAO_ESTADUAL AS STATE_REGISTRATION_SHIPPINGCOMPANY,
+                         INCRICAO_MUNICIPAL AS MUNICIPAL_REGISTRATION_SHIPPINGCOMPANY
+                         FROM BLOOMERS_LINX..LINXCLIENTESFORNEC_TRUSTED (NOLOCK)
+                         WHERE TIPO_CADASTRO = 'T'
+                         ORDER BY COD_CLIENTE";
 
             try
             {
@@ -51,54 +51,54 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<Order?> GetUnpickedOrder(string cnpj_emp, string serie, string nr_pedido)
         {
             var sql = $@"SELECT DISTINCT
-                        TRIM(A.DOCUMENTO) as number,
-                        A.RETORNO as retorno,
-                        A.VOLUMES as volumes,
+                        TRIM(A.DOCUMENTO) AS NUMBER,
+                        A.RETORNO AS RETORNO,
+                        A.VOLUMES AS VOLUMES,
 
-                        A.NB_CODIGO_CLIENTE as cod_client,
-                        A.NB_RAZAO_CLIENTE as reason_client,
-                        A.NB_DOC_CLIENTE as doc_client,
-                        A.NB_ENDERECO_CLIENTE as address_client,
-                        A.NB_NUMERO_RUA_CLIENTE as street_number_client,
-                        A.NB_COMPLEMENTO_END_CLIENTE as complement_address_client,
-                        A.NB_BAIRRO_CLIENTE as neighborhood_client,
-                        A.NB_CIDADE as city_client,
-                        A.NB_ESTADO as uf_client,
-                        TRIM(REPLACE(A.NB_CEP, '-', '')) as zip_code_client,
-                        A.NB_FONE_CLIENTE as fone_client,
+                        A.NB_CODIGO_CLIENTE AS COD_CLIENT,
+                        A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
+                        A.NB_DOC_CLIENTE AS DOC_CLIENT,
+                        A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+                        A.NB_NUMERO_RUA_CLIENTE AS STREET_NUMBER_CLIENT,
+                        A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
+                        A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
+                        A.NB_CIDADE AS CITY_CLIENT,
+                        A.NB_ESTADO AS UF_CLIENT,
+                        TRIM(REPLACE(A.NB_CEP, '-', '')) AS ZIP_CODE_CLIENT,
+                        A.NB_FONE_CLIENTE AS FONE_CLIENT,
 
-                        A.NB_TRANSPORTADORA as cod_shippingCompany,
-                        A.NB_METODO_TRANSPORTADORA as metodo_shippingCompany,
-                        A.NB_RAZAO_TRANSPORTADORA as reason_shippingCompany,
-                        A.NB_NOME_TRANSPORTADORA as name_shippingCompany,
-                        A.NB_DOC_TRANSPORTADORA as doc_shippingCompany,
-                        A.NB_EMAIL_TRANSPORTADORA as email_shippingCompany,
-                        A.NB_ENDERECO_TRANSPORTADORA as address_shippingCompany,
-                        A.NB_NUMERO_RUA_TRANSPORTADORA as street_number_shippingCompany,
-                        A.NB_COMPLEMENTO_END_TRANSPORTADORA as complement_address_shippingCompany,
-                        A.NB_BAIRRO_TRANSPORTADORA as neighborhood_shippingCompany,
-                        A.NB_CIDADE_TRANSPORTADORA as city_shippingCompany,
-                        A.NB_UF_TRANSPORTADORA as uf_shippingCompany,
-                        A.NB_CEP_TRANSPORTADORA as zip_code_shippingCompany,
-                        A.NB_FONE_TRANSPORTADORA as fone_shippingCompany,
-                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA as state_registration_shippingCompany,
+                        A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
+                        A.NB_METODO_TRANSPORTADORA AS METODO_SHIPPINGCOMPANY,
+                        A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
+                        A.NB_NOME_TRANSPORTADORA AS NAME_SHIPPINGCOMPANY,
+                        A.NB_DOC_TRANSPORTADORA AS DOC_SHIPPINGCOMPANY,
+                        A.NB_EMAIL_TRANSPORTADORA AS EMAIL_SHIPPINGCOMPANY,
+                        A.NB_ENDERECO_TRANSPORTADORA AS ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_NUMERO_RUA_TRANSPORTADORA AS STREET_NUMBER_SHIPPINGCOMPANY,
+                        A.NB_COMPLEMENTO_END_TRANSPORTADORA AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_BAIRRO_TRANSPORTADORA AS NEIGHBORHOOD_SHIPPINGCOMPANY,
+                        A.NB_CIDADE_TRANSPORTADORA AS CITY_SHIPPINGCOMPANY,
+                        A.NB_UF_TRANSPORTADORA AS UF_SHIPPINGCOMPANY,
+                        A.NB_CEP_TRANSPORTADORA AS ZIP_CODE_SHIPPINGCOMPANY,
+                        A.NB_FONE_TRANSPORTADORA AS FONE_SHIPPINGCOMPANY,
+                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA AS STATE_REGISTRATION_SHIPPINGCOMPANY,
                               
-                        A.NB_VALOR_PEDIDO as amount_nf,
+                        A.NB_VALOR_PEDIDO AS AMOUNT_NF,
 
-                        TRIM(B.CODIGO_BARRA) as cod_product,
-						B.QTDE as quantity_product,
-                        B.QTDERETORNO as picked_quantity,
-						B.NB_SKU_PRODUTO as sku_product,
-						B.DESCRICAO as description_product,
-						TRIM(B.CODIGO_BARRA) as cod_ean_product,
-						B.NB_VALOR_UNITARIO_PRODUTO as unitary_value_product,
-						B.NB_VALOR_TOTAL_PRODUTO as amount_product,
-						B.NB_VALOR_FRETE_PRODUTO as shipping_value_product,
-                        IIF(C.IMG1 IS NULL, '', C.IMG1) as urlImg
+                        TRIM(B.CODIGO_BARRA) AS COD_PRODUCT,
+						B.QTDE AS QUANTITY_PRODUCT,
+                        B.QTDERETORNO AS PICKED_QUANTITY,
+						B.NB_SKU_PRODUTO AS SKU_PRODUCT,
+						B.DESCRICAO AS DESCRIPTION_PRODUCT,
+						TRIM(B.CODIGO_BARRA) AS COD_EAN_PRODUCT,
+						B.NB_VALOR_UNITARIO_PRODUTO AS UNITARY_VALUE_PRODUCT,
+						B.NB_VALOR_TOTAL_PRODUTO AS AMOUNT_PRODUCT,
+						B.NB_VALOR_FRETE_PRODUTO AS SHIPPING_VALUE_PRODUCT,
+                        IIF(C.IMG1 IS NULL, '', C.IMG1) AS URLIMG
 
-                        FROM GENERAL..IT4_WMS_DOCUMENTO A
-                        JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B ON A.IDCONTROLE = B.IDCONTROLE
-						LEFT JOIN BLOOMERS_OPERACOES..CANAL_MOVIMENTACAO C ON B.CODIGO_BARRA = C.COD_PRODUTO AND C.PEDIDO = A.DOCUMENTO
+                        FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
+                        JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+						LEFT JOIN BLOOMERS_OPERACOES..CANAL_MOVIMENTACAO C (NOLOCK) ON B.CODIGO_BARRA = C.COD_PRODUTO AND C.PEDIDO = A.DOCUMENTO
                         WHERE
                         A.SERIE = '{serie}'
                         AND A.NB_DOC_REMETENTE = '{cnpj_emp}' 
@@ -134,54 +134,54 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public async Task<List<Order>?> GetUnpickedOrders(string cnpj_emp, string serie_pedido, string data_inicial, string data_final)
         {
             var sql = $@"SELECT DISTINCT
-                        TRIM(A.DOCUMENTO) as number,
-                        A.RETORNO as retorno,
-                        A.VOLUMES as volumes,
+                        TRIM(A.DOCUMENTO) AS NUMBER,
+                        A.RETORNO AS RETORNO,
+                        A.VOLUMES AS VOLUMES,
 
-                        A.NB_CODIGO_CLIENTE as cod_client,
-                        A.NB_RAZAO_CLIENTE as reason_client,
-                        A.NB_DOC_CLIENTE as doc_client,
-                        A.NB_ENDERECO_CLIENTE as address_client,
-                        A.NB_NUMERO_RUA_CLIENTE as street_number_client,
-                        A.NB_COMPLEMENTO_END_CLIENTE as complement_address_client,
-                        A.NB_BAIRRO_CLIENTE as neighborhood_client,
-                        A.NB_CIDADE as city_client,
-                        A.NB_ESTADO as uf_client,
-                        TRIM(REPLACE(A.NB_CEP, '-', '')) as zip_code_client,
-                        A.NB_FONE_CLIENTE as fone_client,
-                        
-                        A.NB_TRANSPORTADORA as cod_shippingCompany,
-                        A.NB_METODO_TRANSPORTADORA as metodo_shippingCompany,
-                        A.NB_RAZAO_TRANSPORTADORA as reason_shippingCompany,
-                        A.NB_NOME_TRANSPORTADORA as name_shippingCompany,
-                        A.NB_DOC_TRANSPORTADORA as doc_shippingCompany,
-                        A.NB_EMAIL_TRANSPORTADORA as email_shippingCompany,
-                        A.NB_ENDERECO_TRANSPORTADORA as address_shippingCompany,
-                        A.NB_NUMERO_RUA_TRANSPORTADORA as street_number_shippingCompany,
-                        A.NB_COMPLEMENTO_END_TRANSPORTADORA as complement_address_shippingCompany,
-                        A.NB_BAIRRO_TRANSPORTADORA as neighborhood_shippingCompany,
-                        A.NB_CIDADE_TRANSPORTADORA as city_shippingCompany,
-                        A.NB_UF_TRANSPORTADORA as uf_shippingCompany,
-                        A.NB_CEP_TRANSPORTADORA as zip_code_shippingCompany,
-                        A.NB_FONE_TRANSPORTADORA as fone_shippingCompany,
-                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA as state_registration_shippingCompany,
+                        A.NB_CODIGO_CLIENTE AS COD_CLIENT,
+                        A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
+                        A.NB_DOC_CLIENTE AS DOC_CLIENT,
+                        A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+                        A.NB_NUMERO_RUA_CLIENTE AS STREET_NUMBER_CLIENT,
+                        A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
+                        A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
+                        A.NB_CIDADE AS CITY_CLIENT,
+                        A.NB_ESTADO AS UF_CLIENT,
+                        TRIM(REPLACE(A.NB_CEP, '-', '')) AS ZIP_CODE_CLIENT,
+                        A.NB_FONE_CLIENTE AS FONE_CLIENT,
 
-                        A.NB_VALOR_PEDIDO as amount_nf,
+                        A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
+                        A.NB_METODO_TRANSPORTADORA AS METODO_SHIPPINGCOMPANY,
+                        A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
+                        A.NB_NOME_TRANSPORTADORA AS NAME_SHIPPINGCOMPANY,
+                        A.NB_DOC_TRANSPORTADORA AS DOC_SHIPPINGCOMPANY,
+                        A.NB_EMAIL_TRANSPORTADORA AS EMAIL_SHIPPINGCOMPANY,
+                        A.NB_ENDERECO_TRANSPORTADORA AS ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_NUMERO_RUA_TRANSPORTADORA AS STREET_NUMBER_SHIPPINGCOMPANY,
+                        A.NB_COMPLEMENTO_END_TRANSPORTADORA AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
+                        A.NB_BAIRRO_TRANSPORTADORA AS NEIGHBORHOOD_SHIPPINGCOMPANY,
+                        A.NB_CIDADE_TRANSPORTADORA AS CITY_SHIPPINGCOMPANY,
+                        A.NB_UF_TRANSPORTADORA AS UF_SHIPPINGCOMPANY,
+                        A.NB_CEP_TRANSPORTADORA AS ZIP_CODE_SHIPPINGCOMPANY,
+                        A.NB_FONE_TRANSPORTADORA AS FONE_SHIPPINGCOMPANY,
+                        A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA AS STATE_REGISTRATION_SHIPPINGCOMPANY,
+                              
+                        A.NB_VALOR_PEDIDO AS AMOUNT_NF,
 
-                        TRIM(B.CODIGO_BARRA) as cod_product,
-						B.QTDE as quantity_product,
-                        B.QTDERETORNO as picked_quantity,
-						B.NB_SKU_PRODUTO as sku_product,
-						B.DESCRICAO as description_product,
-						TRIM(B.CODIGO_BARRA) as cod_ean_product,
-						B.NB_VALOR_UNITARIO_PRODUTO as unitary_value_product,
-						B.NB_VALOR_TOTAL_PRODUTO as amount_product,
-						B.NB_VALOR_FRETE_PRODUTO as shipping_value_product,
-                        IIF(C.IMG1 IS NULL, '', C.IMG1) as urlImg
+                        TRIM(B.CODIGO_BARRA) AS COD_PRODUCT,
+						B.QTDE AS QUANTITY_PRODUCT,
+                        B.QTDERETORNO AS PICKED_QUANTITY,
+						B.NB_SKU_PRODUTO AS SKU_PRODUCT,
+						B.DESCRICAO AS DESCRIPTION_PRODUCT,
+						TRIM(B.CODIGO_BARRA) AS COD_EAN_PRODUCT,
+						B.NB_VALOR_UNITARIO_PRODUTO AS UNITARY_VALUE_PRODUCT,
+						B.NB_VALOR_TOTAL_PRODUTO AS AMOUNT_PRODUCT,
+						B.NB_VALOR_FRETE_PRODUTO AS SHIPPING_VALUE_PRODUCT,
+                        IIF(C.IMG1 IS NULL, '', C.IMG1) AS URLIMG
 
-                        FROM GENERAL..IT4_WMS_DOCUMENTO A
-						JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B ON A.IDCONTROLE = B.IDCONTROLE
-						LEFT JOIN BLOOMERS_OPERACOES..CANAL_MOVIMENTACAO C ON B.CODIGO_BARRA = C.COD_PRODUTO AND C.PEDIDO = A.DOCUMENTO
+                        FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
+						JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+						LEFT JOIN BLOOMERS_OPERACOES..CANAL_MOVIMENTACAO C (NOLOCK) ON B.CODIGO_BARRA = C.COD_PRODUTO AND C.PEDIDO = A.DOCUMENTO
                         WHERE
                         --A.DOCUMENTO = ''
                         A.SERIE = '{serie_pedido}'

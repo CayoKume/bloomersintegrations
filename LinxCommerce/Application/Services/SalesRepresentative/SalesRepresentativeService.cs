@@ -18,39 +18,47 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
         {
             try
             {
-                var objectRequest = new
+                var objectSearchSalesRepresentativeRequest = new
                 {
                     Page = new { PageIndex = 0, PageSize = 0 },
                     WhereMetadata = "",
                     OrderBy = "",
                 };
 
-                var searchSalesRepresentativeResponse = await _apiCall.PostRequest(objectRequest, "/v1/Sales/API.svc/web/SearchSalesRepresentative", AUTENTIFICACAO, CHAVE);
-                var searchSalesRepresentatives = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchSalesRepresentativeResponse.Root>(searchSalesRepresentativeResponse);
+                var searchSalesRepresentativeResponse = await _apiCall.PostRequest(objectSearchSalesRepresentativeRequest, "/v1/Sales/API.svc/web/SearchSalesRepresentative", AUTENTIFICACAO, CHAVE);
+                var searchSalesRepresentative = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchSalesRepresentativeResponse.Root>(searchSalesRepresentativeResponse);
 
-                foreach (var registro in searchSalesRepresentatives.Result)
+                foreach (var registroSearchSalesRepresentative in searchSalesRepresentative.Result)
                 {
+                    var objectGetSalesRepresentativeRequest = new
+                    {
+                        SalesRepresentativeID = registroSearchSalesRepresentative.SalesRepresentativeID
+                    };
+
+                    var registroGetSalesRepresentativeResponse = await _apiCall.PostRequest(objectGetSalesRepresentativeRequest, "/v1/Sales/API.svc/web/GetSalesRepresentative", AUTENTIFICACAO, CHAVE);
+                    var getSalesRepresentative = Newtonsoft.Json.JsonConvert.DeserializeObject<BloomersCommerceIntegrations.LinxCommerce.Domain.Entities.GetSalesRepresentativeResponse.GetSalesRepresentativeResponse.Root>(registroGetSalesRepresentativeResponse);
+
                     var jObject = new
                     {
-                        SalesRepresentativeID = registro.SalesRepresentativeID,
+                        SalesRepresentativeID = getSalesRepresentative.SalesRepresentative.SalesRepresentativeID,
                         RemovePhoto = true,
                         RemoveNotInformedAddresses = true,
                         RemoveNotInformedCustomers = true,
                         RemoveNotInformedUsers = true,
-                        Portfolio = new { HasPortfolio = registro.HasPortfolio, PortfolioAssociationType = "D", Customers = new List<SalesRepresentativeCustomerRelation>() },
-                        ShippingRegion = new { SelectedMode = registro.ShippingRegionSelectedMode },
-                        WebSiteSettings = new { WebSiteFilter = "A" },
-                        Status = registro.Status,
-                        SalesRepresentativeType = registro.SalesRepresentativeType,
-                        Name = registro.Name,
-                        Identification = registro.Identification,
-                        FriendlyCode = registro.FriendlyCode,
-                        Contact = registro.Contact,
-                        OrderTypeItems = registro.OrderTypeItems,
-                        AllowQuoteDeletion = registro.AllowQuoteDeletion,
-                        MaxDiscount = registro.MaxDiscount,
-                        PortfolioCommission = registro.PortfolioCommission,
-                        GeneralCommission = registro.GeneralCommission
+                        Portfolio = new { HasPortfolio = getSalesRepresentative.SalesRepresentative.Portfolio.HasPortfolio, PortfolioAssociationType = "D", Customers = new List<SalesRepresentativeCustomerRelation>() },
+                        ShippingRegion = getSalesRepresentative.SalesRepresentative.ShippingRegion,
+                        WebSiteSettings = getSalesRepresentative.SalesRepresentative.WebSiteSettings,
+                        Status = getSalesRepresentative.SalesRepresentative.Status,
+                        SalesRepresentativeType = getSalesRepresentative.SalesRepresentative.SalesRepresentativeType,
+                        Name = getSalesRepresentative.SalesRepresentative.Name,
+                        Identification = getSalesRepresentative.SalesRepresentative.Identification,
+                        FriendlyCode = getSalesRepresentative.SalesRepresentative.FriendlyCode,
+                        Contact = getSalesRepresentative.SalesRepresentative.Contact,
+                        OrderTypeItems = getSalesRepresentative.SalesRepresentative.OrderTypeItems,
+                        AllowQuoteDeletion = getSalesRepresentative.SalesRepresentative.AllowQuoteDeletion,
+                        MaxDiscount = getSalesRepresentative.SalesRepresentative.MaxDiscount,
+                        PortfolioCommission = getSalesRepresentative.SalesRepresentative.PortfolioCommission,
+                        GeneralCommission = getSalesRepresentative.SalesRepresentative.GeneralCommission
                     };
 
                     var saveSalesRepresentativeResponse = await _apiCall.PostRequest(jObject, "/v1/Sales/API.svc/web/SaveSalesRepresentative", AUTENTIFICACAO, CHAVE);

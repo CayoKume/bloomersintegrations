@@ -141,7 +141,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             );
 
             RecurringJob.AddOrUpdate<ISalesRepresentativeService>("LinxCommerceSalesRepresentative", service => service.AlteraRegistros(),
-                Cron.MinuteInterval(5),
+                Cron.DayInterval(1),
                 queue: "srv-vm-app02"
             );
         }

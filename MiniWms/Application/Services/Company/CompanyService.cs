@@ -14,6 +14,6 @@ namespace BloomersMiniWmsIntegrations.Application.Services
         {
             var list = await _companyRepository.GetCompanys();
             return JsonConvert.SerializeObject(list);
-        }
+        }//
     }
 }
