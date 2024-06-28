@@ -49,16 +49,19 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await  _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Company, Order>(sql, (pedido, cliente, transportadora, notaFiscal, empresa) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.invoice = notaFiscal;
-                    pedido.company = empresa;
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company");
+                    var result = await conn.QueryAsync<Order, Client, ShippingCompany, Invoice, Company, Order>(sql, (pedido, cliente, transportadora, notaFiscal, empresa) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.shippingCompany = transportadora;
+                        pedido.invoice = notaFiscal;
+                        pedido.company = empresa;
+                        return pedido;
+                    }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company");
 
-                return result.First();
+                    return result.First(); 
+                }
             }
             catch (Exception ex)
             {
@@ -124,14 +127,17 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                return await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Company, Order>(sql, (pedido, cliente, transportadora, notaFiscal, empresa) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.invoice = notaFiscal;
-                    pedido.company = empresa;
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company");
+                    return await conn.QueryAsync<Order, Client, ShippingCompany, Invoice, Company, Order>(sql, (pedido, cliente, transportadora, notaFiscal, empresa) =>
+                            {
+                                pedido.client = cliente;
+                                pedido.shippingCompany = transportadora;
+                                pedido.invoice = notaFiscal;
+                                pedido.company = empresa;
+                                return pedido;
+                            }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company"); 
+                }
             }
             catch (Exception ex)
             {

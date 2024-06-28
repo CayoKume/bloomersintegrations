@@ -39,8 +39,11 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<ShippingCompany>(sql);
-                return result.ToList();
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    var result = await conn.QueryAsync<ShippingCompany>(sql);
+                    return result.ToList(); 
+                }
             }
             catch (Exception ex)
             {
@@ -107,23 +110,26 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.invoice = nota_fiscal;
-                    pedido.itens.Add(produto);
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
+                    var result = await conn.QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.shippingCompany = transportadora;
+                        pedido.invoice = nota_fiscal;
+                        pedido.itens.Add(produto);
+                        return pedido;
+                    }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
 
-                var pedidos = result.GroupBy(p => p.number).Select(g =>
-                {
-                    var groupedOrder = g.First();
-                    groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
-                    return groupedOrder;
-                });
+                    var pedidos = result.GroupBy(p => p.number).Select(g =>
+                    {
+                        var groupedOrder = g.First();
+                        groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+                        return groupedOrder;
+                    });
 
-                return pedidos.First();
+                    return pedidos.First(); 
+                }
             }
             catch (Exception ex)
             {
@@ -192,23 +198,26 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.invoice = nota_fiscal;
-                    pedido.itens.Add(produto);
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
+                    var result = await conn.QueryAsync<Order, Client, ShippingCompany, Invoice, Product, Order>(sql, (pedido, cliente, transportadora, nota_fiscal, produto) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.shippingCompany = transportadora;
+                        pedido.invoice = nota_fiscal;
+                        pedido.itens.Add(produto);
+                        return pedido;
+                    }, splitOn: "cod_client, cod_shippingCompany, amount_nf, cod_product");
 
-                var pedidos = result.GroupBy(p => p.number).Select(g =>
-                {
-                    var groupedOrder = g.First();
-                    groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
-                    return groupedOrder;
-                });
+                    var pedidos = result.GroupBy(p => p.number).Select(g =>
+                    {
+                        var groupedOrder = g.First();
+                        groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+                        return groupedOrder;
+                    });
 
-                return pedidos.ToList();
+                    return pedidos.ToList(); 
+                }
             }
             catch (Exception ex)
             {
@@ -299,24 +308,27 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Company, Client, ShippingCompany, ProductToPrint, Order>(sql, (pedido, empresa, cliente, transportadora, produto) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.company = empresa;
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.itens.Add(produto);
-                    return pedido;
-                }, splitOn: "name_company, reason_client, cod_shippingcompany, iditem");
+                    var result = await conn.QueryAsync<Order, Company, Client, ShippingCompany, ProductToPrint, Order>(sql, (pedido, empresa, cliente, transportadora, produto) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.company = empresa;
+                        pedido.client = cliente;
+                        pedido.shippingCompany = transportadora;
+                        pedido.itens.Add(produto);
+                        return pedido;
+                    }, splitOn: "name_company, reason_client, cod_shippingcompany, iditem");
 
-                var pedidos = result.GroupBy(p => p.number).Select(g =>
-                {
-                    var groupedOrder = g.First();
-                    groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
-                    return groupedOrder;
-                });
+                    var pedidos = result.GroupBy(p => p.number).Select(g =>
+                    {
+                        var groupedOrder = g.First();
+                        groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+                        return groupedOrder;
+                    });
 
-                return pedidos.First();
+                    return pedidos.First(); 
+                }
             }
             catch (Exception ex)
             {
@@ -376,7 +388,10 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                return await _conn.GetDbConnection().ExecuteAsync(sql);
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.ExecuteAsync(sql); 
+                }
             }
             catch (Exception ex)
             {
@@ -410,7 +425,10 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                             UPPER(TRIM(A.DOCUMENTO)) = ('{nr_pedido.ToUpper()}')";
             try
             {
-                return await _conn.GetDbConnection().ExecuteAsync(sql);
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.ExecuteAsync(sql); 
+                }
             }
             catch (Exception ex)
             {

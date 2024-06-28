@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
-using NewBloomersWebApplication.Domain.Entities.Picking;
-using static NewBloomersWebApplication.Domain.Entities.AppContext;
 
 namespace NewBloomersWebApplication.UI.Pages
 {
@@ -14,6 +12,7 @@ namespace NewBloomersWebApplication.UI.Pages
         private bool modalOrderNumberEmpty { get; set; }
         private bool modalUpdateIsSuccessful { get; set; }
         private bool modalUpdateIsFailed { get; set; }
+
         private string? inputValueShippCompanie { get; set; } = "1210";
         private string? orderNumber { get; set; }
         private string? shippingCompany { get; set; }

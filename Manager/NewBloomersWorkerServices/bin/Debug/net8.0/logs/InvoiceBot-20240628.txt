@@ -1,0 +1,135 @@
+2024-06-28 10:17:47.469 -03:00 [INF] Obtidos: 3 pedidos para serem faturados
+2024-06-28 10:19:04.207 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ40426
+2024-06-28 10:19:04.209 -03:00 [INF] Realizando o login no ERP
+2024-06-28 10:19:04.478 -03:00 [INF] Selecionando empresa
+2024-06-28 10:19:10.588 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 10:19:12.614 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 10:19:12.655 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 10:19:12.831 -03:00 [INF] Selecionando o pedido
+2024-06-28 10:19:22.235 -03:00 [ERR] Errors => Cannot locate option with value: 40426; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-06-28 10:19:25.772 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40420
+2024-06-28 10:19:25.773 -03:00 [INF] Selecionando empresa
+2024-06-28 10:19:55.987 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 10:19:58.015 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 10:19:58.052 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 10:19:58.135 -03:00 [INF] Selecionando o pedido
+2024-06-28 10:20:05.442 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 10:20:13.193 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 11:42:14.592 -03:00 [INF] Obtidos: 3 pedidos para serem faturados
+2024-06-28 11:42:17.291 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ40426
+2024-06-28 11:42:17.293 -03:00 [INF] Realizando o login no ERP
+2024-06-28 11:42:17.518 -03:00 [INF] Selecionando empresa
+2024-06-28 11:42:22.758 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:42:24.817 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:42:24.853 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:42:25.028 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:42:32.440 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 11:42:33.312 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 11:43:35.695 -03:00 [INF] Obtidos: 3 pedidos para serem faturados
+2024-06-28 11:43:38.876 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ40426
+2024-06-28 11:43:38.878 -03:00 [INF] Realizando o login no ERP
+2024-06-28 11:43:39.169 -03:00 [INF] Selecionando empresa
+2024-06-28 11:43:48.791 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:43:50.825 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:43:51.401 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:43:51.580 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:44:36.187 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 11:44:37.709 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 11:46:59.894 -03:00 [ERR] Errors => Timed out after 30 seconds
+2024-06-28 11:47:00.032 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40420
+2024-06-28 11:47:00.034 -03:00 [INF] Selecionando empresa
+2024-06-28 11:47:30.172 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:47:32.211 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:47:32.251 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:47:32.337 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:47:59.245 -03:00 [ERR] Errors => Cannot locate option with value: 40420; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-06-28 11:47:59.293 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40421
+2024-06-28 11:47:59.298 -03:00 [INF] Selecionando empresa
+2024-06-28 11:48:29.445 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:48:31.471 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:48:31.588 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:48:31.709 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:51:52.249 -03:00 [INF] Obtidos: 3 pedidos para serem faturados
+2024-06-28 11:51:54.659 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ40426
+2024-06-28 11:51:54.661 -03:00 [INF] Realizando o login no ERP
+2024-06-28 11:51:55.007 -03:00 [INF] Selecionando empresa
+2024-06-28 11:52:00.201 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:52:02.244 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:52:02.315 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:52:02.493 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:52:30.849 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 11:52:38.046 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 11:53:11.975 -03:00 [INF] Incluindo dados do centro de custo
+2024-06-28 11:53:24.791 -03:00 [INF] Pedido: MI-LJ40426, faturado com sucesso
+2024-06-28 11:53:24.862 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40420
+2024-06-28 11:53:24.866 -03:00 [INF] Selecionando empresa
+2024-06-28 11:53:55.133 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:53:57.185 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:53:57.234 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:53:57.364 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:54:02.527 -03:00 [ERR] Errors => Cannot locate option with value: 40420; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-06-28 11:54:02.593 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40421
+2024-06-28 11:54:02.598 -03:00 [INF] Selecionando empresa
+2024-06-28 11:54:32.875 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:54:34.921 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:54:34.985 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:54:35.066 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:54:40.258 -03:00 [ERR] Errors => Cannot locate option with value: 40421; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-06-28 11:54:42.675 -03:00 [INF] Obtidos: 3 pedidos para serem faturados
+2024-06-28 11:54:44.999 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ40426
+2024-06-28 11:54:45.001 -03:00 [INF] Realizando o login no ERP
+2024-06-28 11:54:45.164 -03:00 [INF] Selecionando empresa
+2024-06-28 11:54:50.932 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:54:52.978 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:54:53.063 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:54:53.219 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:54:58.594 -03:00 [ERR] Errors => Cannot locate option with value: 40426; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-06-28 11:54:58.645 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40420
+2024-06-28 11:54:58.646 -03:00 [INF] Selecionando empresa
+2024-06-28 11:56:30.432 -03:00 [INF] Obtidos: 4 pedidos para serem faturados
+2024-06-28 11:56:32.758 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40419
+2024-06-28 11:56:32.759 -03:00 [INF] Realizando o login no ERP
+2024-06-28 11:56:32.986 -03:00 [INF] Selecionando empresa
+2024-06-28 11:56:39.297 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:56:41.363 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:56:41.404 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:56:41.623 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:56:46.830 -03:00 [ERR] Errors => Cannot locate option with value: 40419; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2024-06-28 11:56:46.876 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40433
+2024-06-28 11:56:46.879 -03:00 [INF] Selecionando empresa
+2024-06-28 11:57:17.049 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:57:19.079 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:57:19.117 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:57:19.204 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:57:26.250 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 11:57:31.876 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 11:58:10.277 -03:00 [INF] Incluindo dados do centro de custo
+2024-06-28 11:58:24.469 -03:00 [INF] Pedido: MI-VD40433, faturado com sucesso
+2024-06-28 11:58:24.558 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40438
+2024-06-28 11:58:24.562 -03:00 [INF] Selecionando empresa
+2024-06-28 11:58:54.798 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 11:58:56.853 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 11:58:56.910 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 11:58:57.044 -03:00 [INF] Selecionando o pedido
+2024-06-28 11:59:04.500 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 11:59:13.574 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 11:59:35.507 -03:00 [INF] Incluindo dados do centro de custo
+2024-06-28 11:59:49.106 -03:00 [INF] Pedido: MI-VD40438, faturado com sucesso
+2024-06-28 11:59:49.157 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40439
+2024-06-28 11:59:49.168 -03:00 [INF] Selecionando empresa
+2024-06-28 12:00:19.209 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 12:00:21.238 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 12:00:21.272 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 12:00:21.349 -03:00 [INF] Selecionando o pedido
+2024-06-28 12:00:28.355 -03:00 [INF] Incluindo dados do pedido
+2024-06-28 12:00:33.817 -03:00 [INF] Incluindo dados da transportadora
+2024-06-28 12:00:54.384 -03:00 [ERR] Errors =>  - element click intercepted: Element <input data-v-4fd38a4c="" type="radio" id="tipo_frete1" name="tipo_frete" value="1"> is not clickable at point (256, 6). Other element would receive the click: <div id="loading" style="opacity: 0.0004;">...</div>
+  (Session info: chrome=126.0.6478.127)
+2024-06-28 12:00:57.617 -03:00 [INF] Obtidos: 4 pedidos para serem faturados
+2024-06-28 12:01:01.575 -03:00 [INF] Iniciando o faturamento do pedido MI-VD40419
+2024-06-28 12:01:01.577 -03:00 [INF] Realizando o login no ERP
+2024-06-28 12:01:01.921 -03:00 [INF] Selecionando empresa
+2024-06-28 12:01:12.641 -03:00 [INF] Fechando modal de notas pendentes
+2024-06-28 12:01:14.690 -03:00 [INF] Abrindo o menu lateral
+2024-06-28 12:01:16.889 -03:00 [INF] Navegando para tela de faturamento
+2024-06-28 12:01:17.294 -03:00 [INF] Selecionando o pedido

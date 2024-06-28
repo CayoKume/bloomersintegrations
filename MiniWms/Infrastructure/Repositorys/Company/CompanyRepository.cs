@@ -1,5 +1,6 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
+using BloomersMiniWmsIntegrations.Domain.Entities.Company;
 using Dapper;
 
 namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
@@ -35,12 +36,20 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                return await _conn.GetDbConnection().QueryAsync<Company>(sql);
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.QueryAsync<Company>(sql);
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception($"MiniWms [Companys] - GetCompanys - Erro ao obter empresa da tabela LinxLojas_trusted  - {ex.Message}");
             }
+        }
+
+        public Task<IEnumerable<User>?> GetUsers()
+        {
+            throw new NotImplementedException();
         }
     }
 }

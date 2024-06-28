@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NewBloomersWorkerServicesCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55d3773940ce4cd3583009b3338cc9000400a2c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b90ef6176d61d2223b498cecd826b64a8d1e188")]
 [assembly: System.Reflection.AssemblyProductAttribute("NewBloomersWorkerServicesCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NewBloomersWorkerServicesCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,6 +14,12 @@ namespace BloomersMiniWmsIntegrations.Application.Services
         {
             var list = await _companyRepository.GetCompanys();
             return JsonConvert.SerializeObject(list);
-        }//
+        }
+
+        public async Task<string> GetUsers()
+        {
+            var list = await _companyRepository.GetUsers();
+            return JsonConvert.SerializeObject(list);
+        }
     }
 }

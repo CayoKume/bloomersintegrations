@@ -864,9 +864,11 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Layouts\BlankLayout.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Layouts\MainLayout.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Layouts\SideMenuLayout.razor.rz.scp.css
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\CancellationRequest.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\Companys.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\DeliveryList.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\Home.razor.rz.scp.css
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\InvoicePayment.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\Labels.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\Login.razor.rz.scp.css
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\Picking.razor.rz.scp.css
@@ -1092,4 +1094,3 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\refint\NewBloomersWebApplication.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\NewBloomersWebApplication.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\ref\NewBloomersWebApplication.dll
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Debug\net8.0\scopedcss\UI\Pages\InvoicePayment.razor.rz.scp.css

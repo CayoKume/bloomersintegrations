@@ -90,15 +90,18 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, Company, Invoice, Order>(sql, (pedido, cliente, empresa, notaFiscal) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.company = empresa;
-                    pedido.invoice = notaFiscal;
-                    return pedido;
-                }, splitOn: "cod_client, cod_company, number_nf");
+                    var result = await conn.QueryAsync<Order, Client, Company, Invoice, Order>(sql, (pedido, cliente, empresa, notaFiscal) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.company = empresa;
+                        pedido.invoice = notaFiscal;
+                        return pedido;
+                    }, splitOn: "cod_client, cod_company, number_nf");
 
-                return result.First();
+                    return result.First(); 
+                }
             }
             catch (Exception ex)
             {
@@ -195,14 +198,17 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                return await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Company, Invoice, Order>(sql, (pedido, cliente, transportadora, empresa, notaFiscal) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.company = empresa;
-                    pedido.invoice = notaFiscal;
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, cod_company, number_nf");
+                    return await conn.QueryAsync<Order, Client, ShippingCompany, Company, Invoice, Order>(sql, (pedido, cliente, transportadora, empresa, notaFiscal) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.shippingCompany = transportadora;
+                        pedido.company = empresa;
+                        pedido.invoice = notaFiscal;
+                        return pedido;
+                    }, splitOn: "cod_client, cod_shippingCompany, cod_company, number_nf"); 
+                }
             }
             catch (Exception ex)
             {
@@ -296,16 +302,19 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                var result = await _conn.GetDbConnection().QueryAsync<Order, Client, ShippingCompany, Company, Invoice, Order>(sql, (pedido, cliente, transportadora, empresa, notaFiscal) =>
+                using (var conn = _conn.GetIDbConnection())
                 {
-                    pedido.client = cliente;
-                    pedido.shippingCompany = transportadora;
-                    pedido.company = empresa;
-                    pedido.invoice = notaFiscal;
-                    return pedido;
-                }, splitOn: "cod_client, cod_shippingCompany, cod_company, number_nf");
-
-                return result.First();
+                    var result = await conn.QueryAsync<Order, Client, ShippingCompany, Company, Invoice, Order>(sql, (pedido, cliente, transportadora, empresa, notaFiscal) =>
+                    {
+                        pedido.client = cliente;
+                        pedido.shippingCompany = transportadora;
+                        pedido.company = empresa;
+                        pedido.invoice = notaFiscal;
+                        return pedido;
+                    }, splitOn: "cod_client, cod_shippingCompany, cod_company, number_nf");
+                    
+                    return result.First();
+                }
             }
             catch (Exception ex)
             {
@@ -321,7 +330,10 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                return await _conn.GetDbConnection().ExecuteAsync(sql);
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.ExecuteAsync(sql); 
+                }
             }
             catch (Exception ex)
             {

@@ -19,7 +19,7 @@ namespace NewBloomersWebApplication.Domain.Extensions
             {
                 services.AddHttpClient("MiniWMS", client =>
                 {
-                    client.BaseAddress = new Uri("http://172.25.1.6:7172/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
+                    client.BaseAddress = new Uri("https://webservices.newbloomers.com.br:7072/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
                     client.Timeout = new TimeSpan(0, 2, 0);
                 });
             }
@@ -30,6 +30,7 @@ namespace NewBloomersWebApplication.Domain.Extensions
             services.AddScoped<IDeliveryListService, DeliveryListService>();
             services.AddScoped<ILabelsService, LabelsService>();
             services.AddScoped<IPickingService, PickingService>();
+            services.AddScoped<ICancellationRequestService, CancellationRequestService>();
 
             return services;
         }

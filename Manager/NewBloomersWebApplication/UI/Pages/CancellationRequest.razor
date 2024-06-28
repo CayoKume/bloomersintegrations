@@ -1,0 +1,26 @@
+﻿@page "/CancellationRequest"
+@inject ICancellationRequestService _cancellationRequestService;
+@inject IJSRuntime jsRuntime;
+@inject HttpClient _httpClient;
+
+<h1>Solicitar Cancelamento de Pedido</h1>
+
+
+<input type="hidden" name="projeto" value="">
+
+<div class="form" id="form">
+    <label>Pedido: </label>
+    <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="orderNumber" @bind-value:event="oninput" @onkeyup="Enter">
+    <select class="col-md-4 inputs" id="sel_reasons" @bind="inputValueReason">
+    @foreach (var reason in reasons)
+    {
+        <option value="@reason.Key">@reason.Key - @reason.Value</option>
+    }
+    </select>
+</div>
+
+<div class="toolbar">
+    <div class="dir">
+        <button name="B1" id="B1" @* @onclick="@(() => selecionarTransportadora()) *@">Prosseguir</button>
+    </div>
+</div>

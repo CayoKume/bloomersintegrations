@@ -17,7 +17,10 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             try
             {
-                return await _conn.GetDbConnection().QueryAsync<Order>(sql);
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.QueryAsync<Order>(sql); 
+                }
             }
             catch (Exception ex)
             {

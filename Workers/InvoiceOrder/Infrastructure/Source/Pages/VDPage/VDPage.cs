@@ -69,14 +69,21 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
             {
                 Thread.Sleep(5 * 1000);
                 IWebElement frete = _wait.Until(ExpectedConditions.ElementExists(By.Id("frete")));
-                IWebElement tipoFrete = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete")));
-                IWebElement tipoFreteRedespacho = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho")));
+                IWebElement tipoFreteEmitente = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete1")));
+                IWebElement tipoFreteDestinatario = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete2")));
+                IWebElement tipoFreteSemCobranca = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete6")));
+                IWebElement tipoFreteRedespachoEmitente = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho1")));
+                IWebElement tipoFreteRedespachoDestinatario = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho2")));
+                IWebElement tipoFreteRedespachoSemCobranca = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho6")));
                 _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("quantidade"))).SendKeys(volumes);
 
                 if (cnpj == "42538267000268")
                 {
-                    ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFrete);
-                    ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
+                    ExtensionsMethods.ClickInElement(tipoFreteEmitente);
+                    ExtensionsMethods.ClickInElement(tipoFreteRedespachoEmitente);
+
+                    //((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFrete);
+                    //((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
                     ((IJavaScriptExecutor)_driver).ExecuteScript($"arguments[0].value='{cod_transportadora}'", ExtensionsMethods.GetElement(By.Id("transportador"), _driver));
 
                     _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("especie"))).SendKeys("CX");
@@ -85,13 +92,17 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                 {
                     if (frete.GetAttribute("value") == "0,00")
                     {
-                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFrete);
-                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
+                        ExtensionsMethods.ClickInElement(tipoFreteEmitente);
+                        ExtensionsMethods.ClickInElement(tipoFreteRedespachoEmitente);
+                        //((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFrete);
+                        //((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='1'", tipoFreteRedespacho);
                     }
                     else
                     {
-                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='2'", tipoFrete);
-                        ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='2'", tipoFreteRedespacho);
+                        ExtensionsMethods.ClickInElement(tipoFreteDestinatario);
+                        ExtensionsMethods.ClickInElement(tipoFreteRedespachoDestinatario);
+                        //((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='2'", tipoFrete);
+                        //((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].value='2'", tipoFreteRedespacho);
                     }
                     ((IJavaScriptExecutor)_driver).ExecuteScript($"arguments[0].value='{cod_transportadora}'", ExtensionsMethods.GetElement(By.Id("transportador"), _driver));
 

@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\cancellationrequest.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\cancellationrequest.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\cancellationrequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\cancellationrequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\application\\services\\cancellationrequest\\cancellationrequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\application\\services\\cancellationrequest\\cancellationrequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CancellationRequestService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\CancellationRequest\\CancellationRequestService.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\Application\\Services\\CancellationRequest\\CancellationRequestService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\CancellationRequest\\CancellationRequestService.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\Application\\Services\\CancellationRequest\\CancellationRequestService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAEwBYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T21:47:28.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CancellationRequest.razor",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-28T21:46:21.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CancellationRequest.razor.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\CancellationRequest.razor.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACIAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T21:23:03.74Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
