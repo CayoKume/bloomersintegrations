@@ -5,10 +5,9 @@
 
 <h1>Solicitar Cancelamento de Pedido</h1>
 
-
-<input type="hidden" name="projeto" value="">
-
 <div class="form" id="form">
+    <label>Solicitante: </label>
+    <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="inputValueRequester" @bind-value:event="oninput" @onkeyup="Enter">
     <label>Pedido: </label>
     <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="orderNumber" @bind-value:event="oninput" @onkeyup="Enter">
     <select class="col-md-4 inputs" id="sel_reasons" @bind="inputValueReason">
@@ -21,6 +20,22 @@
 
 <div class="toolbar">
     <div class="dir">
-        <button name="B1" id="B1" @* @onclick="@(() => selecionarTransportadora()) *@">Prosseguir</button>
+        <button name="B1" id="B1" @onclick="@(() => solicitarCancelamento())">Prosseguir</button>
     </div>
+</div>
+
+<div class="grid" style="display: @display">
+    <QuickGrid Items="@order.itens.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
+        <TemplateColumn Align="Align.Center">
+            <div style="min-height: 1.5rem; padding: 1.5rem">
+                <input onclick="@(() => SelectProduct(context))" type="checkbox" name="checkbox" id="checkbox">
+            </div>
+        </TemplateColumn>
+        <PropertyColumn Property="@(p => p.cod_product)" Title="Código" Sortable="true" Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.description_product)" Title="Descrição" Align="Align.Center" Class="cols descricao"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.quantity_product)" Title="Qtde" Sortable="true" Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.picked_quantity_product)" Title="Canc." Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.unitary_value_product)" Title="Valor Unitátio" Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.amount_product)" Title="Valor Total" Align="Align.Center" Class="cols"></PropertyColumn>
+    </QuickGrid>
 </div>

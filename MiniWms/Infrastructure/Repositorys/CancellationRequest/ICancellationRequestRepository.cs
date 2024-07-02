@@ -6,5 +6,6 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
     {
         public Task CreateCancellationRequest(Order order);
         public Task<Dictionary<int, string>> GetReasons();
+        public Task<Order> GetOrderToCancel(string number);
     }
 }

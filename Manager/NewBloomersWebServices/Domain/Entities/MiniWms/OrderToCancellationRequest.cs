@@ -9,6 +9,7 @@
     {
         private List<BloomersMiniWmsIntegrations.Domain.Entities.CancellationRequest.ProductToCancellation> _itens = new List<BloomersMiniWmsIntegrations.Domain.Entities.CancellationRequest.ProductToCancellation>();
 
+        public string number { get; set; }
         public string requester { get; set; }
         public int reason { get; set; }
         public int picked_quantity { get; set; }

@@ -1,6 +1,7 @@
 ﻿using BloomersMiniWmsIntegrations.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using BloomersIntegrationsManager.Domain.Entities.MiniWms;
+using System.ComponentModel.DataAnnotations;
 
 namespace NewBloomersWebServices.UI.Controllers.Wms
 {
@@ -45,6 +46,25 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             {
                 Response.StatusCode = 400;
                 return Content($"Nao foi possivel encontrar os motivos no banco de dados. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("GetOrderToCancel")]
+        public async Task<ActionResult<string>> GetOrderToCancel([Required][FromQuery] string number)
+        {
+            try
+            {
+                var result = await _cancellationRequestService.GetOrderToCancel(number);
+
+                if (String.IsNullOrEmpty(result))
+                    return BadRequest($"Nao foi possivel encontrar o pedido no banco de dados.");
+                else
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel encontrar o pedido no banco de dados. Erro: {ex.Message}");
             }
         }
     }

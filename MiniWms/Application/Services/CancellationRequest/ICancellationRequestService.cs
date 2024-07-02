@@ -6,5 +6,6 @@ namespace BloomersMiniWmsIntegrations.Application.Services
     {
         public Task CreateCancellationRequest(string serializedOrder);
         public Task<string> GetReasons();
+        public Task<string> GetOrderToCancel(string number);
     }
 }

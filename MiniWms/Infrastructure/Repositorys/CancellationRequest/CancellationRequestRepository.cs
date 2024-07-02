@@ -18,7 +18,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 
             foreach (var item in order.itens) 
             {
-                stringItens += $@"(@ID_CANCELAMENTO_PEDIDO, '{order.number}', {item.cod_product}, '{item.description_product}', {item.quantity_product}, {order.picked_quantity}, {item.unitary_value_product}, {item.amount_product})";
+                stringItens += $@"(@ID_CANCELAMENTO_PEDIDO, '{order.number}', {item.cod_product}, '{item.description_product}', {item.quantity_product}, {item.picked_quantity_product}, {item.unitary_value_product}, {item.amount_product})";
             }
 
             var sql = $@"BEGIN TRANSACTION;
@@ -50,6 +50,51 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             catch (Exception ex)
             {
                 throw new Exception($"MiniWms [CancellationRequest] - CreateCancellationRequest - Erro ao criar solicitação de cancelamento do pedido: {order.number}  - {ex.Message}");
+            }
+        }
+
+        public async Task<Order> GetOrderToCancel(string number)
+        {
+            var sql = $@"SELECT 
+                        DOCUMENTO AS NUMBER, 
+                        CODIGO_BARRA AS COD_PRODUCT, 
+                        DESCRICAO AS DESCRIPTION_PRODUCT, 
+                        QTDE AS QUANTITY_PRODUCT, 
+                        QTDERETORNO AS PICKED_QUANTITY_PRODUCT, 
+                        NB_SKU_PRODUTO AS SKU_PRODUCT,
+                        NB_VALOR_UNITARIO_PRODUTO AS UNITARY_VALUE_PRODUCT,
+                        NB_VALOR_TOTAL_PRODUTO AS AMOUNT_PRODUCT,
+                        NB_VALOR_FRETE_PRODUTO AS SHIPPING_VALUE_PRODUCT
+
+                        FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
+                        JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+                        WHERE
+                        DOCUMENTO IN ('{number}')";
+
+            try
+            {
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    var result = await conn.QueryAsync<Order, ProductToCancellation, Order>(sql, (pedido, produto) =>
+                    {
+                        pedido.itens.Add(produto);
+                        return pedido;
+                    }, splitOn: "cod_product");
+
+                    var pedido = result.GroupBy(p => p.number).Select(g =>
+                    {
+                        var groupedOrder = g.First();
+                        groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+                        return groupedOrder;
+                    });
+
+                    return pedido.First();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception($"MiniWms [CancellationRequest] - GetOrder - Erro ao obter pedido na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
             }
         }
 

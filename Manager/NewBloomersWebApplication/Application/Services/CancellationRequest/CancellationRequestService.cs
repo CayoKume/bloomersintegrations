@@ -15,7 +15,25 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                await _apiCall.PostAsync("CreateCancellationRequest", JsonSerializer.Serialize(new { serializePedido = order }));
+                await _apiCall.PostAsync("CreateCancellationRequest", JsonSerializer.Serialize(new { serializeOrder = order }));
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<Order> GetOrderToCancel(string number)
+        {
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "number", number }
+                };
+                var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
+                var result = await _apiCall.GetAsync("GetOrderToCancel", encodedParameters);
+                return JsonSerializer.Deserialize<Order>(result);
             }
             catch
             {

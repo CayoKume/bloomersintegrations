@@ -19,7 +19,6 @@ h1[b-3k5l85p1ld] {
     margin: 0 auto;
     width: 98%;
     min-height: 25px;
-    background: #f8f8f8;
     padding: 5px 1%;
     border: 0px;
 }
@@ -69,4 +68,35 @@ label[b-3k5l85p1ld] {
     font-size: 13px;
     margin-left: .5rem;
     margin-right: .5rem;
+}
+
+.grid[b-3k5l85p1ld] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] button.col-title:hover, [b-3k5l85p1ld] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] tr, [b-3k5l85p1ld] .quickgrid[theme=corporate] td, [b-3k5l85p1ld] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] .descricao {
+    width: 25rem;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] .cols {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }

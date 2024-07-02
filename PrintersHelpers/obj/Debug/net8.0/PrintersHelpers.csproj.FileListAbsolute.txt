@@ -1,0 +1,12 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\bin\Debug\net8.0\PrintersHelpers.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\bin\Debug\net8.0\PrintersHelpers.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\bin\Debug\net8.0\PrintersHelpers.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\refint\PrintersHelpers.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\PrintersHelpers.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\PrintersHelpers\obj\Debug\net8.0\ref\PrintersHelpers.dll
