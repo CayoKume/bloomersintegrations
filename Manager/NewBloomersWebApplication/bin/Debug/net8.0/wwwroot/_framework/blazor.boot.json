@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "NewBloomersWebApplication",
   "resources": {
-    "hash": "sha256-mb/j+qIad3BJox79X37xHsLJ8Kwrd4HIsORG2H02Qig=",
+    "hash": "sha256-U7vMtvnFg/52PmOv8m+/2y6IJt/QzcZNpWgtUKxqFrA=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.b1icm8yjm6.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -20,11 +20,14 @@
       "Dapper.wasm": "sha256-PYJ3IBSIJu8xy0XOmNAcukivZln/Q+yOSviCaIMTUCg=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-kcIOasiNC2iD+Tg022f6aTCKnjwzyE8MQTNpQDoIzyw=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-DQpYnGUhJtjc5Lun2LKa8TfWW1uZsIf0oaXSKg5o8TY=",
+      "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-Lr2IezaCLA/YDm2A2hTENgy5KQeDz/o+mtiTHzn5dpo=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-QbQYD1i1kIfQf790hDwaN1AS44hTIDmXGQuabj0OKxo=",
       "Microsoft.AspNetCore.Components.QuickGrid.wasm": "sha256-dJl0hxSrdjGcwNcwN2Yohou1yQp4CN7GZv1rhvxvx3k=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-m8+avpuhQ/qPTLAI9eLjN0pRtp+9qJ0YmI2mkGi71wI=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-Y+EHIYfJGzXgN3vluuzwmKa+sQxqvGiB07pahOLsVJU=",
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm": "sha256-PazZTNGqPhU8zKDdERbxyww2bQqnazf3CvOaH91kg8U=",
       "Microsoft.AspNetCore.Metadata.wasm": "sha256-WqXwQkujGiES/0Dqpa6SChJqSetdki7dySrknprHqvc=",
+      "Microsoft.Authentication.WebAssembly.Msal.wasm": "sha256-42ZTbdXXVwRCEZz4SFfmsJWzdXDryxiNxoNkTSgpsgI=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-UDGEQR7J3WTfzYMgOzxVIBwFQtKEeJvO8UgrWagypdE=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-yNdqbqDWGiJo943D7LPak5xryCBEsNH0wtdiuU1R9VE=",
       "Microsoft.Extensions.Configuration.Binder.wasm": "sha256-GSjil45tcp9Gt2YUvSdWcCKn7FqCK6B5Pf2C3ImL+bA=",
@@ -217,15 +220,18 @@
       "netstandard.wasm": "sha256-YOZxxR9PM3Dltcijfb0Q4FD39DkWZbZ1e2ScbZDvWJ4=",
       "System.Private.CoreLib.wasm": "sha256-NrT1QkAzVU//2wgK9vXdq77lCGvLJ4IOZ+Aegesyanc=",
       "NewBloomersWebServicesCore.wasm": "sha256-hNL2qV4rvbutNhURZaKkPAc0S2l5syVHrmkikxAwDpk=",
-      "NewBloomersWebApplication.wasm": "sha256-fODpSZuhHqfcE12516wZj52VcLvl8daZwfctyhMYL50="
+      "NewBloomersWebApplication.wasm": "sha256-BEWyQFY6gmKy08ab0gBOcmetu04ycYmbPOMxK0s0Tro="
     },
     "pdb": {
       "NewBloomersWebServicesCore.pdb": "sha256-CZkl6CCqBHPpFLr3dCCQw54eWKX6xj7eJPC5iLrK4Sc=",
-      "NewBloomersWebApplication.pdb": "sha256-MJatjBAjz+/rzB+IgyRtlkRUIEgcB3PlkTgKbyM517s="
+      "NewBloomersWebApplication.pdb": "sha256-YbRL7tyyMxEpTD31jtF2U/y6lZn5TJIlFBO0OhMwYZM="
     }
   },
   "cacheBootResources": true,
   "debugLevel": -1,
+  "appsettings": [
+    "../appsettings.json"
+  ],
   "globalizationMode": "sharded",
   "extensions": {
     "blazor": {}
