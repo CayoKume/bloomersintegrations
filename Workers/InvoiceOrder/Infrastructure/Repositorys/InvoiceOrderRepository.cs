@@ -32,7 +32,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Repositorys
                              A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY
                              FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] A
                              WHERE 
-                             --A.DOCUMENTO IN ('')
+                             --A.DOCUMENTO IN ()
                              ((SELECT TRIM(RIGHT(A.IDCONTROLE, 1))) = '{_subs[0]}' OR (SELECT TRIM(RIGHT(A.IDCONTROLE, 1))) = '{_subs[1]}') AND 
                              A.SERIE = 'OA-'
                              AND A.RETORNO IS NOT NULL
