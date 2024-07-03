@@ -11,11 +11,12 @@ namespace NewBloomersWebApplication.Application.Services
         public CancellationRequestService(IAPICall apiCall) =>
             (_apiCall) = (apiCall);
 
-        public async Task CreateCancellationRequest(Order order)
+        public async Task<bool> CreateCancellationRequest(Order order)
         {
             try
             {
                 await _apiCall.PostAsync("CreateCancellationRequest", JsonSerializer.Serialize(new { serializeOrder = order }));
+                return true;
             }
             catch
             {

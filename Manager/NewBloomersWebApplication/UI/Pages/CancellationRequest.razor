@@ -39,3 +39,50 @@
         <PropertyColumn Property="@(p => p.amount_product)" Title="Valor Total" Align="Align.Center" Class="cols"></PropertyColumn>
     </QuickGrid>
 </div>
+
+@if (modalConfirmacao)
+{
+    if (resultado)
+    {
+        <AlertModal Title="Sucesso"
+                    Text="Solicitação Gerada com Sucesso"
+                    OnCloseEvent="@(() => modalConfirmacao = false)"
+                    OnClickEvent="@(() => modalConfirmacao = false)">
+        </AlertModal>
+    }
+    else
+    {
+        <AlertModal Title="Erro"
+                    Text="Falha ao Solicitar Requisição de Cancelamento"
+                    OnCloseEvent="@(() => modalConfirmacao = false)"
+                    OnClickEvent="@(() => modalConfirmacao = false)">
+        </AlertModal>
+    }
+}
+
+@if (modalRequester)
+{
+    <AlertModal Title="Erro"
+                Text="O solicitante não pode estar vazio"
+                OnCloseEvent="@(() => modalRequester = false)"
+                OnClickEvent="@(() => modalRequester = false)">
+    </AlertModal>
+}
+
+@if (modalOrderNumberEmpty)
+{
+    <AlertModal Title="Erro"
+                Text="O código do pedido não pode estar vazio"
+                OnCloseEvent="@(() => modalOrderNumberEmpty = false)"
+                OnClickEvent="@(() => modalOrderNumberEmpty = false)">
+    </AlertModal>
+}
+
+@if (modalListProducts)
+{
+    <AlertModal Title="Erro"
+                Text="Ao menos um produto deve ser selecionado"
+                OnCloseEvent="@(() => modalListProducts = false)"
+                OnClickEvent="@(() => modalListProducts = false)">
+    </AlertModal>
+}

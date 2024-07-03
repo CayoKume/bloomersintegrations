@@ -12,7 +12,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
         public CancellationRequestRepository(ISQLServerConnection conn) =>
             (_conn) = (conn);
 
-        public async Task CreateCancellationRequest(Order order)
+        public async Task<bool> CreateCancellationRequest(Order order)
         {
             var stringItens = String.Empty;
 
@@ -24,7 +24,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             var sql = $@"BEGIN TRANSACTION;
 
                             BEGIN TRY
-                                INSERT INTO GENERAL..TB_NB_CANCELAMENTO_PEDIDOS (DATA_REGISTRO, SOLICITANTE_REGISTRO, MOTIVO, PEDIDO)
+                                INSERT INTO GENERAL..TB_NB_CANCELAMENTO_PEDIDOS (DATA_REGISTRO, VENDEDORA, MOTIVO_CANCELAMENTO, PEDIDO)
                                 VALUES (GETDATE(), '{order.requester}', {order.reason}, '{order.number}');
                              
                                 DECLARE @ID_CANCELAMENTO_PEDIDO BIGINT;
@@ -44,7 +44,11 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             {
                 using (var conn = _conn.GetIDbConnection())
                 {
-                    await conn.ExecuteAsync(sql.Replace("[0]", stringItens));
+                    var result = await conn.ExecuteAsync(sql.Replace("[0]", stringItens));
+                    if (result > 0)
+                        return true;
+                    else
+                        return false;
                 }
             }
             catch (Exception ex)
