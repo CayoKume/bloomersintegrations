@@ -70,6 +70,20 @@ label[b-3k5l85p1ld] {
     margin-right: .5rem;
 }
 
+.input[b-3k5l85p1ld] {
+    padding: 1px 2px;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #60656C;
+    font-family: 'Neo Sans', Verdana, Arial !important;
+    font-size: 13px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    width: 296px;
+}
+
 .grid[b-3k5l85p1ld] {
     margin-top: 1.5rem;
     margin-right: 1.5rem;

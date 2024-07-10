@@ -10,6 +10,8 @@
     <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="inputValueRequester" @bind-value:event="oninput" @onkeyup="Enter">
     <label>Pedido: </label>
     <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="orderNumber" @bind-value:event="oninput" @onkeyup="Enter">
+    <label>Observações: </label>
+    <input class="text input" type="text" @bind-value="inputObs" @bind-value:event="oninput" @onkeyup="Enter">
     <select class="col-md-4 inputs" id="sel_reasons" @bind="inputValueReason">
     @foreach (var reason in reasons)
     {

@@ -232,6 +232,9 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<IAttendanceService, AttendanceService>();
             services.AddScoped<IAttendanceRepository, AttendanceRepository>();
 
+            services.AddScoped<IExecuteCancellationService, ExecuteCancellationService>();
+            services.AddScoped<IExecuteCancellationRepository, ExecuteCancellationRepository>();
+
             return services;
         }
 

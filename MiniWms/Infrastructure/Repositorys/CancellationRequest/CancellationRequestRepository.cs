@@ -24,8 +24,8 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             var sql = $@"BEGIN TRANSACTION;
 
                             BEGIN TRY
-                                INSERT INTO GENERAL..TB_NB_CANCELAMENTO_PEDIDOS (DATA_REGISTRO, VENDEDORA, MOTIVO_REGISTRO, PEDIDO)
-                                VALUES (GETDATE(), '{order.requester}', {order.reason}, '{order.number}');
+                                INSERT INTO GENERAL..TB_NB_CANCELAMENTO_PEDIDOS (DATA_REGISTRO, VENDEDORA, MOTIVO_REGISTRO, PEDIDO, OBS_REGISTRO)
+                                VALUES (GETDATE(), '{order.requester}', {order.reason}, '{order.number}', '{order.obs}');
                              
                                 DECLARE @ID_CANCELAMENTO_PEDIDO BIGINT;
                                 SET @ID_CANCELAMENTO_PEDIDO = SCOPE_IDENTITY();

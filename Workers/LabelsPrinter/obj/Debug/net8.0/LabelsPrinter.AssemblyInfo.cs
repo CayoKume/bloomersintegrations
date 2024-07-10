@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LabelsPrinter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5f61f4c40b8cfbe70a48cecd9602522584dc3a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+534796b961807be012093de430f3d07200417fe2")]
 [assembly: System.Reflection.AssemblyProductAttribute("LabelsPrinter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LabelsPrinter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,6 +14,7 @@ namespace NewBloomersWebApplication.UI.Pages
 
         private string? orderNumber { get; set; }
         private string? display { get; set; } = "none";
+        private string? inputObs { get; set; }
         private string? inputValueRequester { get; set; }
         private int inputValueReason { get; set; } = 1;
 
@@ -85,6 +86,7 @@ namespace NewBloomersWebApplication.UI.Pages
                         {
                             order.reason = inputValueReason;
                             order.requester = inputValueRequester;
+                            order.obs = inputObs;
                             foreach (var item in productToCancellations)
                             {
                                 order.itens.RemoveAll(p => p.cod_product != item.cod_product);

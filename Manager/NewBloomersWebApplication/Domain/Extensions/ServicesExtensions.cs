@@ -32,6 +32,7 @@ namespace NewBloomersWebApplication.Domain.Extensions
             services.AddScoped<IPickingService, PickingService>();
             services.AddScoped<ICancellationRequestService, CancellationRequestService>();
             services.AddScoped<IAttendanceService, AttendanceService>();
+            services.AddScoped<IExecuteCancellationService, ExecuteCancellationService>();
 
             return services;
         }
