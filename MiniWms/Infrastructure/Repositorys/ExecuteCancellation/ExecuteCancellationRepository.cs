@@ -102,9 +102,9 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             }
         }
 
-        public async Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs)
+        public async Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs, int motivo)
         {
-            var sql = $@"UPDATE [GENERAL].[dbo].[TB_NB_CANCELAMENTO_PEDIDOS] SET SUPORTE = '{suporte}', DATA_CANCELAMENTO = GETDATE(), OBS_SUPORTE = '{inputObs}' WHERE PEDIDO = '{number}'";
+            var sql = $@"UPDATE [GENERAL].[dbo].[TB_NB_CANCELAMENTO_PEDIDOS] SET SUPORTE = '{suporte}', DATA_CANCELAMENTO = GETDATE(), OBS_SUPORTE = '{inputObs}', MOTIVO_CANCELAMENTO = {motivo} WHERE PEDIDO = '{number}'";
 
             try
             {

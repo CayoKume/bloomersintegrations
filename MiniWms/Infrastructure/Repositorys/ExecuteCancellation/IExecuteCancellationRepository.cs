@@ -6,6 +6,6 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
     {
         public Task<Dictionary<int, string>> GetReasons();
         public Task<IEnumerable<Order>> GetOrdersToCancel(string serie, string doc_company);
-        public Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs);
+        public Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs, int motivo);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using NewBloomersWebApplication.Domain.Entities.ExecuteCancellation;
 using NewBloomersWebApplication.Infrastructure.Apis;
 using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace NewBloomersWebApplication.Application.Services
 {
@@ -44,11 +43,11 @@ namespace NewBloomersWebApplication.Application.Services
             }
         }
 
-        public async Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs)
+        public async Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs, int motivo)
         {
             try
             {
-                return await _apiCall.PutAsync("", System.Text.Json.JsonSerializer.Serialize(new { number = number, suporte = suporte, obs = inputObs }));
+                return await _apiCall.PutAsync("UpdateDateCanceled", System.Text.Json.JsonSerializer.Serialize(new { number = number, suporte = suporte, obs = inputObs, motivo = motivo }));
             }
             catch
             {

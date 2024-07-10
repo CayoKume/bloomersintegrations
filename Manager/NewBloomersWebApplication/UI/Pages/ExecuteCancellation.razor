@@ -5,34 +5,70 @@
 
 <h1>Efetivar Cancelamento</h1>
 
-<div class="form" id="form">
-    <label>Suporte: </label>
-    <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="inputValueRequester" @bind-value:event="oninput">
-    <label>Observações: </label>
-    <input class="text input" type="text" @bind-value="inputObs" @bind-value:event="oninput">
-    <select class="col-md-4 inputs" id="sel_reasons" @bind="inputValueReason">
-        @foreach (var reason in reasons)
-        {
-            <option value="@reason.Key">@reason.Key - @reason.Value</option>
-        }
-    </select>
-</div>
+@if (orders == null)
+{
+    <h3>Carregando Dados...</h3>
+}
+else
+{
+    <div class="form" id="form">
+        <label>Suporte: </label>
+        <input class="text inputs" type="text" name="order" id="order" maxlength="38" @bind-value="inputValueRequester" @bind-value:event="oninput">
+        <label>Observações: </label>
+        <input class="text input" type="text" @bind-value="inputObs" @bind-value:event="oninput">
+        <select class="col-md-4 inputs" id="sel_reasons" @bind="inputValueReason">
+            @foreach (var reason in reasons)
+            {
+                <option value="@reason.Key">@reason.Key - @reason.Value</option>
+            }
+        </select>
+    </div>
 
-<div class="grid">
-    <QuickGrid Items="@orders.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
-        <TemplateColumn Align="Align.Center">
-            <div style="min-height: 1.5rem; padding: 1.5rem">
-                <input onclick="@(() => SelectOrder(context))" type="radio" name="radio" id="radio">
-            </div>
-        </TemplateColumn> 
-        <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="cols"></PropertyColumn>
-        <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cols"></PropertyColumn>
-        <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Sortable="true" Align="Align.Center" Class="cols descricao"></PropertyColumn>
-        <PropertyColumn Property="@(p => p.client.email_client)" Title="Email" Align="Align.Center" Class="cols"></PropertyColumn>
-        <PropertyColumn Property="@(p => p.client.fone_client)" Title="Fone" Align="Align.Center" Class="cols"></PropertyColumn>
-        <PropertyColumn Property="@(p => p.id_motivo + " - " + p.descricao_motivo)" Title="Motivo" Align="Align.Center" Class="cols descricao"></PropertyColumn>
-        <TemplateColumn Title="Cancelado" Align="Align.Center" Class="cols">
-            <button class="@(context.buttonClass)" @onclick="@(() => CancelarPedido())">@(context.buttonText)</button>
-        </TemplateColumn>
-    </QuickGrid>
-</div>
+    <div class="grid">
+        <QuickGrid Items="@orders.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
+            <TemplateColumn Align="Align.Center">
+                <div style="min-height: 1.5rem; padding: 1.5rem">
+                    <input onclick="@(() => SelectOrder(context))" type="radio" name="radio" id="radio">
+                </div>
+            </TemplateColumn>
+            <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="cols"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cols"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Sortable="true" Align="Align.Center" Class="cols descricao"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.email_client)" Title="Email" Align="Align.Center" Class="cols"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.client.fone_client)" Title="Fone" Align="Align.Center" Class="cols"></PropertyColumn>
+            <PropertyColumn Property="@(p => p.id_motivo + " - " + p.descricao_motivo)" Title="Motivo" Align="Align.Center" Class="cols descricao"></PropertyColumn>
+            <TemplateColumn Title="Cancelado" Align="Align.Center" Class="cols">
+                <button class="@(context.buttonClass)" @onclick="@(() => CancelarPedido())">@(context.buttonText)</button>
+            </TemplateColumn>
+        </QuickGrid>
+    </div>
+
+    <Pagination pagination="pagination"></Pagination>
+}
+
+@if (modalSuporte)
+{
+    <AlertModal Title="Erro"
+                Text="Informe o Efetivador do Cancelamento"
+                OnCloseEvent="@(() => modalSuporte = false)"
+                OnClickEvent="@(() => modalSuporte = false)">
+    </AlertModal>
+}
+
+@if (modalPedido)
+{
+    <AlertModal Title="Erro"
+                Text="Selecione um Pedido"
+                OnCloseEvent="@(() => modalPedido = false)"
+                OnClickEvent="@(() => modalPedido = false)">
+    </AlertModal>
+}
+
+@if (modalSucesso)
+{
+    <AlertModal Title="Erro"
+                Text="Cancelamento Efetivado com Sucesso"
+                OnCloseEvent="@(() => modalSucesso = false)"
+                OnClickEvent="@(() => modalSucesso = false)">
+    </AlertModal>
+}

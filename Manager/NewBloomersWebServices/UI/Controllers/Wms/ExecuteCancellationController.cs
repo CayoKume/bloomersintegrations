@@ -19,7 +19,7 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
         {
             try
             {
-                if (await _executeCancellationService.UpdateDateCanceled(request.number, request.suporte, request.obs))
+                if (await _executeCancellationService.UpdateDateCanceled(request.number, request.suporte, request.obs, request.motivo))
                     return Ok(true);
                 else
                     return BadRequest($"Nao foi possivel atualizar a data de cancelamento do pedido na tabela.");

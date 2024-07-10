@@ -11,6 +11,18 @@
     border-radius: 3px;
 }
 
+h1 {
+    display: inline-block;
+    font-size: 18px;
+    width: 99%;
+    margin: 10px auto 10px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EBEBEB;
+    font-family: 'Dosis', Verdana, Arial;
+    color: #5B2E90;
+}
+
 #inputAtendente {
     width: 396px;
     padding: 2px;
@@ -21,7 +33,6 @@
 }
 
 .grid {
-    margin-top: 1.5rem;
     margin-right: 1.5rem;
     width: 65rem;
 }

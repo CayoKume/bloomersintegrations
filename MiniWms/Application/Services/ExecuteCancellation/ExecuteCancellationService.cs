@@ -36,11 +36,11 @@ namespace BloomersMiniWmsIntegrations.Application.Services
             }
         }
 
-        public async Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs)
+        public async Task<bool> UpdateDateCanceled(string number, string suporte, string inputObs, int motivo)
         {
             try
             {
-                return await _executeCancellationRepository.UpdateDateCanceled(number, suporte, inputObs);
+                return await _executeCancellationRepository.UpdateDateCanceled(number, suporte, inputObs, motivo);
             }
             catch (Exception ex)
             {

@@ -13,6 +13,10 @@ namespace NewBloomersWebApplication.UI.Pages
         private string? inputValueRequester { get; set; }
         private int inputValueReason { get; set; } = 1;
 
+        private bool modalSuporte { get; set; }
+        private bool modalPedido { get; set; }
+        private bool modalSucesso { get; set; }
+
         private Dictionary<int, string> reasons { get; set; } = new Dictionary<int, string>();
         private Order order { get; set; }
         private List<Order> orders { get; set; } = new List<Order>();
@@ -26,7 +30,6 @@ namespace NewBloomersWebApplication.UI.Pages
             serie_order = await GetTextInLocalStorage("serie_order");
 
             reasons = await _executeCancellationService.GetReasons();
-
             orders = await _executeCancellationService.GetOrdersToCancel(serie_order, doc_company);
 
             foreach (var order in orders)
@@ -58,6 +61,22 @@ namespace NewBloomersWebApplication.UI.Pages
         {
             try
             {
+                if (!String.IsNullOrEmpty(inputValueRequester))
+                {
+                    if (this.order is not null)
+                    {
+                        var result = await _executeCancellationService.UpdateDateCanceled(this.order.number, inputValueRequester, inputObs, inputValueReason);
+
+                        if (result)
+                            modalSucesso = true;
+                        else
+                            modalSucesso = false;
+                    }
+                    else
+                        modalPedido = true;
+                }
+                else
+                    modalSuporte = true;
             }
             catch (Exception)
             {

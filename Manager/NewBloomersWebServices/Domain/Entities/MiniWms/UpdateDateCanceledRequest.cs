@@ -10,6 +10,9 @@ namespace BloomersIntegrationsManager.Domain.Entities.MiniWms
         [Required(ErrorMessage = "O Campo Nome Suporte é Obrigatório")]
         public string? suporte { get; set; }
 
+        [Required(ErrorMessage = "O Campo Id Motivo e é Obrigatório")]
+        public int motivo { get; set; }
+
         public string? obs { get; set; }
     }
 }
