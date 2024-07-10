@@ -434,7 +434,57 @@ i[b-0k5rp2y69q] {
     }*/
 }
 /* /UI/Pages/Attendance.razor.rz.scp.css */
-body[b-etxfb9khlq] {
+*[b-etxfb9khlq] {
+    font-size: 13px;
+}
+
+#inputObs[b-etxfb9khlq] {
+    width: 396px;
+    height: 60px;
+    padding: 2px;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 3px;
+}
+
+#inputAtendente[b-etxfb9khlq] {
+    width: 396px;
+    padding: 2px;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 3px;
+    margin-bottom:2px;
+}
+
+.grid[b-etxfb9khlq] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+[b-etxfb9khlq] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-etxfb9khlq] .quickgrid[theme=corporate] button.col-title:hover, [b-etxfb9khlq] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-etxfb9khlq] .quickgrid[theme=corporate] tr, [b-etxfb9khlq] .quickgrid[theme=corporate] td, [b-etxfb9khlq] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-etxfb9khlq] .quickgrid[theme=corporate] .descricao {
+    width: 35rem;
+}
+
+[b-etxfb9khlq] .quickgrid[theme=corporate] .cols {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 /* /UI/Pages/CancellationRequest.razor.rz.scp.css */
 *[b-3k5l85p1ld] {

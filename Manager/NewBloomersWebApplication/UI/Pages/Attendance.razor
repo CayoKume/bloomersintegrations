@@ -1,4 +1,99 @@
 ﻿@page "/Attendance"
+@inject IAttendanceService _attendanceService;
+@inject IJSRuntime jsRuntime;
+@inject HttpClient _httpClient;
 
-<h3>Service</h3>
+<div class="grid">
+    <QuickGrid Items="@orders.AsQueryable()" Theme="corporate" Pagination="@pagination" @ref="myGrid">
+        <PropertyColumn Property="@(p => p.number)" Title="Pedido" Sortable="true" Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.client.cod_client)" Title="Cliente" Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.client.reason_client)" Title="Nome" Sortable="true" Align="Align.Center" Class="cols descricao"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.client.email_client)" Title="Email" Align="Align.Center" Class="cols"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.client.fone_client)" Title="Fone" Align="Align.Center" Class="cols"></PropertyColumn>
+        <TemplateColumn Title="Contatado" Align="Align.Center" Class="cols">
+            <button class="@(context.buttonClass)" @onclick="@(() => EntrarEmContato(context))">@(context.buttonText)</button>
+        </TemplateColumn>
+    </QuickGrid>
+</div>
 
+<Pagination pagination="pagination"></Pagination>
+
+@if (modalContato)
+{
+    <ConfirmationModal opened="modalContato"
+                                    size="modal-xl"
+                                    title="CONFERIR"
+                                    closeButtonText="FECHAR"
+                                    clickButtonText="FINALIZAR"
+                                    OnCloseEvent="@(() => modalContato = false)"
+                                    OnClickEvent="BtnFinalizar">
+        <BodyContent>
+            <div class="row mb-1">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div>Pedido: </div>
+                        <strong>@number</strong>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div>Cliente: <strong>@name_client</strong></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>Email: <strong>@email_client</strong></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>Telefone: <strong>@fone_client</strong></div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <input id="inputAtendente" type="text" @bind-value="atendente" @bind-value:event="oninput" placeholder="Atendente" aria-label="Atendente" aria-describedby="Atendente" autocomplete="off"></input>
+                        <textarea id="inputObs" type="text" @bind-value="inputObs" @bind-value:event="oninput" placeholder="Observações" aria-label="Obs" aria-describedby="Obs" autocomplete="off"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <QuickGrid Items="@itens.AsQueryable()" Theme="corporate" Pagination="@pagination">
+                    <PropertyColumn Property="@(p => $"{p.cod_product} - {p.description_product}")" Title="Descrição" Align="Align.Center" Class="cols descricao"></PropertyColumn>
+                    <PropertyColumn Property="@(p => p.quantity_product)" Align="Align.Center" Title="Qtde" Class="cols"></PropertyColumn>
+                    <PropertyColumn Property="@(p => p.picked_quantity_product)" Align="Align.Center" Title="Canc." Class="cols"></PropertyColumn>
+                    <PropertyColumn Property="@(p => p.unitary_value_product)" Align="Align.Center" Title="Valor Unitário" Class="cols"></PropertyColumn>
+                    <PropertyColumn Property="@(p => p.amount_product)" Align="Align.Center" Title="Valor Total" Class="cols"></PropertyColumn>
+                </QuickGrid>
+            </div>
+        </BodyContent>
+    </ConfirmationModal>
+}
+
+@if (modalAtendente)
+{
+    <AlertModal Title="Erro"
+                Text="Nome do Atendente SAC, não pode estar em branco"
+                OnCloseEvent="@(() => modalAtendente = false)"
+                OnClickEvent="@(() => modalAtendente = false)">
+    </AlertModal>
+}
+
+@if (modalSucesso)
+{
+    <AlertModal Title="Sucesso"
+                Text="Informações de Contato Atualizadas com Sucesso"
+                OnCloseEvent="@(() => modalSucesso = false)"
+                OnClickEvent="@(() => modalSucesso = false)">
+    </AlertModal>
+}
+
+@if (modalErro)
+{
+    <AlertModal Title="Erro"
+                Text="Erro ao Atualizar Inforamções de Contato"
+                OnCloseEvent="@(() => modalErro = false)"
+                OnClickEvent="@(() => modalErro = false)">
+    </AlertModal>
+}

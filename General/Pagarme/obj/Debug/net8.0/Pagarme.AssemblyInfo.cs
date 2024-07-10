@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pagarme")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dcec1ebe36e1011fcce4fe8129a89a18c673385")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5f61f4c40b8cfbe70a48cecd9602522584dc3a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pagarme")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pagarme")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

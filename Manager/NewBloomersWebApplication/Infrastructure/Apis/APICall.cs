@@ -40,6 +40,25 @@ namespace NewBloomersWebApplication.Infrastructure.Apis
             }
         }
 
+        public async Task<bool> PutAsync(string route, string jsonContent)
+        {
+            try
+            {
+                var client = CreateClient(route);
+                var result = await client.PutAsync($"{client.BaseAddress}{route}", new StringContent(jsonContent, Encoding.UTF8, "application/json"));
+                var retorno = await result.Content.ReadAsStringAsync();
+
+                if (retorno.Equals("true"))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public async Task<string> PostAsync(string route, string jsonContent)
         {
             try

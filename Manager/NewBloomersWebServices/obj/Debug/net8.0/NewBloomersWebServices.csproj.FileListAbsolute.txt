@@ -201,7 +201,6 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.AssemblyInfoInputs.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.AssemblyInfo.cs
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.csproj.CoreCompileInputs.cache
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.sourcelink.json
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\staticwebassets.build.json
@@ -218,3 +217,4 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.pdb
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.genruntimeconfig.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\ref\NewBloomersWebServices.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.MvcApplicationPartsAssemblyInfo.cs

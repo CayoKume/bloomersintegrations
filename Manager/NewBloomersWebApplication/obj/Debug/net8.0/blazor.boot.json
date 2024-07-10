@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "NewBloomersWebApplication",
   "resources": {
-    "hash": "sha256-zHpaggEHVpPWQUhDgBIk5qusOZyXVeo7PjfuCwk0B3Y=",
+    "hash": "sha256-pEKettNb5sJdX91z+1wgdrqqLjP/oUthVapJlbG3VBI=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.b1icm8yjm6.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -216,12 +216,12 @@
       "mscorlib.wasm": "sha256-VCfYgt1mcjITabSTosCDVZ+68ea3Z7kakTFaLNLG+18=",
       "netstandard.wasm": "sha256-YOZxxR9PM3Dltcijfb0Q4FD39DkWZbZ1e2ScbZDvWJ4=",
       "System.Private.CoreLib.wasm": "sha256-NrT1QkAzVU//2wgK9vXdq77lCGvLJ4IOZ+Aegesyanc=",
-      "NewBloomersWebServicesCore.wasm": "sha256-hNL2qV4rvbutNhURZaKkPAc0S2l5syVHrmkikxAwDpk=",
-      "NewBloomersWebApplication.wasm": "sha256-zK+e2IyqMSO3/J+8YJh86HChD6+9X44VBvpqm/ru9bw="
+      "NewBloomersWebServicesCore.wasm": "sha256-HVJGdFVPr1s3PocatvZu51tF6lE7Ji1Z49VtNBs8VvU=",
+      "NewBloomersWebApplication.wasm": "sha256-Bmxixr3UW1l6Q1dnRX4ZtVfuKJ03zHD2+kt3cQwtCqI="
     },
     "pdb": {
-      "NewBloomersWebServicesCore.pdb": "sha256-CZkl6CCqBHPpFLr3dCCQw54eWKX6xj7eJPC5iLrK4Sc=",
-      "NewBloomersWebApplication.pdb": "sha256-D1+vyJy6/mG5EMEDcHS8bF1RtLYZMqG34HMHUl14MLI="
+      "NewBloomersWebServicesCore.pdb": "sha256-VsHNxIBf1jkFZafez8oAG1PIM8eodPt85jK0WLP487k=",
+      "NewBloomersWebApplication.pdb": "sha256-R71SXvKh4g7Ady9Lz7vJOspCgnPP8shQcVbq7LzawDk="
     }
   },
   "cacheBootResources": true,

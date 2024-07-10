@@ -31,6 +31,7 @@ namespace NewBloomersWebApplication.Domain.Extensions
             services.AddScoped<ILabelsService, LabelsService>();
             services.AddScoped<IPickingService, PickingService>();
             services.AddScoped<ICancellationRequestService, CancellationRequestService>();
+            services.AddScoped<IAttendanceService, AttendanceService>();
 
             return services;
         }

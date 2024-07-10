@@ -24,13 +24,15 @@ namespace NewBloomersWebApplication.Application.Services
             }
         }
 
-        public async Task<Order> GetOrderToCancel(string number)
+        public async Task<Order> GetOrderToCancel(string number, string serie, string doc_company)
         {
             try
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "number", number }
+                    { "number", number },
+                    { "serie", serie },
+                    { "doc_company", doc_company }
                 };
                 var encodedParameters = await new FormUrlEncodedContent(parameters).ReadAsStringAsync();
                 var result = await _apiCall.GetAsync("GetOrderToCancel", encodedParameters);

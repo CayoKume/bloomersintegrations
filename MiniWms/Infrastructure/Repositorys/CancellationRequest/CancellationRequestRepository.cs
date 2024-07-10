@@ -24,7 +24,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             var sql = $@"BEGIN TRANSACTION;
 
                             BEGIN TRY
-                                INSERT INTO GENERAL..TB_NB_CANCELAMENTO_PEDIDOS (DATA_REGISTRO, VENDEDORA, MOTIVO_CANCELAMENTO, PEDIDO)
+                                INSERT INTO GENERAL..TB_NB_CANCELAMENTO_PEDIDOS (DATA_REGISTRO, VENDEDORA, MOTIVO_REGISTRO, PEDIDO)
                                 VALUES (GETDATE(), '{order.requester}', {order.reason}, '{order.number}');
                              
                                 DECLARE @ID_CANCELAMENTO_PEDIDO BIGINT;
@@ -57,7 +57,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             }
         }
 
-        public async Task<Order> GetOrderToCancel(string number)
+        public async Task<Order> GetOrderToCancel(string number, string serie, string doc_company)
         {
             var sql = $@"SELECT 
                         DOCUMENTO AS NUMBER, 
@@ -73,7 +73,9 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                         JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
                         WHERE
-                        DOCUMENTO IN ('{number}')";
+                        DOCUMENTO IN ('{number}')
+                        AND SERIE = '{serie}'
+                        AND NB_DOC_REMETENTE = '{doc_company}'";
 
             try
             {

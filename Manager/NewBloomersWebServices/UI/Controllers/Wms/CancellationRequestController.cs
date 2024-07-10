@@ -50,11 +50,11 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
         }
 
         [HttpGet("GetOrderToCancel")]
-        public async Task<ActionResult<string>> GetOrderToCancel([Required][FromQuery] string number)
+        public async Task<ActionResult<string>> GetOrderToCancel([Required][FromQuery] string number, [Required][FromQuery] string serie, [Required][FromQuery] string doc_company)
         {
             try
             {
-                var result = await _cancellationRequestService.GetOrderToCancel(number);
+                var result = await _cancellationRequestService.GetOrderToCancel(number, serie, doc_company);
 
                 if (String.IsNullOrEmpty(result))
                     return BadRequest($"Nao foi possivel encontrar o pedido no banco de dados.");

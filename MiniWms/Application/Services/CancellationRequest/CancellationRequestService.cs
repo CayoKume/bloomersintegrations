@@ -25,11 +25,11 @@ namespace BloomersMiniWmsIntegrations.Application.Services
             }
         }
 
-        public async Task<string> GetOrderToCancel(string number)
+        public async Task<string> GetOrderToCancel(string number, string serie, string doc_company)
         {
             try
             {
-                var order = await _cancellationRequestRepository.GetOrderToCancel(number);
+                var order = await _cancellationRequestRepository.GetOrderToCancel(number, serie, doc_company);
                 return JsonConvert.SerializeObject(order);
             }
             catch (Exception ex)

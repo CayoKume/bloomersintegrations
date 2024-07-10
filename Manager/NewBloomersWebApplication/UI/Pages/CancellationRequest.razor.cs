@@ -9,6 +9,9 @@ namespace NewBloomersWebApplication.UI.Pages
 {
     partial class CancellationRequest
     {
+        private string? doc_company;
+        private string? serie_order;
+
         private string? orderNumber { get; set; }
         private string? display { get; set; } = "none";
         private string? inputValueRequester { get; set; }
@@ -30,6 +33,9 @@ namespace NewBloomersWebApplication.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            doc_company = await GetTextInLocalStorage("doc_company");
+            serie_order = await GetTextInLocalStorage("serie_order");
+
             reasons = await _cancellationRequestService.GetReasons();
         }
 
@@ -41,7 +47,7 @@ namespace NewBloomersWebApplication.UI.Pages
                 {
                     if (!System.String.IsNullOrEmpty(orderNumber))
                     {
-                        order = await _cancellationRequestService.GetOrderToCancel(orderNumber);
+                        order = await _cancellationRequestService.GetOrderToCancel(orderNumber, serie_order, doc_company);
                         Thread.Sleep(2 * 1000);
                         display = "block";
                     }
@@ -111,6 +117,11 @@ namespace NewBloomersWebApplication.UI.Pages
             {
                 throw;
             }
+        }
+
+        private async Task<string> GetTextInLocalStorage(string key)
+        {
+            return await jsRuntime.InvokeAsync<string>("localStorage.getItem", key);
         }
     }
 }
