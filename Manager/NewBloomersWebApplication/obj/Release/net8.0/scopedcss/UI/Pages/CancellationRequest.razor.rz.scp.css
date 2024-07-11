@@ -1,2 +1,116 @@
-body[b-3k5l85p1ld] {
+*[b-3k5l85p1ld] {
+    font-size: 13px;
+}
+
+h1[b-3k5l85p1ld] {
+    display: inline-block;
+    font-size: 18px;
+    width: 99%;
+    margin: 10px auto 10px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EBEBEB;
+    font-family: 'Dosis', Verdana, Arial;
+    color: #5B2E90;
+}
+
+.toolbar[b-3k5l85p1ld] {
+    float: left;
+    margin: 0 auto;
+    width: 98%;
+    min-height: 25px;
+    padding: 5px 1%;
+    border: 0px;
+}
+
+.dir[b-3k5l85p1ld] {
+    float: right !important;
+}
+
+label[b-3k5l85p1ld] {
+    /*    float: left;*/
+    clear: left;
+    /*width: 220px;*/
+    height: auto;
+    text-align: right;
+    margin: 3px 20px 0 0;
+    color: #60656C;
+    font-family: 'Neo Sans', Verdana, Arial !important;
+}
+
+#B1[b-3k5l85p1ld] {
+    float: left;
+    padding: 3px 15px;
+    margin: 0px 5px 2px 5px;
+    width: auto;
+    text-align: center;
+    cursor: pointer;
+    overflow: visible;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #d69137;
+    background: linear-gradient(to bottom, #f7c078 0%, #ed9a2e 100%);
+    border-radius: 50px;
+}
+
+.text[b-3k5l85p1ld] {
+    width: 100px;
+}
+
+.inputs[b-3k5l85p1ld] {
+    padding: 1px 2px;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #60656C;
+    font-family: 'Neo Sans', Verdana, Arial !important;
+    font-size: 13px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+.input[b-3k5l85p1ld] {
+    padding: 1px 2px;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #60656C;
+    font-family: 'Neo Sans', Verdana, Arial !important;
+    font-size: 13px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    width: 296px;
+}
+
+.grid[b-3k5l85p1ld] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] button.col-title:hover, [b-3k5l85p1ld] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] tr, [b-3k5l85p1ld] .quickgrid[theme=corporate] td, [b-3k5l85p1ld] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] .descricao {
+    width: 25rem;
+}
+
+[b-3k5l85p1ld] .quickgrid[theme=corporate] .cols {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }

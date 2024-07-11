@@ -62,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope = b-e30fsw5o2g
 build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xTaWRlTWVudUxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0k5rp2y69q
 
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Attendance.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQXR0ZW5kYW5jZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-etxfb9khlq
+
 [C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/CancellationRequest.razor]
 build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQ2FuY2VsbGF0aW9uUmVxdWVzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-3k5l85p1ld
@@ -73,6 +77,10 @@ build_metadata.AdditionalFiles.CssScope = b-xeukiq8h2w
 [C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/DeliveryList.razor]
 build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRGVsaXZlcnlMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-d4jxg2gr91
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/ExecuteCancellation.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRXhlY3V0ZUNhbmNlbGxhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-zx1gson97g
 
 [C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcSG9tZS5yYXpvcg==
