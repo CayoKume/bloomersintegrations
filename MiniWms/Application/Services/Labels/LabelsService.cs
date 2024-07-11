@@ -145,7 +145,6 @@ namespace BloomersMiniWmsIntegrations.Application.Services
             }
         }
 
-
         public async Task<bool> SendZPLToAPI(string zpl, string nr_pedido, string volume)
         {
             try

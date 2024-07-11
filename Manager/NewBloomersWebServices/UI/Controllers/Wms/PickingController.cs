@@ -111,7 +111,7 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             }
         }
 
-        [HttpPost("UpdateRetorno")]
+        [HttpPut("UpdateRetorno")]
         public async Task<ActionResult> UpdateRetorno([FromBody] UpdateRetornoRequest request)
         {
             try
@@ -130,7 +130,7 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
             }
         }
 
-        [HttpPost("UpdateShippingCompany")]
+        [HttpPut("UpdateShippingCompany")]
         public async Task<ActionResult> UpdateShippingCompany([FromBody] UpdateShippingCompanyRequest request)
         {
             try

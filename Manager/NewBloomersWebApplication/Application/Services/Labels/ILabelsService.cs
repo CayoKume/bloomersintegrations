@@ -9,5 +9,6 @@ namespace NewBloomersWebApplication.Application.Services
         public Task PrintLabels(Order pedido);
         public Task<Order> PrintLabel(string cnpj_emp, string serie_pedido, string nr_pedido);
         public Task<string> PrintCoupon(string cnpj_emp, string serie, string nr_pedido);
+        public Task<bool> UpdateFlagPrinted(string nr_pedido);
     }
 }

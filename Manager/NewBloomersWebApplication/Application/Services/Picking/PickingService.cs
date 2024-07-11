@@ -74,7 +74,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                var result = await _apiCall.PostAsync($"UpdateRetorno", JsonSerializer.Serialize(new { nr_pedido = pedido.number, volumes = pedido.volumes, itens = pedido.itens }));
+                var result = await _apiCall.PutAsync($"UpdateRetorno", JsonSerializer.Serialize(new { nr_pedido = pedido.number, volumes = pedido.volumes, itens = pedido.itens }));
 
                 return true;
             }
@@ -88,7 +88,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                var result = await _apiCall.PostAsync($"UpdateShippingCompany", JsonSerializer.Serialize(new { orderNumber = nr_pedido, cod_shippingCompany = cod_transportador } ));
+                var result = await _apiCall.PutAsync($"UpdateShippingCompany", JsonSerializer.Serialize(new { orderNumber = nr_pedido, cod_shippingCompany = cod_transportador } ));
 
                 return true;
             }

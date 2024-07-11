@@ -2,6 +2,7 @@
 using NewBloomersWebApplication.Infrastructure.Apis;
 using Newtonsoft.Json;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace NewBloomersWebApplication.Application.Services
 {
@@ -79,7 +80,7 @@ namespace NewBloomersWebApplication.Application.Services
                     if (pedido.client.state_registration_client != "" && pedido.client.state_registration_client != "ISENTO")
                         pedido.client.state_registration_client = Convert.ToUInt64(pedido.client.state_registration_client).ToString(@"00\.000\.00\-0");
 
-                    List<String> requests = new List<String>();
+                    List<System.String> requests = new List<System.String>();
                     if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601")
                     {
                         var total_infos = JsonConvert.DeserializeObject<NewBloomersWebApplication.Domain.Entities.Labels.Return.Root>(pedido.returnShippingCompany);
@@ -147,7 +148,7 @@ namespace NewBloomersWebApplication.Application.Services
                     if (pedido.client.state_registration_client != "" && pedido.client.state_registration_client != "ISENTO")
                         pedido.client.state_registration_client = Convert.ToUInt64(pedido.client.state_registration_client).ToString(@"00\.000\.00\-0");
 
-                    List<String> requests = new List<String>();
+                    List<System.String> requests = new List<System.String>();
                     if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601")
                     {
                         var total_infos = JsonConvert.DeserializeObject<NewBloomersWebApplication.Domain.Entities.Labels.Return.Root>(pedido.returnShippingCompany);
@@ -177,13 +178,13 @@ namespace NewBloomersWebApplication.Application.Services
             }
         }
 
-        private List<String> GenerateDanfeBodyRequest(Order pedido)
+        private List<System.String> GenerateDanfeBodyRequest(Order pedido)
         {
             try
             {
                 string logo = string.Empty;
                 string empresa = string.Empty;
-                List<String> requests = new List<String>();
+                List<System.String> requests = new List<System.String>();
 
                 if (pedido.serie == "MI-")
                 {
@@ -306,11 +307,11 @@ namespace NewBloomersWebApplication.Application.Services
             }
         }
 
-        private List<String> GenerateAWBTotalBodyRequest(Order pedido)
+        private List<System.String> GenerateAWBTotalBodyRequest(Order pedido)
         {
             try
             {
-                List<String> requests = new List<String>();
+                List<System.String> requests = new List<System.String>();
 
                 for (int i = 0; i < pedido.awb.Count(); i++)
                 {
@@ -399,11 +400,11 @@ namespace NewBloomersWebApplication.Application.Services
             }
         }
 
-        private List<String> GenerateAWBAWRBodyRequest(Order pedido)
+        private List<System.String> GenerateAWBAWRBodyRequest(Order pedido)
         {
             try
             {
-                List<String> requests = new List<String>();
+                List<System.String> requests = new List<System.String>();
 
                 for (int i = 0; i < pedido.volumes; i++)
                 {
@@ -539,6 +540,18 @@ namespace NewBloomersWebApplication.Application.Services
             var pedido = System.Text.Json.JsonSerializer.Deserialize<Order>(result);
 
             return await _apiCall.PostAsync($"PrintExchangeCupoun", System.Text.Json.JsonSerializer.Serialize(new { serializePedido = pedido }));
+        }
+
+        public async Task<bool> UpdateFlagPrinted(string nr_pedido)
+        {
+            try
+            {
+                return await _apiCall.PutAsync("UpdateFlagPrinted", System.Text.Json.JsonSerializer.Serialize(new { number = nr_pedido }));
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

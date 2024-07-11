@@ -135,6 +135,7 @@ namespace NewBloomersWebApplication.UI.Pages
 
                     await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
                 }
+                await _etiquetasService.UpdateFlagPrinted(nr_pedido);
             }
             else
             {
@@ -159,6 +160,7 @@ namespace NewBloomersWebApplication.UI.Pages
 
                         await jsRuntime.InvokeVoidAsync("downloadFile", "application/pdf", base64String, fileName);
                     }
+                    await _etiquetasService.UpdateFlagPrinted(this.nr_pedido);
                 }
                 else
                 {

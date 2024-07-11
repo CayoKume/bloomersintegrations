@@ -111,11 +111,11 @@ namespace NewBloomersWebServices.UI.Controllers.Wms
         }
 
         [HttpPut("UpdateFlagPrinted")]
-        public async Task<ActionResult> UpdateFlagPrinted([Required][FromQuery] string nr_pedido)
+        public async Task<ActionResult> UpdateFlagPrinted([Required][FromBody] UpdateFlagPrintedRequest request)
         {
             try
             {
-                var result = await _labelsService.UpdateFlagPrinted(nr_pedido);
+                var result = await _labelsService.UpdateFlagPrinted(request.number);
 
                 if (!result)
                     return BadRequest($"Nao foi possivel atualizar o retorno do pedido na tabela.");
