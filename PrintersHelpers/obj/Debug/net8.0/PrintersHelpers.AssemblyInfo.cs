@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrintersHelpers")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dcec1ebe36e1011fcce4fe8129a89a18c673385")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb3fa600fc5417dbf056519e1982cbf6b6d7202d")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrintersHelpers")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrintersHelpers")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

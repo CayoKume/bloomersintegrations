@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "NewBloomersWebApplication",
   "resources": {
-    "hash": "sha256-kCRRJiLieK0ojIDhUZOx2RvtJ/563E6y26xRIJsHiMo=",
+    "hash": "sha256-rYKaNWP1zkSgfimXeFBEXdKtZixBL3dcETmZE6HRB8w=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.b1icm8yjm6.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -18,15 +18,15 @@
     },
     "assembly": {
       "Dapper.wasm": "sha256-PYJ3IBSIJu8xy0XOmNAcukivZln/Q+yOSviCaIMTUCg=",
-      "Microsoft.AspNetCore.Authorization.wasm": "sha256-kcIOasiNC2iD+Tg022f6aTCKnjwzyE8MQTNpQDoIzyw=",
-      "Microsoft.AspNetCore.Components.wasm": "sha256-DQpYnGUhJtjc5Lun2LKa8TfWW1uZsIf0oaXSKg5o8TY=",
+      "Microsoft.AspNetCore.Authorization.wasm": "sha256-s9GVXwxk54dQl2rDy/ceilSgKRA2EsurG8PqOvE9j9A=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-QDdAFHZWZ/UsudNs8fYrsueTzmJNzeNELylbUY6lkrA=",
       "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-Lr2IezaCLA/YDm2A2hTENgy5KQeDz/o+mtiTHzn5dpo=",
-      "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-QbQYD1i1kIfQf790hDwaN1AS44hTIDmXGQuabj0OKxo=",
+      "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-akzgy1uAnRG/g4YlT0MwG1bOtrv61SEGE6Sr+AiIkCE=",
       "Microsoft.AspNetCore.Components.QuickGrid.wasm": "sha256-dJl0hxSrdjGcwNcwN2Yohou1yQp4CN7GZv1rhvxvx3k=",
-      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-m8+avpuhQ/qPTLAI9eLjN0pRtp+9qJ0YmI2mkGi71wI=",
+      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-Mfv/Wds4tY+jX0AY8lIFtYCYhvXOliEK58jv2q6r2Lk=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-Y+EHIYfJGzXgN3vluuzwmKa+sQxqvGiB07pahOLsVJU=",
       "Microsoft.AspNetCore.Components.WebAssembly.Authentication.wasm": "sha256-PazZTNGqPhU8zKDdERbxyww2bQqnazf3CvOaH91kg8U=",
-      "Microsoft.AspNetCore.Metadata.wasm": "sha256-WqXwQkujGiES/0Dqpa6SChJqSetdki7dySrknprHqvc=",
+      "Microsoft.AspNetCore.Metadata.wasm": "sha256-M6d6kRld7okbnIpnX8hLjwBfs/aIXl7ubpmAdEmiysE=",
       "Microsoft.Authentication.WebAssembly.Msal.wasm": "sha256-42ZTbdXXVwRCEZz4SFfmsJWzdXDryxiNxoNkTSgpsgI=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-UDGEQR7J3WTfzYMgOzxVIBwFQtKEeJvO8UgrWagypdE=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-yNdqbqDWGiJo943D7LPak5xryCBEsNH0wtdiuU1R9VE=",
@@ -46,7 +46,7 @@
       "Microsoft.Extensions.Options.wasm": "sha256-5/m+yVFGRuY+N4jQnD+QETKH0AfhAsnVze5dJ5ogIVM=",
       "Microsoft.Extensions.Options.ConfigurationExtensions.wasm": "sha256-C8ZA1VhhrMRPf8Qqv+OrW9za3ggJkCM9i1d8R/F1ETc=",
       "Microsoft.Extensions.Primitives.wasm": "sha256-pVrYOTfjb2ITls3LKIByW1t8jwOAWFhmkIVDewtJ1GE=",
-      "Microsoft.JSInterop.wasm": "sha256-GsAOzdCVCC+n7tPF4K83ctQiqj1M850bsiJ5oPCpOiE=",
+      "Microsoft.JSInterop.wasm": "sha256-MwldKMFxneAed5VVuF+dWcoF8YxUQgxNT52sVyJNbN0=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-k1ycznAW3kfyxO+I3lroU5VWTHPfMEmvwPqq6dnWPtk=",
       "Newtonsoft.Json.wasm": "sha256-GlXMWKvDs45M2pACoR3Y4Qh8mcrOZGljqmvJY+6JZ5s=",
       "System.Data.SqlClient.wasm": "sha256-NzOaGj7Blmtxct0Ze4/hNdfzaFBErxmkIaqwIAcwqqY=",
@@ -219,12 +219,12 @@
       "mscorlib.wasm": "sha256-VCfYgt1mcjITabSTosCDVZ+68ea3Z7kakTFaLNLG+18=",
       "netstandard.wasm": "sha256-YOZxxR9PM3Dltcijfb0Q4FD39DkWZbZ1e2ScbZDvWJ4=",
       "System.Private.CoreLib.wasm": "sha256-NrT1QkAzVU//2wgK9vXdq77lCGvLJ4IOZ+Aegesyanc=",
-      "NewBloomersWebServicesCore.wasm": "sha256-hNL2qV4rvbutNhURZaKkPAc0S2l5syVHrmkikxAwDpk=",
-      "NewBloomersWebApplication.wasm": "sha256-F2YHsrZ4+EqQcBaNYrGmkoBVFdPS9qAEvtGokdcRFog="
+      "NewBloomersWebServicesCore.wasm": "sha256-n5+NiSSGlJ9MX4mNon4wiKs4lGTxiwM0I5WV4SUw1oY=",
+      "NewBloomersWebApplication.wasm": "sha256-NdhnfOOo15Ad2dIKucR6cSIlWH8qEDGmfBKzebR+uA8="
     },
     "pdb": {
-      "NewBloomersWebServicesCore.pdb": "sha256-CZkl6CCqBHPpFLr3dCCQw54eWKX6xj7eJPC5iLrK4Sc=",
-      "NewBloomersWebApplication.pdb": "sha256-N53vO2eee0jRuoKh1ZwisRb+cGP8ESgTcC4GVHTT2DM="
+      "NewBloomersWebServicesCore.pdb": "sha256-hCVdjgemwAUvgb7v/bgxtPOzHJ8GIarOdRfy+QKnbxg=",
+      "NewBloomersWebApplication.pdb": "sha256-TIIVuzk40IGuwsIUr/XwWZarT1V4gaQYo5pwkfJ4fRI="
     }
   },
   "cacheBootResources": true,

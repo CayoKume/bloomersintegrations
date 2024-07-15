@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@inject SignOutSessionStateManager SignOutManager
 @inject IJSRuntime jsRuntime;
 
 <div class="page">
@@ -8,40 +10,37 @@
 
     <main>
         <div class="top-row px-4">
-            <div class="menus">
-                <div class="nav-item px-1">
-                    <a class="nav-link" href="#" Match="NavLinkMatch.All" @onclick:preventDefault>
-                        <i class="bi bi-building"></i> @empresa
-                    </a>
-                </div>
-
-                <div class="nav-item px-1">
-                    <div>
-                        <a class="nav-link" href="#" @onclick="()=>expandUsuario= !expandUsuario" @onclick:preventDefault>
-                            <i class="bi bi-person-circle"></i> Usuario
-                        </a>
+            <AuthorizeView>
+                <Authorized>
+                    <div class="menus">
+                        <div class="nav-item px-1">
+                            <a class="nav-link" href="#" Match="NavLinkMatch.All" @onclick:preventDefault>
+                                <i class="bi bi-building"></i> @empresa
+                            </a>
+                        </div>
+                        <div class="nav-item px-1">
+                            <div>
+                                <a class="nav-link" href="#" @onclick="()=>expandUsuario= !expandUsuario" @onclick:preventDefault>
+                                    <i class="bi bi-person-circle"></i> @context.User.Identity?.Name
+                                </a>
+                            </div>
+                            <div>
+                                @if (expandUsuario)
+                                {
+                                    <ul class="nav flex-column filled">
+                                        <li class="nav-item px-1">
+                                            <NavLink class="nav-link" href="#" @onclick:preventDefault>
+                                                <i class="bi bi-box-arrow-right" @onclick = "LogOut"></i> Sair
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        @if (expandUsuario)
-                        {
-                            <ul class="nav flex-column filled">
-                                <li class="nav-item px-1">
-                                    <NavLink class="nav-link" href="counter">
-                                        <i class="bi bi-key-fill"></i> Alterar Senha
-                                    </NavLink>
-                                </li>
-
-                                <li class="nav-item px-1">
-                                    <NavLink class="nav-link" href="counter">
-                                        <i class="bi bi-box-arrow-right"></i> Sair
-                                    </NavLink>
-                                </li>
-                            </ul>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
+                </Authorized>
+            </AuthorizeView>
+        </div>     
         <article class="content px-4">
             @Body
         </article>

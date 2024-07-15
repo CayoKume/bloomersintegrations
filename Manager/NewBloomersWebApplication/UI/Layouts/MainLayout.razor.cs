@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace NewBloomersWebApplication.UI.Layouts
 {
@@ -19,6 +20,12 @@ namespace NewBloomersWebApplication.UI.Layouts
         private void ToggleNavMenu()
         {
             collapseNavMenu = !collapseNavMenu;
+        }
+
+        private async Task LogOut()
+        {
+            await SignOutManager.SetSignOutState();
+            NavigationManager.NavigateTo("/authentication/logout");
         }
 
         private async Task<string> GetTextInLocalStorage(string key)
