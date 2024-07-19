@@ -1,9 +1,10 @@
-﻿@page "/Empresas"
+﻿@page "/"
 @layout BlankLayout
 @inject IJSRuntime jsRuntime;
 @inject ICompanyService _empresasService;
 @inject NavigationManager NavigationManager
 @inject HttpClient _httpClient;
+@attribute [Authorize]
 
 <div class="row justify-content-center" id="body" style="margin-top: 15%">
     <div class="col-sm-4 col-xs-12">

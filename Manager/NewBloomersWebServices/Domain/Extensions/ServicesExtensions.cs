@@ -275,6 +275,33 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             return services;
         }
 
+        public static IServiceCollection AddScopedJadlogServices(this IServiceCollection services)
+        {
+            services.AddScoped<BloomersCarriersIntegrations.Jadlog.Infrastructure.Apis.IAPICall, BloomersCarriersIntegrations.Jadlog.Infrastructure.Apis.APICall>();
+            services.AddHttpClient("JadlogPostAsync", client =>
+            {
+                client.BaseAddress = new Uri("https://www.jadlog.com.br/embarcador/api/");
+                client.Timeout = new TimeSpan(0, 20, 0);
+            });
+            services.AddHttpClient("JadlogTrackingSimp", client =>
+            {
+                client.BaseAddress = new Uri("https://prd-traffic.jadlogtech.com.br/embarcador/api/");
+                client.Timeout = new TimeSpan(0, 20, 0);
+            });
+            services.AddHttpClient("JadlogDropoff", client =>
+            {
+                client.BaseAddress = new Uri("https://www.jadlog.com.br/qrcodeservice/api/");
+                client.Timeout = new TimeSpan(0, 20, 0);
+            });
+            services.AddHttpClient("JadlogGetAsync", client =>
+            {
+                client.BaseAddress = new Uri("https://www.jadlog.com.br/pickup/address/");
+                client.Timeout = new TimeSpan(0, 20, 0);
+            });
+
+            return services;
+        }
+
         public static IServiceCollection AddScopedAfterSaleServices(this IServiceCollection services)
         {
             services.AddScoped<BloomersGeneralIntegrations.AfterSale.Infrastructure.Apis.IAPICall, BloomersGeneralIntegrations.AfterSale.Infrastructure.Apis.APICall>();

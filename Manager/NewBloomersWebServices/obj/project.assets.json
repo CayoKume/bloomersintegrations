@@ -1049,6 +1049,21 @@
           "bin/placeholder/InvoiceOrder.dll": {}
         }
       },
+      "Jadlog/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.Extensions.Http": "8.0.0",
+          "NewBloomersWebServicesCore": "1.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Jadlog.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Jadlog.dll": {}
+        }
+      },
       "LinxCommerce/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -3063,6 +3078,11 @@
       "path": "../../Workers/InvoiceOrder/InvoiceOrder.csproj",
       "msbuildProject": "../../Workers/InvoiceOrder/InvoiceOrder.csproj"
     },
+    "Jadlog/1.0.0": {
+      "type": "project",
+      "path": "../../Carriers/Jadlog/Jadlog.csproj",
+      "msbuildProject": "../../Carriers/Jadlog/Jadlog.csproj"
+    },
     "LinxCommerce/1.0.0": {
       "type": "project",
       "path": "../../LinxCommerce/LinxCommerce.csproj",
@@ -3126,6 +3146,7 @@
       "Hangfire >= 1.8.11",
       "InsertReverse >= 1.0.0",
       "InvoiceOrder >= 1.0.0",
+      "Jadlog >= 1.0.0",
       "LinxCommerce >= 1.0.0",
       "LinxMicrovixWsEntrada >= 1.0.0",
       "LinxMicrovixWsSaida >= 1.0.0",
@@ -3174,6 +3195,9 @@
           "projectReferences": {
             "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\FlashCourier\\FlashCourier.csproj": {
               "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\FlashCourier\\FlashCourier.csproj"
+            },
+            "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\Jadlog\\Jadlog.csproj": {
+              "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\Jadlog\\Jadlog.csproj"
             },
             "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\TotalExpress\\TotalExpress.csproj": {
               "projectPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\TotalExpress\\TotalExpress.csproj"

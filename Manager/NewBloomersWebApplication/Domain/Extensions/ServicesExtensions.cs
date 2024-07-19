@@ -11,6 +11,7 @@ namespace NewBloomersWebApplication.Domain.Extensions
             {
                 services.AddHttpClient("MiniWMS", client =>
                 {
+                    //client.BaseAddress = new Uri("http://localhost:5118/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
                     client.BaseAddress = new Uri("https://localhost:7049/NewBloomers/BloomersInvoiceIntegrations/MiniWms/");
                     client.Timeout = new TimeSpan(0, 2, 0);
                 });
