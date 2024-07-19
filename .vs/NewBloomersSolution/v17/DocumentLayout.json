@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{898F2D7C-8ADA-4E2C-B23E-9D251114D313}|Carriers\\Jadlog\\Jadlog.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\carriers\\jadlog\\infrastructure\\apis\\apicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{898F2D7C-8ADA-4E2C-B23E-9D251114D313}|Carriers\\Jadlog\\Jadlog.csproj|solutionrelative:carriers\\jadlog\\infrastructure\\apis\\apicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{898F2D7C-8ADA-4E2C-B23E-9D251114D313}|Carriers\\Jadlog\\Jadlog.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\carriers\\jadlog\\application\\services\\jadlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{898F2D7C-8ADA-4E2C-B23E-9D251114D313}|Carriers\\Jadlog\\Jadlog.csproj|solutionrelative:carriers\\jadlog\\application\\services\\jadlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwssaida\\infrastructure\\apis\\apicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|solutionrelative:linxmicrovix\\linxmicrovixwssaida\\infrastructure\\apis\\apicall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,48 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-07-19T21:40:44.111Z",
+              "Title": "APICall.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Infrastructure\\Apis\\APICall.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsSaida\\Infrastructure\\Apis\\APICall.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Infrastructure\\Apis\\APICall.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsSaida\\Infrastructure\\Apis\\APICall.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAIEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T21:52:04.05Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "APICall.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\Jadlog\\Infrastructure\\Apis\\APICall.cs",
-              "RelativeDocumentMoniker": "Carriers\\Jadlog\\Infrastructure\\Apis\\APICall.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\Jadlog\\Infrastructure\\Apis\\APICall.cs",
-              "RelativeToolTip": "Carriers\\Jadlog\\Infrastructure\\Apis\\APICall.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T21:38:23.359Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "JadlogService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\Jadlog\\Application\\Services\\JadlogService.cs",
-              "RelativeDocumentMoniker": "Carriers\\Jadlog\\Application\\Services\\JadlogService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Carriers\\Jadlog\\Application\\Services\\JadlogService.cs",
-              "RelativeToolTip": "Carriers\\Jadlog\\Application\\Services\\JadlogService.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAAAG4AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T20:38:47.838Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

@@ -142,11 +142,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Apis
                             }
                             listRegistros.Add(registro);
                         });
-
-                        return listRegistros;
                     }
-                    else
-                        return listRegistros;
                 }
                 return listRegistros;
             }
