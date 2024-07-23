@@ -14,11 +14,11 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Apis
         public APICall(IHttpClientFactory httpClientFactory, IJadlogRepository jadlogRepository) =>
             (_httpClientFactory, _jadlogRepository) = (httpClientFactory, jadlogRepository);
 
-        public async Task<string> GetAsync(string senderID, string orderNumber, string doc_company, string rote, JObject jArrayObj)
+        public async Task<string> GetAsync(string senderID, string orderNumber, string token, string rote, JObject jObject)
         {
             try
             {
-                var token = await _jadlogRepository.GetToken(doc_company);
+                //var token = await _jadlogRepository.GetToken(doc_company);
                 var client = CreateClientToGetAsync(token);
 
                 var response = await client.PostAsync(client.BaseAddress + rote, new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));

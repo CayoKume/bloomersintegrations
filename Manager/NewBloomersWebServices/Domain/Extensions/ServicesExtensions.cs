@@ -48,6 +48,8 @@ using BloomersWorkers.ChangingPassword.Infrastructure.Source.Pages;
 using BloomersWorkers.InsertReverse.Infrastructure.Source.Pages;
 using BloomersMiniWmsIntegrations.Application.Services;
 using BloomersMiniWmsIntegrations.Infrastructure.Repositorys;
+using BloomersCarriersIntegrations.Jadlog.Application.Services;
+using BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys;
 
 namespace BloomersIntegrationsManager.Domain.Extensions
 {
@@ -62,6 +64,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
             builder.Services.AddScopedFlashCourierServices();
             builder.Services.AddScopedTotalExpressServices();
+            builder.Services.AddScopedJadlogServices();
 
             builder.Services.AddScopedLinxCommerceServices();
             builder.Services.AddScopedLinxMicrovixCommerceServices();
@@ -298,6 +301,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
                 client.BaseAddress = new Uri("https://www.jadlog.com.br/pickup/address/");
                 client.Timeout = new TimeSpan(0, 20, 0);
             });
+            services.AddScoped<IJadlogService, JadlogService>();
+            services.AddScoped<IJadlogRepository, JadlogRepository>();
 
             return services;
         }

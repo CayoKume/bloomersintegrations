@@ -3,7 +3,7 @@ using Order = BloomersCarriersIntegrations.Jadlog.Domain.Entities.Order;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using Dapper;
 using BloomersCarriersIntegrations.Jadlog.Domain.Entities;
-using Product = BloomersIntegrationsCore.Domain.Entities.Product;
+using Product = BloomersCarriersIntegrations.Jadlog.Domain.Entities.Product;
 
 namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
 {
@@ -31,10 +31,10 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
             }
         }
 
-        public async Task GenerateResponseLog(string pedido, string remetenteId, string response)
+        public async Task GenerateResponseLog(string pedido, string response)
         {
-            var sql = @$"INSERT INTO [GENERAL].[dbo].JadlogRegistroLog (pedido, remetenteid, dataenvio, retorno) 
-                         VALUES ('{pedido}', '{remetenteId}', GETDATE(), '{response}')";
+            var sql = @$"INSERT INTO [GENERAL].[dbo].JadlogRegistroLog (pedido, dataenvio, response) 
+                         VALUES ('{pedido}', GETDATE(), '{response}')";
             try
             {
                 using (var conn = _conn.GetDbConnection())
@@ -221,132 +221,132 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
             }
         }
 
-        public async Task<Order> GetInvoicedOrderETUR(string orderNumber)
-        {
-            var sql = $@"SELECT DISTINCT 
-                                 TRIM(A.DOCUMENTO) AS NUMBER,
-                                 A.VOLUMES AS VOLUMES,
-                                 A.NB_CFOP_PEDIDO AS CFOP,
+        //public async Task<Order> GetInvoicedOrderETUR(string orderNumber)
+        //{
+        //    var sql = $@"SELECT DISTINCT 
+        //                         TRIM(A.DOCUMENTO) AS NUMBER,
+        //                         A.VOLUMES AS VOLUMES,
+        //                         A.NB_CFOP_PEDIDO AS CFOP,
 
-                                 39833 AS REMETENTEID,
-                                 7 AS SERVICOTIPO,
+        //                         39833 AS REMETENTEID,
+        //                         7 AS SERVICOTIPO,
 
-                                 B.CODIGO_BARRA AS COD_PRODUCT,
-                                 B.NB_SKU_PRODUTO AS SKU_PRODUCT,
-                                 B.DESCRICAO AS DESCRIPTION_PRODUCT,
-                                 B.CODIGO_BARRA AS COD_EAN_PRODUCT,
-                                 B.QTDE AS QUANTITY_PRODUCT,
-                                 B.NB_VALOR_UNITARIO_PRODUTO AS UNITARY_VALUE_PRODUCT,
-                                 B.NB_VALOR_TOTAL_PRODUTO AS AMOUNT_PRODUCT,
-                                 B.NB_VALOR_FRETE_PRODUTO AS SHIPPING_VALUE_PRODUCT,
+        //                         B.CODIGO_BARRA AS COD_PRODUCT,
+        //                         B.NB_SKU_PRODUTO AS SKU_PRODUCT,
+        //                         B.DESCRICAO AS DESCRIPTION_PRODUCT,
+        //                         B.CODIGO_BARRA AS COD_EAN_PRODUCT,
+        //                         B.QTDE AS QUANTITY_PRODUCT,
+        //                         B.NB_VALOR_UNITARIO_PRODUTO AS UNITARY_VALUE_PRODUCT,
+        //                         B.NB_VALOR_TOTAL_PRODUTO AS AMOUNT_PRODUCT,
+        //                         B.NB_VALOR_FRETE_PRODUTO AS SHIPPING_VALUE_PRODUCT,
 
-                                 A.NB_CODIGO_CLIENTE AS COD_CLIENT,
-                                 A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
-                                 A.NB_NOME_CLIENTE AS NAME_CLIENT,
-                                 A.NB_DOC_CLIENTE AS DOC_CLIENT,
-                                 A.NB_EMAIL_CLIENTE AS EMAIL_CLIENT,
-                                 A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
-                                 CASE
-                                     WHEN A.NB_NUMERO_RUA_CLIENTE = '' THEN 'SVN'
-                                     ELSE A.NB_NUMERO_RUA_CLIENTE
-                                 END AS STREET_NUMBER_CLIENT,
-                                 A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
-                                 A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
-                                 A.NB_CIDADE AS CITY_CLIENT,
-                                 A.NB_ESTADO AS UF_CLIENT,
-                                 A.NB_CEP AS ZIP_CODE_CLIENT,
-                                 A.NB_FONE_CLIENTE AS FONE_CLIENT,
-                                 A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
-                                 A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
+        //                         A.NB_CODIGO_CLIENTE AS COD_CLIENT,
+        //                         A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
+        //                         A.NB_NOME_CLIENTE AS NAME_CLIENT,
+        //                         A.NB_DOC_CLIENTE AS DOC_CLIENT,
+        //                         A.NB_EMAIL_CLIENTE AS EMAIL_CLIENT,
+        //                         A.NB_ENDERECO_CLIENTE AS ADDRESS_CLIENT,
+        //                         CASE
+        //                             WHEN A.NB_NUMERO_RUA_CLIENTE = '' THEN 'SVN'
+        //                             ELSE A.NB_NUMERO_RUA_CLIENTE
+        //                         END AS STREET_NUMBER_CLIENT,
+        //                         A.NB_COMPLEMENTO_END_CLIENTE AS COMPLEMENT_ADDRESS_CLIENT,
+        //                         A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
+        //                         A.NB_CIDADE AS CITY_CLIENT,
+        //                         A.NB_ESTADO AS UF_CLIENT,
+        //                         A.NB_CEP AS ZIP_CODE_CLIENT,
+        //                         A.NB_FONE_CLIENTE AS FONE_CLIENT,
+        //                         A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
+        //                         A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
 
-                                 A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
-                                 A.NB_METODO_TRANSPORTADORA AS METODO_SHIPPINGCOMPANY,
-                                 A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
-                                 A.NB_NOME_TRANSPORTADORA AS NAME_SHIPPINGCOMPANY,
-                                 A.NB_DOC_TRANSPORTADORA AS DOC_SHIPPINGCOMPANY,
-                                 A.NB_EMAIL_TRANSPORTADORA AS EMAIL_SHIPPINGCOMPANY,
-                                 A.NB_ENDERECO_TRANSPORTADORA AS ADDRESS_SHIPPINGCOMPANY
-                                 A.NB_NUMERO_RUA_TRANSPORTADORA AS STREET_NUMBER_SHIPPINGCOMPANY,
-                                 A.NB_COMPLEMENTO_END_TRANSPORTADORA AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
-                                 A.NB_BAIRRO_TRANSPORTADORA AS NEIGHBORHOOD_SHIPPINGCOMPANY,
-                                 A.NB_CIDADE_TRANSPORTADORA AS CITY_SHIPPINGCOMPANY,
-                                 A.NB_UF_TRANSPORTADORA AS UF_SHIPPINGCOMPANY,
-                                 A.NB_CEP_TRANSPORTADORA AS ZIP_CODE_SHIPPINGCOMPANY,
-                                 A.NB_FONE_TRANSPORTADORA AS FONE_SHIPPINGCOMPANY,
-                                 A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA AS STATE_REGISTRATION_SHIPPINGCOMPANY,
+        //                         A.NB_TRANSPORTADORA AS COD_SHIPPINGCOMPANY,
+        //                         A.NB_METODO_TRANSPORTADORA AS METODO_SHIPPINGCOMPANY,
+        //                         A.NB_RAZAO_TRANSPORTADORA AS REASON_SHIPPINGCOMPANY,
+        //                         A.NB_NOME_TRANSPORTADORA AS NAME_SHIPPINGCOMPANY,
+        //                         A.NB_DOC_TRANSPORTADORA AS DOC_SHIPPINGCOMPANY,
+        //                         A.NB_EMAIL_TRANSPORTADORA AS EMAIL_SHIPPINGCOMPANY,
+        //                         A.NB_ENDERECO_TRANSPORTADORA AS ADDRESS_SHIPPINGCOMPANY
+        //                         A.NB_NUMERO_RUA_TRANSPORTADORA AS STREET_NUMBER_SHIPPINGCOMPANY,
+        //                         A.NB_COMPLEMENTO_END_TRANSPORTADORA AS COMPLEMENT_ADDRESS_SHIPPINGCOMPANY,
+        //                         A.NB_BAIRRO_TRANSPORTADORA AS NEIGHBORHOOD_SHIPPINGCOMPANY,
+        //                         A.NB_CIDADE_TRANSPORTADORA AS CITY_SHIPPINGCOMPANY,
+        //                         A.NB_UF_TRANSPORTADORA AS UF_SHIPPINGCOMPANY,
+        //                         A.NB_CEP_TRANSPORTADORA AS ZIP_CODE_SHIPPINGCOMPANY,
+        //                         A.NB_FONE_TRANSPORTADORA AS FONE_SHIPPINGCOMPANY,
+        //                         A.NB_INSCRICAO_ESTADUAL_TRANSPORTADORA AS STATE_REGISTRATION_SHIPPINGCOMPANY,
 
-                                 A.NB_COD_REMETENTE AS COD_COMPANY,
-                                 A.NB_RAZAO_REMETENTE AS REASON_COMPANY,
-                                 A.NB_NOME_REMETENTE AS NAME_COMPANY,
+        //                         A.NB_COD_REMETENTE AS COD_COMPANY,
+        //                         A.NB_RAZAO_REMETENTE AS REASON_COMPANY,
+        //                         A.NB_NOME_REMETENTE AS NAME_COMPANY,
 
-                                 CASE
-                                     WHEN A.NB_DOC_REMETENTE = '38367316000865' THEN '38367316000199' --ENVIA PEDIDOS PARA TOTAL DA MISHA - VOLO COMO MISHA - MATRIZ
-                                     ELSE A.NB_DOC_REMETENTE
-                                 END AS DOC_COMPANY,
+        //                         CASE
+        //                             WHEN A.NB_DOC_REMETENTE = '38367316000865' THEN '38367316000199' --ENVIA PEDIDOS PARA TOTAL DA MISHA - VOLO COMO MISHA - MATRIZ
+        //                             ELSE A.NB_DOC_REMETENTE
+        //                         END AS DOC_COMPANY,
 
-                                 A.NB_EMAIL_REMETENTE AS EMAIL_COMPANY,
-                                 A.NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
-                                 A.NB_NUMERO_RUA_REMETENTE AS STREET_NUMBER_COMPANY,
-                                 A.NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
-                                 A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
-                                 A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
-                                 A.NB_UF_REMETENTE AS UF_COMPANY,
-                                 A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
-                                 A.NB_FONE_REMETENTE AS FONE_COMPANY,
-                                 A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
+        //                         A.NB_EMAIL_REMETENTE AS EMAIL_COMPANY,
+        //                         A.NB_ENDERECO_REMETENTE AS ADDRESS_COMPANY,
+        //                         A.NB_NUMERO_RUA_REMETENTE AS STREET_NUMBER_COMPANY,
+        //                         A.NB_COMPLEMENTO_END_REMETENTE AS COMPLEMENT_ADDRESS_COMPANY,
+        //                         A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
+        //                         A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
+        //                         A.NB_UF_REMETENTE AS UF_COMPANY,
+        //                         A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
+        //                         A.NB_FONE_REMETENTE AS FONE_COMPANY,
+        //                         A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
 
-                                 A.NF_SAIDA AS NUMBER_NF,
-                                 A.NB_VALOR_PEDIDO AS AMOUNT_NF,
-                                 (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<vFrete>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 8, 4) AS DECIMAL(14,2))) AS SHIPPING_VALUE_NF,
-                                 (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<pesoB>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 4) AS DECIMAL(14,2))) AS WEIGHT_NF,
-                                 A.CHAVE_NFE AS KEY_NFE_NF,
-                                 CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_NF,
-                                 CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
-                                 'NF' as TYPE_NF,
-                                 (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', A.[XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
-                                 (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF
+        //                         A.NF_SAIDA AS NUMBER_NF,
+        //                         A.NB_VALOR_PEDIDO AS AMOUNT_NF,
+        //                         (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<vFrete>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 8, 4) AS DECIMAL(14,2))) AS SHIPPING_VALUE_NF,
+        //                         (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<pesoB>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 4) AS DECIMAL(14,2))) AS WEIGHT_NF,
+        //                         A.CHAVE_NFE AS KEY_NFE_NF,
+        //                         CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_NF,
+        //                         CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
+        //                         'NF' as TYPE_NF,
+        //                         (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', A.[XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
+        //                         (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF
 
-                                 FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] A (NOLOCK)
-                                 JOIN [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
-                                 LEFT JOIN GENERAL..JADLOGREGISTROLOG C (NOLOCK) ON A.DOCUMENTO = C.PEDIDO
+        //                         FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] A (NOLOCK)
+        //                         JOIN [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
+        //                         LEFT JOIN GENERAL..JADLOGREGISTROLOG C (NOLOCK) ON A.DOCUMENTO = C.PEDIDO
 
-                                 WHERE
-                                 A.DOCUMENTO IN ('{orderNumber}')
-                                 AND A.SERIE != 'MX-'
-                                 AND A.ORIGEM = 'P'
-                                 AND A.CHAVE_NFE IS NOT NULL 
-                                 AND A.XML_FATURAMENTO IS NOT NULL 
-                                 AND A.DATA > GETDATE() - 15";
+        //                         WHERE
+        //                         A.DOCUMENTO IN ('{orderNumber}')
+        //                         AND A.SERIE != 'MX-'
+        //                         AND A.ORIGEM = 'P'
+        //                         AND A.CHAVE_NFE IS NOT NULL 
+        //                         AND A.XML_FATURAMENTO IS NOT NULL 
+        //                         AND A.DATA > GETDATE() - 15";
 
-            try
-            {
-                using (var conn = _conn.GetDbConnection())
-                {
-                    var result = await conn.QueryAsync<Order, Product, Client, ShippingCompany, Company, Invoice, Order>(sql, (order, product, client, shippingCompany, company, invoice) =>
-                    {
-                        order.itens.Add(product);
-                        order.client = client;
-                        order.shippingCompany = shippingCompany;
-                        order.company = company;
-                        order.invoice = invoice;
-                        return order;
-                    }, splitOn: "cod_product, cod_client, cod_shippingCompany, cod_company, number_nf", commandTimeout: 360);
+        //    try
+        //    {
+        //        using (var conn = _conn.GetDbConnection())
+        //        {
+        //            var result = await conn.QueryAsync<Order, Product, Client, ShippingCompany, Company, Invoice, Order>(sql, (order, product, client, shippingCompany, company, invoice) =>
+        //            {
+        //                order.itens.Add(product);
+        //                order.client = client;
+        //                order.shippingCompany = shippingCompany;
+        //                order.company = company;
+        //                order.invoice = invoice;
+        //                return order;
+        //            }, splitOn: "cod_product, cod_client, cod_shippingCompany, cod_company, number_nf", commandTimeout: 360);
 
-                    var orders = result.GroupBy(p => p.number).Select(g =>
-                    {
-                        var groupedOrder = g.First();
-                        groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
-                        return groupedOrder;
-                    });
+        //            var orders = result.GroupBy(p => p.number).Select(g =>
+        //            {
+        //                var groupedOrder = g.First();
+        //                groupedOrder.itens = g.Select(p => p.itens.Single()).ToList();
+        //                return groupedOrder;
+        //            });
 
-                    return orders.First();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(@$"Jadlog - GetInvoicedOrderETUR - Erro ao obter pedido: {orderNumber} da tabela GENERAL..IT4_WMS_DOCUMENTO - {ex.Message}");
-            }
-        }
+        //            return orders.First();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(@$"Jadlog - GetInvoicedOrderETUR - Erro ao obter pedido: {orderNumber} da tabela GENERAL..IT4_WMS_DOCUMENTO - {ex.Message}");
+        //    }
+        //}
 
         public async Task<List<Order>> GetInvoicedOrders()
         {
@@ -429,7 +429,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
                             A.NB_CIDADE AS CITY_CLIENT,
                             A.NB_ESTADO AS UF_CLIENT,
-                            A.NB_CEP AS ZIP_CODE_CLIENT,
+                            TRIM(A.NB_CEP) AS ZIP_CODE_CLIENT,
                             A.NB_FONE_CLIENTE AS FONE_CLIENT,
                             A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
                             A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
@@ -466,7 +466,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             A.NB_BAIRRO_REMETENTE AS NEIGHBORHOOD_COMPANY,
                             A.NB_CIDADE_REMETENTE AS CITY_COMPANY,
                             A.NB_UF_REMETENTE AS UF_COMPANY,
-                            A.NB_CEP_REMETENTE AS ZIP_CODE_COMPANY,
+                            REPLACE(A.NB_CEP_REMETENTE, '-', '') AS ZIP_CODE_COMPANY,
                             A.NB_FONE_REMETENTE AS FONE_COMPANY,
                             A.NB_INSCRICAO_ESTADUAL_REMETENTE AS STATE_REGISTRATION_COMPANY,
 
@@ -491,10 +491,10 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             AND A.CHAVE_NFE IS NOT NULL 
                             AND A.XML_FATURAMENTO IS NOT NULL 
                             AND A.NB_TRANSPORTADORA = '101988'
-                            AND A.DATA > GETDATE() - 15
+                            --AND A.DATA > GETDATE() - 15
                             AND A.VOLUMES IS NOT NULL
-							AND (C.PEDIDO IS NULL OR SUBSTRING(C.retorno, 3, 7) <> 'retorno') 
-							AND NOT EXISTS (SELECT 0 FROM GENERAL..JADLOGREGISTROLOG TER (NOLOCK) WHERE TER.pedido = C.pedido AND SUBSTRING(TER.retorno, 3, 7) = 'retorno')";
+							AND (C.PEDIDO IS NULL OR SUBSTRING(C.RESPONSE, 3, 7) <> 'erro') 
+							AND NOT EXISTS (SELECT 0 FROM GENERAL..JADLOGREGISTROLOG TER (NOLOCK) WHERE TER.PEDIDO = C.PEDIDO AND SUBSTRING(TER.RESPONSE, 3, 7) = 'erro')";
 
             try
             {

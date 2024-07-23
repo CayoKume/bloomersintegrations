@@ -218,3 +218,5 @@ C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersW
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.genruntimeconfig.cache
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\ref\NewBloomersWebServices.dll
 C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\obj\Debug\net8.0\NewBloomersWebServices.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Jadlog.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebServices\bin\Debug\net8.0\Jadlog.pdb

@@ -14,6 +14,5 @@ namespace BloomersCarriersIntegrations.TotalExpress.Domain.Entities
         public ShippingCompany? shippingCompany { get; set; }
         public Invoice? invoice { get; set; }
         public List<Product> items { get { return _items; } set { _items = value; } }
-
     }
 }
