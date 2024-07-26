@@ -1,4 +1,0 @@
-2024-04-03 11:28:05.453 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos a serem cortados da tabela IT4_WMS_DOCUMENTO - Incorrect syntax near 'AND'.
-2024-04-03 16:12:38.831 -03:00 [INF] Pedido: MI-VD37693, alterado com sucesso
-2024-04-03 16:22:47.332 -03:00 [INF] Pedido: MI-VD37693, alterado com sucesso
-2024-04-03 16:26:47.584 -03:00 [WRN] Errors => MI-VD37693 - Login (SelectCompany) - O bot nao foi capaz de encontrar o elemento: sel_empresa_portal_usuario__________ - sel_empresa_portal_usuario__________

@@ -65,7 +65,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintersHelpers", "Printers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinxCommerce", "LinxCommerce\LinxCommerce.csproj", "{597F740B-EC7F-4AAC-A760-517775F2D262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jadlog", "Carriers\Jadlog\Jadlog.csproj", "{898F2D7C-8ADA-4E2C-B23E-9D251114D313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jadlog", "Carriers\Jadlog\Jadlog.csproj", "{898F2D7C-8ADA-4E2C-B23E-9D251114D313}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,5 +6,6 @@
         public int modality { get; set; }
         public string token { get; set; }
         public string product { get; set; }
+        public string conta { get; set; }
     }
 }

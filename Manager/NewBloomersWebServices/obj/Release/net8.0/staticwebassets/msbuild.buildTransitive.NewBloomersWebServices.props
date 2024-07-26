@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\NewBloomersWebServices.props" />
-</Project>
