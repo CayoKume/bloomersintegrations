@@ -1,6 +1,0 @@
-2024-06-22 03:08:26.035 -03:00 [INF] Obtidos: 3 pedidos para serem faturados
-2024-06-22 03:08:30.872 -03:00 [INF] Iniciando o faturamento do pedido OA-22204
-2024-06-22 03:08:30.873 -03:00 [INF] Realizando o login no ERP
-2024-06-22 03:08:31.138 -03:00 [INF] Selecionando empresa
-2024-06-22 03:08:37.864 -03:00 [INF] Fechando modal de notas pendentes
-2024-06-22 03:08:39.893 -03:00 [INF] Abrindo o menu lateral

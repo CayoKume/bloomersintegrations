@@ -1,1 +1,0 @@
-C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\obj\Release\net8.0\browser-wasm\PubTmp\Out\web.config
