@@ -1,0 +1,16 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\bin\Release\net8.0\Jadlog.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\bin\Release\net8.0\Jadlog.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\bin\Release\net8.0\Jadlog.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\bin\Release\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\bin\Release\net8.0\NewBloomersWebServicesCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.csproj.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\refint\Jadlog.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\Jadlog.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Carriers\Jadlog\obj\Release\net8.0\ref\Jadlog.dll

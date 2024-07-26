@@ -52,12 +52,9 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 
                     foreach (var registro in searchOrders.Result)
                     {
-                        if (registro.CustomerID == "65073")
-                            continue;
-
                         var orderResponse = await _apiCall.PostRequest(registro.OrderID, "/v1/LinxIO/API.svc/web/GetOrder", AUTENTIFICACAO, CHAVE);
                         var orderPaymentResponse = await _apiCall.PostRequest(registro.OrderID, "/v1/Sales/API.svc/web/GetOrderPayments", AUTENTIFICACAO, CHAVE);
-                        var orderCustomerResponse = await _apiCall.PostRequest(registro.CustomerID, "/v1/Profile/API.svc/web/GetPerson", AUTENTIFICACAO, CHAVE);
+                        var orderCustomerResponse = await _apiCall.PostRequest(registro.CustomerID, "/v1/Profile/API.svc/web/GetCustomer", AUTENTIFICACAO, CHAVE);
 
                         var order = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderResponse.Root>(orderResponse);
                         var orderPayment = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderPaymentsResponse.Root>(orderPaymentResponse);

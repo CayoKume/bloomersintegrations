@@ -342,5 +342,27 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                 throw new Exception($"GenerateAWBAWRBodyRequest - Erro ao gerar etiqueta awb do pedido: {order.number.Trim()} atraves do zpl - {ex.Message}");
             }
         }
+
+        public List<byte[]> GenerateShipmentIdBodyRequest(Order order)
+        {
+            try
+            {
+                List<byte[]> requests = new List<byte[]>();
+
+                for (int i = 0; i < order.volumes; i++)
+                {
+                    string zpl = @$"";
+
+                    byte[] awb = Encoding.UTF8.GetBytes(zpl);
+                    order.zpl.Add(zpl);
+                    requests.Add(awb);
+                }
+                return requests;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"GenerateShipmentIdBodyRequest - Erro ao gerar etiqueta awb do pedido: {order.number.Trim()} atraves do zpl - {ex.Message}");
+            }
+        }
     }
 }

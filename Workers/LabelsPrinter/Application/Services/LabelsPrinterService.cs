@@ -29,7 +29,12 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                 if (!Directory.Exists(pathLabels))
                     Directory.CreateDirectory(pathLabels);
 
-                var listOrders = await _labelsPrinterRepository.GetOrders();
+                //var listOrders = await _labelsPrinterRepository.GetOrders();
+                //var listOrdersJadlog = await _labelsPrinterRepository.GetJadlogOrders();
+
+                //listOrders.AddRange(listOrdersJadlog);
+
+                var listOrders = await _labelsPrinterRepository.GetJadlogOrders();
 
                 if (listOrders.Count() > 0)
                 {
@@ -37,7 +42,7 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                     {
                         try
                         {
-                            if (!String.IsNullOrEmpty(order._return) && order.shippingCompany.cod_shippingCompany == "7601" || String.IsNullOrEmpty(order._return) && order.shippingCompany.cod_shippingCompany != "7601")
+                            if (!String.IsNullOrEmpty(order.shipmentid) && order.shippingCompany.cod_shippingCompany == "101988" || !String.IsNullOrEmpty(order._return) && order.shippingCompany.cod_shippingCompany == "7601" || String.IsNullOrEmpty(order._return) && order.shippingCompany.cod_shippingCompany != "7601")
                             {
                                 //tratamento ASCII em caracteres especiais
                                 order.client.reason_client = RemoveInvalidCharactersForZebra(order.client.reason_client);
@@ -80,11 +85,22 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                                     requests.AddRange(awbBodyRequest);
                                 }
 
+                                else if (!String.IsNullOrEmpty(order.shipmentid) && order.shippingCompany.cod_shippingCompany == "101988")
+                                {
+                                    for (int i = 0; i < order.volumes; i++)
+                                    {
+                                        order.awb.Add(order.shipmentid);
+                                    }
+                                    var awbBodyRequest = _generateZPLsService.GenerateShipmentIdBodyRequest(order);
+                                    requests.AddRange(awbBodyRequest);
+                                }
+
                                 else if (order.shippingCompany.cod_shippingCompany == "3535")
                                 {
                                     var awbAWRBodyRequest = _generateZPLsService.GenerateAWBAWRBodyRequest(order);
                                     requests.AddRange(awbAWRBodyRequest);
                                 }
+
                                 var danfeBodyRequest = _generateZPLsService.GenerateDanfeBodyRequest(order);
                                 requests.AddRange(danfeBodyRequest);
 

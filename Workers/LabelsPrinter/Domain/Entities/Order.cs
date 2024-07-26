@@ -14,6 +14,7 @@ namespace BloomersWorkers.LabelsPrinter.Domain.Entities
         public string _return { get; set; }
         public string rote { get; set; }
         public string serie { get; set; }
+        public string shipmentid { get; set; }
         public DateTime dateProt { get; set; }
 
         public Client client { get; set; }
