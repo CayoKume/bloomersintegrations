@@ -98,16 +98,25 @@ namespace BloomersCarriersIntegrations.FlashCourier.Application.Services
                     {
                         Thread.Sleep(1000);
                         var postHAWB = await _apiCall.PostHAWB(order);
-                        if (postHAWB.First().type.ToUpper() == "SUCESS")
+                        if (postHAWB != null) //sem cast
                         {
+                            var _statusFlash = postHAWB.First().type.ToUpper() == "SUCESS" ? "Enviado" : "Erro_Flash";
                             var retorno = JsonSerializer.Serialize(postHAWB);
-                            await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Enviado", keyNFe: order.invoice.key_nfe_nf);
+                            await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: _statusFlash, keyNFe: order.invoice.key_nfe_nf); //criar objeto de log para passar todos os parametros de uma vez
+
+                            //if (postHAWB.First().type.ToUpper() == "SUCESS")
+                            //{
+                            //    var retorno = JsonSerializer.Serialize(postHAWB);
+                            //    await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Enviado", keyNFe: order.invoice.key_nfe_nf);
+                            //}
+                            //else
+                            //{
+                            //    var retorno = JsonSerializer.Serialize(postHAWB);
+                            //    await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Erro_Flash", keyNFe: order.invoice.key_nfe_nf);
+                            //}
                         }
                         else
-                        {
-                            var retorno = JsonSerializer.Serialize(postHAWB);
-                            await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Erro_Flash", keyNFe: order.invoice.key_nfe_nf);
-                        }
+                            return false;
                     }
                     return true;
                 }

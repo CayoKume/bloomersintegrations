@@ -128,7 +128,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                             }
                         );
 
-                await _flashCourierRepository.GenerateRequestLog(model.number, Newtonsoft.Json.JsonConvert.SerializeObject(jObject));
+                await _flashCourierRepository.GenerateRequestLog(model.number, Newtonsoft.Json.JsonConvert.SerializeObject(jObject)); //devolver id de o log
 
                 //HOMOLOG
                 //var client = CreateCliente(userName: "sao.erick", password: "123");
@@ -143,7 +143,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                     return JsonSerializer.Deserialize<List<InsertHAWBSuccessResponse>>(result);
                 }
                 else
-                    throw new Exception($"{response.StatusCode}");
+                    throw new Exception($"{response.StatusCode}"); //associar request com status code - ou retornar objeto para tratar erro
             }
             catch (Exception ex)
             {
