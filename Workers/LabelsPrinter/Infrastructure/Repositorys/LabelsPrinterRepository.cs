@@ -103,12 +103,12 @@ namespace BloomersWorkers.LabelsPrinter.Infrastructure.Repositorys
                              FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                              WHERE
                              --A.DOCUMENTO IN ('')
-                             --A.NB_ETIQUETA_IMPRESSA = 'N' AND 
+                             A.NB_ETIQUETA_IMPRESSA = 'N' AND 
                              A.SERIE = 'MI-' 
                              AND A.CHAVE_NFE IS NOT NULL 
                              AND A.XML_FATURAMENTO IS NOT NULL 
                              AND A.NB_DOC_REMETENTE = '38367316000199'
-                             --AND A.RETORNO > GETDATE() - 15
+                             AND A.RETORNO > GETDATE() - 15
                              AND A.VOLUMES IS NOT NULL
                              AND A.NB_TRANSPORTADORA = 101988";
 

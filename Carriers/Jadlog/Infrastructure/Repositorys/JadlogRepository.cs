@@ -304,7 +304,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             AND A.CHAVE_NFE IS NOT NULL 
                             AND A.XML_FATURAMENTO IS NOT NULL 
                             AND A.NB_TRANSPORTADORA = '101988'
-                            --AND A.DATA > GETDATE() - 15
+                            AND A.DATA > GETDATE() - 15
                             AND A.VOLUMES IS NOT NULL
                             AND (
                                 C.PEDIDO IS NULL OR

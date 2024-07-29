@@ -1,4 +1,5 @@
 ﻿using BloomersCarriersIntegrations.FlashCourier.Application.Services;
+using BloomersCarriersIntegrations.Jadlog.Application.Services;
 using BloomersCarriersIntegrations.TotalExpress.Application.Services;
 using BloomersCommerceIntegrations.LinxCommerce.Application.Services;
 using BloomersCommerceIntegrations.LinxCommerce.Domain.Entities;
@@ -28,6 +29,7 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             {
                 FlashCourierRecurringJobs();
                 TotalExpressRecurringJobs();
+                JadlogRecurringJobs();
                 AfterSaleRecurringJobs();
                 DootaxRecurringJobs();
                 MobsimRecurringJobs();
@@ -67,6 +69,14 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
             RecurringJob.AddOrUpdate<ITotalExpressService>("TotalExpressAtualizaLogPedido", service => service.UpdateOrderSendLog(),
                 Cron.MinuteInterval(5),
+                queue: "srv-vm-app02"
+            );
+        }
+
+        private static void JadlogRecurringJobs()
+        {
+            RecurringJob.AddOrUpdate<IJadlogService>("JadlogEnviaPedidos", service => service.SendOrdersJadlog(),
+                Cron.MinuteInterval(3),
                 queue: "srv-vm-app02"
             );
         }

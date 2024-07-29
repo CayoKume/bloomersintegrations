@@ -351,7 +351,54 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
 
                 for (int i = 0; i < order.volumes; i++)
                 {
-                    string zpl = @$"";
+                    string zpl = @$"^XA
+                                    ~TA000
+                                    ~JSN
+                                    ^LT0
+                                    ^MNW
+                                    ^MTT
+                                    ^PON
+                                    ^PMN
+                                    ^LH0,0
+                                    ^JMA
+                                    ^PR4,4
+                                    ~SD15
+                                    ^JUS
+                                    ^LRN
+                                    ^CI27
+                                    ^PA0,1,1,0
+                                    ^XZ
+                                    ^XA
+                                    ^MMT
+                                    ^PW831
+                                    ^LL1180
+                                    ^LS0
+                                    ^FO39,79^GFA,825,2150,43,:Z64:eJyNlTGOpDAQRW0LJ6xERj6aEKQ9wE5CsAcgwPexOlrNKdBGyC0Rj8xlNkQduG+AtqpsaGg8aleAMVR/vl+V3YxBfGqWGqpNzawn26eKqlTZ3EHoVNFE2fqKYfrXmbxUqbKfLoR+marWaF5l5tMa9llWvIm3g9VN9WRWtrw7PBhXr7OXGrY3xSxux98G0SAgH0In1cD12geD5rGMfjfZu11nD8vPqnNwO2vmXf751msX3KLI8Wsn1Qm0ACpcP76eUqte2P0cV84RKt/ASrqDb5Fq2fn1NMy5gYkRoI4ebOEEOO+pief8hmNYjiagUjU8lEt2nPoBF4CqJSXQasBnz8TVAFkikBth/pqBVcYY5IqjFgavvvjl1gRULbiUrSeA32ukArdsWRZwVmxNUDgsmWPuH3EV0MbjXDgt0CuaeVLlYNhzJQYtPOTkFTq1xoG45paJ93eroXuhByySrb5yoGS1r/9BFSeohqqSxhKxszttq4NXguh8DxQ0/pxZ8IpLVAeuavXqVWW7ep30j+ueKzTtxZBXnLBqQK8m4pUkNgKKCLSB67IcvOZkDGaeaw9c843r0auHiLB9tXzBHl53XIU1xurKWov9+gtGzay9RLnSEx46S4YeQa53d49xxeuA/TpCQ0PXXmJeWaZ+w02WZbQn/JCBah28Xid/EuQAUrBzAFe+efVbS3aRPNpdsG1Wrlgsocc5ljhoA/ZpK5XhzJLfnN5dR+/Ra407DFVt/B8M6A7kAr12wZGKZeJaaBzvczgEgKKJplajP9Dk7iB8EQLcxsXOIVNFIZabTk2VTUrWfxP1kYs=:4F73
+                                    ^FT424,52^A0N,23,23^FH\^CI28^FDPedido: ^FS^CI27
+                                    ^FT507,52^A0N,23,23^FH\^CI28^FD{order.number}^FS^CI27
+                                    ^FT424,87^A0N,23,23^FH\^CI28^FDNota Fiscal: ^FS^CI27
+                                    ^FT547,87^A0N,23,23^FH\^CI28^FD{order.invoice.number_nf}^FS^CI27
+                                    ^FT424,123^A0N,23,23^FH\^CI28^FDShipmentID: ^FS^CI27
+                                    ^FT551,123^A0N,23,23^FH\^CI28^FD{order.shipmentid}^FS^CI27
+                                    ^FT424,162^A0N,23,23^FH\^CI28^FDVolume: ^FS^CI27
+                                    ^FT510,162^A0N,23,23^FH\^CI28^FD{order.volumes}^FS^CI27
+                                    ^FO32,214^GB767,0,4^FS
+                                    ^FT0,241^A0N,23,23^FB204,1,6,C^FH\^CI28^FDDESTINATÁRIO\5C&^FS^CI27
+                                    ^FT611,241^A0N,23,23^FB220,1,6,C^FH\^CI28^FDSHIPMENT ID\5C&^FS^CI27
+                                    ^FT32,276^A0N,23,23^FH\^CI28^FD{order.client.reason_client}^FS^CI27
+                                    ^FT32,314^A0N,23,23^FH\^CI28^FD{order.client.address_client}^FS^CI27
+                                    ^FT32,348^A0N,23,23^FH\^CI28^FD{order.client.street_number_client}, {order.client.neighborhood_client}^FS^CI27
+                                    ^FT32,385^A0N,23,23^FH\^CI28^FD{order.client.city_client}, {order.client.uf_client}, {order.client.zip_code_client}^FS^CI27
+                                    ^BY4,3,99^FT326,366^BCN,,N,N
+                                    ^FH\^FD>;{order.shipmentid}^FS
+                                    ^FO32,402^GB765,0,4^FS
+                                    ^FT0,450^A0N,23,23^FB176,1,6,C^FH\^CI28^FDREMETENTE\5C&^FS^CI27
+                                    ^FT32,488^A0N,23,23^FH\^CI28^FD{order.company.reason_company}^FS^CI27
+                                    ^FT32,526^A0N,23,23^FH\^CI28^FD{order.company.address_company}^FS^CI27
+                                    ^FT32,567^A0N,23,23^FH\^CI28^FD{order.company.street_number_company}, {order.company.neighborhood_company}^FS^CI27
+                                    ^FT32,607^A0N,23,23^FH\^CI28^FD{order.company.city_company}, {order.company.uf_company}, {order.company.zip_code_company}^FS^CI27
+                                    ^PQ1,0,1,Y
+                                    ^XZ";
 
                     byte[] awb = Encoding.UTF8.GetBytes(zpl);
                     order.zpl.Add(zpl);

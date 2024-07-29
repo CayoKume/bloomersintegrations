@@ -1,5 +1,6 @@
 ﻿using BloomersWorkers.LabelsPrinter.Domain.Entities;
 using BloomersWorkers.LabelsPrinter.Infrastructure.Apis;
+using BloomersWorkers.LabelsPrinter.Infrastructure.PrinterHelpers;
 using BloomersWorkers.LabelsPrinter.Infrastructure.Repositorys;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -29,12 +30,10 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
                 if (!Directory.Exists(pathLabels))
                     Directory.CreateDirectory(pathLabels);
 
-                //var listOrders = await _labelsPrinterRepository.GetOrders();
-                //var listOrdersJadlog = await _labelsPrinterRepository.GetJadlogOrders();
+                var listOrders = await _labelsPrinterRepository.GetOrders();
+                var listOrdersJadlog = await _labelsPrinterRepository.GetJadlogOrders();
 
-                //listOrders.AddRange(listOrdersJadlog);
-
-                var listOrders = await _labelsPrinterRepository.GetJadlogOrders();
+                listOrders.AddRange(listOrdersJadlog);
 
                 if (listOrders.Count() > 0)
                 {
@@ -111,7 +110,7 @@ namespace BloomersWorkers.LabelsPrinter.Application.Services
 
                                 for (int i = 0; i < order.zpl.Count(); i++)
                                 {
-                                    //RawPrinterHelper.SendStringToPrinter("EtiquetasMicrovix", order.zpl[i]);
+                                    RawPrinterHelper.SendStringToPrinter("EtiquetasMicrovix", order.zpl[i]);
                                 }
 
                                 await _labelsPrinterRepository.UpdateStatus(order.number);
