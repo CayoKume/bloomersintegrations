@@ -127,7 +127,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
                                  A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
                                  A.NB_CIDADE AS CITY_CLIENT,
                                  A.NB_ESTADO AS UF_CLIENT,
-                                 A.NB_CEP AS ZIPCODE_CLIENT,
+                                 A.NB_CEP AS ZIP_CODE_CLIENT,
                                  A.NB_FONE_CLIENTE AS FONE_CLIENT,
                                  A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
                                  A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
@@ -177,7 +177,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
                                  CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
                                  'NF' as TYPE_NF,
                                  (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', A.[XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
-                                 (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS DATA_EMISSION_NF
+                                 (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF
 
                                  FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] A (NOLOCK)
                                  JOIN [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE

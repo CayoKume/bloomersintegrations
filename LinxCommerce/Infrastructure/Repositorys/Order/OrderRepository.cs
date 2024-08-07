@@ -363,7 +363,12 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
                         {
                             if (properties[j] == "lastupdateon")
                                 row[properties[j]] = DateTime.Now;
-
+                            else if (properties[j] == "Cpf")
+                            {
+                                var propertie = properties[j].Replace("Customer", "")[0].ToString().ToUpper() + properties[j].Replace("Customer", "").Substring(1).ToLower();
+                                row[properties[j]] = registros[i].Customer.GetType().GetProperty(propertie).GetValue(registros[i].Customer) is not null ?
+                                registros[i].Customer.GetType().GetProperty(propertie).GetValue(registros[i].Customer) : registros[i].Customer.GetType().GetProperty("Cnpj").GetValue(registros[i].Customer);
+                            }
                             else
                                 row[properties[j]] = registros[i].Customer.GetType().GetProperty(properties[j]).GetValue(registros[i].Customer) is not null ?
                                 registros[i].Customer.GetType().GetProperty(properties[j]).GetValue(registros[i].Customer) : null;
