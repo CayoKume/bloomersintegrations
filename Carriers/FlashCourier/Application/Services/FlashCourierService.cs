@@ -48,9 +48,18 @@ namespace BloomersCarriersIntegrations.FlashCourier.Application.Services
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                //var mensagem
+                //metodo para salvar log
+                //if (ex is SalvarPedidoException)
+                    //throw ("mensagem 1")  
+                //else (ex is AtualizaPedido)
+                    //return se não precisar fazer nada
+                    //throw ("mensagem 2")
+                //else
+                    //mensagem padrão
+                throw new ArgumentException($"FlashCourier - AtualizaLogPedidoEnviado - Erro ao obter...  - {ex.Message}");
             }
         }
 
@@ -67,7 +76,14 @@ namespace BloomersCarriersIntegrations.FlashCourier.Application.Services
                     if (postHAWB.First().type.ToUpper() == "SUCESS")
                     {
                         var retorno = JsonSerializer.Serialize(postHAWB);
-                        await _flashCourierRepository.GenerateSucessLog(orderNumber: order.number, senderID: order.company.doc_company, retorno, statusFlash: "Enviado", keyNFe: order.invoice.key_nfe_nf);
+
+                        await _flashCourierRepository.GenerateSucessLog(
+                            orderNumber: order.number, 
+                            senderID: order.company.doc_company, 
+                            retorno, 
+                            statusFlash: "Enviado", 
+                            keyNFe: order.invoice.key_nfe_nf
+                        );
                     }
                     else
                     {
@@ -128,5 +144,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Application.Services
                 throw;
             }
         }
+
+
     }
 }

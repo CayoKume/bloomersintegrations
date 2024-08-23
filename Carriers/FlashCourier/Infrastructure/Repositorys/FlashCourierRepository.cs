@@ -239,14 +239,14 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
                             JOIN [GENERAL].[dbo].IT4_WMS_DOCUMENTO C (NOLOCK) ON A.PEDIDO = TRIM(C.DOCUMENTO)
                             WHERE 
 
-                            StatusFlash != 'Comprovante registrado' 
-                            AND StatusFlash != 'Entregue pelo Terceiro'
+                            A.StatusFlash != 'Comprovante registrado' 
+                            AND A.StatusFlash != 'Entregue pelo Terceiro'
 	                        
                             --TESTE
                             --StatusFlash = 'Comprovante registrado' 
                             --OR StatusFlash = 'Entregue pelo Terceiro'
 
-                            AND DATAENVIO >= DATEADD(DD,-60, GETDATE())
+                            AND A.DATAENVIO >= DATEADD(DD,-60, GETDATE())
 
 	                        AND C.NB_DATA_COLETA IS NULL 
 	                        AND C.NB_DATA_ENTREGA_PREVISAO IS NOT NULL 
@@ -282,7 +282,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
             }
             catch (Exception ex)
             {
-                throw new Exception(@$"FlashCourier - GetAuthenticationUser - Erro ao obter pedidos enviados da tabela GENERAL..FlashCourierRegistroLog - {ex.Message}");
+                throw new Exception(@$"FlashCourier - GetAuthenticationUser - Erro ao obter parametros enviados da tabela GENERAL..PARAMETROS_FLASHCOURIER - {ex.Message}");
             }
         }
 
@@ -306,7 +306,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 
         public async Task UpdateCollectionDate(string dtSla, string cardCode)
         {
-            string sql = @$"UPDATE GENERAL..[IT4_WMS_DOCUMENTO] SET NB_DATA_COLETA = CONVERT(DATETIME, '{dtSla}', 103) WHERE LTRIM(RTRIM(DOCUMENTO)) = '{cardCode}' AND NB_TRANSPORTADORA = '18035'";
+            string sql = @$"UPDATE [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] SET NB_DATA_COLETA = CONVERT(DATETIME, '{dtSla}', 103) WHERE LTRIM(RTRIM(DOCUMENTO)) = '{cardCode}' AND NB_TRANSPORTADORA = '18035'";
 
             try
             {
@@ -323,7 +323,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 
         public async Task UpdateDeliveryMadeDate(string occurrence, string cardCode)
         {
-            string sql = @$"UPDATE GENERAL..[IT4_WMS_DOCUMENTO] SET NB_DATA_ENTREGA_REALIZADA = CONVERT(DATETIME, '{occurrence}', 103) WHERE LTRIM(RTRIM(DOCUMENTO)) = '{cardCode}' AND NB_TRANSPORTADORA = '18035';
+            string sql = @$"UPDATE [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] SET NB_DATA_ENTREGA_REALIZADA = CONVERT(DATETIME, '{occurrence}', 103) WHERE LTRIM(RTRIM(DOCUMENTO)) = '{cardCode}' AND NB_TRANSPORTADORA = '18035';
                             UPDATE [GENERAL].[dbo].[FLASHCOURIERREGISTROLOG] SET STATUSECOM = '56' WHERE PEDIDO = '{cardCode}'";
 
             try
@@ -359,7 +359,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 
         public async Task UpdateRealDeliveryForecastDate(string dtSla, string cardCode)
         {
-            string sql = $"UPDATE GENERAL..[IT4_WMS_DOCUMENTO] SET NB_PREVISAO_REAL_ENTREGA = CONVERT(DATETIME, '{dtSla}', 103) WHERE LTRIM(RTRIM(DOCUMENTO)) = '{cardCode}' AND NB_TRANSPORTADORA = '18035';";
+            string sql = $"UPDATE [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] SET NB_PREVISAO_REAL_ENTREGA = CONVERT(DATETIME, '{dtSla}', 103) WHERE LTRIM(RTRIM(DOCUMENTO)) = '{cardCode}' AND NB_TRANSPORTADORA = '18035';";
 
             try
             {

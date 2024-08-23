@@ -30,8 +30,8 @@ namespace BloomersCarriersIntegrations.TotalExpress.Application.Services
                     }
                     return true;
                 }
-                else
-                    return false;
+
+                return false;
             }
             catch
             {

@@ -63,8 +63,10 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
                 var cnpjs = await _linxProdutosDetalhesRepository.GetCompanysAsync(tableName, database);
 
                 foreach (var cnpj in cnpjs.Where(x => x.doc_company == "38367316000270"))
+                //foreach (var cnpj in cnpjs.Where(x => x.doc_company != "38367316000199"))
                 {
                     PARAMETERS = await _linxProdutosDetalhesRepository.GetParametersAsync(tableName, database, "parameters_lastday");
+                    //PARAMETERS = await _linxProdutosDetalhesRepository.GetParametersAsync(tableName, database, "parameters_manual");
 
                     //var products = await _linxProdutosDetalhesRepository.GetProductsAsync(tableName, database, cnpj);
 
@@ -91,7 +93,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
                 }
                 await _linxProdutosDetalhesRepository.CallDbProcMergeAsync(procName, tableName, database);
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }

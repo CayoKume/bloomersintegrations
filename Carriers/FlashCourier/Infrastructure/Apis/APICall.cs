@@ -1,9 +1,10 @@
 ﻿using BloomersCarriersIntegrations.FlashCourier.Domain.Entities;
 using BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
-using System.Text.Json;
+//using System.Text.Json; testar sem
 
 namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
 {
@@ -34,12 +35,14 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                     authResponse.access_token
                 );
 
-                var response = await client.PostAsync(client.BaseAddress + "/padrao/v2/consulta", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
+                var content = new StringContent(JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(client.BaseAddress + "/padrao/v2/consulta", content);
 
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {
                     var result = await response.Content.ReadAsStringAsync();
-                    return JsonSerializer.Deserialize<HAWBResponse>(result);
+                    return JsonConvert.DeserializeObject<HAWBResponse>(result);
                 }
                 else
                     throw new Exception($"{response.StatusCode}");
@@ -140,7 +143,7 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {
                     var result = await response.Content.ReadAsStringAsync();
-                    return JsonSerializer.Deserialize<List<InsertHAWBSuccessResponse>>(result);
+                    return JsonConvert.DeserializeObject<List<InsertHAWBSuccessResponse>>(result);
                 }
                 else
                     throw new Exception($"{response.StatusCode}"); //associar request com status code - ou retornar objeto para tratar erro
@@ -167,10 +170,10 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Apis
 
                 var response = await client.PostAsync(client.BaseAddress + "/api/v1/token", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jObject), Encoding.UTF8, "application/json"));
 
-                if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var result = await response.Content.ReadAsStringAsync();
-                    return JsonSerializer.Deserialize<AuthResponse>(result);
+                    return JsonConvert.DeserializeObject<AuthResponse>(result);
                 }
                 else
                     throw new Exception($"{response.StatusCode}");
