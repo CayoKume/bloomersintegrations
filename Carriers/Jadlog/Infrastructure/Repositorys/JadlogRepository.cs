@@ -161,7 +161,8 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             AND A.CHAVE_NFE IS NOT NULL 
                             AND A.XML_FATURAMENTO IS NOT NULL
                             AND A.NB_TRANSPORTADORA = '101988'
-                            AND A.VOLUMES IS NOT NULL";
+                            AND A.VOLUMES IS NOT NULL
+                            AND B.IDITEM = 1";
 
             try
             {
@@ -309,7 +310,8 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             AND (
                                 C.PEDIDO IS NULL OR
 								C.DESCRICAO NOT LIKE '%já foi enviado%'
-                            )";
+                            )
+                            AND B.IDITEM = 1";
 
             try
             {

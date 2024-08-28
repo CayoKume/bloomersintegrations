@@ -33,7 +33,20 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                 var order = await _jadlogRepository.GetInvoicedOrder(order_number);
                 if (order is not null)
                 {
+                    var codUnidadeOri = String.Empty;
                     var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
+
+                    if (order.tomador.doc_company == "38367316001080")
+                        codUnidadeOri = "1849";
+
+                    else if (order.tomador.doc_company == "38367316000601")
+                        codUnidadeOri = "792";
+
+                    else if (order.tomador.doc_company == "38367316000946" || order.tomador.doc_company == "42538267000500")
+                        codUnidadeOri = "1601";
+
+                    else
+                        codUnidadeOri = "1099";
 
                     var jObject = new JObject
                     {
@@ -47,7 +60,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                         { "contaCorrente", parameter.conta },
                         { "tpColeta", "K" },
                         { "tipoFrete", null },
-                        { "cdUnidadeOri", "1099" },
+                        { "cdUnidadeOri", codUnidadeOri },
                         { "cdUnidadeDes", null },
                         { "cdPickupOri", null },
                         { "cdPickupDes", null },
@@ -61,7 +74,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                                 { "ie", order.client.state_registration_client.Replace(".", "") },
                                 { "endereco", order.client.address_client },
                                 { "numero", order.client.street_number_client },
-                                { "compl", order.client.complement_address_client },
+                                { "compl", order.client.complement_address_client.PadRight(39).Substring(0, order.client.complement_address_client.Length > 38 ? 38 : order.client.complement_address_client.Length) },
                                 { "bairro", order.client.neighborhood_client },
                                 { "cidade", order.client.city_client },
                                 { "uf", order.client.uf_client },
@@ -78,7 +91,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                                 { "ie", order.company.state_registration_company.Replace(".", "") },
                                 { "endereco", order.company.address_company },
                                 { "numero", order.company.street_number_company },
-                                { "compl", order.company.complement_address_company },
+                                { "compl", order.company.complement_address_company.PadRight(20).Substring(0, order.company.complement_address_company.Length > 19 ? 19 : order.company.complement_address_company.Length) },
                                 { "bairro", order.company.neighborhood_company },
                                 { "cidade", order.company.city_company },
                                 { "uf", order.company.uf_company },
@@ -108,7 +121,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                         },
                         { "dfe", new JArray(
                             new JObject {
-                                { "cfop", order.cfop },
+                                { "cfop", order.cfop.Replace(".", "") },
                                 { "danfeCte", order.invoice.key_nfe_nf },
                                 { "nrDoc", order.invoice.number_nf },
                                 { "serie", order.invoice.serie_nf },
@@ -150,7 +163,20 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                 {
                     foreach (var order in orders)
                     {
+                        var codUnidadeOri = String.Empty;
                         var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
+
+                        if (order.tomador.doc_company == "38367316001080")
+                            codUnidadeOri = "1849";
+
+                        else if (order.tomador.doc_company == "38367316000601")
+                            codUnidadeOri = "792";
+
+                        else if (order.tomador.doc_company == "38367316000946" || order.tomador.doc_company == "42538267000500")
+                            codUnidadeOri = "1601";
+
+                        else
+                            codUnidadeOri = "1099";
 
                         var jObject = new JObject
                         {
@@ -164,7 +190,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                             { "contaCorrente", parameter.conta },
                             { "tpColeta", "K" },
                             { "tipoFrete", null },
-                            { "cdUnidadeOri", "1099" },
+                            { "cdUnidadeOri", codUnidadeOri },
                             { "cdUnidadeDes", null },
                             { "cdPickupOri", null },
                             { "cdPickupDes", null },
@@ -178,7 +204,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                                     { "ie", order.client.state_registration_client.Replace(".", "") },
                                     { "endereco", order.client.address_client },
                                     { "numero", order.client.street_number_client },
-                                    { "compl", order.client.complement_address_client },
+                                    { "compl", order.client.complement_address_client.PadRight(39).Substring(0, order.client.complement_address_client.Length > 38 ? 38 : order.client.complement_address_client.Length) },
                                     { "bairro", order.client.neighborhood_client },
                                     { "cidade", order.client.city_client },
                                     { "uf", order.client.uf_client },
@@ -195,7 +221,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                                     { "ie", order.company.state_registration_company.Replace(".", "") },
                                     { "endereco", order.company.address_company },
                                     { "numero", order.company.street_number_company },
-                                    { "compl", order.company.complement_address_company },
+                                    { "compl", order.company.complement_address_company.PadRight(20).Substring(0, order.company.complement_address_company.Length > 19 ? 19 : order.company.complement_address_company.Length) },
                                     { "bairro", order.company.neighborhood_company },
                                     { "cidade", order.company.city_company },
                                     { "uf", order.company.uf_company },
@@ -225,7 +251,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                             },
                             { "dfe", new JArray(
                                 new JObject {
-                                    { "cfop", order.cfop },
+                                    { "cfop", order.cfop.Replace(".", "") },
                                     { "danfeCte", order.invoice.key_nfe_nf },
                                     { "nrDoc", order.invoice.number_nf },
                                     { "serie", order.invoice.serie_nf },
