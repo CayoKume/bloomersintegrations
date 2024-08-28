@@ -1,0 +1,13 @@
+2024-08-02 13:31:14.753 -03:00 [INF] Obtidos: 5 pedidos para serem faturados
+2024-08-02 13:31:20.999 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ41586
+2024-08-02 13:31:21.000 -03:00 [INF] Realizando o login no ERP
+2024-08-02 13:31:21.402 -03:00 [INF] Selecionando empresa
+2024-08-02 13:31:26.383 -03:00 [INF] Fechando modal de notas pendentes
+2024-08-02 13:31:28.412 -03:00 [INF] Abrindo o menu lateral
+2024-08-02 13:31:28.455 -03:00 [INF] Navegando para tela de faturamento
+2024-08-02 13:31:28.646 -03:00 [INF] Selecionando o pedido
+2024-08-02 13:31:35.509 -03:00 [INF] Incluindo dados do pedido
+2024-08-02 13:31:40.433 -03:00 [INF] Incluindo dados da transportadora
+2024-08-02 13:32:15.550 -03:00 [ERR] Errors => Timed out after 30 seconds
+2024-08-02 13:32:15.597 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ41589
+2024-08-02 13:32:15.598 -03:00 [INF] Selecionando empresa
