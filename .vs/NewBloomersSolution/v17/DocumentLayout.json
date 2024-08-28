@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\general\\pagarmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\general\\pagarmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\general\\mobsimcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\general\\mobsimcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\general\\dootaxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\general\\dootaxcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\general\\aftersalecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\general\\aftersalecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCC80B82-3516-4A7F-B7B0-A8C83122B600}|General\\AfterSale\\AfterSale.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\general\\aftersale\\application\\services\\aftersaleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCC80B82-3516-4A7F-B7B0-A8C83122B600}|General\\AfterSale\\AfterSale.csproj|solutionrelative:general\\aftersale\\application\\services\\aftersaleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PagarmeController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\PagarmeController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\PagarmeController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\PagarmeController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\PagarmeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T15:33:15.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MobsimController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\MobsimController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\MobsimController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\MobsimController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\MobsimController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T15:33:14.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DootaxController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\DootaxController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\DootaxController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\DootaxController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\DootaxController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T15:33:12.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AfterSaleController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\AfterSaleController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\AfterSaleController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\AfterSaleController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\General\\AfterSaleController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T15:32:54.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AfterSaleService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\General\\AfterSale\\Application\\Services\\AfterSaleService.cs",
+              "RelativeDocumentMoniker": "General\\AfterSale\\Application\\Services\\AfterSaleService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\General\\AfterSale\\Application\\Services\\AfterSaleService.cs",
+              "RelativeToolTip": "General\\AfterSale\\Application\\Services\\AfterSaleService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T15:32:32.891Z",
+              "EditorCaption": ""
             }
           ]
         }

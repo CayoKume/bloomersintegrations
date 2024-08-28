@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TotalExpress")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0529bcc3641293eddbdb33a7d446925dbc33de21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecd1598d170ff7042159fccb3f8242d52d8eeed7")]
 [assembly: System.Reflection.AssemblyProductAttribute("TotalExpress")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TotalExpress")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
