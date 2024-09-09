@@ -127,7 +127,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
                                  A.NB_BAIRRO_CLIENTE AS NEIGHBORHOOD_CLIENT,
                                  A.NB_CIDADE AS CITY_CLIENT,
                                  A.NB_ESTADO AS UF_CLIENT,
-                                 A.NB_CEP AS ZIPCODE_CLIENT,
+                                 A.NB_CEP AS ZIP_CODE_CLIENT,
                                  A.NB_FONE_CLIENTE AS FONE_CLIENT,
                                  A.NB_INSCRICAO_ESTADUAL_CLIENTE AS STATE_REGISTRATION_CLIENT,
                                  A.NB_INSCRICAO_MUNICIPAL_CLIENTE AS MUNICIPAL_REGISTRATION_CLIENT,
@@ -171,13 +171,13 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
                                  A.NF_SAIDA AS NUMBER_NF,
                                  A.NB_VALOR_PEDIDO AS AMOUNT_NF,
                                  (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<vFrete>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 8, 4) AS DECIMAL(14,2))) AS SHIPPING_VALUE_NF,
-                                 (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<pesoB>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 4) AS DECIMAL(14,2))) AS WEIGHT_NF,
+                                 IIF(A.[XML_FATURAMENTO] LIKE '%<pesoB>%', (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<pesoB>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 4) AS DECIMAL(14,2))), 0) AS WEIGHT_NF,
                                  A.CHAVE_NFE AS KEY_NFE_NF,
                                  CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_NF,
                                  CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,
                                  'NF' as TYPE_NF,
                                  (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<serie>', A.[XML_FATURAMENTO]) + 7, 1)) AS SERIE_NF,
-                                 (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS DATA_EMISSION_NF
+                                 (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<dhEmi>', A.[XML_FATURAMENTO]) + 7, 25)) AS DATE_EMISSION_NF
 
                                  FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] A (NOLOCK)
                                  JOIN [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
@@ -346,7 +346,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
                             A.NF_SAIDA AS NUMBER_NF,
                             A.NB_VALOR_PEDIDO AS AMOUNT_NF,
                             (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<vFrete>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 8, 4) AS DECIMAL(14,2))) AS SHIPPING_VALUE_NF,
-                            (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<pesoB>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 4) AS DECIMAL(14,2))) AS WEIGHT_NF,
+                            IIF(A.[XML_FATURAMENTO] LIKE '%<pesoB>%', (SELECT CAST(SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<pesoB>', CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 7, 4) AS DECIMAL(14,2))), 0) AS WEIGHT_NF,
                             A.CHAVE_NFE AS KEY_NFE_NF,
                             CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_NF,
                             CAST(A.[XML_FATURAMENTO] AS VARCHAR(MAX)) AS XML_DISTRIBUITION_NF,

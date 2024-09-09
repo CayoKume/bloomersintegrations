@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinxMicrovixWsSaida")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0529bcc3641293eddbdb33a7d446925dbc33de21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6487e19e11c0da4c144a428d37e0f067ca5cbe7")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinxMicrovixWsSaida")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinxMicrovixWsSaida")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

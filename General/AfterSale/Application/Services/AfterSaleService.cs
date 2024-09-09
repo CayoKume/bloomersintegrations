@@ -32,7 +32,8 @@ public class AfterSaleService : IAfterSaleService
                     {
                         var responseByPage = await _apiCall.GetReversesByPageAsync(autorization.token, i + 1);
                         var nextPage = JsonSerializer.Deserialize<Page>(responseByPage);
-                        reverses.AddRange(nextPage.data);
+                        if (nextPage.data != null)
+                            reverses.AddRange(nextPage.data);
                     }
                 }
 
