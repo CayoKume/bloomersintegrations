@@ -36,7 +36,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Drivers
             chromeOptions.AddArgument("--ignore-certificate-errors");
             chromeOptions.AddArgument("--allow-running-insecure-content");
             chromeOptions.AddArgument("--user-agent=Chrome/80.0.3987.132");
-            //chromeOptions.AddArgument("--headless=new");
+            chromeOptions.AddArgument("--headless=new");
             chromeOptions.AddArgument("--disable-crash-reporter");
             _driver = new OpenQA.Selenium.Chrome.ChromeDriver(driverService, chromeOptions);
             _driver.Url = $"https://erp.microvix.com.br/";

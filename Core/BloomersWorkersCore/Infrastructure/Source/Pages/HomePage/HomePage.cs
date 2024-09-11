@@ -124,5 +124,30 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
                 throw;
             }
         }
+
+        public void Logout(IWebDriver _driver, WebDriverWait _wait)
+        {
+            try
+            {
+                _driver.SwitchTo().DefaultContent();
+
+                var buttonTopBarMenu = ExtensionsMethods.GetElementToBeClickableById("topbar_menu_usuario_navbar_titulo", _wait, Page.TypeEnum.Home, "Logout");
+                var buttonLogout = ExtensionsMethods.GetElementExistsByClassName("topbar-menu-usuario-link-sair", _wait, Page.TypeEnum.Home, "Logout");
+
+                ExtensionsMethods.ClickInElement(buttonTopBarMenu);
+                ExtensionsMethods.ClickInElement(buttonLogout);
+
+                Thread.Sleep(2 * 1000);
+
+                var buttoConfirm = ExtensionsMethods.GetElementExistsByClassName("swal2-confirm", _wait, Page.TypeEnum.Home, "Logout");
+                ExtensionsMethods.ClickInElement(buttoConfirm);
+
+                Thread.Sleep(1 * 1000);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

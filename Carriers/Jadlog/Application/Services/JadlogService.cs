@@ -36,13 +36,13 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                     var codUnidadeOri = String.Empty;
                     var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
 
-                    if (order.tomador.doc_company == "38367316001080")
+                    if (order.company.doc_company == "38367316001080")
                         codUnidadeOri = "1849";
 
-                    else if (order.tomador.doc_company == "38367316000601")
+                    else if (order.company.doc_company == "38367316000601")
                         codUnidadeOri = "792";
 
-                    else if (order.tomador.doc_company == "38367316000946" || order.tomador.doc_company == "42538267000500")
+                    else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
                         codUnidadeOri = "1601";
 
                     else
@@ -166,13 +166,13 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                         var codUnidadeOri = String.Empty;
                         var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
 
-                        if (order.tomador.doc_company == "38367316001080")
+                        if (order.company.doc_company == "38367316001080")
                             codUnidadeOri = "1849";
 
-                        else if (order.tomador.doc_company == "38367316000601")
+                        else if (order.company.doc_company == "38367316000601")
                             codUnidadeOri = "792";
 
-                        else if (order.tomador.doc_company == "38367316000946" || order.tomador.doc_company == "42538267000500")
+                        else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
                             codUnidadeOri = "1601";
 
                         else

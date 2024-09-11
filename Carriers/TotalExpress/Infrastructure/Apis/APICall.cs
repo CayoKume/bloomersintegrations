@@ -125,10 +125,13 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
                 //get senha e usuario EDI
                 //var authentication = await _flashCourierRepository.GetAuthenticationUser(model.company.doc_company);
 
+                var teste = DateTime.Now.Date.ToShortDateString();
+
                 var jObject = new JObject 
                 {
-                    { "remetenteId", senderID },
-                    { "pedido", orderNumber }
+                    { "remetenteId", senderID }
+                    //,{ "pedido", orderNumber }
+                    ,{ "data_inicial", "2024-09-09" }
                 };
 
                 var client = CreateClientToGetAWB("apistatusnew-prod", "GttTBS8x");

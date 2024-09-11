@@ -44,6 +44,8 @@ namespace BloomersWorkers.ChangingPassword.Application.Services
                             
                             if (ChangePassword(users[i], driver, wait))
                                 await _changingPasswordRepository.UpdateLastupdateonFromMicrovixUsers(users[i]);
+
+                            _homePage.Logout(driver, wait);
                         }
                     }
                 }
