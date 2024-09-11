@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QZRe9QOETJa0i956H1H8n7D1l9SKLy8TJb2Ic8DX1Jg=",
+  "Hash": "qxeXMJObpBsv0aufURINtiPRU1n0hC2avP9jrqpU7PM=",
   "Source": "NewBloomersWebApplication",
   "BasePath": "/",
   "Mode": "Root",
@@ -4632,6 +4632,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\webcil\\publish\\System.Xml.XDocument.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\appsettings.json",
+      "SourceId": "NewBloomersWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "appsettings.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "settings",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\appsettings.json"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\wwwroot\\css\\app.css",
