@@ -308,8 +308,10 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             AND A.DATA > GETDATE() - 15
                             AND A.VOLUMES IS NOT NULL
                             AND (
-                                C.PEDIDO IS NULL OR
-								C.DESCRICAO NOT LIKE '%já foi enviado%'
+                                    (
+									    C.PEDIDO IS NULL OR
+									    (C.DESCRICAO NOT LIKE '%já foi enviado. Solicitacao de coleta:%' AND STATUS = 'Erro ao inserir solicitacao.')
+								    )
                             )
                             AND B.IDITEM = 1";
 

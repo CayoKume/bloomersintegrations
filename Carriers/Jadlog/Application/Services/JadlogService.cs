@@ -37,13 +37,13 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                     var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
 
                     if (order.company.doc_company == "38367316001080")
-                        codUnidadeOri = "1849";
+                        codUnidadeOri = "1420";
 
                     else if (order.company.doc_company == "38367316000601")
                         codUnidadeOri = "792";
 
                     else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
-                        codUnidadeOri = "1601";
+                        codUnidadeOri = "2362";
 
                     else
                         codUnidadeOri = "1099";
@@ -54,7 +54,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                         { "conteudo", order.itens.FirstOrDefault().description_product.Replace("Ç","C").Replace("Ú","U").PadRight(25).Substring(0, order.itens.FirstOrDefault().description_product.Length > 24 ? 24 : order.itens.FirstOrDefault().description_product.Length) },
                         { "pedido", new JArray (order.number) },
                         { "totPeso", order.itens.FirstOrDefault().weight_product },
-                        { "totValor", order.itens.FirstOrDefault().amount_product },
+                        { "totValor", order.invoice.amount_nf },
                         { "obs", null },
                         { "modalidade", parameter.modality },
                         { "contaCorrente", parameter.conta },
@@ -167,13 +167,13 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                         var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
 
                         if (order.company.doc_company == "38367316001080")
-                            codUnidadeOri = "1849";
+                            codUnidadeOri = "1420";
 
                         else if (order.company.doc_company == "38367316000601")
                             codUnidadeOri = "792";
 
                         else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
-                            codUnidadeOri = "1601";
+                            codUnidadeOri = "2362";
 
                         else
                             codUnidadeOri = "1099";
@@ -184,7 +184,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                             { "conteudo", order.itens.FirstOrDefault().description_product.Replace("Ç","C").Replace("Ú","U").PadRight(25).Substring(0, order.itens.FirstOrDefault().description_product.Length > 24 ? 24 : order.itens.FirstOrDefault().description_product.Length) },
                             { "pedido", new JArray (order.number) },
                             { "totPeso", order.itens.FirstOrDefault().weight_product },
-                            { "totValor", order.itens.FirstOrDefault().amount_product },
+                            { "totValor", order.invoice.amount_nf },
                             { "obs", null },
                             { "modalidade", parameter.modality },
                             { "contaCorrente", parameter.conta },
