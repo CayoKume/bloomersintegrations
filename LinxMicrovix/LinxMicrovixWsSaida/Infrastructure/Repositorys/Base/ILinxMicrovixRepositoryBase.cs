@@ -7,6 +7,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
     public interface ILinxMicrovixRepositoryBase<TEntity> where TEntity : class
     {
         public void BulkInsertIntoTableRaw(DataTable dataTable, string database, string tableName, int dataTableRowsNumber);
+
         public Task<IEnumerable<string>> GetProductsAsync(string tableName, string sql);
         public Task<string> GetParametersAsync(string tableName, string sql);
         public string GetParametersNotAsync(string tableName, string sql);
@@ -22,10 +23,13 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
         public IEnumerable<String> GetCodDepositosNotAsync(string tableName, string sql);
         public Task<IEnumerable<String>> GetIdTabelaPrecoAsync(string tableName, string sql);
         public IEnumerable<String> GetIdTabelaPrecoNotAsync(string tableName, string sql);
+
         public Task InsereRegistroIndividualAsync(string tableName, string sql, object registro);
         public void InsereRegistroIndividualNotAsync(string tableName, string sql, object registro);
+        
         public Task CallDbProcMergeAsync(string procName, string tableName, string database);
         public void CallDbProcMergeNotAsync(string procName, string tableName, string database);
+        
         public DataTable CreateDataTable(string tableName, PropertyInfo[] properties);
     }
 }

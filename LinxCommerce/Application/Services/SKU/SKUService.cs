@@ -26,10 +26,10 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                     Page = new { PageIndex = 0, PageSize = 0 },
                     Where = $"(ModifiedDate>=\"{DateTime.Now.AddDays(-days).Date:yyyy-MM-dd}T00:00:00\" && ModifiedDate<=\"{DateTime.Now.Date:yyyy-MM-dd}T23:59:59\")",
                     WhereMetadata = "",
-                    OrderBy = "",
+                    OrderBy = ""
                 };
 
-                var searchSKUResponse = await _apiCall.PostRequest(objectRequest, "/v1/Catalog/API.svc/web/SearchSKU", AUTENTIFICACAO, CHAVE);
+                var searchSKUResponse = await _apiCall.PostRequest(objectRequest, "/v1/Catalog/API.svc/web/GetSKU", AUTENTIFICACAO, CHAVE);
                 var searchSKUs = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchSKUResponse.Root>(searchSKUResponse);
                 var skuInSql = await _skuRepository.GetRegistersExists(searchSKUs.Result.Select(r => r.ProductID).ToList(), database);
                 var listSku = new List<SKUs>();

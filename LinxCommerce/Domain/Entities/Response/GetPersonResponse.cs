@@ -14,6 +14,7 @@
             public string Gender { get; set; }
             public string RG { get; set; }
             public string Cpf { get; set; }
+            public string Cnpj { get; set; }
             public string CreatedDate { get; set; }
             public string CustomerID { get; set; }
             public string CustomerStatusID { get; set; }

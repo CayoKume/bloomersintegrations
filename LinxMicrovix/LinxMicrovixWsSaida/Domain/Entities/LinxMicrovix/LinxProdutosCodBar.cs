@@ -2,6 +2,7 @@
 {
     public class LinxProdutosCodBar
     {
+        public DateTime lastupdateon { get; set; }
         public string? portal { get; set; }
         public string? cod_produto { get; set; }
         public string? cod_barra { get; set; }

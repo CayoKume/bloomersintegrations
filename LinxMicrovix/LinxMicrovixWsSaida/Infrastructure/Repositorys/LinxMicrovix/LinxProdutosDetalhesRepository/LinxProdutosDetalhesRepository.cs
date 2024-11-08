@@ -63,7 +63,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
 
         public async Task InsereRegistroIndividualAsync(LinxProdutosDetalhes registro, string tableName, string database)
         {
-            string sql = @$"INSERT INTO {database}..{tableName}_raw 
+            string sql = @$"INSERT INTO {database}..{tableName}_TRUSTED 
                             ([lastupdateon], [portal], [cnpj_emp], [cod_produto], [cod_barra], [quantidade], [preco_custo], [preco_venda], [custo_medio],
                              [id_config_tributaria], [desc_config_tributaria], [despesas1], [qtde_minima], [qtde_maxima], [ipi], [timestamp], [custototal], 
                              [empresa]

@@ -98,7 +98,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
                 
                 var token = await GetAuthToken("api-newbloomers", "He7weir@o");
                 var client = CreateClientToSendAWB(token);
-                var response = await client.PostAsync(client.BaseAddress + "ics-edi/v1/coleta/smartLabel/registrar", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jArrayObj), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync(client.BaseAddress + "ics-edi-lv/v1/coleta/smartlabel/registrar", new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(jArrayObj), Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.OK)
                 {

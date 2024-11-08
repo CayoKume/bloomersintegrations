@@ -14,6 +14,5 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Reposi
         public void InsereRegistroIndividualNotAsync(LinxPedidosVenda registro, string tableName, string database);
         public Task<IEnumerable<Company>> GetCompanysAsync(string tableName, string database);
         public IEnumerable<Company> GetCompanysNotAsync(string tableName, string database);
-
     }
 }

@@ -17,6 +17,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         private readonly ILinxPedidosCompraService<LinxPedidosCompra> _linxPedidosCompraService;
         private readonly ILinxPedidosVendaService<LinxPedidosVenda> _linxPedidosVendaService;
         private readonly ILinxProdutosService<LinxProdutos> _linxProdutosService;
+        private readonly ILinxProdutosCodBarService<LinxProdutosCodBar> _linxProdutosCodBarService;
         private readonly ILinxProdutosCamposAdicionaisService<LinxProdutosCamposAdicionais> _linxProdutosCamposAdicionaisService;
         private readonly ILinxProdutosDepositosService<LinxProdutosDepositos> _linxProdutosDepositosService;
         private readonly ILinxProdutosDetalhesService<LinxProdutosDetalhes> _linxProdutosDetalhes;
@@ -47,7 +48,8 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                 ILinxXMLDocumentosService<LinxXMLDocumentos> linxXMLDocumentosService,
                 ILinxPlanosService<LinxPlanos> linxPlanosService,
                 ILinxGrupoLojasService<LinxGrupoLojas> linxGrupoLojasService,
-                ILinxMovimentoPlanosService<LinxMovimentoPlanos> linxMovimentoPlanosService
+                ILinxMovimentoPlanosService<LinxMovimentoPlanos> linxMovimentoPlanosService,
+                ILinxProdutosCodBarService<LinxProdutosCodBar> linxProdutosCodBarService
             )
             =>
             (
@@ -67,7 +69,8 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                 _linxXMLDocumentosService,
                 _linxPlanosService,
                 _linxGrupoLojasService,
-                _linxMovimentoPlanosService
+                _linxMovimentoPlanosService,
+                _linxProdutosCodBarService
             ) =
             (
                 linxClientesFornecService,
@@ -86,7 +89,8 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                 linxXMLDocumentosService,
                 linxPlanosService,
                 linxGrupoLojasService,
-                linxMovimentoPlanosService
+                linxMovimentoPlanosService,
+                linxProdutosCodBarService
             );
 
         [HttpPost("LinxClientesFornec")]
@@ -181,6 +185,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _linxPedidosVendaService.IntegraRegistrosAsync(
+                        "LinxPedidosVenda",
+                        "p_LinxPedidosVenda_trusted_unificado",
+                        LinxAPIAttributes.TypeEnum.Homologacao.ToName()
+                    );
+
                 var result = await _linxPedidosVendaService.IntegraRegistrosIndividualAsync(
                         "LinxPedidosVenda",
                         "p_LinxPedidosVenda_trusted_unificado",
@@ -206,6 +216,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _linxProdutosService.IntegraRegistrosAsync(
+                        "LinxProdutos",
+                        "p_LinxProdutos_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 var result = await _linxProdutosService.IntegraRegistrosIndividualAsync(
                         "LinxProdutos",
                         "p_LinxProdutos_Sincronizacao",
@@ -267,6 +283,31 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
             {
                 Response.StatusCode = 400;
                 return Content($"Nao foi possivel integrar o código depósito: {cod_deposit}, da empresa: {doc_company}. Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost("LinxProdutosCodBar")]
+        public async Task<ActionResult> IntegraProdutosCodBarIndividual([Required][FromQuery] string cod_product, [Required][FromQuery] string doc_company)
+        {
+            try
+            {
+                var result = await _linxProdutosCodBarService.IntegraRegistrosIndividualAsync(
+                        "LinxProdutosCodBar",
+                        "p_LinxProdutosCodBar_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName(),
+                        cod_product,
+                        doc_company
+                    );
+
+                if (result != true)
+                    return BadRequest($"A API LinxProdutosCodBar não encontrou o deposito: {cod_product}, da empresa: {doc_company}.");
+                else
+                    return Ok($"Código Produto: {cod_product}, da empresa: {doc_company} integrado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel integrar o código Produto: {cod_product}, da empresa: {doc_company}. Erro: {ex.Message}");
             }
         }
 

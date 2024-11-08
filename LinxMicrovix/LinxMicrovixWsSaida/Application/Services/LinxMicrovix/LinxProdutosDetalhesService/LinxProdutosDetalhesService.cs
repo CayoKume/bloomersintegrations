@@ -143,7 +143,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
                 if (registro.Count() > 0)
                 {
                     await _linxProdutosDetalhesRepository.InsereRegistroIndividualAsync(registro[0], tableName, database);
-                    await _linxProdutosDetalhesRepository.CallDbProcMergeAsync(procName, tableName, database);
+                    //await _linxProdutosDetalhesRepository.CallDbProcMergeAsync(procName, tableName, database);
                     return true;
                 }
                 else

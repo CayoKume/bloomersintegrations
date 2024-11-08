@@ -184,6 +184,9 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<ILinxProdutosCamposAdicionaisService<LinxProdutosCamposAdicionais>, LinxProdutosCamposAdicionaisService<LinxProdutosCamposAdicionais>>();
             services.AddScoped<ILinxProdutosCamposAdicionaisRepository, LinxProdutosCamposAdicionaisRepository>();
 
+            services.AddScoped<ILinxProdutosCodBarService<LinxProdutosCodBar>, LinxProdutosCodBarService<LinxProdutosCodBar>>();
+            services.AddScoped<ILinxProdutosCodBarRepository, LinxProdutosCodBarRepository>();
+
             services.AddScoped<ILinxPlanosService<LinxPlanos>, LinxPlanosService<LinxPlanos>>();
             services.AddScoped<ILinxPlanosRepository, LinxPlanosRepository>();
 

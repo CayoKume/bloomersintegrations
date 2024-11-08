@@ -12,6 +12,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
         private string PARAMETERS = string.Empty;
         private string CHAVE = LinxAPIAttributes.TypeEnum.chaveExport.ToName();
         private string AUTENTIFICACAO = LinxAPIAttributes.TypeEnum.authenticationExport.ToName();
+
         private readonly IAPICall _apiCall;
         private readonly ILinxClientesFornecRepository _linxClientesFornecRepository;
 

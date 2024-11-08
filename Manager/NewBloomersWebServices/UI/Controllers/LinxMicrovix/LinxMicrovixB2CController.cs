@@ -50,6 +50,26 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                  b2CConsultaStatusService
             );
 
+        [HttpPost("B2CConsultaClientesVarios")]
+        public async Task<ActionResult> B2CConsultaClientesVarios([Required][FromQuery] string doc_client)
+        {
+            try
+            {
+                await _b2CConsultaClientesService.IntegraRegistrosAsync(
+                        "B2CConsultaClientes",
+                        "p_B2CConsultaClientes_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
+                return Ok($"Cliente: {doc_client} integrado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel integrar o cliente: {doc_client}. Erro: {ex.Message}");
+            }
+        }
+
         [HttpPost("B2CConsultaClientes")]
         public async Task<ActionResult> IntegraClienteIndividual([Required][FromQuery] string doc_client)
         {

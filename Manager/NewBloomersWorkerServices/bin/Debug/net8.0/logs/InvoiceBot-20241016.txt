@@ -1,0 +1,34 @@
+2024-10-16 12:21:31.492 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-10-16 12:25:32.034 -03:00 [INF] Iniciando o faturamento do pedido MI-71258
+2024-10-16 12:25:33.724 -03:00 [INF] Realizando o login no ERP
+2024-10-16 12:28:22.404 -03:00 [INF] Selecionando empresa
+2024-10-16 12:30:50.036 -03:00 [INF] Fechando modal de notas pendentes
+2024-10-16 12:30:52.081 -03:00 [INF] Abrindo o menu lateral
+2024-10-16 12:30:52.144 -03:00 [INF] Navegando para tela de pedidos
+2024-10-16 12:30:52.308 -03:00 [INF] Selecionando o pedido
+2024-10-16 12:30:58.971 -03:00 [INF] Incluindo dados do pedido
+2024-10-16 12:32:15.646 -03:00 [INF] Pedido: MI-71258, faturado com sucesso
+2024-10-16 12:45:07.738 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-10-16 12:45:19.496 -03:00 [INF] Iniciando o faturamento do pedido MI-VD42470
+2024-10-16 12:45:20.685 -03:00 [INF] Realizando o login no ERP
+2024-10-16 12:45:25.750 -03:00 [INF] Selecionando empresa
+2024-10-16 12:45:39.966 -03:00 [INF] Fechando modal de notas pendentes
+2024-10-16 12:45:43.107 -03:00 [INF] Abrindo o menu lateral
+2024-10-16 12:45:44.776 -03:00 [INF] Navegando para tela de faturamento
+2024-10-16 12:45:50.360 -03:00 [INF] Selecionando o pedido
+2024-10-16 12:46:06.844 -03:00 [INF] Incluindo dados do pedido
+2024-10-16 12:46:16.637 -03:00 [INF] Incluindo dados da transportadora
+2024-10-16 12:53:10.133 -03:00 [ERR] Errors =>  - element click intercepted: Element <input data-v-4fd38a4c="" type="radio" id="tipo_frete_redespacho1" name="tipo_frete_redespacho" value="1"> is not clickable at point (256, 340). Other element would receive the click: <div id="loading" style="display: block; opacity: 1;">...</div>
+  (Session info: chrome=129.0.6668.101)
+2024-10-16 12:54:37.432 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2024-10-16 12:54:43.913 -03:00 [INF] Iniciando o faturamento do pedido MI-VD42470
+2024-10-16 12:54:44.907 -03:00 [INF] Realizando o login no ERP
+2024-10-16 12:54:45.066 -03:00 [INF] Selecionando empresa
+2024-10-16 12:54:52.581 -03:00 [INF] Fechando modal de notas pendentes
+2024-10-16 12:54:55.140 -03:00 [INF] Abrindo o menu lateral
+2024-10-16 12:54:55.186 -03:00 [INF] Navegando para tela de faturamento
+2024-10-16 12:54:55.337 -03:00 [INF] Selecionando o pedido
+2024-10-16 12:55:19.601 -03:00 [INF] Incluindo dados do pedido
+2024-10-16 12:55:24.148 -03:00 [INF] Incluindo dados da transportadora
+2024-10-16 12:55:32.181 -03:00 [ERR] Errors =>  - element click intercepted: Element <input data-v-4fd38a4c="" type="radio" id="tipo_frete_redespacho1" name="tipo_frete_redespacho" value="1"> is not clickable at point (256, 340). Other element would receive the click: <div id="loading" style="display: block; opacity: 1;">...</div>
+  (Session info: chrome=129.0.6668.101)

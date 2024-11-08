@@ -286,7 +286,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             {
                 sql = sql.Replace("[1]", "OBS").Replace("[0]", $@"FROM GENERAL..IT4_WMS_DOCUMENTO A (NOLOCK)
                                       JOIN GENERAL..IT4_WMS_DOCUMENTO_ITEM B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
-                                      JOIN BLOOMERS_LINX..LINXMOVIMENTO_TRUSTED C (NOLOCK) ON C.DOCUMENTO = REPLACE(RIGHT(A.DOCUMENTO, 4), 'MI-VF', '') AND C.CNPJ_EMP = A.NB_DOC_REMETENTE
+                                      JOIN BLOOMERS_LINX..LINXMOVIMENTO_TRUSTED C (NOLOCK) ON C.DOCUMENTO = SUBSTRING (A.DOCUMENTO, 8, LEN(A.DOCUMENTO)) AND C.CNPJ_EMP = A.NB_DOC_REMETENTE
                                       JOIN BLOOMERS_LINX..LINXVENDEDORES_TRUSTED D (NOLOCK) ON C.COD_VENDEDOR = D.COD_VENDEDOR
                                       WHERE 
                                       (C.CODIGO_ROTINA_ORIGEM = 12 OR C.CODIGO_ROTINA_ORIGEM = 16) AND

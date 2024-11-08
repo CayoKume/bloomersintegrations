@@ -3,6 +3,7 @@ using BloomersCommerceIntegrations.LinxCommerce.Domain.Enums;
 using BloomersCommerceIntegrations.LinxCommerce.Domain.Extensions;
 using BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Apis;
 using BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys;
+using System.Linq;
 
 namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 {
@@ -31,6 +32,19 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
 
                 var searchOrdersResponse = await _apiCall.PostRequest(objectRequest, "/v1/Sales/API.svc/web/SearchOrders", AUTENTIFICACAO, CHAVE);
                 var searchOrders = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchOrderResponse.Root>(searchOrdersResponse);
+                
+                var arianaMoura = searchOrders.Result.Where(r => r.CustomerID == "68795").ToList();
+                foreach (var pedido in arianaMoura)
+                {
+                    searchOrders.Result.Remove(searchOrders.Result.Where(r => r.OrderID == pedido.OrderID).First());
+                }
+                
+                var cognati = searchOrders.Result.Where(r => r.CustomerID == "69520").ToList();
+                foreach (var pedido in cognati)
+                {
+                    searchOrders.Result.Remove(searchOrders.Result.Where(r => r.OrderID == pedido.OrderID).First());
+                }
+
                 var ordersInSql = await _orderRepository.GetRegistersExists(searchOrders.Result.Select(r => r.OrderID).ToList(), database);
 
                 for (int i = 0; i < ordersInSql.Count(); i++)
@@ -191,18 +205,18 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                 var searchOrders = Newtonsoft.Json.JsonConvert.DeserializeObject<SearchOrderResponse.Root>(searchOrdersResponse);
                 var ordersInSql = await _orderRepository.GetRegistersExists(searchOrders.Result.Select(r => r.OrderID).ToList(), database);
 
-                for (int i = 0; i < ordersInSql.Count(); i++)
-                {
-                    var order = searchOrders.Result.Where(r => r.OrderID == ordersInSql[i].OrderID).First();
-                    if (order.CustomerID == ordersInSql[i].CustomerID && order.GlobalStatus == ordersInSql[i].GlobalStatus &&
-                        order.OrderStatusID == ordersInSql[i].OrderStatusID && order.PaymentStatus == ordersInSql[i].PaymentStatus &&
-                        order.ShipmentStatus == ordersInSql[i].ShipmentStatus)
-                    {
-                        searchOrders.Result.Remove(searchOrders.Result.Where(r => r.OrderID == ordersInSql[i].OrderID).First());
-                    }
-                    else
-                        continue;
-                }
+                //for (int i = 0; i < ordersInSql.Count(); i++)
+                //{
+                //    var order = searchOrders.Result.Where(r => r.OrderID == ordersInSql[i].OrderID).First();
+                //    if (order.CustomerID == ordersInSql[i].CustomerID && order.GlobalStatus == ordersInSql[i].GlobalStatus &&
+                //        order.OrderStatusID == ordersInSql[i].OrderStatusID && order.PaymentStatus == ordersInSql[i].PaymentStatus &&
+                //        order.ShipmentStatus == ordersInSql[i].ShipmentStatus)
+                //    {
+                //        searchOrders.Result.Remove(searchOrders.Result.Where(r => r.OrderID == ordersInSql[i].OrderID).First());
+                //    }
+                //    else
+                //        continue;
+                //}
 
                 if (searchOrders.Result.Count() > 0)
                 {
@@ -212,11 +226,12 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Application.Services
                     {
                         var orderResponse = await _apiCall.PostRequest(registro.OrderID, "/v1/LinxIO/API.svc/web/GetOrder", AUTENTIFICACAO, CHAVE);
                         var orderPaymentResponse = await _apiCall.PostRequest(registro.OrderID, "/v1/Sales/API.svc/web/GetOrderPayments", AUTENTIFICACAO, CHAVE);
-                        var orderCustomerResponse = await _apiCall.PostRequest(registro.CustomerID, "/v1/Profile/API.svc/web/GetPerson", AUTENTIFICACAO, CHAVE);
+                        var orderCustomerResponse = await _apiCall.PostRequest(registro.CustomerID, "/v1/Profile/API.svc/web/GetCompany", AUTENTIFICACAO, CHAVE);
 
                         var order = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderResponse.Root>(orderResponse);
                         var orderPayment = Newtonsoft.Json.JsonConvert.DeserializeObject<GetOrderPaymentsResponse.Root>(orderPaymentResponse);
                         var orderClient = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPersonResponse.Root>(orderCustomerResponse);
+                        orderClient.Cpf = orderClient.Cnpj;
 
                         for (int i = 0; i < order.PaymentMethods.Count(); i++)
                         {

@@ -86,7 +86,10 @@ namespace BloomersWorkers.InvoiceOrder.Application.Services
                             await _invoiceOrderRepository.UpdateInvoiceAttemptIT4(orders[i].number, orders[i].invoice_attempts + 1);
 
                             continue;
-                        }   
+                        }
+
+                        //finaly
+                        //_chromeDriver.Dispose();
                     }
 
                     _chromeDriver.Dispose();

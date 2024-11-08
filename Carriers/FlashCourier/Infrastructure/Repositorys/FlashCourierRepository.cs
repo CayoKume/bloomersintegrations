@@ -226,34 +226,44 @@ namespace BloomersCarriersIntegrations.FlashCourier.Infrastructure.Repositorys
 
         public async Task<IEnumerable<FlashCourierRegisterLog>> GetShippedOrders()
         {
-            var query = @"SELECT DISTINCT
-                            A.PEDIDO AS orderNumber,
-                            A.DATAENVIO AS shippingDate,
-                            A.RETORNO AS _return,
-                            A.STATUSECOM AS statusEcom,
-                            A.REMETENTE AS sender,
-                            A.STATUSFLASH AS statusFlash,
-                            A.CHAVENFE AS keyNFe,
-                            C.NB_DOC_REMETENTE AS doc_company
-                            FROM [GENERAL].[dbo].FLASHCOURIERREGISTROLOG A (NOLOCK)
-                            JOIN [GENERAL].[dbo].IT4_WMS_DOCUMENTO C (NOLOCK) ON A.PEDIDO = TRIM(C.DOCUMENTO)
-                            WHERE 
+            //var query = @"SELECT DISTINCT
+            //                A.PEDIDO AS orderNumber,
+            //                A.DATAENVIO AS shippingDate,
+            //                A.RETORNO AS _return,
+            //                A.STATUSECOM AS statusEcom,
+            //                A.REMETENTE AS sender,
+            //                A.STATUSFLASH AS statusFlash,
+            //                A.CHAVENFE AS keyNFe,
+            //                C.NB_DOC_REMETENTE AS doc_company
+            //                FROM [GENERAL].[dbo].FLASHCOURIERREGISTROLOG A (NOLOCK)
+            //                JOIN [GENERAL].[dbo].IT4_WMS_DOCUMENTO C (NOLOCK) ON A.PEDIDO = TRIM(C.DOCUMENTO)
+            //                WHERE 
 
-                            StatusFlash != 'Comprovante registrado' 
-                            AND StatusFlash != 'Entregue pelo Terceiro'
-	                        
-                            --TESTE
-                            --StatusFlash = 'Comprovante registrado' 
-                            --OR StatusFlash = 'Entregue pelo Terceiro'
+            //                StatusFlash != 'Comprovante registrado' 
+            //                AND StatusFlash != 'Entregue pelo Terceiro'
 
-                            AND DATAENVIO >= DATEADD(DD,-60, GETDATE())
+            //                --TESTE
+            //                --StatusFlash = 'Comprovante registrado' 
+            //                --OR StatusFlash = 'Entregue pelo Terceiro'
 
-	                        AND C.NB_DATA_COLETA IS NULL 
-	                        AND C.NB_DATA_ENTREGA_PREVISAO IS NOT NULL 
-	                        AND C.CHAVE_NFE IS NOT NULL 
+            //                AND DATAENVIO >= DATEADD(DD,-60, GETDATE())
 
-	                        AND C.NB_TRANSPORTADORA = 18035 
-	                        AND C.DATA > GETDATE() - 15";
+            //             AND C.NB_DATA_COLETA IS NULL 
+            //             AND C.NB_DATA_ENTREGA_PREVISAO IS NOT NULL 
+            //             AND C.CHAVE_NFE IS NOT NULL 
+
+            //             AND C.NB_TRANSPORTADORA = 18035 
+            //             AND C.DATA > GETDATE() - 15";
+
+            string query = @$"SELECT DISTINCT
+                           TRIM(C.DOCUMENTO) AS NUMBER,
+                           C.NB_DOC_REMETENTE AS DOC_COMPANY
+                           FROM [GENERAL].[dbo].[IT4_WMS_DOCUMENTO] C (NOLOCK)
+                           WHERE 
+                           C.CHAVE_NFE IS NOT NULL 
+                           AND C.NB_DOC_REMETENTE = '42538267000268'
+                           AND C.NB_TRANSPORTADORA = 18035 
+                           AND C.DATA > '2024-08-01'--GETDATE() - 15";
 
             try
 			{
