@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinxCommerce")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0529bcc3641293eddbdb33a7d446925dbc33de21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4d21bdd5e7e9a75c0c0e7aef370d3954dc5a32b")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinxCommerce")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinxCommerce")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

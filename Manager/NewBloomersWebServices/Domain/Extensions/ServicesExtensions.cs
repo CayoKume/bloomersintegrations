@@ -400,7 +400,9 @@ namespace BloomersIntegrationsManager.Domain.Extensions
 
         public static IServiceCollection AddHangfireService(this IServiceCollection services, string? connectionString, string? serverName)
         {
-            services.AddHangfire(configuration => configuration
+            if(serverName != "SRV-VM-APP03")
+            {
+                services.AddHangfire(configuration => configuration
                 .UseFilter(new AutomaticRetryAttribute { Attempts = 0 })
                 .UseFilter(new WorkflowJobFailureAttribute())
                 .UseFilter(new DisableConcurrentExecutionWithParametersAttribute())
@@ -417,13 +419,14 @@ namespace BloomersIntegrationsManager.Domain.Extensions
                     DisableGlobalLocks = true
                 }));
 
-            services.AddHangfireServer(options =>
-            {
-                options.WorkerCount = 50;
-                options.ServerName = serverName;
-                options.Queues = new [] { serverName.ToLower() }; 
-            });
-
+                services.AddHangfireServer(options =>
+                {
+                    options.WorkerCount = 50;
+                    options.ServerName = serverName;
+                    options.Queues = new[] { serverName.ToLower() };
+                });
+            }
+            
             return services;
         }
     }

@@ -250,6 +250,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _linxProdutosDepositosService.IntegraRegistrosAsync(
+                        "LinxProdutosDepositos",
+                        "p_LinxProdutosDepositos_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 var result = await _linxProdutosDepositosService.IntegraRegistrosIndividualAsync(
                         "LinxProdutosDepositos",
                         "p_LinxProdutosDepositos_Sincronizacao",
@@ -307,6 +313,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _linxProdutosInventarioService.IntegraRegistrosAsync(
+                        "LinxProdutosInventario",
+                        "p_LinxProdutosInventario_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 var result = await _linxProdutosInventarioService.IntegraRegistrosIndividualAsync(
                         "LinxProdutosInventario",
                         "p_LinxProdutosInventario_Sincronizacao",

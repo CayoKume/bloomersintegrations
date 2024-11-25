@@ -1,15 +1,15 @@
 {
   "mainAssemblyName": "NewBloomersWebApplication",
   "resources": {
-    "hash": "sha256-s3Tf5Fy6FlswJpRpiAs6J4QOqnWnq2bZs853Cq5a8Ag=",
+    "hash": "sha256-M7gOoXCSOszjHLFlZOhLEt8JG5zR0Qmkrsb8iIfqaIE=",
     "jsModuleNative": {
-      "dotnet.native.8.0.4.b1icm8yjm6.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
+      "dotnet.native.8.0.10.jecd4upr8q.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.8.0.4.rde4049zas.js": "sha256-JeVsECOqOie/Pe89n9PJNJaMmb5vJsAAxfXY8INN64A="
+      "dotnet.runtime.8.0.10.t87vmph0gp.js": "sha256-FjrgL9dY6dc2yUoXDWowSfachSgM8O29qUMWDQOJKRI="
     },
     "wasmNative": {
-      "dotnet.native.wasm": "sha256-U1JSgnum2OTerSq8i5Y9L17deHEWJmae0djinSPLyJM="
+      "dotnet.native.wasm": "sha256-4ymhDbG5daKbi9yL1L574jRRiFFQhiOrDJU5YAYALU4="
     },
     "icu": {
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -216,16 +216,19 @@
       "mscorlib.wasm": "sha256-VCfYgt1mcjITabSTosCDVZ+68ea3Z7kakTFaLNLG+18=",
       "netstandard.wasm": "sha256-YOZxxR9PM3Dltcijfb0Q4FD39DkWZbZ1e2ScbZDvWJ4=",
       "System.Private.CoreLib.wasm": "sha256-NrT1QkAzVU//2wgK9vXdq77lCGvLJ4IOZ+Aegesyanc=",
-      "NewBloomersWebServicesCore.wasm": "sha256-2m8UWjJtPq+KTR7urpBOQhUhH1FpJ99HNTKGcdHPCWI=",
-      "NewBloomersWebApplication.wasm": "sha256-K1WJPzGvDVUqtmIRwHIvptUkMvpMQd5hLsugx7ZmDzk="
+      "NewBloomersWebServicesCore.wasm": "sha256-PaGFquUDJowgsM0ukq8+UbKq6Z7Ilohbhmm5+Wr7PS0=",
+      "NewBloomersWebApplication.wasm": "sha256-lYh6mgVejDolFyjJRZU2a6wtwZcGFmjLCFnljc3OeYc="
     },
     "pdb": {
-      "NewBloomersWebServicesCore.pdb": "sha256-Z+gmORBJyefrkoCG5xSp6/kdB4tpovYkisR7Qix14Hs=",
-      "NewBloomersWebApplication.pdb": "sha256-RUnssJglWMdqAzSwXuMVhO+3IHcHtPRW8EwqISsUhfk="
+      "NewBloomersWebServicesCore.pdb": "sha256-yNYo22XT5NT+eHraHkZBzy7ZM7wcSzW7ZYbmWN6uzNo=",
+      "NewBloomersWebApplication.pdb": "sha256-MCSC9rJSr10Jlxo/lY8WHspcPtoVapDN4iXnBcwRYZ0="
     }
   },
   "cacheBootResources": true,
   "debugLevel": -1,
+  "appsettings": [
+    "../appsettings.json"
+  ],
   "globalizationMode": "sharded",
   "extensions": {
     "blazor": {}
