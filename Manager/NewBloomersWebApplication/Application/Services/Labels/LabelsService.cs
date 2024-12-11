@@ -2,7 +2,6 @@
 using NewBloomersWebApplication.Infrastructure.Apis;
 using Newtonsoft.Json;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace NewBloomersWebApplication.Application.Services
 {
@@ -49,7 +48,7 @@ namespace NewBloomersWebApplication.Application.Services
                 var result = await _apiCall.GetAsync($"GetOrderToPrint", encodedParameters);
                 var pedido = System.Text.Json.JsonSerializer.Deserialize<Order>(result);
 
-                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
+                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601" || !System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "101988" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "101988")
                 {
                     pedido.client.reason_client = RemoveInvalidCharactersForZebra(pedido.client.reason_client);
                     pedido.client.address_client = RemoveInvalidCharactersForZebra(pedido.client.address_client);
@@ -91,6 +90,10 @@ namespace NewBloomersWebApplication.Application.Services
                         pedido.roteShippingCompany = total_infos.retorno.encomendas.First().volumes.First().rota;
 
                         requests.AddRange(GenerateAWBTotalBodyRequest(pedido));
+                    }
+                    else if (pedido.shippingCompany.cod_shippingCompany == "101988")
+                    {
+                        requests.AddRange(GenerateAWBJadlogBodyRequest(pedido));
                     }
                     else if (pedido.shippingCompany.cod_shippingCompany == "3535")
                     {
@@ -117,7 +120,7 @@ namespace NewBloomersWebApplication.Application.Services
         {
             try
             {
-                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601")
+                if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601" || !System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "101988" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "7601" || System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany != "101988")
                 {
                     pedido.client.reason_client = RemoveInvalidCharactersForZebra(pedido.client.reason_client);
                     pedido.client.address_client = RemoveInvalidCharactersForZebra(pedido.client.address_client);
@@ -159,6 +162,10 @@ namespace NewBloomersWebApplication.Application.Services
                         pedido.roteShippingCompany = total_infos.retorno.encomendas.First().volumes.First().rota;
 
                         requests.AddRange(GenerateAWBTotalBodyRequest(pedido));
+                    }
+                    else if (pedido.shippingCompany.cod_shippingCompany == "101988")
+                    {
+                        requests.AddRange(GenerateAWBJadlogBodyRequest(pedido));
                     }
                     else if (pedido.shippingCompany.cod_shippingCompany == "3535")
                     {
@@ -189,12 +196,12 @@ namespace NewBloomersWebApplication.Application.Services
                 if (pedido.serie == "MI-")
                 {
                     empresa = "MISHA";
-                    logo = "FO25,114^GFA,1321,7128,44,:Z64:eJztWEuu4jAQ7FggWVkFadhHs3rKKXIEkOA+LVaIU6BZRTnluH+2CTEEDWg29JM/cZtKpV67bRlg3s4IWHD9m7lx+dxqv3QmAoy4HPi4cJ4LpVsOC9uF8zy8xncpLtkrfDev4OLyuUv5tvAZvoT7CX0J9618feo+1XeVuk/5KlgLC/hmJJ/ijgn3qb7H/mVcslf4PtVXdfDwZn1daj6y3vBD+QHfwdcjVef0zN2gr4114xCdfawym+HbQU3UHNSE7q5cXCsOR2Okdk1tRbQqsKoUv+wMMiIhBTziNGobynhC6YO8K9ghcqXeNvR2wHHBuL8MeMe49L8fLAC6K8NQv6Ngq20uv4C3scaqjVJrlHplc3nGSBoKRuBXX+XbQzDQK3jMg75U+DKtNZWeG9rcmO+6V1ye0bUlXGrp+wUXTcZNxE06C98mF57DlH8VMKnUissON5gTQbfdyG3Kt9qJ5kKcf8Xf7BRXP7uLuFd9qRARbj0XC4mN4W56dQotZlMPia+fxRW+Rsn4wjxfMFzjizKXHRG3i3wFQ8otrum7jvrWub66tiQ/DOq8EO7hju9uwpct8b3RVw9mUQfmPadvOphFfcGcM/pqMuiML5lP+q4zvtXx8JBvrq8baTFn+gJnjyvk8VupjNtNxrcxvlHGXF8YRx6L+rKbce/0hfWRd7kl+hLhAXJ9zXEfv+Fpv7vRtyrqGyomnPQdoRS/NEaEE99dUV/QPB71Zc6Jbx6/VG+bZfHLg5YfIH7DvL70fCivtxt9WQnM1rG99D5+ubvP84M55/SFlCd544i4d/HLFgSOfA9xxpy+/AFRX15/hfhVOWP8/jLnvL7URn0T31l9qS3xnepL/ahv4jsTv5DycMCVpfFA34CX9I24c/HLMMa3eqavS/q6Cd9J/HJr8Sspohy/hJv0jbjz+lav6IsTfdN+MY1famP87s1Z0LfOcalzKeu7UkdlC2/CV3WwY8jNenOT+F1bUoDsvNOotCl+OZPXskfyuSSG7SjvGyQeeqvWmguo39vYQbToia9jSNlyByk/IrW8a+SbCIc0Uu3p55Jwd1JUYRnb69cQOO9mIeGCJjHuXAZ1hIyJ2k0n4K997Wtf+9rXvvZZ8w5/uOPOCKD3RgVbxYuX1YNZYrUhOb75cw8nVw+9ap7v0WqPHjB0nA8jPtS4ELfE+Tezc4KDdIN2AnT+AeOqkpsnPvgW2f+BM534EL0n4u4MJ8RQn2fm9hOWxrW5nxoEbQn3ii1Ai6Sv8G0fECagBiYXZxM7B1nDme+CP470rU/h8ezCXxn3vxq+F+4vgfk6hA==:9633";
+                    logo = "eJztWEuu4jAQ7FggWVkFadhHs3rKKXIEkOA+LVaIU6BZRTnluH+2CTEEDWg29JM/cZtKpV67bRlg3s4IWHD9m7lx+dxqv3QmAoy4HPi4cJ4LpVsOC9uF8zy8xncpLtkrfDev4OLyuUv5tvAZvoT7CX0J9618feo+1XeVuk/5KlgLC/hmJJ/ijgn3qb7H/mVcslf4PtVXdfDwZn1daj6y3vBD+QHfwdcjVef0zN2gr4114xCdfawym+HbQU3UHNSE7q5cXCsOR2Okdk1tRbQqsKoUv+wMMiIhBTziNGobynhC6YO8K9ghcqXeNvR2wHHBuL8MeMe49L8fLAC6K8NQv6Ngq20uv4C3scaqjVJrlHplc3nGSBoKRuBXX+XbQzDQK3jMg75U+DKtNZWeG9rcmO+6V1ye0bUlXGrp+wUXTcZNxE06C98mF57DlH8VMKnUissON5gTQbfdyG3Kt9qJ5kKcf8Xf7BRXP7uLuFd9qRARbj0XC4mN4W56dQotZlMPia+fxRW+Rsn4wjxfMFzjizKXHRG3i3wFQ8otrum7jvrWub66tiQ/DOq8EO7hju9uwpct8b3RVw9mUQfmPadvOphFfcGcM/pqMuiML5lP+q4zvtXx8JBvrq8baTFn+gJnjyvk8VupjNtNxrcxvlHGXF8YRx6L+rKbce/0hfWRd7kl+hLhAXJ9zXEfv+Fpv7vRtyrqGyomnPQdoRS/NEaEE99dUV/QPB71Zc6Jbx6/VG+bZfHLg5YfIH7DvL70fCivtxt9WQnM1rG99D5+ubvP84M55/SFlCd544i4d/HLFgSOfA9xxpy+/AFRX15/hfhVOWP8/jLnvL7URn0T31l9qS3xnepL/ahv4jsTv5DycMCVpfFA34CX9I24c/HLMMa3eqavS/q6Cd9J/HJr8Sspohy/hJv0jbjz+lav6IsTfdN+MY1famP87s1Z0LfOcalzKeu7UkdlC2/CV3WwY8jNenOT+F1bUoDsvNOotCl+OZPXskfyuSSG7SjvGyQeeqvWmguo39vYQbToia9jSNlyByk/IrW8a+SbCIc0Uu3p55Jwd1JUYRnb69cQOO9mIeGCJjHuXAZ1hIyJ2k0n4K997Wtf+9rXvvZZ8w5/uOPOCKD3RgVbxYuX1YNZYrUhOb75cw8nVw+9ap7v0WqPHjB0nA8jPtS4ELfE+Tezc4KDdIN2AnT+AeOqkpsnPvgW2f+BM534EL0n4u4MJ8RQn2fm9hOWxrW5nxoEbQn3ii1Ai6Sv8G0fECagBiYXZxM7B1nDme+CP470rU/h8ezCXxn3vxq+F+4vgfk6hA==:9633";
                 }
                 else
                 {
                     empresa = "OPEN ERA";
-                    logo = "FO25,160^GFA,1321,7128,44,:Z64:eJztlbGO00AURZ9ltF5tkN0gQWHi1f4AlBECx8VuT5OeT3CDlGIlT4lSwA8gCqrVUvABK7H+ie0oXKJUadBGEGWY++Y9x4ZFckokRsrYnrk+ub7zPKYjQ4Pbw3q49no4N/g+HBt+G66N6uHaxAzXjodLKd9Dm+6hneyhLffQrokO9+A+wPG0+Ivg3ikfMP2KaGrc0VrXT611iWuQobVrjDXy/+BmuKeqXJ9VlVtJDSeoqhITpT6Xu2mEe5afXWHky6WhpBZtuFxeEP243CoXzHP3q2lF9AijkWqD2gPhKPgq9nPmzyXspJHFDI3XJjj/ItqIuc9FG5W/cTEdvBctaq1ptfFa/dbeKKbDt8o14KbqN72DG0WiDZk7Vm6u+YpfHJNEtEGBPFruWLmFaLtchNzhvjN9v+DG/k84hK7f6A6/qb9Q7kS5ofkz3zxUbQHuU6IXs5eOG9TCvZkV0GYtN1Yu19QGA434tSix9SGWbAIN3Re/gauHDNqISuFa6yZezzbspNlxf1677tnJMQbmku/HE9dXXL/zllugTEnrgSbdfHnCccsd126N5mDyXr6fDMnj0IEPksd9vpT28uVDjZJFeiHnoB5iSnr5YtbHj1UJjHDFb9RftxWfpv7ukelzRx+6fuHUnY793f692PmVl0u55wxkbqNRtNxw2/WLt8+dxv4i9RG3XH6xd/Wb8hgX8NZsWq4xyJeEW+NyjYHE+A9AdrZSv49nsy73BmXH9Xsg3Ce2Ue4Uu1qsm73fz0oxy+4DS+o3u7XMkHxv7QrawG2WhN61S3T8zEeLhevaHXmxeEN0jLNDVfxv/1a7uroYrJWv3KDGJfcLH9fWKQ==:626F";
+                    logo = "eJztlbGO00AURZ9ltF5tkN0gQWHi1f4AlBECx8VuT5OeT3CDlGIlT4lSwA8gCqrVUvABK7H+ie0oXKJUadBGEGWY++Y9x4ZFckokRsrYnrk+ub7zPKYjQ4Pbw3q49no4N/g+HBt+G66N6uHaxAzXjodLKd9Dm+6hneyhLffQrokO9+A+wPG0+Ivg3ikfMP2KaGrc0VrXT611iWuQobVrjDXy/+BmuKeqXJ9VlVtJDSeoqhITpT6Xu2mEe5afXWHky6WhpBZtuFxeEP243CoXzHP3q2lF9AijkWqD2gPhKPgq9nPmzyXspJHFDI3XJjj/ItqIuc9FG5W/cTEdvBctaq1ptfFa/dbeKKbDt8o14KbqN72DG0WiDZk7Vm6u+YpfHJNEtEGBPFruWLmFaLtchNzhvjN9v+DG/k84hK7f6A6/qb9Q7kS5ofkz3zxUbQHuU6IXs5eOG9TCvZkV0GYtN1Yu19QGA434tSix9SGWbAIN3Re/gauHDNqISuFa6yZezzbspNlxf1677tnJMQbmku/HE9dXXL/zllugTEnrgSbdfHnCccsd126N5mDyXr6fDMnj0IEPksd9vpT28uVDjZJFeiHnoB5iSnr5YtbHj1UJjHDFb9RftxWfpv7ukelzRx+6fuHUnY793f692PmVl0u55wxkbqNRtNxw2/WLt8+dxv4i9RG3XH6xd/Wb8hgX8NZsWq4xyJeEW+NyjYHE+A9AdrZSv49nsy73BmXH9Xsg3Ce2Ue4Uu1qsm73fz0oxy+4DS+o3u7XMkHxv7QrawG2WhN61S3T8zEeLhevaHXmxeEN0jLNDVfxv/1a7uroYrJWv3KDGJfcLH9fWKQ==:626F";
                 }
 
                 for (int i = 0; i < pedido.volumes; i++)
@@ -237,8 +244,8 @@ namespace NewBloomersWebApplication.Application.Services
                                     ^FO31,925^GB745,0,3^FS
 
                                     ^FX HEADER
-                                    ^FT209,59^A0N,25,25^FH\^CI28^FDDANFE SIMPLIFICADO - MISHA^FS^CI27
-                                    ^FO25,114^GFA,1321,7128,44,:Z64:eJztWEuu4jAQ7FggWVkFadhHs3rKKXIEkOA+LVaIU6BZRTnluH+2CTEEDWg29JM/cZtKpV67bRlg3s4IWHD9m7lx+dxqv3QmAoy4HPi4cJ4LpVsOC9uF8zy8xncpLtkrfDev4OLyuUv5tvAZvoT7CX0J9618feo+1XeVuk/5KlgLC/hmJJ/ijgn3qb7H/mVcslf4PtVXdfDwZn1daj6y3vBD+QHfwdcjVef0zN2gr4114xCdfawym+HbQU3UHNSE7q5cXCsOR2Okdk1tRbQqsKoUv+wMMiIhBTziNGobynhC6YO8K9ghcqXeNvR2wHHBuL8MeMe49L8fLAC6K8NQv6Ngq20uv4C3scaqjVJrlHplc3nGSBoKRuBXX+XbQzDQK3jMg75U+DKtNZWeG9rcmO+6V1ye0bUlXGrp+wUXTcZNxE06C98mF57DlH8VMKnUissON5gTQbfdyG3Kt9qJ5kKcf8Xf7BRXP7uLuFd9qRARbj0XC4mN4W56dQotZlMPia+fxRW+Rsn4wjxfMFzjizKXHRG3i3wFQ8otrum7jvrWub66tiQ/DOq8EO7hju9uwpct8b3RVw9mUQfmPadvOphFfcGcM/pqMuiML5lP+q4zvtXx8JBvrq8baTFn+gJnjyvk8VupjNtNxrcxvlHGXF8YRx6L+rKbce/0hfWRd7kl+hLhAXJ9zXEfv+Fpv7vRtyrqGyomnPQdoRS/NEaEE99dUV/QPB71Zc6Jbx6/VG+bZfHLg5YfIH7DvL70fCivtxt9WQnM1rG99D5+ubvP84M55/SFlCd544i4d/HLFgSOfA9xxpy+/AFRX15/hfhVOWP8/jLnvL7URn0T31l9qS3xnepL/ahv4jsTv5DycMCVpfFA34CX9I24c/HLMMa3eqavS/q6Cd9J/HJr8Sspohy/hJv0jbjz+lav6IsTfdN+MY1famP87s1Z0LfOcalzKeu7UkdlC2/CV3WwY8jNenOT+F1bUoDsvNOotCl+OZPXskfyuSSG7SjvGyQeeqvWmguo39vYQbToia9jSNlyByk/IrW8a+SbCIc0Uu3p55Jwd1JUYRnb69cQOO9mIeGCJjHuXAZ1hIyJ2k0n4K997Wtf+9rXvvZZ8w5/uOPOCKD3RgVbxYuX1YNZYrUhOb75cw8nVw+9ap7v0WqPHjB0nA8jPtS4ELfE+Tezc4KDdIN2AnT+AeOqkpsnPvgW2f+BM534EL0n4u4MJ8RQn2fm9hOWxrW5nxoEbQn3ii1Ai6Sv8G0fECagBiYXZxM7B1nDme+CP470rU/h8ezCXxn3vxq+F+4vgfk6hA==:9633
+                                    ^FT209,59^A0N,25,25^FH\^CI28^FDDANFE SIMPLIFICADO - {empresa}^FS^CI27
+                                    ^FO25,114^GFA,1321,7128,44,:Z64:{logo}
                                     ^FT379,137^A0N,23,15^FH\^CI28^FD{pedido.company.reason_company.ToUpper()}^FS^CI27
                                     ^FT379,166^A0N,23,15^FH\^CI28^FDCNPJ: {Convert.ToUInt64(pedido.company.doc_company)}^FS^CI27
                                     ^FT379,195^A0N,23,15^FH\^CI28^FDI.E: {Convert.ToUInt64(pedido.company.state_registration_company).ToString(@"00\.000\.00\-0")}^FS^CI27
@@ -488,6 +495,77 @@ namespace NewBloomersWebApplication.Application.Services
             catch (Exception ex)
             {
                 throw new Exception($"{pedido.number.Trim()} - GenerateAWBAWRBodyRequest - Erro ao gerar etiqueta awb atraves do zpl - {ex.Message}");
+            }
+        }
+
+        private List<System.String> GenerateAWBJadlogBodyRequest(Order pedido)
+        {
+            try
+            {
+                List<System.String> requests = new List<System.String>();
+
+                for (int i = 0; i < pedido.volumes; i++)
+                {
+                    string zpl = @$"^XA
+                                    ~TA000
+                                    ~JSN
+                                    ^LT0
+                                    ^MNW
+                                    ^MTT
+                                    ^POI
+                                    ^PMN
+                                    ^LH0,0
+                                    ^JMA
+                                    ^PR4,4
+                                    ~SD30
+                                    ^JUS
+                                    ^LRN
+                                    ^CI27
+                                    ^PA0,1,1,0
+                                    ^XZ
+                                    ^XA
+                                    ^MMT
+                                    ^PW799
+                                    ^LL1180
+                                    ^LS0
+
+                                    ^FO384,992
+                                    ^GFA,08320,08320,00052,:Z64:eJztWD2O4zYYpeQIGIyBdVKoH6QcA84BXKwXyAG0gHSNHCEQNs0ipxBSGRIwSClYxVzFSGVMIW0ZbGHl+yEpSiZlc5o0/gCPpJHIx6f3PX6khLjHPe7hGcHOv83q6N8mTvzbNAfvJkGWebdZ9P3Rt02UZd6Etk1T+7bJsiz1bBL2ELlfG6CTZTu/NssGYu/XBmFMQj+3b4Xj0Rd1p+/OfX8ebsTOkQbqDpyksZkJMFIHDrDI1Um9NB4L3G9EjwBPzEwI27Y92tts2pZxPkK2rQxC0XUcGgo+pwddVZWDD9whnAVSRonyoTMXjroTKRz13MbNB+7QCH7pOuLT/6txPsd2HP1GM4WjMmF7yB8dfJrDn8ggbBQfRcjti0AKEmkcRah9c7UJJc8Nmof49CeJ4/R5MGSBwpHPusRBWXj4zcBHTnJu+wVDFigcmQlKnCf55BOdPJcF8KEhrDqQp2M+PMlBZz/yqGUbmpgDHHrAvUYmDhNqCjL6I451W4uqOUDvFQw9l3yWms9r81pLHFKIbBinAatNPQdDto1xQARyyQazbtOim1ryVHsM2T2SCB++KRwcN/XBOBnjJG4+VYH+CcEre7HeLyqyE/6F8wkfiL81TiI4ayXOjnBSJx+BfE7iA/GQfE7onLY19OlAn87UBxGoF4WTAE6MOCyYVR+Qht2xrcPmgJUGJGsOF/o0sghJnBgPO8SBDlNMwjib0yckJvmmPSIfvETnfGiVPuf+fKEPjF4QJcahyx1czukj1lVe1WJRFesaOawPOUzNy+YPCx+lD/QkKI0lTqxx3PrA0HPQREg+dMl8Rvr0naGPxIEf40RjPlZ90PhYW5p6S3yWdLm06aP9A79POPQBByz160y+IYGw/Qdnhd9OzCdsv8h8c/tnikOpkel8s+sDyuAst96vyTPwu+ofB04yq4/ks9F8CnLRhX86Qx87zu6KPgXqs63RPznJhW6a848dJxW36NNqPnn7VpbC9M/5qj5cLK7ok6M+1X5t5JuuP5LPYuqf3TSvEyEmfMTUPwX4JzT9cyKqpj6wSjD9E9N8MPJpMvCR+ohopM8WZjac4gr2D5xDIRIPYz581PrgDJoZ805Ki4axfxIRGPq8PdP89tcLTnHD5fPbyD/fhXgd9OGKYM7XePl5Un9SJib1gShpFVfmsv7s6dL0T9WQblqfTNWFdKgL0aT+fMooP7Q+VHBCs/4cqRwZ/mlF14FiuEzQOInsQ9e5yJgPYhyBIiT14fU17QfQP7RKw+SqB31qkPCQ85nCEXLtqeu2GPPZCYXOOC9IRK6l1fqA/nvS/jnn4ndwEO6CSB9e2uAhVeuQhDsXwU9Sn1QuH8SwgCvp9ZSw6kH/lCX2HpZ6t7NEErx227I+o4gVBzMiKU2Gp5eLSvbPJFYdOJkttLBsUq04cSaUdwILzlZpYsaSiLB3LJtUO59k2M9ZdvcTPi/M58jb074vxOrbNRzpH2UhfH+XOGvlGQ4+f8zllIBkrukj8/oHSYcIXeMj8+1BhB0HXD/dhqNW8pn9UwXXHxVaK0nHvuN24MQKx7aFsfIBdagC9aMdtwNH6jPQsRJaj/OtnNCxbsyt+aaywEHI6h/cnqr4fivOAGPbYz58FV/z6T8XjREXdx0xj2OPj70OCx97zL83eyz86ZiEbm4yCNTe3mY2rx2xnEk3V8z61BXsn7PNPs6IveloQoVPm0DNoz7hqw5G7E3nfd8T3/PdEgsQrBL8wsejKtbv+N4bedMRWIIK3zYzn8/csfWmA4R2/m3Cwr/NPe5xj3v8b/EflrOttg==:EBBE
+                                    ^FT375,1138^A0I,23,21^FH\^FDPedido: ^FS
+                                    ^FT375,1103^A0I,23,21^FH\^FDNota Fiscal: ^FS
+                                    ^FT375,1067^A0I,23,21^FH\^FDShipmentID: ^FS
+                                    ^FT375,1028^A0I,23,21^FH\^FDVolume: ^FS
+                                    ^FO32,962^GB767,0,4^FS
+                                    ^FT799,939^A0I,23,24^FB146,1,0,C^FH\^FDDESTINATARIO^FS
+                                    ^FT174,939^A0I,23,24^FB133,1,0,C^FH\^FDSHIPMENT ID^FS
+                                    ^FT799,901^A0I,23,24^FH\^FD{pedido.client.name_client}^FS
+                                    ^FT799,867^A0I,23,24^FH\^FD{pedido.client.address_client}^FS
+                                    ^FT799,834^A0I,23,24^FH\^FD{pedido.client.street_number_client}, {pedido.client.neighborhood_client}^FS
+                                    ^FT799,794^A0I,23,24^FH\^FD{pedido.client.city_client}, {pedido.client.uf_client}, {pedido.client.zip_code_client}^FS
+                                    ^BY4,3,99^FT454,797^BCI,,N,N
+                                    ^FD>:{pedido.returnShippingCompany}^FS
+                                    ^FO34,754^GB765,0,4^FS
+                                    ^FT799,730^A0I,23,24^FB119,1,0,C^FH\^FDREMETENTE^FS
+                                    ^FT799,687^A0I,23,24^FH\^FD{pedido.company.name_company}^FS
+                                    ^FT799,647^A0I,23,24^FH\^FD{pedido.company.address_company}^FS
+                                    ^FT799,609^A0I,23,24^FH\^FD{pedido.company.street_number_company}, {pedido.company.neighborhood_company}^FS
+                                    ^FT799,573^A0I,23,24^FH\^FD{pedido.company.city_company}, {pedido.company.uf_company}, {pedido.company.zip_code_company}^FS
+                                    ^FT292,1138^A0I,23,24^FH\^FD{pedido.number}^FS
+                                    ^FT252,1103^A0I,23,24^FH\^FD{pedido.invoice.number_nf}^FS
+                                    ^FT248,1067^A0I,23,24^FH\^FD{pedido.returnShippingCompany}^FS
+                                    ^FT289,1028^A0I,23,24^FH\^FD{pedido.volumes}^FS
+                                    ^BY4,3,99^FT684,386^BCI,,Y,N
+                                    ^FD>:{pedido.number}^FS
+                                    ^PQ1,0,1,Y
+                                    ^XZ";
+
+                    requests.Add(zpl.Replace("'", ""));
+                }
+                return requests;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{pedido.number.Trim()} - GenerateAWBJadlogBodyRequest - Erro ao gerar etiqueta awb atraves do zpl - {ex.Message}");
             }
         }
 

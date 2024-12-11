@@ -39,18 +39,18 @@ namespace NewBloomersWebApplication.UI.Pages
                     pedido.buttonClass = "btn btn-primary";
                 }
 
-                if (pedido.present == "S")
-                {
+                //if (pedido.present == "S")
+                //{
                     pedido.buttonDisabled = false;
                     pedido.buttonPresentText = "Imprimir";
                     pedido.buttonPresentClass = "btn btn-primary";
-                }
-                else
-                {
-                    pedido.buttonDisabled = true;
-                    pedido.buttonPresentText = "Imprimir";
-                    pedido.buttonPresentClass = "btn btn-secondary";
-                }
+                //}
+                //else
+                //{
+                //  pedido.buttonDisabled = true;
+                //  pedido.buttonPresentText = "Imprimir";
+                //  pedido.buttonPresentClass = "btn btn-secondary";
+                //}
             }
         }
 
@@ -74,18 +74,18 @@ namespace NewBloomersWebApplication.UI.Pages
                         pedido.buttonClass = "btn btn-primary";
                     }
 
-                    if (pedido.present == "S")
-                    {
+                    //if (pedido.present == "S")
+                    //{
                         pedido.buttonDisabled = false;
                         pedido.buttonPresentText = "Imprimir";
                         pedido.buttonPresentClass = "btn btn-primary";
-                    }
-                    else
-                    {
-                        pedido.buttonDisabled = true;
-                        pedido.buttonPresentText = "Imprimir";
-                        pedido.buttonPresentClass = "btn btn-secondary";
-                    }
+                    //}
+                    //else
+                    //{
+                    //    pedido.buttonDisabled = true;
+                    //    pedido.buttonPresentText = "Imprimir";
+                    //    pedido.buttonPresentClass = "btn btn-secondary";
+                    //}
                 }
             }
             else

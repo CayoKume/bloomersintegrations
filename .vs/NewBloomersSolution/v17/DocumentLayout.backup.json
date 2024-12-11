@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\application\\services\\labels\\labelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\application\\services\\labels\\labelsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\infrastructure\\repositorys\\labels\\labelsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\infrastructure\\repositorys\\labels\\labelsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 130,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LabelsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\Labels\\LabelsRepository.cs",
+              "RelativeDocumentMoniker": "MiniWms\\Infrastructure\\Repositorys\\Labels\\LabelsRepository.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\Labels\\LabelsRepository.cs",
+              "RelativeToolTip": "MiniWms\\Infrastructure\\Repositorys\\Labels\\LabelsRepository.cs",
+              "ViewState": "AgIAAOUAAAAAAAAAAAAAAOcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:46:20.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LabelsService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\Labels\\LabelsService.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\Application\\Services\\Labels\\LabelsService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\Labels\\LabelsService.cs*",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\Application\\Services\\Labels\\LabelsService.cs*",
+              "ViewState": "AgIAALMAAAAAAAAAAAAUwMkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:38:42.242Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -195,7 +195,10 @@
           "System.Data.SqlClient": "4.8.6"
         },
         "runtime": {
-          "NewBloomersWebServicesCore.dll": {}
+          "NewBloomersWebServicesCore.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "NewBloomersWorkerServicesCore/1.0.0": {
@@ -210,7 +213,10 @@
           "Serilog.Sinks.File": "5.0.0"
         },
         "runtime": {
-          "NewBloomersWorkerServicesCore.dll": {}
+          "NewBloomersWorkerServicesCore.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

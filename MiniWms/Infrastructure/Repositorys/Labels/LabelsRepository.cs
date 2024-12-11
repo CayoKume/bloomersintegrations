@@ -80,8 +80,9 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 	                         (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))), CHARINDEX('</infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))))) AS OBS
 	                         FROM GENERAL..IT4_WMS_DOCUMENTO (NOLOCK)
 	                         WHERE 
-	                         NB_PARA_PRESENTE = 'S' 
-	                         AND NB_DOC_REMETENTE = '{cnpj_emp}'
+	                         --NB_PARA_PRESENTE = 'S' 
+	                         --AND 
+                             NB_DOC_REMETENTE = '{cnpj_emp}'
                              AND SERIE = '{serie}'
                              AND DOCUMENTO = '{nr_pedido}'
 	                         AND CHAVE_NFE IS NOT NULL
@@ -127,8 +128,12 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
 						END AS TPNF,
                              
-                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') AS RETURNSHIPPINGCOMPANY,
-                             
+                        IIF
+						(	A.NB_TRANSPORTADORA = 7601,
+							(SELECT DISTINCT TOP 1 RETORNO FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%'),
+							(SELECT DISTINCT TOP 1 SHIPMENTID FROM GENERAL..JadlogRegistrolog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.STATUS LIKE '%Solicitacao inserida com sucesso.%')
+						) AS RETURNSHIPPINGCOMPANY,
+
                         A.NB_CODIGO_CLIENTE AS COD_CLIENT,
                         A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
                         A.NB_NOME_CLIENTE AS NAME_CLIENT,
@@ -234,8 +239,12 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 						WHEN (SELECT SUBSTRING (A.[XML_FATURAMENTO], CHARINDEX('<tpNF>', CAST(a.[XML_FATURAMENTO] AS VARCHAR(MAX))) + 6, 1)) = '0' THEN '0-ENTRADA'
 						END AS TPNF,
                              
-                        (SELECT DISTINCT TOP 1 Retorno FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%') AS RETURNSHIPPINGCOMPANY,
-                             
+                        IIF
+						(	A.NB_TRANSPORTADORA = 7601,
+							(SELECT DISTINCT TOP 1 RETORNO FROM GENERAL..TotalExpressRegistroLog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.retorno NOT LIKE '%erro%' AND T1.retorno NOT LIKE '%502 Bad Gateway%'),
+							(SELECT DISTINCT TOP 1 SHIPMENTID FROM GENERAL..JadlogRegistrolog T1 WHERE T1.pedido = TRIM(A.DOCUMENTO) AND T1.STATUS LIKE '%Solicitacao inserida com sucesso.%')
+						) AS RETURNSHIPPINGCOMPANY,
+
                         A.NB_CODIGO_CLIENTE AS COD_CLIENT,
                         A.NB_RAZAO_CLIENTE AS REASON_CLIENT,
                         A.NB_NOME_CLIENTE AS NAME_CLIENT,

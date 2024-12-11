@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mandae")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecd1598d170ff7042159fccb3f8242d52d8eeed7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1a933d7e7f57b9ce7e8da1d02a0f8d81fca1d02")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mandae")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mandae")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
