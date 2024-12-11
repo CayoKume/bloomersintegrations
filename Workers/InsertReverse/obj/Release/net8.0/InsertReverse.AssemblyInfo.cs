@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InsertReverse")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1a933d7e7f57b9ce7e8da1d02a0f8d81fca1d02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b32f5820e8c59c7dc6b041bf97642888507840bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("InsertReverse")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InsertReverse")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,16 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\bin\Release\net8.0\LinxCommerce.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\bin\Release\net8.0\LinxCommerce.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\bin\Release\net8.0\LinxCommerce.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\bin\Release\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\bin\Release\net8.0\NewBloomersWebServicesCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxComm.F72E3E44.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\refint\LinxCommerce.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\LinxCommerce.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxCommerce\obj\Release\net8.0\ref\LinxCommerce.dll

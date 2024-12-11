@@ -11,7 +11,8 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             {
                 app.UseCors(policy =>
                     policy.WithOrigins("http://172.25.1.6:7575", "http://localhost:7575", "http://localhost:5215", "https://localhost:7083", "https://webapplication.newbloomers.com.br:7475")
-                    .AllowAnyMethod()
+                    .WithMethods("PUT", "DELETE", "GET", "POST")
+                    //.AllowAnyMethod()
                     .AllowAnyHeader()
                     .WithHeaders(HeaderNames.ContentType)
                 );

@@ -1,0 +1,16 @@
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\bin\Release\net8.0\LinxMicrovixWsSaida.deps.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\bin\Release\net8.0\LinxMicrovixWsSaida.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\bin\Release\net8.0\LinxMicrovixWsSaida.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\bin\Release\net8.0\NewBloomersWebServicesCore.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\bin\Release\net8.0\NewBloomersWebServicesCore.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.csproj.AssemblyReference.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.AssemblyInfoInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.AssemblyInfo.cs
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.csproj.CoreCompileInputs.cache
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.sourcelink.json
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicr.26F421D4.Up2Date
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\refint\LinxMicrovixWsSaida.dll
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\LinxMicrovixWsSaida.pdb
+C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\LinxMicrovix\LinxMicrovixWsSaida\obj\Release\net8.0\ref\LinxMicrovixWsSaida.dll
