@@ -43,6 +43,16 @@ namespace BloomersIntegrationsManager.Domain.Extensions
                 LinxMicrovixB2CRecurringJobs();
                 LinxMicrovixERPRecurringJobs();
             }
+            else if (serverName == "SRV-VM-APP04")
+            {
+                RecurringJob.AddOrUpdate<ILinxPlanosService<LinxPlanos>>("LinxPlanos", service => service.IntegraRegistrosAsync(
+                "LinxPlanos",
+                "p_LinxPlanos_Sincronizacao",
+                BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Domain.Enums.LinxAPIAttributes.TypeEnum.Producao.ToName()),
+                Cron.MinuteInterval(3),
+                queue: "srv-vm-app01"
+            );
+            }
         }
 
         private static void FlashCourierRecurringJobs()

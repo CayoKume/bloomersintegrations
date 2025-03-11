@@ -222,7 +222,11 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
 
                 if (registro.Count() > 0)
                 {
-                    await _linxMovimentoRepository.InsereRegistroIndividualAsync(registro[0], tableName, database);
+                    foreach(var reg in registro)
+                    {
+                        await _linxMovimentoRepository.InsereRegistroIndividualAsync(reg, tableName, database);
+                    }
+                    
                     return true;
                 }
                 else

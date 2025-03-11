@@ -29,34 +29,34 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
                     list.Add(new TEntity
                     {
                         lastupdateon = DateTime.Now,
-                        portal = registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).First(),
-                        empresa = registros[i].Where(pair => pair.Key == "Empresa").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Empresa").Select(pair => pair.Value).First(),
-                        nome_emp = registros[i].Where(pair => pair.Key == "nome_emp").Select(pair => pair.Value).First(),
-                        razao_emp = registros[i].Where(pair => pair.Key == "razao_emp").Select(pair => pair.Value).First(),
-                        cnpj_emp = registros[i].Where(pair => pair.Key == "cnpj_emp").Select(pair => pair.Value).First(),
-                        inscricao_emp = registros[i].Where(pair => pair.Key == "inscricao_emp").Select(pair => pair.Value).First(),
-                        endereco_emp = registros[i].Where(pair => pair.Key == "endereco_emp").Select(pair => pair.Value).First(),
-                        num_emp = registros[i].Where(pair => pair.Key == "num_emp").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "num_emp").Select(pair => pair.Value).First(),
-                        complement_emp = registros[i].Where(pair => pair.Key == "complement_emp").Select(pair => pair.Value).First(),
-                        bairro_emp = registros[i].Where(pair => pair.Key == "bairro_emp").Select(pair => pair.Value).First(),
-                        cep_emp = registros[i].Where(pair => pair.Key == "cep_emp").Select(pair => pair.Value).First(),
-                        cidade_emp = registros[i].Where(pair => pair.Key == "cidade_emp").Select(pair => pair.Value).First(),
-                        estado_emp = registros[i].Where(pair => pair.Key == "estado_emp").Select(pair => pair.Value).First(),
-                        fone_emp = registros[i].Where(pair => pair.Key == "fone_emp").Select(pair => pair.Value).First(),
-                        email_emp = registros[i].Where(pair => pair.Key == "email_emp").Select(pair => pair.Value).First(),
-                        cod_ibge_municipio = registros[i].Where(pair => pair.Key == "cod_ibge_municipio").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "cod_ibge_municipio").Select(pair => pair.Value).First(),
-                        data_criacao_emp = registros[i].Where(pair => pair.Key == "data_criacao_emp").Select(pair => pair.Value).First() == String.Empty ? new DateTime(1990, 01, 01, 00, 00, 00, new CultureInfo("en-US").Calendar).ToString("yyyy-MM-dd HH:mm:ss") : registros[i].Where(pair => pair.Key == "data_criacao_emp").Select(pair => pair.Value).First(),
-                        data_criacao_portal = registros[i].Where(pair => pair.Key == "data_criacao_portal").Select(pair => pair.Value).First() == String.Empty ? new DateTime(1990, 01, 01, 00, 00, 00, new CultureInfo("en-US").Calendar).ToString("yyyy-MM-dd HH:mm:ss") : registros[i].Where(pair => pair.Key == "data_criacao_portal").Select(pair => pair.Value).First(),
-                        sistema_tributacao = registros[i].Where(pair => pair.Key == "sistema_tributacao").Select(pair => pair.Value).First(),
-                        regime_tributario = registros[i].Where(pair => pair.Key == "regime_tributario").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "regime_tributario").Select(pair => pair.Value).First(),
-                        area_empresa = registros[i].Where(pair => pair.Key == "area_empresa").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "area_empresa").Select(pair => pair.Value).First(),
-                        timestamp = registros[i].Where(pair => pair.Key == "timestamp").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "timestamp").Select(pair => pair.Value).First(),
-                        sigla_empresa = registros[i].Where(pair => pair.Key == "sigla_empresa").Select(pair => pair.Value).First(),
-                        id_classe_fiscal = registros[i].Where(pair => pair.Key == "id_classe_fiscal").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "id_classe_fiscal").Select(pair => pair.Value).First(),
-                        centro_distribuicao = registros[i].Where(pair => pair.Key == "centro_distribuicao").Select(pair => pair.Value).First() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "centro_distribuicao").Select(pair => pair.Value).First(),
-                        inscricao_municipal_emp = registros[i].Where(pair => pair.Key == "inscricao_municipal_emp").Select(pair => pair.Value).First(),
-                        cnae_emp = registros[i].Where(pair => pair.Key == "cnae_emp").Select(pair => pair.Value).First(),
-                        cod_cliente_linx = registros[i].Where(pair => pair.Key == "cod_cliente_linx").Select(pair => pair.Value).First(),
+                        portal = registros[i].Where(pair => pair.Key == "portal").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Portal").Select(pair => pair.Value).FirstOrDefault(),
+                        empresa = registros[i].Where(pair => pair.Key == "empresa").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "Empresa").Select(pair => pair.Value).FirstOrDefault(),
+                        nome_emp = registros[i].Where(pair => pair.Key == "nome_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        razao_emp = registros[i].Where(pair => pair.Key == "razao_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        cnpj_emp = registros[i].Where(pair => pair.Key == "cnpj_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        inscricao_emp = registros[i].Where(pair => pair.Key == "inscricao_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        endereco_emp = registros[i].Where(pair => pair.Key == "endereco_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        num_emp = registros[i].Where(pair => pair.Key == "num_emp").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "num_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        complement_emp = registros[i].Where(pair => pair.Key == "complement_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        bairro_emp = registros[i].Where(pair => pair.Key == "bairro_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        cep_emp = registros[i].Where(pair => pair.Key == "cep_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        cidade_emp = registros[i].Where(pair => pair.Key == "cidade_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        estado_emp = registros[i].Where(pair => pair.Key == "estado_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        fone_emp = registros[i].Where(pair => pair.Key == "fone_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        email_emp = registros[i].Where(pair => pair.Key == "email_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        cod_ibge_municipio = registros[i].Where(pair => pair.Key == "cod_ibge_municipio").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "cod_ibge_municipio").Select(pair => pair.Value).FirstOrDefault(),
+                        data_criacao_emp = registros[i].Where(pair => pair.Key == "data_criacao_emp").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? new DateTime(1990, 01, 01, 00, 00, 00, new CultureInfo("en-US").Calendar).ToString("yyyy-MM-dd HH:mm:ss") : registros[i].Where(pair => pair.Key == "data_criacao_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        data_criacao_portal = registros[i].Where(pair => pair.Key == "data_criacao_portal").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? new DateTime(1990, 01, 01, 00, 00, 00, new CultureInfo("en-US").Calendar).ToString("yyyy-MM-dd HH:mm:ss") : registros[i].Where(pair => pair.Key == "data_criacao_portal").Select(pair => pair.Value).FirstOrDefault(),
+                        sistema_tributacao = registros[i].Where(pair => pair.Key == "sistema_tributacao").Select(pair => pair.Value).FirstOrDefault(),
+                        regime_tributario = registros[i].Where(pair => pair.Key == "regime_tributario").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "regime_tributario").Select(pair => pair.Value).FirstOrDefault(),
+                        area_empresa = registros[i].Where(pair => pair.Key == "area_empresa").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "area_empresa").Select(pair => pair.Value).FirstOrDefault(),
+                        timestamp = registros[i].Where(pair => pair.Key == "timestamp").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "timestamp").Select(pair => pair.Value).FirstOrDefault(),
+                        sigla_empresa = registros[i].Where(pair => pair.Key == "sigla_empresa").Select(pair => pair.Value).FirstOrDefault(),
+                        id_classe_fiscal = registros[i].Where(pair => pair.Key == "id_classe_fiscal").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "id_classe_fiscal").Select(pair => pair.Value).FirstOrDefault(),
+                        centro_distribuicao = registros[i].Where(pair => pair.Key == "centro_distribuicao").Select(pair => pair.Value).FirstOrDefault() == String.Empty ? "0" : registros[i].Where(pair => pair.Key == "centro_distribuicao").Select(pair => pair.Value).FirstOrDefault(),
+                        inscricao_municipal_emp = registros[i].Where(pair => pair.Key == "inscricao_municipal_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        cnae_emp = registros[i].Where(pair => pair.Key == "cnae_emp").Select(pair => pair.Value).FirstOrDefault(),
+                        cod_cliente_linx = registros[i].Where(pair => pair.Key == "cod_cliente_linx").Select(pair => pair.Value).FirstOrDefault(),
                     });
                 }
                 catch (Exception ex)
@@ -72,7 +72,19 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Application.Services.
         {
             try
             {
-                var body = _apiCall.BuildBodyRequest(tableName, AUTENTIFICACAO, CHAVE);
+                var body = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                          <LinxMicrovix>
+                              <Authentication user=""linx_export"" password=""linx_export"" />
+                              <ResponseFormat>xml</ResponseFormat>
+                              <Command>
+                                  <Name>LinxLojas</Name>
+                                  <Parameters>
+                                      <Parameter id=""chave"">36e92c0e-7fe7-40a7-a0c7-a9bde3b69324</Parameter>
+                                      <Parameter id=""cnpjEmp"">38367316001241</Parameter>
+                                      <Parameter id=""timestamp"">0</Parameter>
+                                  </Parameters>
+                              </Command>
+                          </LinxMicrovix>";
                 var response = await _apiCall.CallAPIAsync(tableName, body);
                 var registros = _apiCall.DeserializeXML(response);
 

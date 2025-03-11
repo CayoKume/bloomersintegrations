@@ -1,15 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxmicrovix\\linxmicrovixwssaida\\application\\services\\linxmicrovix\\linxlojasservice\\linxlojasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E46D5465-F345-4542-808B-D922B4FED1BE}|LinxMicrovix\\LinxMicrovixWsSaida\\LinxMicrovixWsSaida.csproj|solutionrelative:linxmicrovix\\linxmicrovixwssaida\\application\\services\\linxmicrovix\\linxlojasservice\\linxlojasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\domain\\extensions\\servicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\domain\\extensions\\servicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebservices\\ui\\controllers\\linxmicrovix\\linxmicrovixerpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D00B934D-0FF9-4B49-9859-B05B3C771D7B}|Manager\\NewBloomersWebServices\\NewBloomersWebServices.csproj|solutionrelative:manager\\newbloomerswebservices\\ui\\controllers\\linxmicrovix\\linxmicrovixerpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 130,
+      "VerticalTabListWidth": 253,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 287,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +31,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServicesExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\Domain\\Extensions\\ServicesExtensions.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\Domain\\Extensions\\ServicesExtensions.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\Domain\\Extensions\\ServicesExtensions.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\Domain\\Extensions\\ServicesExtensions.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAL4AAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:58:48.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LinxMicrovixERPController.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebServices\\UI\\Controllers\\LinxMicrovix\\LinxMicrovixERPController.cs",
+              "ViewState": "AgIAALkBAAAAAAAAAAAAAPABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:55:37.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LinxLojasService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxLojasService\\LinxLojasService.cs",
+              "RelativeDocumentMoniker": "LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxLojasService\\LinxLojasService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxLojasService\\LinxLojasService.cs",
+              "RelativeToolTip": "LinxMicrovix\\LinxMicrovixWsSaida\\Application\\Services\\LinxMicrovix\\LinxLojasService\\LinxLojasService.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAmwGgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:54:32.123Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -55,6 +55,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _b2CConsultaClientesService.IntegraRegistrosAsync(
+                        "B2CConsultaClientes",
+                        "p_B2CConsultaClientes_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 var result = await _b2CConsultaClientesService.IntegraRegistrosIndividualAsync(
                         "B2CConsultaClientes",
                         "p_B2CConsultaClientes_Sincronizacao",
@@ -146,6 +152,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _b2CConsultaPedidosService.IntegraRegistrosAsync(
+                        "B2CConsultaPedidos",
+                        "p_B2CConsultaPedidos_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 var result = await _b2CConsultaPedidosService.IntegraRegistrosIndividualAsync(
                         "B2CConsultaPedidos",
                         "p_B2CConsultaPedidos_Sincronizacao",

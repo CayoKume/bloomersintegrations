@@ -1,0 +1,107 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = NewBloomersWebApplication
+build_property.RootNamespace = NewBloomersWebApplication
+build_property.ProjectDir = C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\CayoHenriqueKume\source\repos\bloomersintegrations\Manager\NewBloomersWebApplication
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/AlertModal.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xBbGVydE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-xtaq10uk5w
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/ConfirmationModal.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xDb25maXJtYXRpb25Nb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-vbr92q76v6
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/ConfirmationModalWithFocusById.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xDb25maXJtYXRpb25Nb2RhbFdpdGhGb2N1c0J5SWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-y2ovcjk9je
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/GridsMenuWithDates.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xHcmlkc01lbnVXaXRoRGF0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-6mu2tpbjcj
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Components/Pagination.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcQ29tcG9uZW50c1xQYWdpbmF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-9altva86od
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/BlankLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xCbGFua0xheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-bx84vkduym
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xNYWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-e30fsw5o2g
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Layouts/SideMenuLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcTGF5b3V0c1xTaWRlTWVudUxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-0k5rp2y69q
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Attendance.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQXR0ZW5kYW5jZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-etxfb9khlq
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/CancellationRequest.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQ2FuY2VsbGF0aW9uUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-3k5l85p1ld
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Companys.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQ29tcGFueXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xeukiq8h2w
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/DeliveryList.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRGVsaXZlcnlMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-d4jxg2gr91
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/ExecuteCancellation.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRXhlY3V0ZUNhbmNlbGxhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-zx1gson97g
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-j1lpcwhxcy
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/InvoicePayment.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcSW52b2ljZVBheW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9v067snvf8
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Labels.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcTGFiZWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-g4dd7fnjmr
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kxq2tuiutp
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/Picking.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUGlja2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ip9mzgq12i
+
+[C:/Users/CayoHenriqueKume/source/repos/bloomersintegrations/Manager/NewBloomersWebApplication/UI/Pages/ShippingCompanys.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcU2hpcHBpbmdDb21wYW55cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-yafwm4c9do

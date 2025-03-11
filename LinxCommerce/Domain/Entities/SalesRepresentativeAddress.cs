@@ -13,8 +13,8 @@
         public string AddressNotes { get; set; }
         public string Landmark { get; set; }
         public string ContactName { get; set; }
-        public decimal Latitude  { get; set; }
-        public decimal Longitude { get; set; }
+        public decimal? Latitude  { get; set; }
+        public decimal? Longitude { get; set; }
         public string PostalCode { get; set; }
     }
 }

@@ -1,0 +1,1464 @@
+[
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.FlashCourierController",
+    "Method": "FlashCourierAtualizaLogPedidoEnviado",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/FlashCourier/AtualizaLogPedidoEnviado",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.FlashCourierController",
+    "Method": "FlashCourierEnviaPedido",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/FlashCourier/EnviaPedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.FlashCourierController",
+    "Method": "FlashCourierEnviaPedidos",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/FlashCourier/EnviaPedidos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.TotalExpressController",
+    "Method": "TotalExpressSendOrder",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/TotalExpress/TotalExpressSendOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.TotalExpressController",
+    "Method": "TotalExpressSendOrderAsETUR",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/TotalExpress/TotalExpressSendOrderAsETUR",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.TotalExpressController",
+    "Method": "TotalExpressSendOrders",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/TotalExpress/TotalExpressSendOrders",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.Carriers.TotalExpressController",
+    "Method": "TotalExpressUpdateOrderSendLog",
+    "RelativePath": "NewBloomers/BloomersCarriersJobs/TotalExpress/TotalExpressUpdateOrderSendLog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxCommerce.LinxCommerceController",
+    "Method": "IntegraPedido",
+    "RelativePath": "NewBloomers/BloomersEcommerceJobs/LinxCommerce/Pedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxCommerce.LinxCommerceController",
+    "Method": "IntegraPedidos",
+    "RelativePath": "NewBloomers/BloomersEcommerceJobs/LinxCommerce/Pedidos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxCommerce.LinxCommerceController",
+    "Method": "IntegraProdutos",
+    "RelativePath": "NewBloomers/BloomersEcommerceJobs/LinxCommerce/Produtos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxCommerce.LinxCommerceController",
+    "Method": "AlteraSalesRepresentative",
+    "RelativePath": "NewBloomers/BloomersEcommerceJobs/LinxCommerce/SalesRepresentative",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxCommerce.LinxCommerceController",
+    "Method": "IntegraSKUsBase",
+    "RelativePath": "NewBloomers/BloomersEcommerceJobs/LinxCommerce/SKUs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.CancellationRequestController",
+    "Method": "CreateCancellationRequest",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/CreateCancellationRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.OrderToCancellationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.CompanyController",
+    "Method": "GetCompanys",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetCompanys",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.DeliveryListController",
+    "Method": "GetDeliveryListToPrint",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetDeliveryListToPrint",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "GetLabelToPrint",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetLabelToPrint",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.DeliveryListController",
+    "Method": "GetOrderShipped",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrderShipped",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cod_transportadora",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.DeliveryListController",
+    "Method": "GetOrdersShipped",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrdersShipped",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_transportadora",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_inicial",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_final",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.ExecuteCancellationController",
+    "Method": "GetOrdersToCancel",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrdersToCancel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.AttendanceController",
+    "Method": "GetOrdersToContact",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrdersToContact",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "GetOrdersToPrint",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrdersToPrint",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_inicial",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_final",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.CancellationRequestController",
+    "Method": "GetOrderToCancel",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrderToCancel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "GetOrderToPresent",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrderToPresent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "GetOrderToPrint",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetOrderToPrint",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.HomeController",
+    "Method": "GetPickupOrders",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetPickupOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.CancellationRequestController",
+    "Method": "GetReasons",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetReasons",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.ExecuteCancellationController",
+    "Method": "GetReasons",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetReasonsToExecuteCancellation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "GetShippingCompanys",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetShippingCompanys",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "GetUnpickedOrder",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetUnpickedOrder",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "GetUnpickedOrders",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetUnpickedOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_inicial",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_final",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "GetUnpickedOrdersToPrint",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetUnpickedOrdersToPrint",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_inicial",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "data_final",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "GetUnpickedOrderToPrint",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/GetUnpickedOrderToPrint",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cnpj_emp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nr_pedido",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.DeliveryListController",
+    "Method": "PrintDeliveryList",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/PrintDeliveryList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.PrintOrdersRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "PrintExchangeCupoun",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/PrintExchangeCupoun",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "NewBloomersWebServices.Domain.Entities.MiniWms.PrintOrderToPresentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "PrintOrderToCupoun",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/PrintOrderToCupoun",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.PrintOrderRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "SendZPLToAPI",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/SendZPLToAPI",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.SendZPLToAPIRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.ExecuteCancellationController",
+    "Method": "UpdateDateCanceled",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/UpdateDateCanceled",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.UpdateDateCanceledRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.AttendanceController",
+    "Method": "UpdateDateContacted",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/UpdateDateContacted",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.UpdateDateContactedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.LabelsController",
+    "Method": "UpdateFlagPrinted",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/UpdateFlagPrinted",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.UpdateFlagPrintedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "UpdateRetorno",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/UpdateRetorno",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.UpdateRetornoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewBloomersWebServices.UI.Controllers.Wms.PickingController",
+    "Method": "UpdateShippingCompany",
+    "RelativePath": "NewBloomers/BloomersInvoiceIntegrations/MiniWms/UpdateShippingCompany",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BloomersIntegrationsManager.Domain.Entities.MiniWms.UpdateShippingCompanyRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraClienteIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaClientes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doc_client",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraNFeIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaNFe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order_id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraNFeSituacao",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaNFeSituacao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraPedidosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaPedidos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order_id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraPedidosItensIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaPedidosItens",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order_id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraPedidosStatusIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaPedidosStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order_id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixB2CController",
+    "Method": "IntegraStatus",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxEcommerce/B2CConsultaStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraClientesFornecIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxClientesFornec",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doc_client",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraGrupoLojasIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxGrupoLojas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraMovimentoIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxMovimento",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "document",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraMovimentoCartoes",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxMovimentoCartoes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraMovimentoPlanosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxMovimentoPlanos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "indentifier",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraPedidosCompra",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxPedidosCompra",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraPedidosVendaIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxPedidosVenda",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_order",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraPlanosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxPlanos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_plan",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_product",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosCamposAdicionaisIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosCamposAdicionais",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_product",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosDepositosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosDepositos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_deposit",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosDetalhesIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosDetalhes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_product",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosInventarioIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosInventario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_deposit",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cod_product",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosPromocoes",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosPromocoes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosTabelasIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosTabelas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_table",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraProdutosTabelasPrecosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxProdutosTabelasPrecos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cod_product",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cod_table",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraXMLDocumentosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxXMLDocumentos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "document",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "serie",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doc_company",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

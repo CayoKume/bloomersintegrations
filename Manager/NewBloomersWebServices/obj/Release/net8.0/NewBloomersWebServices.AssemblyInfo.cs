@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NewBloomersWebServices")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b32f5820e8c59c7dc6b041bf97642888507840bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+065935cbb159eafcf51e5da23ce56d608fd168f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("NewBloomersWebServices")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NewBloomersWebServices")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

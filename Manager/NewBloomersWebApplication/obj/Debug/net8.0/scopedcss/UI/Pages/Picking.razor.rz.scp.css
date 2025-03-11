@@ -1,0 +1,125 @@
+body[b-ip9mzgq12i] {
+}
+
+h1[b-ip9mzgq12i] {
+    display: inline-block;
+    font-size: 18px;
+    width: 99%;
+    margin: 10px auto 10px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EBEBEB;
+    font-family: 'Dosis', Verdana, Arial;
+    color: #5B2E90;
+}
+
+.grid[b-ip9mzgq12i] {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    width: 65rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .col-title {
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] button.col-title:hover, [b-ip9mzgq12i] .quickgrid[theme=corporate] .col-options-button:hover {
+    background-color: rgba(128,128,128,0.9);
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] tr, [b-ip9mzgq12i] .quickgrid[theme=corporate] td, [b-ip9mzgq12i] .quickgrid[theme=corporate] th {
+    border-width: 1px;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .pedido {
+    width: 60rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .conferencia {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .cliente {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .nome {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .endereco {
+    width: 60rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .numero {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .complemento {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .valor {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .img_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 10rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .descricao_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 32rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .sku_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 15rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .qtde_produto {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}
+
+[b-ip9mzgq12i] .quickgrid[theme=corporate] .qtde_conferida {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 5rem;
+}

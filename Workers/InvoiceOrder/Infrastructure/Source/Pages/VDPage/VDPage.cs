@@ -77,6 +77,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
                 IWebElement tipoFreteRedespachoSemCobranca = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete_redespacho6")));
                 _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("quantidade"))).SendKeys(volumes);
 
+                Thread.Sleep(5 * 1000);
+
                 if (cnpj == "42538267000268")
                 {
                     ExtensionsMethods.ClickInElement(tipoFreteEmitente);
@@ -133,6 +135,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
         {
             try
             {
+                Thread.Sleep(5 * 1000);
+
                 string locator = string.Empty;
 
                 if (ExtensionsMethods.ElementExist(By.Id("centro_custo0"), _driver))

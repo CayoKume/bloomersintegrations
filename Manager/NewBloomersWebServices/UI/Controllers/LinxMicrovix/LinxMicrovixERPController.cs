@@ -27,6 +27,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         private readonly ILinxXMLDocumentosService<LinxXMLDocumentos> _linxXMLDocumentosService;
         private readonly ILinxPlanosService<LinxPlanos> _linxPlanosService;
         private readonly ILinxGrupoLojasService<LinxGrupoLojas> _linxGrupoLojasService;
+        private readonly ILinxLojasService<LinxLojas> _linxLojasService;
         private readonly ILinxMovimentoPlanosService<LinxMovimentoPlanos> _linxMovimentoPlanosService;
 
         public LinxMicrovixERPController
@@ -46,6 +47,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                 ILinxProdutosTabelasPrecosService<LinxProdutosTabelasPrecos> linxProdutosTabelasPrecosService,
                 ILinxXMLDocumentosService<LinxXMLDocumentos> linxXMLDocumentosService,
                 ILinxPlanosService<LinxPlanos> linxPlanosService,
+                ILinxLojasService<LinxLojas> linxLojasService,
                 ILinxGrupoLojasService<LinxGrupoLojas> linxGrupoLojasService,
                 ILinxMovimentoPlanosService<LinxMovimentoPlanos> linxMovimentoPlanosService
             )
@@ -67,6 +69,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                 _linxXMLDocumentosService,
                 _linxPlanosService,
                 _linxGrupoLojasService,
+                _linxLojasService,
                 _linxMovimentoPlanosService
             ) =
             (
@@ -86,6 +89,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
                 linxXMLDocumentosService,
                 linxPlanosService,
                 linxGrupoLojasService,
+                linxLojasService,
                 linxMovimentoPlanosService
             );
 
@@ -137,6 +141,12 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
         {
             try
             {
+                await _linxMovimentoService.IntegraRegistrosAsync(
+                        "LinxMovimento",
+                        "p_LinxMovimento_trusted_unificado",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 var result = await _linxMovimentoService.IntegraRegistrosIndividualAsync(
                         "LinxMovimento",
                         "p_LinxMovimento_trusted_unificado",
@@ -430,7 +440,7 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
             }
         }
 
-        [HttpPost("LinxPlanos")]
+        [HttpPost("LinxPlanosIndividual")]
         public async Task<ActionResult> IntegraPlanosIndividual([Required][FromQuery] string cod_plan)
         {
             try
@@ -454,11 +464,37 @@ namespace BloomersIntegrationsManager.UI.Controllers.LinxMicrovix
             }
         }
 
+        [HttpPost("LinxPlanos")]
+        public async Task<ActionResult> IntegraPlanos()
+        {
+            try
+            {
+                await _linxPlanosService.IntegraRegistrosAsync(
+                        "LinxPlanos",
+                        "p_LinxPlanos_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
+                return Ok($"Planos integrados com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"Nao foi possivel integrar os planos. Erro: {ex.Message}");
+            }
+        }
+
         [HttpPost("LinxGrupoLojas")]
         public async Task<ActionResult> IntegraGrupoLojasIndividual()
         {
             try
             {
+                await _linxLojasService.IntegraRegistrosAsync(
+                        "LinxLojas",
+                        "p_LinxLojas_Sincronizacao",
+                        LinxAPIAttributes.TypeEnum.Producao.ToName()
+                    );
+
                 await _linxGrupoLojasService.IntegraRegistrosAsync(
                         "LinxGrupoLojas",
                         "p_LinxGrupoLojas_Sincronizacao",

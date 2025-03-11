@@ -190,6 +190,9 @@ namespace BloomersIntegrationsManager.Domain.Extensions
             services.AddScoped<ILinxGrupoLojasService<LinxGrupoLojas>, LinxGrupoLojasService<LinxGrupoLojas>>();
             services.AddScoped<ILinxGrupoLojasRepository, LinxGrupoLojasRepository>();
 
+            services.AddScoped<ILinxLojasService<LinxLojas>, LinxLojasService<LinxLojas>>();
+            services.AddScoped<ILinxLojasRepository, LinxLojasRepository>();
+
             services.AddScoped<ILinxMovimentoPlanosService<LinxMovimentoPlanos>, LinxMovimentoPlanosService<LinxMovimentoPlanos>>();
             services.AddScoped<ILinxMovimentoPlanosRepository, LinxMovimentoPlanosRepository>();
 

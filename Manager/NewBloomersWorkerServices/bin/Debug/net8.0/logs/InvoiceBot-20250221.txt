@@ -1,0 +1,151 @@
+2025-02-21 11:39:15.386 -03:00 [INF] Obtidos: 18 pedidos para serem faturados
+2025-02-21 11:39:26.873 -03:00 [INF] Iniciando o faturamento do pedido OA-21126-02
+2025-02-21 11:39:27.929 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:39:29.102 -03:00 [INF] Selecionando empresa
+2025-02-21 11:39:35.252 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:39:37.291 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:39:37.334 -03:00 [INF] Navegando para tela de pedidos
+2025-02-21 11:39:37.469 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:39:54.373 -03:00 [WRN] Warnings => OA-21126-02 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-02-21 11:40:02.762 -03:00 [INF] Iniciando o faturamento do pedido OA-26308
+2025-02-21 11:40:02.765 -03:00 [INF] Selecionando empresa
+2025-02-21 11:40:40.212 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:40:48.076 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:40:51.784 -03:00 [INF] Navegando para tela de pedidos
+2025-02-21 11:40:57.169 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:41:11.390 -03:00 [WRN] Warnings => OA-26308 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-02-21 11:41:16.057 -03:00 [INF] Iniciando o faturamento do pedido OA-27694
+2025-02-21 11:41:16.059 -03:00 [INF] Selecionando empresa
+2025-02-21 11:41:51.577 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:41:53.609 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:41:53.650 -03:00 [INF] Navegando para tela de pedidos
+2025-02-21 11:41:53.760 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:42:02.064 -03:00 [WRN] Warnings => OA-27694 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-02-21 11:42:02.123 -03:00 [INF] Iniciando o faturamento do pedido OA-27738
+2025-02-21 11:42:02.143 -03:00 [INF] Selecionando empresa
+2025-02-21 11:43:30.436 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:43:32.457 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:43:32.501 -03:00 [INF] Navegando para tela de pedidos
+2025-02-21 11:43:32.596 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:43:40.783 -03:00 [WRN] Warnings => OA-27738 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-02-21 11:43:40.813 -03:00 [INF] Iniciando o faturamento do pedido OA-27911
+2025-02-21 11:43:40.815 -03:00 [INF] Selecionando empresa
+2025-02-21 11:46:18.757 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - Incorrect syntax near 'A'.
+Incorrect syntax near the keyword 'AND'.
+2025-02-21 11:47:15.646 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-02-21 11:47:18.963 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44880
+2025-02-21 11:47:18.964 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:47:19.232 -03:00 [INF] Selecionando empresa
+2025-02-21 11:47:32.208 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:47:35.230 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:47:37.537 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:47:38.985 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:47:47.347 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:47:48.773 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:49:23.569 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-02-21 11:49:25.924 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44880
+2025-02-21 11:49:25.925 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:49:26.241 -03:00 [INF] Selecionando empresa
+2025-02-21 11:49:30.837 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:49:32.877 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:49:32.917 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:49:33.436 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:49:38.918 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:49:40.876 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:51:11.301 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-02-21 11:51:14.919 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44880
+2025-02-21 11:51:14.921 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:51:15.276 -03:00 [INF] Selecionando empresa
+2025-02-21 11:51:20.269 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:51:22.303 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:51:22.340 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:51:22.537 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:51:28.074 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:51:30.147 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:52:30.586 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-02-21 11:52:33.232 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44880
+2025-02-21 11:52:33.234 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:52:33.478 -03:00 [INF] Selecionando empresa
+2025-02-21 11:52:39.481 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:52:41.513 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:52:42.095 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:52:42.275 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:52:47.777 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:52:50.222 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:53:18.393 -03:00 [INF] Incluindo dados do centro de custo
+2025-02-21 11:53:48.788 -03:00 [ERR] Errors => Timed out after 30 seconds
+2025-02-21 11:53:48.840 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44881
+2025-02-21 11:53:48.864 -03:00 [INF] Selecionando empresa
+2025-02-21 11:54:18.952 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:54:21.003 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:54:21.058 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:54:21.306 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:54:26.820 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:54:28.739 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:54:51.300 -03:00 [INF] Incluindo dados do centro de custo
+2025-02-21 11:55:21.820 -03:00 [ERR] Errors => Timed out after 30 seconds
+2025-02-21 11:55:24.758 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-02-21 11:55:28.062 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44880
+2025-02-21 11:55:28.066 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:55:28.246 -03:00 [INF] Selecionando empresa
+2025-02-21 11:55:34.509 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:55:36.547 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:55:36.601 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:55:36.891 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:55:42.360 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:55:44.333 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:56:15.880 -03:00 [INF] Incluindo dados do centro de custo
+2025-02-21 11:57:19.138 -03:00 [ERR] Errors => Timed out after 30 seconds
+2025-02-21 11:57:19.173 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44881
+2025-02-21 11:57:19.174 -03:00 [INF] Selecionando empresa
+2025-02-21 11:57:49.310 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:57:51.339 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:57:51.388 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:57:51.598 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:57:57.350 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:57:59.249 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 11:58:23.245 -03:00 [INF] Incluindo dados do centro de custo
+2025-02-21 11:59:19.344 -03:00 [INF] Pedido: OA-VD44881, faturado com sucesso
+2025-02-21 11:59:21.856 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-02-21 11:59:24.149 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44880
+2025-02-21 11:59:24.153 -03:00 [INF] Realizando o login no ERP
+2025-02-21 11:59:24.598 -03:00 [INF] Selecionando empresa
+2025-02-21 11:59:29.024 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 11:59:31.062 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 11:59:31.142 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 11:59:31.591 -03:00 [INF] Selecionando o pedido
+2025-02-21 11:59:37.069 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 11:59:38.954 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 12:00:02.696 -03:00 [INF] Incluindo dados do centro de custo
+2025-02-21 12:00:25.523 -03:00 [INF] Pedido: OA-VD44880, faturado com sucesso
+2025-02-21 12:00:25.573 -03:00 [INF] Iniciando o faturamento do pedido OA-VD44881
+2025-02-21 12:00:25.575 -03:00 [INF] Selecionando empresa
+2025-02-21 12:00:55.675 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 12:00:57.705 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 12:00:57.771 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 12:00:57.934 -03:00 [INF] Selecionando o pedido
+2025-02-21 12:01:03.061 -03:00 [ERR] Errors => Cannot locate option with value: 44881; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-02-21 14:46:07.147 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-02-21 14:46:12.293 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ44887
+2025-02-21 14:46:12.294 -03:00 [INF] Realizando o login no ERP
+2025-02-21 14:46:13.371 -03:00 [INF] Selecionando empresa
+2025-02-21 14:46:18.990 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 14:46:21.014 -03:00 [INF] Abrindo o menu lateral
+2025-02-21 14:46:21.087 -03:00 [INF] Navegando para tela de faturamento
+2025-02-21 14:46:21.288 -03:00 [INF] Selecionando o pedido
+2025-02-21 14:46:26.807 -03:00 [INF] Incluindo dados do pedido
+2025-02-21 14:46:29.425 -03:00 [INF] Incluindo dados da transportadora
+2025-02-21 14:46:52.113 -03:00 [INF] Incluindo dados do centro de custo
+2025-02-21 14:47:06.354 -03:00 [INF] Pedido: MI-LJ44887, faturado com sucesso
+2025-02-21 14:47:08.740 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-02-21 14:47:10.663 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ44887
+2025-02-21 14:47:10.666 -03:00 [INF] Realizando o login no ERP
+2025-02-21 14:47:11.041 -03:00 [INF] Selecionando empresa
+2025-02-21 14:47:13.720 -03:00 [INF] Fechando modal de notas pendentes
+2025-02-21 14:47:15.811 -03:00 [ERR] Errors => no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.127)
+2025-02-21 14:47:15.862 -03:00 [ERR] Errors => invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=133.0.6943.127)
+2025-02-21 14:47:17.913 -03:00 [INF] Obtidos: 1 pedidos para serem faturados

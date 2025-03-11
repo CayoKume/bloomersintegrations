@@ -1254,8 +1254,18 @@
   },
   {
     "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
-    "Method": "IntegraPlanosIndividual",
+    "Method": "IntegraPlanos",
     "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxPlanos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BloomersIntegrationsManager.UI.Controllers.LinxMicrovix.LinxMicrovixERPController",
+    "Method": "IntegraPlanosIndividual",
+    "RelativePath": "NewBloomers/BloomersMicrovixJobs/LinxMicrovix/LinxPlanosIndividual",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
