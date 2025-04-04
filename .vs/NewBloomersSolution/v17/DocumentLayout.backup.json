@@ -3,14 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{597F740B-EC7F-4AAC-A760-517775F2D262}|LinxCommerce\\LinxCommerce.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxcommerce\\application\\services\\order\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{597F740B-EC7F-4AAC-A760-517775F2D262}|LinxCommerce\\LinxCommerce.csproj|solutionrelative:linxcommerce\\application\\services\\order\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{597F740B-EC7F-4AAC-A760-517775F2D262}|LinxCommerce\\LinxCommerce.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\linxcommerce\\application\\services\\sku\\skuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{597F740B-EC7F-4AAC-A760-517775F2D262}|LinxCommerce\\LinxCommerce.csproj|solutionrelative:linxcommerce\\application\\services\\sku\\skuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 256,
+      "VerticalTabListWidth": 200,
       "DocumentGroups": [
         {
           "DockedWidth": 287,
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
-              "RelativeDocumentMoniker": "LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
-              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
-              "RelativeToolTip": "LinxCommerce\\Application\\Services\\Order\\OrderService.cs",
-              "ViewState": "AgIAANgAAAAAAAAAAAAAAN4AAAA8AAAAAAAAAA==",
+              "Title": "SKUService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Application\\Services\\SKU\\SKUService.cs",
+              "RelativeDocumentMoniker": "LinxCommerce\\Application\\Services\\SKU\\SKUService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\LinxCommerce\\Application\\Services\\SKU\\SKUService.cs",
+              "RelativeToolTip": "LinxCommerce\\Application\\Services\\SKU\\SKUService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T19:29:43.251Z",
+              "WhenOpened": "2025-04-04T14:59:27.244Z",
               "EditorCaption": ""
             }
           ]

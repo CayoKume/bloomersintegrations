@@ -607,7 +607,10 @@
           "NewBloomersWorkerServicesCore": "1.0.0"
         },
         "runtime": {
-          "AuthorizeNFe.dll": {}
+          "AuthorizeNFe.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "ChangingOrder/1.0.0": {
@@ -616,7 +619,10 @@
           "NewBloomersWorkerServicesCore": "1.0.0"
         },
         "runtime": {
-          "ChangingOrder.dll": {}
+          "ChangingOrder.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "ChangingPassword/1.0.0": {
@@ -625,12 +631,18 @@
           "NewBloomersWorkerServicesCore": "1.0.0"
         },
         "runtime": {
-          "ChangingPassword.dll": {}
+          "ChangingPassword.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "InsertReverse/1.0.0": {
         "runtime": {
-          "InsertReverse.dll": {}
+          "InsertReverse.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "InvoiceOrder/1.0.0": {
@@ -639,7 +651,10 @@
           "NewBloomersWorkerServicesCore": "1.0.0"
         },
         "runtime": {
-          "InvoiceOrder.dll": {}
+          "InvoiceOrder.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "LabelsPrinter/1.0.0": {
@@ -649,7 +664,10 @@
           "NewBloomersWorkerServicesCore": "1.0.0"
         },
         "runtime": {
-          "LabelsPrinter.dll": {}
+          "LabelsPrinter.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "NewBloomersWebServicesCore/1.0.0": {
@@ -659,7 +677,10 @@
           "System.Data.SqlClient": "4.8.6"
         },
         "runtime": {
-          "NewBloomersWebServicesCore.dll": {}
+          "NewBloomersWebServicesCore.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "NewBloomersWorkerServicesCore/1.0.0": {
@@ -674,7 +695,10 @@
           "Serilog.Sinks.File": "5.0.0"
         },
         "runtime": {
-          "NewBloomersWorkerServicesCore.dll": {}
+          "NewBloomersWorkerServicesCore.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
