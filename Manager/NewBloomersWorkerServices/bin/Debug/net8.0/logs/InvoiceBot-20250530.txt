@@ -1,0 +1,105 @@
+2025-05-30 12:11:34.700 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:11:36.989 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:11:39.135 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:12:02.240 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:12:04.315 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:12:06.356 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:12:09.049 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:12:11.101 -03:00 [ERR] Errors => GetOrdersFromIT4 - Erro ao obter pedidos para serem faturados da tabela IT4_WMS_DOCUMENTO - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - Uma tentativa de conexão falhou porque o componente conectado não respondeu
+corretamente após um período de tempo ou a conexão estabelecida falhou
+porque o host conectado não respondeu.)
+2025-05-30 12:17:32.569 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:18:13.902 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:18:14.935 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:18:26.363 -03:00 [INF] Selecionando empresa
+2025-05-30 12:23:06.852 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:23:23.804 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:23:23.819 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:23:24.759 -03:00 [INF] Selecionando empresa
+2025-05-30 12:25:41.924 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:25:58.068 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:25:58.083 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:25:59.623 -03:00 [INF] Selecionando empresa
+2025-05-30 12:28:15.299 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:28:25.691 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:28:25.697 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:28:26.564 -03:00 [INF] Selecionando empresa
+2025-05-30 12:31:18.873 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:31:24.880 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:31:24.882 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:31:25.936 -03:00 [INF] Selecionando empresa
+2025-05-30 12:32:39.145 -03:00 [ERR] Errors => stale element reference: stale element not found
+  (Session info: chrome=136.0.7103.114); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+2025-05-30 12:32:39.519 -03:00 [INF] Iniciando o faturamento do pedido OA-34089
+2025-05-30 12:32:39.528 -03:00 [INF] Selecionando empresa
+2025-05-30 12:33:31.898 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:33:42.181 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:33:42.202 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:33:43.959 -03:00 [INF] Selecionando empresa
+2025-05-30 12:33:45.725 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:33:51.927 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:33:53.066 -03:00 [INF] Navegando para tela de pedidos
+2025-05-30 12:33:53.298 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:34:04.705 -03:00 [WRN] Warnings => OA-34085 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-05-30 12:34:04.932 -03:00 [INF] Iniciando o faturamento do pedido OA-34089
+2025-05-30 12:34:04.935 -03:00 [INF] Selecionando empresa
+2025-05-30 12:34:35.353 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:34:37.617 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:34:37.747 -03:00 [INF] Navegando para tela de pedidos
+2025-05-30 12:34:38.704 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:34:50.330 -03:00 [WRN] Warnings => OA-34089 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-05-30 12:34:50.665 -03:00 [INF] Iniciando o faturamento do pedido OA-34090
+2025-05-30 12:34:50.675 -03:00 [INF] Selecionando empresa
+2025-05-30 12:35:21.076 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:35:24.037 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:35:25.357 -03:00 [INF] Navegando para tela de pedidos
+2025-05-30 12:35:27.443 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:35:39.821 -03:00 [WRN] Warnings => OA-34090 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-05-30 12:35:40.138 -03:00 [INF] Iniciando o faturamento do pedido OA-34092
+2025-05-30 12:35:40.146 -03:00 [INF] Selecionando empresa
+2025-05-30 12:36:11.249 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:36:13.390 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:36:13.490 -03:00 [INF] Navegando para tela de pedidos
+2025-05-30 12:36:14.808 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:36:27.443 -03:00 [WRN] Warnings => OA-34092 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-05-30 12:36:27.558 -03:00 [INF] Iniciando o faturamento do pedido OA-VD45818
+2025-05-30 12:36:27.567 -03:00 [INF] Selecionando empresa
+2025-05-30 12:36:57.811 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:36:59.911 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:37:00.191 -03:00 [INF] Navegando para tela de faturamento
+2025-05-30 12:37:00.950 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:37:06.141 -03:00 [ERR] Errors => Cannot locate option with value: 45818; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-05-30 12:37:06.239 -03:00 [INF] Iniciando o faturamento do pedido OA-VD45819
+2025-05-30 12:37:06.241 -03:00 [INF] Selecionando empresa
+2025-05-30 12:37:40.711 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:37:42.901 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:37:43.005 -03:00 [INF] Navegando para tela de faturamento
+2025-05-30 12:37:43.978 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:37:49.279 -03:00 [ERR] Errors => Cannot locate option with value: 45819; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-05-30 12:37:56.716 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-30 12:38:03.208 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-30 12:38:03.212 -03:00 [INF] Realizando o login no ERP
+2025-05-30 12:38:03.985 -03:00 [INF] Selecionando empresa
+2025-05-30 12:38:05.860 -03:00 [INF] Fechando modal de notas pendentes
+2025-05-30 12:38:11.743 -03:00 [INF] Abrindo o menu lateral
+2025-05-30 12:38:12.844 -03:00 [INF] Navegando para tela de pedidos
+2025-05-30 12:38:13.050 -03:00 [INF] Selecionando o pedido
+2025-05-30 12:38:22.530 -03:00 [ERR] Errors => B2CPage (SelectOrder) - Erro ao selecionar pedido para ser faturado - invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=136.0.7103.114)
+2025-05-30 12:38:22.565 -03:00 [INF] Iniciando o faturamento do pedido OA-34089
+2025-05-30 12:38:22.569 -03:00 [INF] Selecionando empresa

@@ -80,8 +80,9 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 	                         (SELECT SUBSTRING ([XML_FATURAMENTO], CHARINDEX('<infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))), CHARINDEX('</infCpl>', CAST([XML_FATURAMENTO] AS VARCHAR(MAX))))) AS OBS
 	                         FROM GENERAL..IT4_WMS_DOCUMENTO (NOLOCK)
 	                         WHERE 
-	                         NB_PARA_PRESENTE = 'S' 
-	                         AND NB_DOC_REMETENTE = '{cnpj_emp}'
+	                         --NB_PARA_PRESENTE = 'S' 
+	                         --AND 
+                             NB_DOC_REMETENTE = '{cnpj_emp}'
                              AND SERIE = '{serie}'
                              AND DOCUMENTO = '{nr_pedido}'
 	                         AND CHAVE_NFE IS NOT NULL

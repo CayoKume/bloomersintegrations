@@ -1,0 +1,99 @@
+2025-06-06 11:42:17.433 -03:00 [INF] Obtidos: 2 pedidos para serem faturados
+2025-06-06 11:42:26.826 -03:00 [INF] Iniciando o faturamento do pedido OA-34401
+2025-06-06 11:42:26.828 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:42:27.130 -03:00 [INF] Selecionando empresa
+2025-06-06 11:42:28.388 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:42:33.389 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:42:34.555 -03:00 [INF] Navegando para tela de pedidos
+2025-06-06 11:42:34.703 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:42:41.305 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 11:43:00.617 -03:00 [INF] Pedido: OA-34401, faturado com sucesso
+2025-06-06 11:43:00.690 -03:00 [INF] Iniciando o faturamento do pedido OA-34402
+2025-06-06 11:43:00.691 -03:00 [INF] Selecionando empresa
+2025-06-06 11:43:31.056 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:43:33.103 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:43:33.255 -03:00 [INF] Navegando para tela de pedidos
+2025-06-06 11:43:33.444 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:43:39.995 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 11:43:59.284 -03:00 [INF] Pedido: OA-34402, faturado com sucesso
+2025-06-06 11:50:44.704 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 11:50:48.250 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 11:50:48.252 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:50:49.040 -03:00 [INF] Selecionando empresa
+2025-06-06 11:50:50.385 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:50:55.915 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:50:57.029 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 11:50:57.284 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:51:33.555 -03:00 [WRN] Errors => MI-LJ46001 - InvoiceOrder (SelectOrder) - O bot nao foi capaz de encontrar o elemento: B2 - B2
+2025-06-06 11:51:42.291 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 11:51:45.985 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 11:51:45.986 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:51:47.853 -03:00 [INF] Selecionando empresa
+2025-06-06 11:51:49.118 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:51:53.609 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:51:54.737 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 11:51:54.986 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:52:31.316 -03:00 [ERR] Errors => Cannot locate option with value: 46001; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-06-06 11:52:34.838 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 11:52:44.630 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 11:52:44.634 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:52:45.324 -03:00 [INF] Selecionando empresa
+2025-06-06 11:52:46.573 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:54:17.374 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 11:54:20.988 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 11:54:20.990 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:54:21.367 -03:00 [INF] Selecionando empresa
+2025-06-06 11:54:22.982 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:54:27.307 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:54:28.470 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 11:54:31.094 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:54:36.705 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 11:54:40.946 -03:00 [INF] Incluindo dados da transportadora
+2025-06-06 11:57:54.858 -03:00 [ERR] Errors =>  - element click intercepted: Element <input data-v-4fd38a4c="" type="radio" id="tipo_frete1" name="tipo_frete" value="1"> is not clickable at point (256, 6). Other element would receive the click: <div id="loading" style="opacity: 1;">...</div>
+  (Session info: chrome=137.0.7151.69)
+2025-06-06 11:57:58.827 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 11:58:03.327 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 11:58:03.332 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:58:04.061 -03:00 [INF] Selecionando empresa
+2025-06-06 11:58:05.787 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:58:12.001 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:58:13.116 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 11:58:15.430 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:58:21.013 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 11:58:22.893 -03:00 [INF] Incluindo dados da transportadora
+2025-06-06 11:59:12.164 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 11:59:14.325 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 11:59:14.328 -03:00 [INF] Realizando o login no ERP
+2025-06-06 11:59:16.644 -03:00 [INF] Selecionando empresa
+2025-06-06 11:59:17.859 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 11:59:24.438 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 11:59:25.639 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 11:59:27.939 -03:00 [INF] Selecionando o pedido
+2025-06-06 11:59:33.610 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 11:59:35.627 -03:00 [INF] Incluindo dados da transportadora
+2025-06-06 12:00:59.645 -03:00 [ERR] Errors =>  - element click intercepted: Element <input data-v-4fd38a4c="" type="radio" id="tipo_frete1" name="tipo_frete" value="1"> is not clickable at point (256, 6). Other element would receive the click: <div id="loading" style="opacity: 1;">...</div>
+  (Session info: chrome=137.0.7151.69)
+2025-06-06 12:01:02.213 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 12:01:05.909 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 12:01:05.910 -03:00 [INF] Realizando o login no ERP
+2025-06-06 12:01:06.654 -03:00 [INF] Selecionando empresa
+2025-06-06 12:01:07.865 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 12:01:13.139 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 12:01:14.266 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 12:01:17.409 -03:00 [INF] Selecionando o pedido
+2025-06-06 12:01:23.009 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 12:01:26.621 -03:00 [INF] Incluindo dados da transportadora
+2025-06-06 12:02:10.134 -03:00 [INF] Incluindo dados do centro de custo
+2025-06-06 12:04:46.246 -03:00 [ERR] Errors => Timed out after 30 seconds
+2025-06-06 12:04:52.846 -03:00 [INF] Obtidos: 1 pedidos para serem faturados
+2025-06-06 12:04:56.666 -03:00 [INF] Iniciando o faturamento do pedido MI-LJ46001
+2025-06-06 12:04:56.668 -03:00 [INF] Realizando o login no ERP
+2025-06-06 12:04:57.375 -03:00 [INF] Selecionando empresa
+2025-06-06 12:04:58.639 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-06 12:05:02.860 -03:00 [INF] Abrindo o menu lateral
+2025-06-06 12:05:03.958 -03:00 [INF] Navegando para tela de faturamento
+2025-06-06 12:05:06.884 -03:00 [INF] Selecionando o pedido
+2025-06-06 12:05:12.412 -03:00 [INF] Incluindo dados do pedido
+2025-06-06 12:05:14.352 -03:00 [INF] Incluindo dados da transportadora
+2025-06-06 12:06:16.506 -03:00 [INF] Incluindo dados do centro de custo
+2025-06-06 12:07:20.596 -03:00 [INF] Pedido: MI-LJ46001, faturado com sucesso

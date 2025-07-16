@@ -1,0 +1,22 @@
+2025-05-21 12:07:45.833 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:09:13.170 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:09:34.000 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-21 12:09:35.524 -03:00 [INF] Realizando o login no ERP
+2025-05-21 12:16:20.908 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:16:28.294 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-21 12:16:28.296 -03:00 [INF] Realizando o login no ERP
+2025-05-21 12:18:02.401 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:18:06.555 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-21 12:18:06.557 -03:00 [INF] Realizando o login no ERP
+2025-05-21 12:24:04.916 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:24:09.163 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-21 12:24:09.166 -03:00 [INF] Realizando o login no ERP
+2025-05-21 12:24:19.112 -03:00 [INF] Selecionando empresa
+2025-05-21 12:29:46.341 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:29:50.736 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-21 12:29:50.738 -03:00 [INF] Realizando o login no ERP
+2025-05-21 12:29:51.559 -03:00 [INF] Selecionando empresa
+2025-05-21 12:39:33.698 -03:00 [INF] Obtidos: 6 pedidos para serem faturados
+2025-05-21 12:39:38.784 -03:00 [INF] Iniciando o faturamento do pedido OA-34085
+2025-05-21 12:39:38.786 -03:00 [INF] Realizando o login no ERP
+2025-05-21 12:39:39.179 -03:00 [INF] Selecionando empresa

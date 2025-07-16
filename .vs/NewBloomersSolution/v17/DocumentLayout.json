@@ -1,16 +1,67 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\deliverylist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\deliverylist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\ui\\pages\\deliverylist.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\ui\\pages\\deliverylist.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\infrastructure\\repositorys\\deliverylist\\ideliverylistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\infrastructure\\repositorys\\deliverylist\\ideliverylistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\application\\services\\deliverylist\\deliverylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\application\\services\\deliverylist\\deliverylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\miniwms\\infrastructure\\repositorys\\deliverylist\\deliverylistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AA7B13-C207-4748-A689-FE835C63EE76}|MiniWms\\MiniWms.csproj|solutionrelative:miniwms\\infrastructure\\repositorys\\deliverylist\\deliverylistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|c:\\users\\cayohenriquekume\\source\\repos\\bloomersintegrations\\manager\\newbloomerswebapplication\\application\\services\\deliverylist\\deliverylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98EDB3BE-A668-4155-A10F-26D28D7FAB37}|Manager\\NewBloomersWebApplication\\NewBloomersWebApplication.csproj|solutionrelative:manager\\newbloomerswebapplication\\application\\services\\deliverylist\\deliverylistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 200,
       "DocumentGroups": [
         {
-          "DockedWidth": 287,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 842,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IDeliveryListRepository.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\IDeliveryListRepository.cs",
+              "RelativeDocumentMoniker": "MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\IDeliveryListRepository.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\IDeliveryListRepository.cs",
+              "RelativeToolTip": "MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\IDeliveryListRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T17:35:37.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeliveryListRepository.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\DeliveryListRepository.cs",
+              "RelativeDocumentMoniker": "MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\DeliveryListRepository.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\DeliveryListRepository.cs",
+              "RelativeToolTip": "MiniWms\\Infrastructure\\Repositorys\\DeliveryList\\DeliveryListRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T17:35:27.052Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -18,6 +69,57 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeliveryListService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "RelativeDocumentMoniker": "MiniWms\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\MiniWms\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "RelativeToolTip": "MiniWms\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwJUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T15:24:48.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DeliveryListService.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\Application\\Services\\DeliveryList\\DeliveryListService.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAqwEoAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T15:24:34.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeliveryList.razor",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-16T15:24:25.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeliveryList.razor.cs",
+              "DocumentMoniker": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor.cs",
+              "RelativeDocumentMoniker": "Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor.cs",
+              "ToolTip": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor.cs",
+              "RelativeToolTip": "Manager\\NewBloomersWebApplication\\UI\\Pages\\DeliveryList.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T15:24:25.3Z",
+              "EditorCaption": ""
             }
           ]
         }

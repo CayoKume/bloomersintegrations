@@ -1,0 +1,86 @@
+2025-06-03 12:35:49.541 -03:00 [INF] Obtidos: 12 pedidos para serem faturados
+2025-06-03 12:35:58.692 -03:00 [INF] Iniciando o faturamento do pedido OA-34308
+2025-06-03 12:35:59.459 -03:00 [INF] Realizando o login no ERP
+2025-06-03 12:36:00.863 -03:00 [INF] Selecionando empresa
+2025-06-03 12:36:02.531 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:36:07.492 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:36:08.574 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:36:08.703 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:36:48.208 -03:00 [ERR] Errors => B2CPage (SelectOrder) - O bot nao foi capaz de encontrar o elemento para interagir - Timed out after 30 seconds
+2025-06-03 12:36:48.334 -03:00 [INF] Iniciando o faturamento do pedido OA-34309
+2025-06-03 12:36:48.342 -03:00 [INF] Selecionando empresa
+2025-06-03 12:37:18.794 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:37:20.834 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:37:20.875 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:37:20.989 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:37:29.147 -03:00 [WRN] Warnings => OA-34309 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:37:29.178 -03:00 [INF] Iniciando o faturamento do pedido OA-34310
+2025-06-03 12:37:29.179 -03:00 [INF] Selecionando empresa
+2025-06-03 12:37:59.533 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:38:01.569 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:38:01.607 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:38:01.752 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:38:09.940 -03:00 [WRN] Warnings => OA-34310 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:38:09.981 -03:00 [INF] Iniciando o faturamento do pedido OA-34312
+2025-06-03 12:38:10.038 -03:00 [INF] Selecionando empresa
+2025-06-03 12:38:40.312 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:38:42.350 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:38:42.426 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:38:42.619 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:38:50.810 -03:00 [WRN] Warnings => OA-34312 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:38:50.923 -03:00 [INF] Iniciando o faturamento do pedido OA-34314
+2025-06-03 12:38:50.935 -03:00 [INF] Selecionando empresa
+2025-06-03 12:39:21.218 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:39:23.267 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:39:23.312 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:39:23.455 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:39:31.652 -03:00 [WRN] Warnings => OA-34314 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:39:31.687 -03:00 [INF] Iniciando o faturamento do pedido OA-34315
+2025-06-03 12:39:31.697 -03:00 [INF] Selecionando empresa
+2025-06-03 12:40:02.010 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:40:04.039 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:40:04.082 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:40:04.218 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:40:12.386 -03:00 [WRN] Warnings => OA-34315 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:40:12.451 -03:00 [INF] Iniciando o faturamento do pedido OA-34318
+2025-06-03 12:40:12.461 -03:00 [INF] Selecionando empresa
+2025-06-03 12:40:42.786 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:40:44.820 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:40:44.857 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:40:45.006 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:40:53.187 -03:00 [WRN] Warnings => OA-34318 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:40:53.214 -03:00 [INF] Iniciando o faturamento do pedido OA-34321
+2025-06-03 12:40:53.215 -03:00 [INF] Selecionando empresa
+2025-06-03 12:41:23.403 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:41:25.418 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:41:25.459 -03:00 [INF] Navegando para tela de pedidos
+2025-06-03 12:41:25.656 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:41:33.886 -03:00 [WRN] Warnings => OA-34321 - O pedido não está disponível para faturamento, verifique se ele já não foi faturado, ou se não está cancelado - pedido nao encontrado
+2025-06-03 12:41:33.955 -03:00 [INF] Iniciando o faturamento do pedido OA-VD45956
+2025-06-03 12:41:33.957 -03:00 [INF] Selecionando empresa
+2025-06-03 12:42:04.121 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:42:06.162 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:42:06.229 -03:00 [INF] Navegando para tela de faturamento
+2025-06-03 12:42:06.504 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:42:11.637 -03:00 [ERR] Errors => Cannot locate option with value: 45956; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-06-03 12:42:11.710 -03:00 [INF] Iniciando o faturamento do pedido OA-VD45958
+2025-06-03 12:42:11.712 -03:00 [INF] Selecionando empresa
+2025-06-03 12:42:41.805 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:42:43.830 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:42:43.870 -03:00 [INF] Navegando para tela de faturamento
+2025-06-03 12:42:43.963 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:42:49.092 -03:00 [ERR] Errors => Cannot locate option with value: 45958; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-06-03 12:42:49.169 -03:00 [INF] Iniciando o faturamento do pedido OA-VD45960
+2025-06-03 12:42:49.171 -03:00 [INF] Selecionando empresa
+2025-06-03 12:43:19.300 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:43:21.331 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:43:21.376 -03:00 [INF] Navegando para tela de faturamento
+2025-06-03 12:43:21.493 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:43:26.678 -03:00 [ERR] Errors => Cannot locate option with value: 45960; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+2025-06-03 12:43:26.761 -03:00 [INF] Iniciando o faturamento do pedido OA-VD45961
+2025-06-03 12:43:26.768 -03:00 [INF] Selecionando empresa
+2025-06-03 12:43:56.910 -03:00 [INF] Fechando modal de notas pendentes
+2025-06-03 12:43:58.928 -03:00 [INF] Abrindo o menu lateral
+2025-06-03 12:43:58.960 -03:00 [INF] Navegando para tela de faturamento
+2025-06-03 12:43:59.042 -03:00 [INF] Selecionando o pedido
+2025-06-03 12:44:04.164 -03:00 [ERR] Errors => Cannot locate option with value: 45961; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception

@@ -73,37 +73,37 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                         var titleStyle = TextStyle.Default.FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
 
                         page.Size(PageSizes.A4.Landscape());
-                        page.Margin(50);
+                        page.Margin(13);
 
                         page.Header().Element(x => x.Row(row =>
                         {
-                            row.RelativeItem().Column(column =>
+                            row.RelativeItem().Height(50).Column(column =>
                             {
-                                column.Item().Text($"Romaneio de Embarque").Style(titleStyle);
+                                column.Item().Text($"Romaneio de Embarque").Style(titleStyle).FontSize(12);
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Total de Notas: ").SemiBold();
-                                    text.Span($"{pedidosList.Count()}");
+                                    text.Span("Total de Notas: ").SemiBold().FontSize(10);
+                                    text.Span($"{pedidosList.Count()}").FontSize(10);
                                 });
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Total de Volumes: ").SemiBold();
-                                    text.Span($"{volumes.soma}");
+                                    text.Span("Total de Volumes: ").SemiBold().FontSize(10);
+                                    text.Span($"{volumes.soma}").FontSize(10);
                                 });
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Data: ").SemiBold();
-                                    text.Span($"{DateTime.Now.Date.ToString("yyyy-MM-dd")}");
+                                    text.Span("Data: ").SemiBold().FontSize(10);
+                                    text.Span($"{DateTime.Now.Date.ToString("yyyy-MM-dd")}").FontSize(10);
                                 });
                             });
 
-                            row.ConstantItem(100).Height(50).Placeholder();
+                            //row.ConstantItem(100).Height(50).Placeholder();
                         }));
 
-                        page.Content().Element(x => x.PaddingVertical(40).Column(column =>
+                        page.Content().Element(x => x.PaddingVertical(15).Column(column =>
                         {
                             column.Spacing(11);
 
@@ -117,50 +117,60 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                                     columns.ConstantColumn(100); //nome
                                     columns.ConstantColumn(80); //doc
                                     columns.ConstantColumn(80); //endereco
-                                    columns.ConstantColumn(40); //numero
+                                    columns.ConstantColumn(30); //numero
                                     columns.ConstantColumn(50); //bairro
                                     columns.ConstantColumn(70); //cidade
                                     columns.ConstantColumn(50); //uf
                                     columns.ConstantColumn(60); //cep
+                                    columns.ConstantColumn(60); //assinatura
                                 });
 
                                 table.Header(header =>
                                 {
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("pedido");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("nota");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("valor");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("cliente");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("doc");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("endereco");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("num");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("bairro");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("cidade");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("uf");
-                                    header.Cell().Element(CellStyle).AlignCenter().Text("cep");
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("pedido").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("nota").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("valor").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("cliente").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("doc").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("endereco").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("num").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("bairro").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("cidade").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("uf").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("cep").FontSize(8);
+                                    header.Cell().Element(CellStyle).AlignCenter().Text("assin.").FontSize(8);
 
                                     static IContainer CellStyle(IContainer container)
                                     {
-                                        return container.DefaultTextStyle(x => x.SemiBold()).PaddingVertical(5).BorderBottom(1).BorderColor(Colors.Black);
+                                        return container
+                                            .DefaultTextStyle(x => x.SemiBold())
+                                            .PaddingVertical(5)
+                                            .BorderBottom(1)
+                                            .BorderColor(Colors.Black);
                                     }
                                 });
 
                                 foreach (var pedido in pedidosList)
                                 {
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.number);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.invoice.number_nf);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(String.Format("{0:C}", pedido.invoice.amount_nf));
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.reason_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.doc_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.address_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.street_number_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.neighborhood_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.city_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.uf_client);
-                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.zip_code_client);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.number).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.invoice.number_nf).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(String.Format("{0:C}", pedido.invoice.amount_nf)).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.reason_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.doc_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.address_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.street_number_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.neighborhood_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.city_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.uf_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text(pedido.client.zip_code_client).FontSize(8);
+                                    table.Cell().Element(CellStyle).AlignCenter().Text("                     ").FontSize(8);
 
                                     static IContainer CellStyle(IContainer container)
                                     {
-                                        return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
+                                        return container
+                                            .BorderBottom(1)
+                                            .BorderColor(Colors.Grey.Lighten2)
+                                            .PaddingVertical(5);
                                     }
                                 }
                             }));
@@ -172,12 +182,12 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                             {
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("_______________________________________").SemiBold();
+                                    text.Span("_______________________________________").SemiBold().FontSize(9);
                                 });
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span($"Expedido por: NATÁLIA BARBOSA").SemiBold();
+                                    text.Span($"Expedido por: NATÁLIA BARBOSA").SemiBold().FontSize(9);
                                 });
                             });
 
@@ -195,26 +205,26 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                             {
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Transportadora: ").SemiBold();
-                                    text.Span($"{pedidosList.First().shippingCompany.reason_shippingCompany}");
+                                    text.Span("Transportadora: ").SemiBold().FontSize(9);
+                                    text.Span($"{pedidosList.First().shippingCompany.reason_shippingCompany}").FontSize(9);
                                 });
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Motorista: ").SemiBold();
-                                    text.Span("_______________________");
+                                    text.Span("Motorista: ").SemiBold().FontSize(9);
+                                    text.Span("_______________________").FontSize(9);
                                 });
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Documento: ").SemiBold();
-                                    text.Span("_______________________");
+                                    text.Span("Documento: ").SemiBold().FontSize(9);
+                                    text.Span("_______________________").FontSize(9);
                                 });
 
                                 column.Item().Text(text =>
                                 {
-                                    text.Span("Placa do Veiculo: ").SemiBold();
-                                    text.Span("_______________________");
+                                    text.Span("Placa do Veiculo: ").SemiBold().FontSize(9);
+                                    text.Span("_______________________").FontSize(9);
                                 });
                             });
                         }));
