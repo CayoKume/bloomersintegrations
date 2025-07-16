@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Jadlog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ec554e6dab635e0a62d3b0b3a5ca69340d83acf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00b75d3555c854d49431a75babdea0e215e3e25f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Jadlog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Jadlog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

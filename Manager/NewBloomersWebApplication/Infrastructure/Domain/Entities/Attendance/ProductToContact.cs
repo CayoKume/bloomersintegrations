@@ -1,4 +1,4 @@
-﻿namespace NewBloomersWebApplication.Domain.Entities.Attendance
+﻿namespace NewBloomersWebApplication.Infrastructure.Domain.Entities.Attendance
 {
     public class ProductToContact : BloomersIntegrationsCore.Domain.Entities.Product
     {

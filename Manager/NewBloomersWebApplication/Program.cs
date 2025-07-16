@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using NewBloomersWebApplication;
-using NewBloomersWebApplication.Domain.Extensions;
+using NewBloomersWebApplication.Infrastructure.Domain.Extensions;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

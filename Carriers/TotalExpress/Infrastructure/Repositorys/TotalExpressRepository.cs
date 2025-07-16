@@ -96,6 +96,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
             	                        WHEN A.NB_DOC_REMETENTE = '42538267000420' THEN 'OPEN ERA - SHIP FROM STORE - CAMPINAS'
             	                        WHEN A.NB_DOC_REMETENTE = '42538267000500' THEN 'OPEN ERA - SHIP FROM STORE - BATEL'
                                         WHEN A.NB_DOC_REMETENTE = '38367316001160' THEN 'MISHA - SHIP FROM STORE - ANALIA FRANCO'
+                                        WHEN A.NB_DOC_REMETENTE = '38367316001241' THEN 'MISHA - SHIP FROM STORE - SHOP ALPHAVILLE'
                                         
                                         WHEN A.NB_METODO_TRANSPORTADORA = 'ESTD' AND A.SERIE = 'MI-' THEN 'MISHA - STANDARD'
                                         WHEN A.NB_METODO_TRANSPORTADORA = 'ETUR' AND A.SERIE = 'MI-' THEN 'MISHA - EXPRESSO'
@@ -246,6 +247,7 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Repositorys
             	                    WHEN A.NB_DOC_REMETENTE = '42538267000420' THEN 'OPEN ERA - SHIP FROM STORE - CAMPINAS'
             	                    WHEN A.NB_DOC_REMETENTE = '42538267000500' THEN 'OPEN ERA - SHIP FROM STORE - BATEL'
                                     WHEN A.NB_DOC_REMETENTE = '38367316001160' THEN 'MISHA - SHIP FROM STORE - ANALIA FRANCO'
+                                    WHEN A.NB_DOC_REMETENTE = '38367316001241' THEN 'MISHA - SHIP FROM STORE - SHOP ALPHAVILLE'
                                  
                                     WHEN A.NB_METODO_TRANSPORTADORA = 'ESTD' AND A.SERIE = 'MI-' THEN 'MISHA - STANDARD'
                                     WHEN A.NB_METODO_TRANSPORTADORA = 'ETUR' AND A.SERIE = 'MI-' THEN 'MISHA - EXPRESSO'

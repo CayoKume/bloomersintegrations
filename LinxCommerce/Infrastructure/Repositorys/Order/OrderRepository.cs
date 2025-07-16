@@ -77,17 +77,21 @@ namespace BloomersCommerceIntegrations.LinxCommerce.Infrastructure.Repositorys
 
         public async Task<List<Order>> GetRegistersExists(List<string> ordersIds, string? database)
         {
-            var orderIDs = String.Empty;
-            for (int i = 0; i < ordersIds.Count(); i++)
-            {
-                if (i == ordersIds.Count() - 1)
-                    orderIDs += $"'{ordersIds[i]}'";
-                else
-                    orderIDs += $"'{ordersIds[i]}', ";
-            }
+            //var orderIDs = String.Empty;
+            //for (int i = 0; i < ordersIds.Count(); i++)
+            //{
+            //    if (i == ordersIds.Count() - 1)
+            //        orderIDs += $"'{ordersIds[i]}'";
+            //    else
+            //        orderIDs += $"'{ordersIds[i]}', ";
+            //}
 
-            string query = @$"SELECT ORDERID, CUSTOMERID, GLOBALSTATUS, ORDERSTATUSID, PAYMENTSTATUS, SHIPMENTSTATUS 
-                              FROM [{database}].[dbo].[ORDER_TRUSTED] (NOLOCK) WHERE ORDERID IN ({orderIDs})";
+            //string query = @$"SELECT ORDERID, CUSTOMERID, GLOBALSTATUS, ORDERSTATUSID, PAYMENTSTATUS, SHIPMENTSTATUS 
+            //                  FROM [{database}].[dbo].[ORDER_TRUSTED] (NOLOCK) WHERE ORDERID IN ({orderIDs})";
+
+            string query = @$"SELECT a.order_id as ordernumber FROM BLOOMERS_LINX..B2CConsultaPedidos_trusted a (nolock)
+left join LINX_COMMERCE..Order_trusted b (nolock) on a.order_id = b.ORDERNUMBER
+where b.ORDERNUMBER is null and a.dt_pedido > GETDATE() - 10 and a.order_id not like '%CANCELLED%'";
 
             try
             {

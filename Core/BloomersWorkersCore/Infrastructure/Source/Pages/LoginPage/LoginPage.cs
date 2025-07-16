@@ -12,10 +12,10 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
         {
             try
             {
-                var flagFormLogin = ExtensionsMethods.ChecksIfElementExixtsById("form_login", _wait, Page.TypeEnum.Login, "InsertLoginAndPassword");
+                var flagFormLogin = ExtensionsMethods.ChecksIfElementExixtsById("f_login-label", _wait, Page.TypeEnum.Login, "InsertLoginAndPassword");
                 var inputLogin = ExtensionsMethods.GetElementToBeClickableById("f_login", _wait, Page.TypeEnum.Login, "InsertLoginAndPassword");
                 var inputPassword = ExtensionsMethods.GetElementToBeClickableById("f_senha", _wait, Page.TypeEnum.Login, "InsertLoginAndPassword");
-                var buttonEnter = ExtensionsMethods.GetElementToBeClickableByClassName("btn-secondary", _wait, Page.TypeEnum.Login, "InsertLoginAndPassword");
+                var buttonEnter = ExtensionsMethods.GetElementToBeClickableByClassName("lx-button", _wait, Page.TypeEnum.Login, "InsertLoginAndPassword");
 
                 if (flagFormLogin)
                 {
@@ -45,20 +45,16 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
                 else if (cnpj == "38367316000865")
                     comboBoxSelectByText = "17 - MISHA - Volo";
 
-                var comboBoxSelectCompany = ExtensionsMethods.GetElementExistsById("sel_empresa_portal_usuario", _wait, Page.TypeEnum.Login, "SelectCompany");
-                var flagChoseCompany = ExtensionsMethods.ChecksIfElementIsVisibleById("quantidade_empresa", _wait, Page.TypeEnum.Login, "SelectCompany");
-                var flagSelectTextIsPresent = ExtensionsMethods.ChecksIfTextIsPresentInComboBox(comboBoxSelectByText, _wait, Page.TypeEnum.Login, "SelectCompany", comboBoxSelectCompany);
-                var buttonSelect = ExtensionsMethods.GetElementToBeClickableById("btnselecionar_empresa", _wait, Page.TypeEnum.Login, "SelectCompany");
-                var comboBoxCompany = new SelectElement(comboBoxSelectCompany);
-
-                _driver.SwitchTo().DefaultContent();
-
-                if (flagChoseCompany)
+                var selectCompany = ExtensionsMethods.GetElementExistsByClassName("selecao-empresa-form-todas", _wait, Page.TypeEnum.Login, "SelectCompany");
+                var listGroup = selectCompany.FindElements(By.ClassName("list-group"));
+                var listGroupItem = listGroup.First().FindElements(By.ClassName("list-group-item"));
+                
+                foreach (var company in listGroupItem)
                 {
-                    if (flagSelectTextIsPresent)
+                    if(company.Text.Contains(comboBoxSelectByText))
                     {
-                        comboBoxCompany.SelectByText(comboBoxSelectByText);
-                        ExtensionsMethods.ClickInElement(buttonSelect);
+                        company.Click();
+                        break;
                     }
                 }
             }

@@ -207,6 +207,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                                 WHEN A.NB_COD_REMETENTE IN (SELECT EMPRESA FROM BLOOMERS_LINX..LINXLOJAS_TRUSTED (NOLOCK) WHERE EMPRESA NOT IN (0, 1, 5, 6, 10)) THEN 'SHIP FROM STORE' --SHIP FROM STORE OPEN ERA E MISHA (EXCLUI MISHA ECOMMERCE, OPEN ECOMMERCE, MARGAUX ECOMMERCE E NEWBLOOMERS)
                                 ELSE 'B2C'
                             END AS TIPO_SERVICO,
+                            E.CODUNIDADEORI AS CODIGO_ORIGEM, 
 
                             B.CODIGO_BARRA AS COD_PRODUCT,
                             B.NB_SKU_PRODUTO AS SKU_PRODUCT,
@@ -298,6 +299,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Infrastructure.Repositorys
                             JOIN [GENERAL].[dbo].[IT4_WMS_DOCUMENTO_ITEM] B (NOLOCK) ON A.IDCONTROLE = B.IDCONTROLE
                             LEFT JOIN GENERAL..JADLOGREGISTROLOG C (NOLOCK) ON A.DOCUMENTO = C.PEDIDO
                             JOIN BLOOMERS_LINX..LINXLOJAS_TRUSTED D (NOLOCK) ON D.CNPJ_EMP = IIF(A.SERIE = 'MI-', '38367316000199', '42538267000187')
+                            JOIN azure.newbloomers.[GENERAL].[JADLOGUNIDADEORIGEM] E (NOLOCK) ON A.NB_DOC_REMETENTE = E.CNPJ_EMP                            
                             WHERE
                             --A.DOCUMENTO IN ('')
                             A.SERIE != 'MX-'

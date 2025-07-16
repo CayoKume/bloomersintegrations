@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
-using NewBloomersWebApplication.Domain.Entities.CancellationRequest;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.CancellationRequest;
 
 namespace NewBloomersWebApplication.UI.Pages
 {
@@ -25,10 +25,10 @@ namespace NewBloomersWebApplication.UI.Pages
         private bool modalRequester { get; set; }
 
         private Dictionary<int, string> reasons { get; set; } = new Dictionary<int, string>();
-        private NewBloomersWebApplication.Domain.Entities.CancellationRequest.Order order { get; set; } = new NewBloomersWebApplication.Domain.Entities.CancellationRequest.Order();
-        private List<NewBloomersWebApplication.Domain.Entities.CancellationRequest.ProductToCancellation> productToCancellations { get; set; } = new List<NewBloomersWebApplication.Domain.Entities.CancellationRequest.ProductToCancellation>();
+        private Infrastructure.Domain.Entities.CancellationRequest.Order order { get; set; } = new Infrastructure.Domain.Entities.CancellationRequest.Order();
+        private List<ProductToCancellation> productToCancellations { get; set; } = new List<ProductToCancellation>();
 
-        private QuickGrid<NewBloomersWebApplication.Domain.Entities.CancellationRequest.ProductToCancellation> myGrid;
+        private QuickGrid<ProductToCancellation> myGrid;
         private PaginationState? pagination = new PaginationState { ItemsPerPage = 50 };
         private EventCallback<bool> OnClose { get; set; }
 

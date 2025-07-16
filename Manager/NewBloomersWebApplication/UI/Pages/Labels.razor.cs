@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.JSInterop;
-using NewBloomersWebApplication.Domain.Entities.Labels;
-using static NewBloomersWebApplication.Domain.Entities.AppContext;
-using DateInterval = NewBloomersWebApplication.Domain.Entities.AppContext.DateInterval;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.Labels;
+using static NewBloomersWebApplication.Infrastructure.Domain.Entities.AppContext;
+using DateInterval = NewBloomersWebApplication.Infrastructure.Domain.Entities.AppContext.DateInterval;
 
 namespace NewBloomersWebApplication.UI.Pages
 {

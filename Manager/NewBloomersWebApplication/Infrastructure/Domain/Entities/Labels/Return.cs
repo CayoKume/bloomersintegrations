@@ -1,4 +1,4 @@
-﻿namespace NewBloomersWebApplication.Domain.Entities.Labels
+﻿namespace NewBloomersWebApplication.Infrastructure.Domain.Entities.Labels
 {
     public class Return
     {

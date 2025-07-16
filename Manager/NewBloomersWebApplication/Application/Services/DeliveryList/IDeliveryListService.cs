@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.DeliveryList;
+﻿using NewBloomersWebApplication.Infrastructure.Domain.Entities.DeliveryList;
 
 namespace NewBloomersWebApplication.Application.Services
 {

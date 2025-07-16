@@ -67,7 +67,7 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
         {
             try
             {
-                Thread.Sleep(5 * 1000);
+                Thread.Sleep(50 * 1000);
                 IWebElement frete = _wait.Until(ExpectedConditions.ElementExists(By.Id("frete")));
                 IWebElement tipoFreteEmitente = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete1")));
                 IWebElement tipoFreteDestinatario = _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("tipo_frete2")));
@@ -133,6 +133,8 @@ namespace BloomersWorkers.InvoiceOrder.Infrastructure.Source.Pages
         {
             try
             {
+                Thread.Sleep(20 * 1000);
+
                 string locator = string.Empty;
 
                 if (ExtensionsMethods.ElementExist(By.Id("centro_custo0"), _driver))

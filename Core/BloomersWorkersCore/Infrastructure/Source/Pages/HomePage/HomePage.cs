@@ -104,6 +104,7 @@ namespace BloomersWorkersCore.Infrastructure.Source.Pages
         {
             try
             {
+                Thread.Sleep(2 * 1000);
                 var buttonInvoicing = ExtensionsMethods.GetElementToBeClickableByXpath("//*[@id=\"liModulo_10\"]", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");
                 var buttonInvoiceOrder = ExtensionsMethods.GetElementExistsByXpath("//*[@id=\"liModulo_10\"]/ul/li[5]/ul/li[2]/a", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");
                 var buttonInvoice = ExtensionsMethods.GetElementExistsByXpath("//a[@title='Nota Fiscal']", _wait, Page.TypeEnum.Home, "NavigateToVDScreen");

@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Home;
+﻿using NewBloomersWebApplication.Infrastructure.Domain.Entities.Home;
 
 namespace NewBloomersWebApplication.Application.Services
 {

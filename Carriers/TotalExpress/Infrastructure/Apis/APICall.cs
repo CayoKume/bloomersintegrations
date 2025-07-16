@@ -130,8 +130,8 @@ namespace BloomersCarriersIntegrations.TotalExpress.Infrastructure.Apis
                 var jObject = new JObject 
                 {
                     { "remetenteId", senderID }
-                    //,{ "pedido", orderNumber }
-                    ,{ "data_inicial", teste }
+                    ,{ "pedido", orderNumber }
+                    //,{ "data_inicial", teste }
                 };
 
                 var client = CreateClientToGetAWB("apistatusnew-prod", "GttTBS8x");

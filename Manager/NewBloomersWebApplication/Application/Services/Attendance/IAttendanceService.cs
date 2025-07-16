@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Attendance;
+﻿using NewBloomersWebApplication.Infrastructure.Domain.Entities.Attendance;
 
 namespace NewBloomersWebApplication.Application.Services
 {

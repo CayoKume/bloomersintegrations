@@ -18,7 +18,7 @@ namespace NewBloomersWebApplication.Application.Services
                 var result = await _apiCall.GetAsync("GetCompanys");
                 return JsonSerializer.Deserialize<List<Company>>(result);
             }
-            catch
+            catch (Exception ex)
             {
                 throw;
             }

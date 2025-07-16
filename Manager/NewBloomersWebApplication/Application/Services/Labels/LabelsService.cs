@@ -1,5 +1,5 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Labels;
-using NewBloomersWebApplication.Infrastructure.Apis;
+﻿using NewBloomersWebApplication.Infrastructure.Apis;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.Labels;
 using Newtonsoft.Json;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -83,7 +83,7 @@ namespace NewBloomersWebApplication.Application.Services
                     List<System.String> requests = new List<System.String>();
                     if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601")
                     {
-                        var total_infos = JsonConvert.DeserializeObject<NewBloomersWebApplication.Domain.Entities.Labels.Return.Root>(pedido.returnShippingCompany);
+                        var total_infos = JsonConvert.DeserializeObject<Return.Root>(pedido.returnShippingCompany);
                         for (int i = 0; i < total_infos.retorno.encomendas.First().volumes.Count(); i++)
                         {
                             pedido.awb.Add(total_infos.retorno.encomendas.First().volumes[i].awb);
@@ -151,7 +151,7 @@ namespace NewBloomersWebApplication.Application.Services
                     List<System.String> requests = new List<System.String>();
                     if (!System.String.IsNullOrEmpty(pedido.returnShippingCompany) && pedido.shippingCompany.cod_shippingCompany == "7601")
                     {
-                        var total_infos = JsonConvert.DeserializeObject<NewBloomersWebApplication.Domain.Entities.Labels.Return.Root>(pedido.returnShippingCompany);
+                        var total_infos = JsonConvert.DeserializeObject<Return.Root>(pedido.returnShippingCompany);
                         for (int i = 0; i < total_infos.retorno.encomendas.First().volumes.Count(); i++)
                         {
                             pedido.awb.Add(total_infos.retorno.encomendas.First().volumes[i].awb);

@@ -1,5 +1,5 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
-using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
+using Order = NewBloomersWebApplication.Infrastructure.Domain.Entities.Picking.Order;
 
 namespace NewBloomersWebApplication.Application.Services
 {

@@ -1,5 +1,5 @@
-﻿using NewBloomersWebApplication.Domain.Entities.ExecuteCancellation;
-using NewBloomersWebApplication.Infrastructure.Apis;
+﻿using NewBloomersWebApplication.Infrastructure.Apis;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.ExecuteCancellation;
 using System.Text.Json;
 
 namespace NewBloomersWebApplication.Application.Services

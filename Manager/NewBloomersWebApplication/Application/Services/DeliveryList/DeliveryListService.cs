@@ -1,5 +1,5 @@
-﻿using NewBloomersWebApplication.Domain.Entities.DeliveryList;
-using NewBloomersWebApplication.Infrastructure.Apis;
+﻿using NewBloomersWebApplication.Infrastructure.Apis;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.DeliveryList;
 using Newtonsoft.Json;
 using System.Net.Http;
 

@@ -20,7 +20,7 @@ namespace NewBloomersWebApplication.Infrastructure.Apis
                 var result = await client.GetAsync($"{client.BaseAddress}{route}?{encodedParameters}");
                 return await result.Content.ReadAsStringAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

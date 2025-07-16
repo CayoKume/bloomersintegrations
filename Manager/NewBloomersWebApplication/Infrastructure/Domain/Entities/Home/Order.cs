@@ -1,4 +1,4 @@
-﻿namespace NewBloomersWebApplication.Domain.Entities.Home
+﻿namespace NewBloomersWebApplication.Infrastructure.Domain.Entities.Home
 {
     public class Order : BloomersIntegrationsCore.Domain.Entities.Order
     {

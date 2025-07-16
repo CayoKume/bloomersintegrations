@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using NewBloomersWebApplication.Domain.Entities.Attendance;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.Attendance;
 
 namespace NewBloomersWebApplication.UI.Pages
 {
@@ -22,9 +22,9 @@ namespace NewBloomersWebApplication.UI.Pages
         private bool modalSucesso;
         private bool modalErro;
 
-        private List<NewBloomersWebApplication.Domain.Entities.Attendance.Order> orders { get; set; } = new List<NewBloomersWebApplication.Domain.Entities.Attendance.Order>();
-        private List<NewBloomersWebApplication.Domain.Entities.Attendance.ProductToContact> itens { get; set; } = new List<NewBloomersWebApplication.Domain.Entities.Attendance.ProductToContact>();
-        private QuickGrid<NewBloomersWebApplication.Domain.Entities.Attendance.Order> myGrid;
+        private List<Order> orders { get; set; } = new List<Order>();
+        private List<ProductToContact> itens { get; set; } = new List<ProductToContact>();
+        private QuickGrid<Order> myGrid;
         private PaginationState? pagination = new PaginationState { ItemsPerPage = 50 };
         private EventCallback<bool> OnClose { get; set; }
 

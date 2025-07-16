@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 
-namespace NewBloomersWebApplication.Domain.Entities
+namespace NewBloomersWebApplication.Infrastructure.Domain.Entities
 {
     public class AppContext
     {

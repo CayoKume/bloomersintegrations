@@ -1,5 +1,5 @@
-﻿using NewBloomersWebApplication.Domain.Entities.CancellationRequest;
-using NewBloomersWebApplication.Infrastructure.Apis;
+﻿using NewBloomersWebApplication.Infrastructure.Apis;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.CancellationRequest;
 using System.Text.Json;
 
 namespace NewBloomersWebApplication.Application.Services

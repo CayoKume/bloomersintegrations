@@ -42,6 +42,9 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                     else if (order.company.doc_company == "38367316000601")
                         codUnidadeOri = "792";
 
+                    else if (order.company.doc_company == "38367316001241")
+                        codUnidadeOri = "1682";
+
                     else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
                         codUnidadeOri = "2362";
 
@@ -163,20 +166,23 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                 {
                     foreach (var order in orders)
                     {
-                        var codUnidadeOri = String.Empty;
+                        //var codUnidadeOri = String.Empty;
                         var parameter = await _jadlogRepository.GetParameters(order.tomador.doc_company, order.TIPO_SERVICO);
 
-                        if (order.company.doc_company == "38367316001080")
-                            codUnidadeOri = "1420";
+                        //if (order.company.doc_company == "38367316001080")
+                        //    codUnidadeOri = "1420";
 
-                        else if (order.company.doc_company == "38367316000601")
-                            codUnidadeOri = "792";
+                        //else if (order.company.doc_company == "38367316000601")
+                        //    codUnidadeOri = "792";
 
-                        else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
-                            codUnidadeOri = "2362";
+                        //else if (order.company.doc_company == "38367316001241")
+                        //    codUnidadeOri = "1682";
 
-                        else
-                            codUnidadeOri = "1099";
+                        //else if (order.company.doc_company == "38367316000946" || order.company.doc_company == "42538267000500")
+                        //    codUnidadeOri = "2362";
+
+                        //else
+                        //    codUnidadeOri = "1099";
 
                         var jObject = new JObject
                         {
@@ -190,7 +196,7 @@ namespace BloomersCarriersIntegrations.Jadlog.Application.Services
                             { "contaCorrente", parameter.conta },
                             { "tpColeta", "K" },
                             { "tipoFrete", null },
-                            { "cdUnidadeOri", codUnidadeOri },
+                            { "cdUnidadeOri", order.CODIGO_ORIGEM },
                             { "cdUnidadeDes", null },
                             { "cdPickupOri", null },
                             { "cdPickupDes", null },

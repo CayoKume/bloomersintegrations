@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
-using static NewBloomersWebApplication.Domain.Entities.AppContext;
-using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
-using Product = NewBloomersWebApplication.Domain.Entities.Picking.Product;
+using static NewBloomersWebApplication.Infrastructure.Domain.Entities.AppContext;
+using Order = NewBloomersWebApplication.Infrastructure.Domain.Entities.Picking.Order;
+using Product = NewBloomersWebApplication.Infrastructure.Domain.Entities.Picking.Product;
 
 namespace NewBloomersWebApplication.UI.Pages
 {

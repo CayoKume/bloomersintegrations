@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.ExecuteCancellation;
+﻿using NewBloomersWebApplication.Infrastructure.Domain.Entities.ExecuteCancellation;
 
 namespace NewBloomersWebApplication.Application.Services
 {

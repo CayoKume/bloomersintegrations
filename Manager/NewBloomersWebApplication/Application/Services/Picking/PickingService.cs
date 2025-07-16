@@ -1,8 +1,8 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
-using NewBloomersWebApplication.Domain.Entities.Picking;
 using NewBloomersWebApplication.Infrastructure.Apis;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.Picking;
 using System.Text.Json;
-using Order = NewBloomersWebApplication.Domain.Entities.Picking.Order;
+using Order = NewBloomersWebApplication.Infrastructure.Domain.Entities.Picking.Order;
 
 namespace NewBloomersWebApplication.Application.Services
 {

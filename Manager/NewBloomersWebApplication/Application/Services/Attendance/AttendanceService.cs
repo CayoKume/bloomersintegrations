@@ -1,5 +1,5 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Attendance;
-using NewBloomersWebApplication.Infrastructure.Apis;
+﻿using NewBloomersWebApplication.Infrastructure.Apis;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.Attendance;
 using System.Text.Json;
 
 namespace NewBloomersWebApplication.Application.Services

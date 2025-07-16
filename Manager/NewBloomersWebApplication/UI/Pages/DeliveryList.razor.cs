@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.JSInterop;
-using static NewBloomersWebApplication.Domain.Entities.AppContext;
-using NewBloomersWebApplication.Domain.Entities.DeliveryList;
+using static NewBloomersWebApplication.Infrastructure.Domain.Entities.AppContext;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.DeliveryList;
 
 namespace NewBloomersWebApplication.UI.Pages
 {

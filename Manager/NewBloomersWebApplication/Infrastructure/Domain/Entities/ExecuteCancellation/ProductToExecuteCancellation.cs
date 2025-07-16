@@ -1,4 +1,4 @@
-﻿namespace NewBloomersWebApplication.Domain.Entities.ExecuteCancellation
+﻿namespace NewBloomersWebApplication.Infrastructure.Domain.Entities.ExecuteCancellation
 {
     public class ProductToExecuteCancellation : BloomersIntegrationsCore.Domain.Entities.Product
     {

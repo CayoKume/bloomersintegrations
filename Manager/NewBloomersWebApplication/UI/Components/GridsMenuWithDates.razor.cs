@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
-using static NewBloomersWebApplication.Domain.Entities.AppContext;
+using static NewBloomersWebApplication.Infrastructure.Domain.Entities.AppContext;
 
 namespace NewBloomersWebApplication.UI.Components
 {

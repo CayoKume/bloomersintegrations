@@ -1,5 +1,5 @@
 ﻿using Microsoft.JSInterop;
-using NewBloomersWebApplication.Domain.Entities.Home;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.Home;
 
 namespace NewBloomersWebApplication.UI.Pages
 {

@@ -1,4 +1,4 @@
-﻿using NewBloomersWebApplication.Domain.Entities.Labels;
+﻿using NewBloomersWebApplication.Infrastructure.Domain.Entities.Labels;
 
 namespace NewBloomersWebApplication.Application.Services
 {

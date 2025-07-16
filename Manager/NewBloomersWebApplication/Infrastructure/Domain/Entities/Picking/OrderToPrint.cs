@@ -1,6 +1,6 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
 
-namespace NewBloomersWebApplication.Domain.Entities.Picking
+namespace NewBloomersWebApplication.Infrastructure.Domain.Entities.Picking
 {
     public class OrderToPrint
     {

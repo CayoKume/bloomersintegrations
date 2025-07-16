@@ -1,4 +1,4 @@
-﻿namespace NewBloomersWebApplication.Domain.Entities.ExecuteCancellation
+﻿namespace NewBloomersWebApplication.Infrastructure.Domain.Entities.ExecuteCancellation
 {
     public class Order : BloomersIntegrationsCore.Domain.Entities.Order
     {

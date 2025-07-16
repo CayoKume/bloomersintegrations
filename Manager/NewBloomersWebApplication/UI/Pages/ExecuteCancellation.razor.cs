@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.JSInterop;
-using NewBloomersWebApplication.Domain.Entities.ExecuteCancellation;
+using NewBloomersWebApplication.Infrastructure.Domain.Entities.ExecuteCancellation;
 
 namespace NewBloomersWebApplication.UI.Pages
 {
