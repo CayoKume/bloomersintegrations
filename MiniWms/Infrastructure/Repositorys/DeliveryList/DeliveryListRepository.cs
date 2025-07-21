@@ -1,6 +1,7 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using Dapper;
+using System.Data;
 
 namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 {
@@ -60,7 +61,7 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                         return pedido;
                     }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company");
 
-                    return result.First(); 
+                    return result.First();
                 }
             }
             catch (Exception ex)
@@ -136,13 +137,33 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
                                 pedido.invoice = notaFiscal;
                                 pedido.company = empresa;
                                 return pedido;
-                            }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company"); 
+                            }, splitOn: "cod_client, cod_shippingCompany, number_nf, doc_company");
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception($"MiniWms [Imprime Romaneio] - GetPedidosEnviados - Erro ao obter pedidos na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
             }
+        }
+
+        public async Task<bool?> InsertPickedsDates(IEnumerable<Order> orders)
+        {
+            using (var conn = _conn.GetIDbConnection())
+            {
+                foreach (var order in orders)
+                {
+                    var sql = @$"INSERT INTO azure.newbloomers.[untreated].[ImpressaoRomaneioEntregaTransportadora] 
+                            ([pedido], [data]) 
+                            Values 
+                            (@pedido, GETDATE())";
+
+                    await conn.ExecuteAsync(sql: sql, new { pedido = $"{order.number}", data = DateTime.Now }, commandTimeout: 360);
+                }
+
+                var result = await conn.ExecuteAsync($"exec azure.newbloomers.[general].[p_WebAppImpressaoRomaneioEntregaTransportadora_Sincronizacao]");
+            }
+
+            return true;
         }
     }
 }

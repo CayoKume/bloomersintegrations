@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniWms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3cafbc6411330016f6ee2dfe700ee53225f7ac6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45dd272d231e195971461c7da205f5cff75d4626")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniWms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniWms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

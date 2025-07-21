@@ -1,15 +1,15 @@
 {
   "mainAssemblyName": "NewBloomersWebApplication",
   "resources": {
-    "hash": "sha256-kHMDOP95uBf9P7m8rnpJkg8O0VHu0ZyAXx7rWabUxDM=",
+    "hash": "sha256-5GE7PLKklai6UNlKAdbXK+B96FVhiyAwdYqGiwIkPRQ=",
     "jsModuleNative": {
-      "dotnet.native.8.0.4.b1icm8yjm6.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
+      "dotnet.native.8.0.10.jecd4upr8q.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.8.0.4.rde4049zas.js": "sha256-JeVsECOqOie/Pe89n9PJNJaMmb5vJsAAxfXY8INN64A="
+      "dotnet.runtime.8.0.10.t87vmph0gp.js": "sha256-FjrgL9dY6dc2yUoXDWowSfachSgM8O29qUMWDQOJKRI="
     },
     "wasmNative": {
-      "dotnet.native.wasm": "sha256-U1JSgnum2OTerSq8i5Y9L17deHEWJmae0djinSPLyJM="
+      "dotnet.native.wasm": "sha256-4ymhDbG5daKbi9yL1L574jRRiFFQhiOrDJU5YAYALU4="
     },
     "icu": {
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -216,16 +216,16 @@
       "mscorlib.wasm": "sha256-VCfYgt1mcjITabSTosCDVZ+68ea3Z7kakTFaLNLG+18=",
       "netstandard.wasm": "sha256-YOZxxR9PM3Dltcijfb0Q4FD39DkWZbZ1e2ScbZDvWJ4=",
       "System.Private.CoreLib.wasm": "sha256-NrT1QkAzVU//2wgK9vXdq77lCGvLJ4IOZ+Aegesyanc=",
-      "NewBloomersWebServicesCore.wasm": "sha256-3RBYLpD6cbBDMNROErC/R5+bwkZqR6rhVMmT2uttH9Q=",
-      "NewBloomersWebApplication.wasm": "sha256-eh7tHPbLrBJk7aRirtQkaYxRUyZFbXRkzw02u9EpaEY="
+      "NewBloomersWebServicesCore.wasm": "sha256-D6YB/BHipQuLJtdtzhVVpBxzRBqUdM3xud0zU6cicV8=",
+      "NewBloomersWebApplication.wasm": "sha256-e1hnUeNlfXake0UmzJNdQSUKemKk7PvFq+1nY7tQvu4="
     },
     "pdb": {
-      "NewBloomersWebServicesCore.pdb": "sha256-e7oy26P5TjzM1TKWdFfo2CuP2tFuVmzhgruf+aZNElA=",
-      "NewBloomersWebApplication.pdb": "sha256-tcnVqjmW66+M+fD5884xlRzmIEynjd9dvh/JB5hH6i4="
+      "NewBloomersWebServicesCore.pdb": "sha256-NdMpIbKokTmsGeJCB+CB12CyhrbeqEqcdxYKjE3SQBw=",
+      "NewBloomersWebApplication.pdb": "sha256-dDqL/zTN2Y1Y6+uYl+lh8FYoPMfZ7R6JjXwZ1sSBYEM="
     }
   },
   "cacheBootResources": true,
-  "debugLevel": 0,
+  "debugLevel": -1,
   "appsettings": [
     "../appsettings.json"
   ],

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qxeXMJObpBsv0aufURINtiPRU1n0hC2avP9jrqpU7PM=",
+  "Hash": "7utAPGugchErnlcdTwJhUyKTrJ8S64HSwbFHy6JAabo=",
   "Source": "NewBloomersWebApplication",
   "BasePath": "/",
   "Mode": "Root",
@@ -93,12 +93,12 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.4.b1icm8yjm6.js",
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.10.jecd4upr8q.js",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.4.b1icm8yjm6.js",
+      "RelativePath": "_framework/dotnet.native.8.0.10.jecd4upr8q.js",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.4.b1icm8yjm6.js"
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.10.jecd4upr8q.js"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
@@ -131,12 +131,12 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.4.rde4049zas.js",
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.10.t87vmph0gp.js",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.4.rde4049zas.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.10.t87vmph0gp.js",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.4.rde4049zas.js"
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.10.t87vmph0gp.js"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
@@ -226,42 +226,23 @@
       "OriginalItemSpec": "obj\\Release\\net8.0\\blazor.publish.boot.json"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\3iyx47gooo.gz",
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\jecd4upr8q.gz",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
+      "RelativePath": "_framework/dotnet.native.8.0.10.jecd4upr8q.js.gz",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js",
+      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.10.jecd4upr8q.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\3iyx47gooo.gz"
-    },
-    {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\b1icm8yjm6.gz",
-      "SourceId": "NewBloomersWebApplication",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.4.b1icm8yjm6.js.gz",
-      "AssetKind": "Publish",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.4.b1icm8yjm6.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\b1icm8yjm6.gz"
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\jecd4upr8q.gz"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\kezgp8h9o5.gz",
@@ -283,7 +264,26 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\kezgp8h9o5.gz"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\mjg39r6e6g.gz",
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\lddxlgncnr.gz",
+      "SourceId": "NewBloomersWebApplication",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.gz",
+      "AssetKind": "Publish",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\lddxlgncnr.gz"
+    },
+    {
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\lx0qwrbppk.gz",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
@@ -299,7 +299,7 @@
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\mjg39r6e6g.gz"
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\lx0qwrbppk.gz"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\0onlizu33p.br",
@@ -1518,6 +1518,25 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\webcil\\publish\\System.Private.Xml.wasm"
     },
     {
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\gngbzpmxz3.br",
+      "SourceId": "NewBloomersWebApplication",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.10.jecd4upr8q.js.br",
+      "AssetKind": "Publish",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.10.jecd4upr8q.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "br",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.10.jecd4upr8q.js"
+    },
+    {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\gywxpdks5y.br",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
@@ -2164,25 +2183,6 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\webcil\\publish\\System.Console.wasm"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\m9mzxftlex.br",
-      "SourceId": "NewBloomersWebApplication",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.4.b1icm8yjm6.js.br",
-      "AssetKind": "Publish",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.4.b1icm8yjm6.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "br",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.4.b1icm8yjm6.js"
-    },
-    {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\mj5yi2rci6.br",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
@@ -2240,23 +2240,23 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\webcil\\publish\\Microsoft.AspNetCore.Components.QuickGrid.wasm"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\nupq77vwjd.br",
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\n7932kj3hf.br",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.4.rde4049zas.js.br",
+      "RelativePath": "_framework/dotnet.runtime.8.0.10.t87vmph0gp.js.br",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.4.rde4049zas.js",
+      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.10.t87vmph0gp.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.4.rde4049zas.js"
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.10.t87vmph0gp.js"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\publish\\o8lx8ld52i.br",
@@ -3209,25 +3209,6 @@
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\blazor.publish.boot.json"
     },
     {
-      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\rde4049zas.gz",
-      "SourceId": "NewBloomersWebApplication",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.4.rde4049zas.js.gz",
-      "AssetKind": "Publish",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.4.rde4049zas.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\rde4049zas.gz"
-    },
-    {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\ru0dialm6h.gz",
       "SourceId": "NewBloomersWebApplication",
       "SourceType": "Computed",
@@ -3245,6 +3226,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\ru0dialm6h.gz"
+    },
+    {
+      "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\t87vmph0gp.gz",
+      "SourceId": "NewBloomersWebApplication",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\browser-wasm\\PubTmp\\Out\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.8.0.10.t87vmph0gp.js.gz",
+      "AssetKind": "Publish",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.10.t87vmph0gp.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\t87vmph0gp.gz"
     },
     {
       "Identity": "C:\\Users\\CayoHenriqueKume\\source\\repos\\bloomersintegrations\\Manager\\NewBloomersWebApplication\\obj\\Release\\net8.0\\compressed\\wn5goi7412.gz",

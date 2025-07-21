@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mobsim")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+adaca585a70b781a40357244d3089d453e015833")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45dd272d231e195971461c7da205f5cff75d4626")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mobsim")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mobsim")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

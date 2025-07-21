@@ -64,6 +64,8 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                 var volumes = pedidosList.GroupBy(x => x.volumes).Select(g => new { soma = g.Sum(x => x.volumes) }).First();
                 var fileName = $@"{pathDeliveryLists}\deliverylists{pedidosList.First().company.doc_company.Substring(pedidosList.First().company.doc_company.Length - 3)} - {DateTime.Now.Date.ToString("yyyy-mm-dd")}.pdf";
 
+                await _deliveryListRepository.InsertPickedsDates(pedidosList);
+
                 QuestPDF.Settings.License = LicenseType.Community;
 
                 QuestPDF.Fluent.Document.Create(container =>
@@ -99,8 +101,6 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                                     text.Span($"{DateTime.Now.Date.ToString("yyyy-MM-dd")}").FontSize(10);
                                 });
                             });
-
-                            //row.ConstantItem(100).Height(50).Placeholder();
                         }));
 
                         page.Content().Element(x => x.PaddingVertical(15).Column(column =>
