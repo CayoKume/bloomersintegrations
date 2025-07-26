@@ -1,7 +1,9 @@
 ﻿using BloomersIntegrationsCore.Domain.Entities;
 using BloomersIntegrationsCore.Infrastructure.SQLServer.Connection;
 using Dapper;
+using MiniWms.Domain.Entities.DeliveryList;
 using System.Data;
+using System.Threading;
 
 namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
 {
@@ -146,24 +148,68 @@ namespace BloomersMiniWmsIntegrations.Infrastructure.Repositorys
             }
         }
 
-        public async Task<bool?> InsertPickedsDates(IEnumerable<Order> orders)
+        public async Task<IEnumerable<DeliveryList>> GetDeliveryLists(string cod_transportadora, string cnpj_emp, string data_inicial, string data_final)
         {
-            using (var conn = _conn.GetIDbConnection())
-            {
-                foreach (var order in orders)
-                {
-                    var sql = @$"INSERT INTO azure.newbloomers.[untreated].[ImpressaoRomaneioEntregaTransportadora] 
-                            ([pedido], [data]) 
-                            Values 
-                            (@pedido, GETDATE())";
+            var sql = $@"SELECT DISTINCT
+                        A.[uniqueidentifier] as identificador,
+                        A.[name] as deliveryListName,
+                        A.[carrier] as transportadora
 
-                    await conn.ExecuteAsync(sql: sql, new { pedido = $"{order.number}", data = DateTime.Now }, commandTimeout: 360);
+                        FROM azure.newbloomers.[webapplication].[DeliveryLists] A (NOLOCK)
+                        WHERE
+                        AND A.NB_DOC_REMETENTE = '{cnpj_emp}' 
+                        AND A.colletedAt IS NOT NULL
+                        AND A.carrier = '{cod_transportadora}'
+                        AND A.printedAt >= CONVERT(DATE, '{data_inicial.Trim()}')
+                        AND A.printedAt <= CONCAT (CONVERT(DATE, '{data_final.Trim()}'),' 23:59:59')"")";
+
+            try
+            {
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    return await conn.QueryAsync<DeliveryList>(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"MiniWms [DeliveryList] - GetOrderShipped - Erro ao obter pedido: {nr_pedido} na tabela IT4_WMS_DOCUMENTO  - {ex.Message}");
+            }
+        }
+
+        public async Task<bool?> InsertPickedsDates(Guid guid, string deliveryListName, string carrier, IEnumerable<Order> orders)
+        {
+            try
+            {
+                using (var conn = _conn.GetIDbConnection())
+                {
+                    var sql = @$"INSERT INTO azure.newbloomers.[webapplication].[DeliveryLists]
+                            ([uniqueidentifier], [name], [carrier], [printedAt]) 
+                            Values 
+                            (@uniqueidentifier, @name, @carrier, GETDATE())";
+
+                    await conn.ExecuteAsync(sql: sql, new { uniqueidentifier = $"{guid}", name = $"{deliveryListName}", carrier = $"{carrier}", printedAt = DateTime.Now }, commandTimeout: 360);
+
+                    foreach (var order in orders)
+                    {
+                        var _sql = @$"INSERT INTO azure.newbloomers.[webapplication].[DeliveryListsOrders]
+                            ([uniqueidentifier], [pedido]) 
+                            Values 
+                            (@uniqueidentifier, @pedido)";
+
+                        await conn.ExecuteAsync(sql: _sql, new { uniqueidentifier = $"{guid}", pedido = $"{order.number}" }, commandTimeout: 360);
+                    }
+
+                    //var result = await conn.ExecuteAsync($"exec azure.newbloomers.[general].[p_DeliveryLists_Sincronizacao]");
+
+                    //var result = await conn.ExecuteAsync($"exec azure.newbloomers.[general].[p_DeliveryListsOrders_Sincronizacao]");
                 }
 
-                var result = await conn.ExecuteAsync($"exec azure.newbloomers.[general].[p_WebAppImpressaoRomaneioEntregaTransportadora_Sincronizacao]");
+                return true;
             }
-
-            return true;
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

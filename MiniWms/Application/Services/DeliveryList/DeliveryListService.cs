@@ -61,10 +61,13 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                     Directory.CreateDirectory(pathDeliveryLists);
 
                 var pedidosList = JsonConvert.DeserializeObject<List<Order>>(serializePedidosList);
+                var guid = Guid.NewGuid();
+                var transportadora = pedidosList.First().shippingCompany.cod_shippingCompany;
                 var volumes = pedidosList.GroupBy(x => x.volumes).Select(g => new { soma = g.Sum(x => x.volumes) }).First();
-                var fileName = $@"{pathDeliveryLists}\deliverylists{pedidosList.First().company.doc_company.Substring(pedidosList.First().company.doc_company.Length - 3)} - {DateTime.Now.Date.ToString("yyyy-mm-dd")}.pdf";
+                var name = $"deliverylists{pedidosList.First().company.doc_company.Substring(pedidosList.First().company.doc_company.Length - 3)} - {transportadora} - {DateTime.Now.Date.ToString("yyyy-MM-dd")}";
+                var fileName = $@"{pathDeliveryLists}\{name}.pdf";
 
-                await _deliveryListRepository.InsertPickedsDates(pedidosList);
+                await _deliveryListRepository.InsertPickedsDates(deliveryListName: name, orders: pedidosList, guid: guid, carrier: transportadora);
 
                 QuestPDF.Settings.License = LicenseType.Community;
 
@@ -79,7 +82,7 @@ namespace BloomersMiniWmsIntegrations.Application.Services
 
                         page.Header().Element(x => x.Row(row =>
                         {
-                            row.RelativeItem().Height(50).Column(column =>
+                            row.RelativeItem().Height(80).Column(column =>
                             {
                                 column.Item().Text($"Romaneio de Embarque").Style(titleStyle).FontSize(12);
 
@@ -99,6 +102,12 @@ namespace BloomersMiniWmsIntegrations.Application.Services
                                 {
                                     text.Span("Data: ").SemiBold().FontSize(10);
                                     text.Span($"{DateTime.Now.Date.ToString("yyyy-MM-dd")}").FontSize(10);
+                                });
+
+                                column.Item().Text(text =>
+                                {
+                                    text.Span("Identificador: ").SemiBold().FontSize(10);
+                                    text.Span($"{guid}").FontSize(10);
                                 });
                             });
                         }));

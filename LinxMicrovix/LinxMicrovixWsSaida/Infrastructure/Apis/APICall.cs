@@ -102,7 +102,7 @@ namespace BloomersMicrovixIntegrations.LinxMicrovixWsSaida.Infrastructure.Apis
                 request.ContentType = "text/xml; encoding='utf-8'";
                 request.ContentLength = bytes.Length;
                 request.Method = "POST";
-                request.Timeout = 15 * 1000;
+                request.Timeout = 120 * 1000;
 
                 return request;
             }
